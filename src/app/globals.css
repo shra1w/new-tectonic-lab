@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Bricolage Grotesque";
+    --font-body: "Figtree";
+    --rule: rgba(255, 255, 255, 0.08);
+    --rule-strong: rgba(255, 255, 255, 0.14);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ink-950 text-zinc-200 font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-zinc-50;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  /* WCAG 2.1 AA — always-visible keyboard focus */
+  :focus-visible {
+    outline: 2px solid #EAFD56;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: #EAFD56;
+    color: #09090B;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-5 sm:px-8 lg:px-10;
+  }
+
+  /* Signature device: the dashboard hairline grid. Every section sits on it. */
+  .ruled {
+    background-image:
+      linear-gradient(to right, var(--rule) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--rule) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .ruled-fade {
+    -webkit-mask-image: radial-gradient(120% 80% at 50% 0%, #000 30%, transparent 78%);
+    mask-image: radial-gradient(120% 80% at 50% 0%, #000 30%, transparent 78%);
+  }
+
+  /* Spec-sheet row — the data-table motif reused across cards */
+  .spec-row {
+    @apply flex items-baseline justify-between gap-4 border-b border-white/[0.07] py-2.5 text-sm last:border-b-0;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-2xs font-semibold uppercase tracking-[0.18em] text-zinc-400;
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/10 bg-ink-900/70 backdrop-blur-[2px];
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/[0.12] bg-white/[0.04] px-3 py-1 text-2xs font-medium text-zinc-300;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full text-sm font-semibold transition-all duration-200 active:scale-[.985];
+  }
+
+  .btn-primary {
+    @apply btn bg-acid px-6 py-3.5 text-ink-950 hover:bg-acid-soft shadow-acid;
+  }
+
+  .btn-ghost {
+    @apply btn border border-white/15 px-6 py-3.5 text-zinc-100 hover:border-acid/60 hover:text-acid;
+  }
+
+  .link-underline {
+    @apply relative inline-flex items-center gap-1.5 font-semibold text-acid;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-px w-0 bg-acid transition-all duration-300;
+  }
+  .link-underline:hover::after { @apply w-full; }
+}
+
+@layer utilities {
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+  .text-balance { text-wrap: balance; }
+}

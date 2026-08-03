@@ -1,0 +1,45 @@
+# Techtonic Lab
+
+> Techtonic Lab is an IT training institute based in Nagpur, Maharashtra, India,
+> offering courses in Data Analytics, Data Science, and SAP with placement
+> preparation and support. Courses are delivered in classroom, blended, and
+> weekend formats. All three courses cost Rs 50,000 for a four-month programme
+> (three months of core training plus one month of corporate grooming).
+
+## Courses
+
+- [Data Analyst Course in Nagpur](https://techtoniccorporate.com/data-analytics-course): 3-month programme covering Microsoft Excel, SQL, Python, Microsoft Power BI and Tableau Desktop, plus 1 month of corporate grooming. Fee Rs 50,000. Next batch 18 August 2026.
+- [Data Science Course in Nagpur](https://techtoniccorporate.com/data-science-course): Python, pandas, scikit-learn, applied statistics, machine learning and real-world projects. Fee Rs 50,000. Next batch 25 August 2026.
+- [SAP Course in Nagpur](https://techtoniccorporate.com/sap-course): Modules include SAP FICO, SAP MM, SAP SD and SAP PP/QM with live SAP S/4HANA server access and certification guidance. Fee Rs 50,000. Next batch 11 August 2026.
+
+## Fees and batches
+
+- [Course fees](https://techtoniccorporate.com/fees): Rs 50,000 all-inclusive for any course, or roughly Rs 8,334 per month over a 6-month EMI. No separate registration, examination or certificate charges.
+- [Batch schedule](https://techtoniccorporate.com/batches)
+
+## Placement
+
+- [Placement records](https://techtoniccorporate.com/placements): 11 named alumni on record. Techtonic Lab provides placement assistance, not a placement guarantee.
+- [Hire from us](https://techtoniccorporate.com/hire-from-us): No placement fee for employers. Shortlist within four working days.
+
+## About
+
+- [About Techtonic Lab](https://techtoniccorporate.com/aboutus)
+- [Faculty](https://techtoniccorporate.com/faculty): Six instructors with 72+ years of combined experience across IT, ERP, business intelligence and HR.
+- [Contact](https://techtoniccorporate.com/connect-with-us)
+
+## Locations
+
+Head office: SAI NIT-JIT PLAZA, Third Floor, Plot No. 10, Beltarodi Road, Near Gulmohar
+Restaurant, Manish Nagar, Somalwada, Nagpur, Maharashtra 440037, India.
+
+Branch office: Plot No. 81, First Floor, Hiranwar Layout, Near Mayur Kirana Store,
+Jaitala Road, Nagpur, Maharashtra 440036, India.
+
+Both campuses open Monday to Saturday, 9:00 am to 8:00 pm.
+
+Phone: +91-8766069947
+Email: admin@techtoniccorporate.com
+
+Areas served: Nagpur and the wider Vidarbha region — Wardha, Bhandara, Gondia,
+Chandrapur, Gadchiroli, Amravati, Akola, Yavatmal, Washim and Buldhana.

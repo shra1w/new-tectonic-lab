@@ -1,0 +1,35 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
+
+/**
+ * Scroll-triggered appear animation.
+ *
+ * `children` is rendered by the parent SERVER component and passed in as a prop,
+ * so all text still ships inside the initial HTML response (audit CRIT-1).
+ * Only the wrapper is client-side.
+ */
+export default function Reveal({
+  children,
+  className = "",
+  delay = 0,
+  y = 20,
+  once = true,
+  amount = 0.2,
+}) {
+  const reduce = useReducedMotion();
+
+  if (reduce) return <div className={className}>{children}</div>;
+
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once, amount, margin: "0px 0px -80px 0px" }}
+      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+}
