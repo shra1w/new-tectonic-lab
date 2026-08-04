@@ -1,7 +1,4 @@
-/**
- * Long-form legal and about copy. Deliberately narrow measure — 65-ish
- * characters — so a terms page is actually readable rather than merely present.
- */
+
 export default function Prose({ children, className = "" }) {
   return (
     <div

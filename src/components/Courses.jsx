@@ -46,11 +46,10 @@ function CourseCard({ course }) {
         </h3>
         <p className="mt-3 text-sm leading-relaxed text-zinc-400">{course.blurb}</p>
 
-        {/* Spec-sheet motif — the data-table language of the subject */}
         <dl className="mt-6">
           {[
             ["Duration", course.duration],
-            ["Next batch", course.nextBatch],
+            ["Upcoming batch", course.nextBatch],
             ["Mode", course.mode],
             ["Fee", course.fee],
           ].map(([k, v]) => (
@@ -79,7 +78,6 @@ function CourseCard({ course }) {
           </span>
         </Link>
 
-        {/* Section 6.3 — deep links with descriptive anchor text, not "read more" */}
         <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/10 pt-4">
           <Link
             href={`/${course.slug}/syllabus`}

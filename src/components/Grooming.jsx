@@ -50,7 +50,7 @@ export default function Grooming() {
                 One month of corporate grooming, at no extra cost
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-zinc-300">
-                It is part of the ₹50,000, not an add-on sold later. Every learner on every
+                It is part of the ₹49,999, not an add-on sold later. Every learner on every
                 course gets it, in every batch mode.
               </p>
 
@@ -66,6 +66,7 @@ export default function Grooming() {
               </ul>
 
               <ImageSlot
+                src={"/photos/grooming.jpeg"}
                 className="mt-7 aspect-[16/9] w-full"
                 rounded="rounded-2xl"
                 sizes="(max-width: 1024px) 100vw, 40vw"

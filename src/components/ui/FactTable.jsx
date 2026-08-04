@@ -1,7 +1,4 @@
-/**
- * GEO Section 7.1 — the "quick facts" block. A definition list of label→value
- * pairs, deliberately plain so an answer engine can lift it as-is.
- */
+
 export default function FactTable({ rows, className = "" }) {
   return (
     <dl className={`card p-5 sm:p-6 ${className}`}>

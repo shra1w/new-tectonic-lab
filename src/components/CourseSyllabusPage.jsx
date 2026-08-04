@@ -172,7 +172,7 @@ export default function CourseSyllabusPage({ course, detail, breadcrumbs }) {
                 <LuArrowRight aria-hidden="true" className="h-4 w-4" />
               </Link>
               <Link href="/batches" className="link-underline text-sm">
-                When the next batch starts
+                When the Upcoming batch starts
                 <LuArrowRight aria-hidden="true" className="h-4 w-4" />
               </Link>
               <Link href="/faculty" className="link-underline text-sm">

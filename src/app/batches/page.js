@@ -90,12 +90,12 @@ export default function BatchesPage() {
         aside={
           <FactTable
             rows={[
-              ["Next batch", `${next.course} · ${next.start}`],
+              ["Upcoming batch", `${next.course} · ${next.start}`],
               ["Upcoming batches listed", String(batches.length)],
               ["Modes", "Classroom, weekend, online"],
               ["Campuses", "Somalwada, Jaitala Road, live online"],
               ["Programme length", "4 months"],
-              ["Fee", "₹50,000 for any course"],
+              ["Fee", "₹49,999 for any course"],
             ]}
           />
         }
@@ -184,7 +184,7 @@ export default function BatchesPage() {
         </div>
       </section>
 
-      {/* ---- Next batch per course ---- */}
+      {/* ---- Upcoming batch per course ---- */}
       <section
         aria-labelledby="next-title"
         className="border-y border-white/10 bg-ink-900/40 py-20 sm:py-24"
@@ -288,7 +288,7 @@ export default function BatchesPage() {
       </section>
 
       <CtaBand
-        title="Hold a seat in the next batch"
+        title="Hold a seat in the Upcoming batch"
         body="Book a free consultation first. We will confirm the course actually suits you before anyone talks about payment."
         primary={{ href: "/connect-with-us", label: "Book a free consultation" }}
         secondary={{ href: "/fees", label: "See the fees" }}

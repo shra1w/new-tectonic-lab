@@ -4,10 +4,7 @@ import SectionHead from "./ui/SectionHead";
 import Stagger from "./ui/Stagger";
 import { courses } from "@/lib/site";
 
-/**
- * Section 6.3 — every course page links to every other course page with
- * descriptive anchor text. No orphan pages, no generic "read more".
- */
+
 export default function RelatedCourses({ exclude }) {
   const others = courses.filter((c) => c.slug !== exclude);
 
@@ -40,7 +37,7 @@ export default function RelatedCourses({ exclude }) {
                 <span aria-hidden="true">·</span>
                 <span>{c.fee}</span>
                 <span aria-hidden="true">·</span>
-                <span>Next batch {c.nextBatch}</span>
+                <span>Upcoming batch {c.nextBatch}</span>
               </p>
               <span className="mt-5 text-sm font-semibold text-acid">
                 Explore the {c.name} course

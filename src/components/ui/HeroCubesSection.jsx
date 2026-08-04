@@ -5,59 +5,13 @@ import Image from "next/image";
 import { motion, animate, useReducedMotion } from "motion/react";
 import { LuImagePlus } from "react-icons/lu";
 
-/* ---------------------------------------------------------------------------
- * HeroCube — a tall 3D box that turns to reveal a new image on a timer.
- *
- * 1. THE UPRIGHT GUARANTEE
- * ------------------------
- * Accumulating 90° turns is broken: after the first turn the box's axes are
- * re-oriented, the orientation wanders through all 24 rotations of the cube
- * group, and faces arrive rolled 90° or upside down. So the box never
- * accumulates — it always starts a turn from a known transform, and the slot
- * transforms are fixed constants, which makes the incoming face's net
- * transform provably the identity matrix every time:
- *
- *     up    : Rx( 90) · bottom-slot Rx(-90) = I
- *     down  : Rx(-90) · top-slot    Rx( 90) = I
- *     right : Ry( 90) · left-slot   Ry(-90) = I
- *     left  : Ry(-90) · right-slot  Ry( 90) = I
- *
- * 2. WHY VERTICAL AND HORIZONTAL TURNS BEHAVE DIFFERENTLY
- * -------------------------------------------------------
- * The box is taller than it is wide, so its faces are not all the same shape:
- * the four sides are portrait (bw × bh) and the top and bottom are square
- * (bw × bw).
- *
- * HORIZONTAL turns only ever swap portrait for portrait, so after the turn the
- * box can silently reset to identity and re-deal the revealed image onto the
- * front slot. Same shape in, same shape out — nothing moves.
- *
- * VERTICAL turns reveal a SQUARE face. Resetting there would move that image
- * from a square slot onto the portrait front slot, and it would visibly snap
- * from square to tall — the glitch. So vertical turns never reset. They go out
- * to 90°, hold on the square face, then come back to 0° revealing a fresh
- * portrait image on the front slot. The silhouette morphs tall → square → tall,
- * which is simply what a cuboid actually does when it rolls.
- *
- * 3. THE SWAPS ARE INVISIBLE
- * --------------------------
- * A slot at 90° to the camera is exactly edge-on: zero width, nothing painted.
- * Every image swap in here happens on a slot in that state, so none of them can
- * be seen. The useLayoutEffect commits the image before the transform clears,
- * so there is never a frame showing the old image square-on.
- * ------------------------------------------------------------------------- */
 
-/* ── tuning ──────────────────────────────────────────────────────────────── */
-const TURN_DURATION = 0.7; // seconds
-const FACE_HOLD_MS = 4500; // rest on a portrait face
-const FLAT_HOLD_MS = 3800; // rest on a square face — slightly shorter, it reads
-                           // as a pause in the roll rather than a destination
+const TURN_DURATION = 0.7;
+const FACE_HOLD_MS = 4500; 
+const FLAT_HOLD_MS = 3800; 
 const TURN_EASE = [0.6, 0.02, 0.16, 1];
 
-/* ── geometry ────────────────────────────────────────────────────────────────
- * --bw is width AND depth, so the four sides share one size and the top and
- * bottom come out square. --bh is height.
- * -------------------------------------------------------------------------- */
+
 const SLOT_TRANSFORM = {
   front: "translateZ(calc(var(--bw) / 2))",
   back: "rotateY(180deg) translateZ(calc(var(--bw) / 2))",
@@ -79,17 +33,13 @@ const MOVES = [
 
 const OPPOSITE = { up: "down", down: "up", left: "right", right: "left" };
 
-/** Random move, never the exact reverse of the last, and never two vertical
- *  turns in a row — back-to-back square faces make the box look like it is
- *  stuck rocking rather than rolling. */
+
 function pickMove(lastId, lastWasFlat) {
   let pool = MOVES.filter((m) => m.id !== OPPOSITE[lastId]);
   if (lastWasFlat) pool = pool.filter((m) => !m.flat);
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
-/** Which image sits on which slot. The four non-featured slots are only ever
- *  seen edge-on or mid-turn, so their ordering is cosmetic. */
 function makeDeal(index, incomingSlot, count) {
   const deal = { front: index % count, [incomingSlot]: (index + 1) % count };
   SLOTS.filter((s) => s !== "front" && s !== incomingSlot).forEach((s, k) => {
@@ -98,10 +48,7 @@ function makeDeal(index, incomingSlot, count) {
   return deal;
 }
 
-/* ── default images ──────────────────────────────────────────────────────────
- * An ordered sequence, not a face map. Prompt IDs map to HERO-CUBE-PROMPTS.md.
- * Positions 5 and 6 land on the square slots, so those two must be square.
- * -------------------------------------------------------------------------- */
+
 const DEFAULT_IMAGES = [
   { promptId: "HERO-01", label: "The lab at night", src: "/photos/cube/hero-01.png", alt: "" },
   { promptId: "HERO-02", label: "Dashboard macro", src: null, alt: "" },
@@ -125,7 +72,6 @@ function Placeholder({ item }) {
   );
 }
 
-/* ── component ───────────────────────────────────────────────────────────── */
 export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
   const count = images.length;
 
@@ -135,18 +81,17 @@ export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
   const paused = useRef(false);
   const lastMove = useRef(null);
   const scheduleRef = useRef(null);
-  const featured = useRef(0); // index of the image currently facing the camera
-  const pendingFlat = useRef(null); // the outbound vertical turn, awaiting return
+  const featured = useRef(0);
+  const pendingFlat = useRef(null); 
 
   const [deal, setDeal] = useState(() => makeDeal(0, "bottom", count));
   const [resetAt, setResetAt] = useState(null);
-  const [isFlat, setIsFlat] = useState(false); // a square face is forward
+  const [isFlat, setIsFlat] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [ready, setReady] = useState(false);
   const reduce = useReducedMotion();
 
-  /* Preload so the first turn never reveals a half-painted face. Bails after
-     4s so a dead CDN can't leave the box stuck on the loader. */
+
   useEffect(() => {
     const sources = images.map((i) => i.src).filter(Boolean);
     if (sources.length === 0) {
@@ -171,9 +116,7 @@ export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
     };
   }, [images]);
 
-  /* Horizontal turns only. Clears the transform after the new deal has hit the
-     DOM but before paint, so no frame shows the box square-on with the old
-     image. */
+
   useLayoutEffect(() => {
     if (!resetAt) return;
     if (boxRef.current) boxRef.current.style.transform = "none";
@@ -200,15 +143,13 @@ export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
       });
     };
 
-    /* Leg two of a vertical turn: come back to 0° revealing a fresh portrait
-       image on the front slot. */
+ 
     const returnFromFlat = () => {
       if (paused.current || !boxRef.current) return;
       const move = pendingFlat.current;
       if (!move) return;
 
       const next = (featured.current + 1) % count;
-      // The front slot is edge-on at 90°, so this swap cannot be seen.
       setDeal((d) => ({ ...d, front: next }));
 
       requestAnimationFrame(() => {
@@ -226,7 +167,6 @@ export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
     const turn = () => {
       if (paused.current || !boxRef.current) return;
 
-      // Still out on a square face? The job now is to come back.
       if (pendingFlat.current) {
         returnFromFlat();
         return;
@@ -236,7 +176,6 @@ export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
       lastMove.current = move.id;
 
       const next = (featured.current + 1) % count;
-      // The incoming slot is edge-on right now, so this swap is invisible.
       setDeal((d) => ({ ...d, [move.incoming]: next }));
 
       requestAnimationFrame(() => {
@@ -246,14 +185,11 @@ export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
           featured.current = next;
 
           if (move.flat) {
-            // Square face forward. Do NOT reset — resetting would drop a square
-            // image onto the portrait front slot and snap its shape. Hold here
-            // and come back on the next tick.
+      
             pendingFlat.current = move;
             setIsFlat(true);
             schedule();
           } else {
-            // Portrait to portrait: safe to reset and re-deal.
             setDeal(makeDeal(next, "bottom", count));
             setResetAt(Date.now());
           }
@@ -268,8 +204,7 @@ export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
     };
     scheduleRef.current = schedule;
 
-    // A hidden tab throws no rAF, so an armed timer would queue turns and fire
-    // them in a burst on return. Stop the clock instead.
+
     const onVisibility = () => {
       if (document.hidden) clearTimeout(timer.current);
       else schedule();
@@ -287,8 +222,6 @@ export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
     };
   }, [ready, reduce, count]);
 
-  /* Hover freezes the box. An in-flight turn finishes rather than stopping
-     mid-way, which would leave it resting on an edge. */
   const pause = () => {
     paused.current = true;
     setHovered(true);
@@ -301,16 +234,13 @@ export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
     if (!running.current) scheduleRef.current?.();
   };
 
-  // The box bottom sits higher while a square face is forward, so the contact
-  // shadow has to follow it or it detaches.
   const shadowOffset = isFlat ? "calc(var(--bw) / 2)" : "calc(var(--bh) / 2)";
 
   return (
     <motion.div
       className={`relative flex items-center justify-center ${className}`}
       style={{
-        // One knob sizes the whole box. Width doubles as depth, which is what
-        // makes the top and bottom square and the four sides identical.
+       
         "--bw": "clamp(196px, 56vw, 344px)",
         "--bh": "calc(var(--bw) * 1.42)",
         minHeight: "calc(var(--bh) + 2.5rem)",
@@ -332,9 +262,7 @@ export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
       role="img"
       aria-label="Rotating gallery of images from the Techtonic Lab training floor"
     >
-      {/* Glow — a single horizontal bar sitting behind the middle of the box, so
-          the light spills left and right only. Never a halo around all four
-          sides: that reads as a sticker cut out of the page. */}
+  
       <motion.div
         aria-hidden="true"
         className="pointer-events-none absolute rounded-full bg-acid blur-[55px]"
@@ -362,7 +290,6 @@ export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
         }}
       />
 
-      {/* Float — hover only, so the resting state stays perfectly still */}
       <motion.div
         className="relative"
         style={{
@@ -377,8 +304,7 @@ export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
             : { duration: 0.45, ease: [0.22, 1, 0.36, 1] }
         }
       >
-        {/* The turning body. Transform is written imperatively — no React
-            re-render per frame; the main thread touches one property. */}
+  
         <div
           ref={boxRef}
           className="absolute inset-0"
@@ -413,8 +339,7 @@ export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
                   <Placeholder item={item} />
                 )}
 
-                {/* Edge definition — without this the faces melt together at
-                    oblique angles and the box stops reading as a solid. */}
+   
                 <span
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 rounded-[1.4rem] ring-1 ring-inset ring-white/15"
@@ -429,7 +354,6 @@ export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
         </div>
       </motion.div>
 
-      {/* Loader — a lime sweep in a box-shaped frame, cleared once decoded. */}
       {!ready ? (
         <div
           className="pointer-events-none absolute overflow-hidden rounded-[1.4rem] border border-white/10 bg-ink-900"

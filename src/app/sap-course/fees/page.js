@@ -15,22 +15,22 @@ const breadcrumbs = [
 ];
 
 export const metadata = {
-  title: "SAP Course Fees in Nagpur — ₹50,000 with S/4HANA Access",
-  description: "SAP course fees in Nagpur: ₹50,000 for the full 4-month programme including live S/4HANA server access. EMI at ₹8,334 per month. Itemised in full.",
+  title: "SAP Course Fees in Nagpur — ₹49,999 with S/4HANA Access",
+  description: "SAP course fees in Nagpur: ₹49,999 for the full 4-month programme including live S/4HANA server access. EMI at ₹8,334 per month. Itemised in full.",
   alternates: { canonical: `/${SLUG}/fees` },
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/${SLUG}/fees`,
     siteName: "Techtonic Lab",
-    title: "SAP Course Fees in Nagpur — ₹50,000 with S/4HANA Access",
-    description: "SAP course fees in Nagpur: ₹50,000 for the full 4-month programme including live S/4HANA server access. EMI at ₹8,334 per month. Itemised in full.",
-    images: [{ url: "/og/sap-course.jpg", width: 1200, height: 630, alt: "SAP Course Fees in Nagpur — ₹50,000 with S/4HANA Access" }],
+    title: "SAP Course Fees in Nagpur — ₹49,999 with S/4HANA Access",
+    description: "SAP course fees in Nagpur: ₹49,999 for the full 4-month programme including live S/4HANA server access. EMI at ₹8,334 per month. Itemised in full.",
+    images: [{ url: "/og/sap-course.jpg", width: 1200, height: 630, alt: "SAP Course Fees in Nagpur — ₹49,999 with S/4HANA Access" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAP Course Fees in Nagpur — ₹50,000 with S/4HANA Access",
-    description: "SAP course fees in Nagpur: ₹50,000 for the full 4-month programme including live S/4HANA server access. EMI at ₹8,334 per month. Itemised in full.",
+    title: "SAP Course Fees in Nagpur — ₹49,999 with S/4HANA Access",
+    description: "SAP course fees in Nagpur: ₹49,999 for the full 4-month programme including live S/4HANA server access. EMI at ₹8,334 per month. Itemised in full.",
     images: ["/og/sap-course.jpg"],
   },
 };
@@ -41,8 +41,8 @@ export default function Page() {
   const jsonLd = [
     webPageSchema({
       path: `/${SLUG}/fees`,
-      name: "SAP Course Fees in Nagpur — ₹50,000 with S/4HANA Access",
-      description: "SAP course fees in Nagpur: ₹50,000 for the full 4-month programme including live S/4HANA server access. EMI at ₹8,334 per month. Itemised in full.",
+      name: "SAP Course Fees in Nagpur — ₹49,999 with S/4HANA Access",
+      description: "SAP course fees in Nagpur: ₹49,999 for the full 4-month programme including live S/4HANA server access. EMI at ₹8,334 per month. Itemised in full.",
     }),
     breadcrumbSchema(breadcrumbs),
     offerSchema(course),

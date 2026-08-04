@@ -1,10 +1,4 @@
-// -----------------------------------------------------------------------------
-// Deep course content — syllabus modules, projects, career paths, per-course FAQ.
-// Kept separate from site.js so the homepage bundle stays small.
-//
-// GEO: every FAQ question is phrased the way a student would type it, and every
-// answer opens with a direct sentence before it elaborates.
-// -----------------------------------------------------------------------------
+
 
 export const courseDetail = {
   "data-analytics-course": {
@@ -163,7 +157,7 @@ export const courseDetail = {
       },
       {
         q: "What is the fee for the data analyst course in Nagpur?",
-        a: "The fee is ₹50,000 for the complete four-month programme. EMI is available at roughly ₹8,334 per month over six months. The fee includes all learning material, project datasets, the corporate grooming month and placement preparation. There is no separate registration, examination or certificate charge.",
+        a: "The fee is ₹49,999 for the complete four-month programme. EMI is available at roughly ₹8,334 per month over six months. The fee includes all learning material, project datasets, the corporate grooming month and placement preparation. There is no separate registration, examination or certificate charge.",
       },
       {
         q: "Which tools will I learn in the data analyst course?",
@@ -352,7 +346,7 @@ export const courseDetail = {
       },
       {
         q: "What is the fee for the data science course in Nagpur?",
-        a: "The fee is ₹50,000 for the complete four-month programme, the same as the other two courses. EMI is available at roughly ₹8,334 per month over six months, and there are no separate registration or certificate charges.",
+        a: "The fee is ₹49,999 for the complete four-month programme, the same as the other two courses. EMI is available at roughly ₹8,334 per month over six months, and there are no separate registration or certificate charges.",
       },
       {
         q: "What is the difference between the data analytics and data science courses?",
@@ -533,7 +527,7 @@ export const courseDetail = {
       },
       {
         q: "What is the fee for the SAP course in Nagpur?",
-        a: "The fee is ₹50,000 for the complete four-month programme, including live S/4HANA server access, all learning material, the corporate grooming month and placement preparation. EMI is available at roughly ₹8,334 per month over six months.",
+        a: "The fee is ₹49,999 for the complete four-month programme, including live S/4HANA server access, all learning material, the corporate grooming month and placement preparation. EMI is available at roughly ₹8,334 per month over six months.",
       },
       {
         q: "Who can do an SAP course — is a technical degree needed?",
@@ -545,7 +539,7 @@ export const courseDetail = {
       },
       {
         q: "Is SAP certification included in the course fee?",
-        a: "The official SAP certification exam is paid separately to SAP and is not included in the ₹50,000 fee. What is included is full preparation guidance for it, plus a Techtonic Lab completion certificate. We will tell you honestly whether the official exam is worth the cost in your particular case.",
+        a: "The official SAP certification exam is paid separately to SAP and is not included in the ₹49,999 fee. What is included is full preparation guidance for it, plus a Techtonic Lab completion certificate. We will tell you honestly whether the official exam is worth the cost in your particular case.",
       },
       {
         q: "Does Techtonic Lab guarantee an SAP job?",
@@ -559,9 +553,6 @@ export const courseDetail = {
   },
 };
 
-// -----------------------------------------------------------------------------
-// SAP module deep-dive pages — /sap-course/fico, /mm, /sd, /pp-qm
-// -----------------------------------------------------------------------------
 export const sapModules = {
   fico: {
     slug: "fico",

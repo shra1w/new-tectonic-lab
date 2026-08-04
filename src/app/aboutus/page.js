@@ -185,6 +185,7 @@ export default function AboutPage() {
             {offices.map((o, i) => (
               <article key={o.id} className="card flex h-full flex-col overflow-hidden">
                 <ImageSlot
+                  src={o.imagePath}
                   id={i === 0 ? "IMG-03" : "IMG-04"}
                   className="aspect-[16/9] w-full"
                   rounded="rounded-none"

@@ -21,7 +21,7 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
   const feeFaqs = [
     {
       q: `What is the total fee for the ${course.fullName}?`,
-      a: `The total fee is ₹50,000 for the complete four-month programme — three months of core training plus one month of corporate grooming. There is no separate registration fee, examination fee or certificate fee, and there is no higher tier.`,
+      a: `The total fee is ₹49,999 for the complete four-month programme — three months of core training plus one month of corporate grooming. There is no separate registration fee, examination fee or certificate fee, and there is no higher tier.`,
     },
     {
       q: "Is EMI available, and what does it cost?",
@@ -37,7 +37,7 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
     },
     {
       q: "What is not included?",
-      a: "Vendor certification exam fees are paid directly to SAP or Microsoft and are not part of the ₹50,000. Travel and a personal laptop are also on you, though campus machines are available if you do not have one.",
+      a: "Vendor certification exam fees are paid directly to SAP or Microsoft and are not part of the ₹49,999. Travel and a personal laptop are also on you, though campus machines are available if you do not have one.",
     },
     {
       q: "Can I pay in instalments without EMI?",
@@ -45,7 +45,7 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
     },
     {
       q: "Do you offer any concessions?",
-      a: "There is a modest concession for learners enrolling together from the same college or workplace, and case-by-case support for students in genuine financial difficulty. We will not advertise a fake discount against an inflated list price — ₹50,000 is the real number.",
+      a: "There is a modest concession for learners enrolling together from the same college or workplace, and case-by-case support for students in genuine financial difficulty. We will not advertise a fake discount against an inflated list price — ₹49,999 is the real number.",
     },
     {
       q: "What is the refund policy?",
@@ -63,18 +63,18 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
         breadcrumbs={breadcrumbs}
         eyebrow="Fees"
         title={`${course.fullName} fees —`}
-        highlight="₹50,000"
+        highlight="₹49,999"
         summary={`Published, itemised and all-inclusive. Four months of training and corporate grooming, with EMI available at roughly ₹8,334 per month. You should not have to fill in a form to find out what a course costs.`}
         aside={
           <FactTable
             rows={[
-              ["Total fee", "₹50,000"],
+              ["Total fee", "₹49,999"],
               ["EMI", "₹8,334 × 6 months"],
               ["Registration fee", "None"],
               ["Certificate fee", "None"],
               ["Examination fee", "None"],
               ["Duration covered", "4 months"],
-              ["Next batch", course.nextBatch],
+              ["Upcoming batch", course.nextBatch],
             ]}
           />
         }
@@ -96,7 +96,7 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
           <SectionHead
             id="included-title"
             eyebrow="Itemised"
-            title="What the ₹50,000 actually buys"
+            title="What the ₹49,999 actually buys"
             intro="Listed line by line, including the things it does not cover — because the second list is the one institutes usually leave out."
           />
 
@@ -167,7 +167,7 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
             {[
               {
                 title: "Pay in full",
-                amount: "₹50,000",
+                amount: "₹49,999",
                 note: "One payment at enrolment",
                 body: "The simplest option. Nothing further to think about for the rest of the programme.",
               },
@@ -223,7 +223,7 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
                   <caption className="sr-only">Fee and duration comparison across all courses</caption>
                   <thead>
                     <tr className="border-b border-white/10 text-left">
-                      {["Course", "Fee", "Duration", "Next batch"].map((h) => (
+                      {["Course", "Fee", "Duration", "Upcoming batch"].map((h) => (
                         <th
                           key={h}
                           scope="col"

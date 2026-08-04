@@ -2,13 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 
-/**
- * Scroll-triggered appear animation.
- *
- * `children` is rendered by the parent SERVER component and passed in as a prop,
- * so all text still ships inside the initial HTML response (audit CRIT-1).
- * Only the wrapper is client-side.
- */
+
 export default function Reveal({
   children,
   className = "",

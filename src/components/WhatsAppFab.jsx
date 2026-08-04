@@ -5,10 +5,7 @@ import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { LuMessageCircle } from "react-icons/lu";
 import { brand } from "@/lib/site";
 
-/**
- * UX-14 — floating WhatsApp CTA. Highest-converting channel for a Nagpur
- * lead-gen site. Appears after the first screen so it never fights the hero.
- */
+
 export default function WhatsAppFab() {
   const [show, setShow] = useState(false);
   const reduce = useReducedMotion();

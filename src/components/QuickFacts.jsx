@@ -1,10 +1,6 @@
 import Stagger from "./ui/Stagger";
 import { quickFacts } from "@/lib/site";
 
-/**
- * GEO: a "quick facts" block near the top of the page, marked up as a
- * definition list so AI answer engines can lift it as-is.
- */
 export default function QuickFacts() {
   return (
     <section aria-labelledby="quick-facts" className="border-y border-white/10 bg-ink-900/40">

@@ -1,10 +1,7 @@
 import Link from "next/link";
 import { LuChevronRight } from "react-icons/lu";
 
-/**
- * UX-10 / SEO-10 — visible breadcrumbs above the H1 on every non-home page.
- * The matching BreadcrumbList JSON-LD is emitted from the page itself.
- */
+
 export default function Breadcrumbs({ items }) {
   return (
     <nav aria-label="Breadcrumb">

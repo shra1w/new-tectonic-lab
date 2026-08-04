@@ -1,6 +1,4 @@
-// -----------------------------------------------------------------------------
-// Content for the standalone pages: /aboutus, /batches, /hire-from-us and legal.
-// -----------------------------------------------------------------------------
+
 
 export const about = {
   h1: "About Techtonic Lab",
@@ -42,16 +40,14 @@ export const about = {
     { k: "Courses", v: "3 — Data Analytics, Data Science, SAP" },
     { k: "Batch modes", v: "Classroom, online, weekend" },
     { k: "Programme length", v: "4 months" },
-    { k: "Fee", v: "₹50,000, published" },
+    { k: "Fee", v: "₹49,999, published" },
   ],
 
   mission:
     "To make a technical career reachable for students in Nagpur and Vidarbha who did not go to a metro college, using published prices, real systems and honest claims.",
 };
 
-// -----------------------------------------------------------------------------
-// /batches — UX-15. Prospects need to know when the next intake starts.
-// -----------------------------------------------------------------------------
+
 export const batches = [
   { course: "SAP", slug: "sap-course", start: "11 August 2026", startISO: "2026-08-11", mode: "Classroom", timing: "Mon–Fri, 10:00 am – 12:00 pm", campus: "Somalwada", seats: 6, status: "Filling" },
   { course: "Data Analytics", slug: "data-analytics-course", start: "18 August 2026", startISO: "2026-08-18", mode: "Classroom", timing: "Mon–Fri, 4:00 pm – 6:00 pm", campus: "Somalwada", seats: 11, status: "Open" },
@@ -67,9 +63,7 @@ export const batches = [
   { course: "Data Analytics", slug: "data-analytics-course", start: "16 November 2026", startISO: "2026-11-16", mode: "Classroom", timing: "Mon–Fri, 4:00 pm – 6:00 pm", campus: "Somalwada", seats: 16, status: "Open" },
 ];
 
-// -----------------------------------------------------------------------------
-// /hire-from-us — employer landing page
-// -----------------------------------------------------------------------------
+
 export const hire = {
   h1: "Hire from Techtonic Lab",
   summary:
@@ -112,11 +106,7 @@ export const hire = {
   ],
 };
 
-// -----------------------------------------------------------------------------
-// Legal. Audit Section 5.1: have a lawyer review both before publishing.
-// The DPDP Act 2023 obligations (notice, consent, retention, grievance officer)
-// are drafted in below — the placeholders in [brackets] must be filled.
-// -----------------------------------------------------------------------------
+
 export const privacyPolicy = {
   h1: "Privacy policy",
   updated: "1 August 2026",
@@ -230,7 +220,7 @@ export const termsOfService = {
     {
       title: "Courses and fees",
       body: [
-        "The fee for each of the Data Analytics, Data Science and SAP courses is ₹50,000 for the complete four-month programme, comprising three months of core training and one month of corporate grooming.",
+        "The fee for each of the Data Analytics, Data Science and SAP courses is ₹49,999 for the complete four-month programme, comprising three months of core training and one month of corporate grooming.",
         "The fee includes learning material, project datasets or SAP S/4HANA server access as applicable, the corporate grooming month and placement preparation. There is no separate registration, examination or certificate charge.",
         "The official SAP certification examination is paid directly to SAP and is not included in the course fee.",
         "EMI is offered at approximately ₹8,334 per month over six months. Terms depend on the financing partner and are set out at the point of enrolment.",

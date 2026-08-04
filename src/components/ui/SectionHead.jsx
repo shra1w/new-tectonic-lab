@@ -1,9 +1,5 @@
 import Reveal from "./Reveal";
 
-/**
- * Eyebrow + H2 + intro. The eyebrow carries a lime marker square — the
- * "legend key" motif reused across the page.
- */
 export default function SectionHead({ eyebrow, title, intro, align = "left", id }) {
   const centered = align === "center";
 

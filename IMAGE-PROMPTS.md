@@ -204,11 +204,11 @@ generated images is unreliable and a misspelled OG card is worse than none.
 
 | File | Headline (highlight in **bold**) | Sub-line |
 |---|---|---|
-| `homepage.jpg` | IT courses in Nagpur to elevate your **tech career** | Data Analytics · Data Science · SAP · ₹50,000 |
+| `homepage.jpg` | IT courses in Nagpur to elevate your **tech career** | Data Analytics · Data Science · SAP · ₹49,999 |
 | `data-analytics-course.jpg` | Data Analyst course in **Nagpur** | Excel, SQL, Python, Power BI, Tableau · 4 months |
 | `data-science-course.jpg` | Data Science course in **Nagpur** | Python, statistics, machine learning · 4 months |
 | `sap-course.jpg` | SAP course on live **S/4HANA** | FICO · MM · SD · PP/QM · 4 months |
-| `fees.jpg` | One price. **Published.** | ₹50,000 for any course · EMI available |
+| `fees.jpg` | One price. **Published.** | ₹49,999 for any course · EMI available |
 | `batches.jpg` | Every **batch date**, published ahead | Classroom · Weekend · Live online |
 | `placements.jpg` | Real names. **Real records.** | Named alumni, shared with consent |
 | `faculty.jpg` | Meet the **faculty** | Six instructors · 72+ years combined |

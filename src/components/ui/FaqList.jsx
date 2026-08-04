@@ -1,11 +1,7 @@
 import { LuPlus } from "react-icons/lu";
 import Stagger from "./Stagger";
 
-/**
- * CRIT-1 — native <details>. Answers are in the initial HTML, readable by
- * GPTBot, PerplexityBot and ClaudeBot without any JavaScript, and matched
- * 1-to-1 by the FAQPage JSON-LD on the same page.
- */
+
 export default function FaqList({ items }) {
   return (
     <Stagger className="divide-y divide-white/10 border-y border-white/10" step={0.04}>

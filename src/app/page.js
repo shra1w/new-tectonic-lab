@@ -24,7 +24,7 @@ import {
 export const metadata = {
   title: "Data Analyst, SAP & Data Science Courses in Nagpur | Techtonic Lab",
   description:
-    "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP with classroom, online, and weekend batches. Fees ₹50,000. Placement preparation included.",
+    "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP with classroom, online, and weekend batches. Fees ₹49,999. Placement preparation included.",
   alternates: { canonical: "/" },
   // Next.js merges metadata shallowly, so openGraph/twitter must be declared in
   // full here or the parent's og:image is dropped (audit SEO-05, SEO-07).
@@ -35,7 +35,7 @@ export const metadata = {
     siteName: "Techtonic Lab",
     title: "Data Analyst, SAP & Data Science Courses in Nagpur | Techtonic Lab",
     description:
-      "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP with classroom, online, and weekend batches. Fees ₹50,000. Placement preparation included.",
+      "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP with classroom, online, and weekend batches. Fees ₹49,999. Placement preparation included.",
     images: [
       {
         url: "/og/homepage.jpg",
@@ -49,11 +49,12 @@ export const metadata = {
     card: "summary_large_image",
     title: "Data Analyst, SAP & Data Science Courses in Nagpur | Techtonic Lab",
     description:
-      "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP. Fees ₹50,000. Placement preparation included.",
+      "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP. Fees ₹49,999. Placement preparation included.",
     images: ["/og/homepage.jpg"],
   },
 };
 
+// Statically rendered, revalidated daily. Every word below ships in the
 // initial HTML response — that is the whole point of audit CRIT-1.
 export const revalidate = 86400;
 
@@ -75,12 +76,13 @@ export default function HomePage() {
       <Hero />
       <QuickFacts />
       <Courses />
+      <Faculty />
+
       <Fees />
       <WhyUs />
       <AlumniEmployers />
       <Placements />
       <Testimonials />
-      <Faculty />
       <Coverage />
       <Grooming />
       <Faq />

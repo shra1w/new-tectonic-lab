@@ -1,8 +1,4 @@
-// -----------------------------------------------------------------------------
-// Single source of truth for homepage content + NAP data.
-// CRIT-3: the brand string is "Techtonic Lab" everywhere. Never "Techtonic Labs".
-// CRIT-4: address/phone here must match GBP, JustDial, schema and every profile.
-// -----------------------------------------------------------------------------
+
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://techtoniccorporate.com";
 
@@ -34,11 +30,12 @@ export const offices = [
       "SAI NIT-JIT PLAZA, Third Floor, Plot No. 10, Beltarodi Road, Near Gulmohar Restaurant, Manish Nagar, Somalwada",
     locality: "Nagpur",
     region: "Maharashtra",
-    postalCode: "440037", // VERIFY: JustDial lists 441108. Confirm with the office before publishing.
+    postalCode: "440037",
     hours: "Mon–Sat, 9:00 am – 8:00 pm",
     lat: 21.0839766,
     lng: 79.0799313,
     directions: "https://www.google.com/maps/search/?api=1&query=21.0839766,79.0799313",
+    imagePath:"/photos/head-office.png"
   },
   {
     id: "branch-office",
@@ -54,6 +51,7 @@ export const offices = [
     lng: 79.0102,
     directions:
       "https://www.google.com/maps/search/?api=1&query=Hiranwar+Layout+Jaitala+Road+Nagpur",
+      imagePath:"/photos/branch-office.png"
   },
 ];
 
@@ -96,8 +94,8 @@ export const courses = [
     startDateISO: "2026-08-18",
     endDateISO: "2026-12-18",
     mode: "Classroom / Online / Weekend",
-    fee: "₹50,000",
-    feeNumeric: "50000",
+    fee: "₹49,999",
+    feeNumeric: "49999",
     courseCode: "TL-DA-001",
     level: "Beginner to intermediate",
     tools: ["Microsoft Excel", "SQL", "Python", "Microsoft Power BI", "Tableau Desktop"],
@@ -130,8 +128,8 @@ export const courses = [
     startDateISO: "2026-08-25",
     endDateISO: "2026-12-25",
     mode: "Classroom / Online / Weekend",
-    fee: "₹50,000",
-    feeNumeric: "50000",
+    fee: "₹49,999",
+    feeNumeric: "49999",
     courseCode: "TL-DS-001",
     level: "Intermediate",
     tools: ["Python", "pandas", "scikit-learn", "SQL", "Statistics"],
@@ -163,8 +161,8 @@ export const courses = [
     startDateISO: "2026-08-11",
     endDateISO: "2026-12-11",
     mode: "Classroom / Online / Weekend",
-    fee: "₹50,000",
-    feeNumeric: "50000",
+    fee: "₹49,999",
+    feeNumeric: "49999",
     courseCode: "TL-SAP-001",
     level: "Beginner to intermediate",
     tools: ["SAP S/4HANA", "SAP FICO", "SAP MM", "SAP SD", "SAP PP/QM"],
@@ -200,7 +198,7 @@ export const differentiators = [
   {
     icon: "price",
     title: "Published fees, published dates",
-    body: "₹50,000 for any of the three courses, every batch date listed on the site. You should not have to fill a form to find out what something costs.",
+    body: "₹49,999 for any of the three courses, every batch date listed on the site. You should not have to fill a form to find out what something costs.",
   },
   {
     icon: "grooming",
@@ -221,35 +219,139 @@ export const differentiators = [
 
 // CRIT-5 — this is an alumni-outcome claim, never a partnership claim.
 export const alumniEmployers = [
-  { company: "InfoKrafts", alumnus: "Pranal Rewatkar", role: "SAP MM Consultant", verified: true },
-  { company: "Infosys", alumnus: null, role: null, verified: false },
-  { company: "Capgemini", alumnus: null, role: null, verified: false },
-];
+  {
+    company: "InfoKrafts",
+    logo: "/logos/infokraft.svg",
+    invert: true,
+    alumnus: "Pranal Rewatkar",
+    role: "SAP MM Consultant",
+  },
+  {
+    company: "Infosys",
+    logo: "/logos/infosys.svg",
+    invert: true,
+    alumnus: null,
+    role: null,
+  },
+  {
+    company: "Capgemini",
+    logo: "/logos/capgemini.svg",
+    invert: true,
+    alumnus: null,}]
+ 
 
-// Every entry here must have written consent on file (audit Section 5.1).
-// TODO: the site claims 11 named alumni. Eight are recorded below. Add the
-// remaining three real names before publishing, or the stat stops being true —
-// all headline counts on the site derive from this array's length on purpose.
 export const placements = [
-  { initials: "PR", name: "Pranal Rewatkar", programme: "SAP MM", placedAs: "SAP MM Consultant", batch: "2025", employer: "InfoKrafts", background: "B.Com graduate, no prior ERP exposure" },
-  { initials: "AB", name: "Avinash Bawane", programme: "SAP MM", placedAs: "SAP MM Consultant", batch: "2025", background: "Working in procurement, moved from end user to consultant" },
-  { initials: "AS", name: "Ayush Sorte", programme: "SAP FICO", placedAs: "SAP FICO Consultant", batch: "2025", background: "Accounts background, first technical role" },
-  { initials: "DB", name: "Dhanashree Bhoj", programme: "SAP MM", placedAs: "SAP MM Consultant", batch: "2025", background: "Weekend batch, trained while employed full time" },
-  { initials: "ND", name: "Neha Deshmukh", programme: "Data Analytics", placedAs: "Data Analyst", batch: "2025", background: "Commerce graduate, no coding background" },
-  { initials: "DD", name: "Dipali Dahane", programme: "Data Analytics", placedAs: "Data Analyst", batch: "2025", background: "Fresh graduate" },
-  { initials: "UP", name: "Utkarsh Paliwal", programme: "Data Analytics", placedAs: "Data Analyst", batch: "2025", background: "Engineering graduate" },
-  { initials: "GT", name: "Gaurav Tagde", programme: "Data Analytics", placedAs: "Data Analyst", batch: "2025", background: "Fresh graduate" },
+  {
+    initials: "PR",
+    name: "Pranal Rewatkar",
+    programme: "SAP MM",
+    placedAs: "SAP MM Consultant",
+    batch: "2025",
+    employer: "InfoKrafts",
+    background: "B.Com graduate with no prior ERP exposure",
+    photo: "/alumni/pranal-rewatkar.PNG",
+  },
+  {
+    initials: "AB",
+    name: "Avinash Bawane",
+    programme: "SAP MM",
+    placedAs: "SAP MM Consultant",
+    batch: "2025",
+    background: "A procurement role, moved from end user to consultant",
+    photo: "/alumni/avinash-bawane.PNG",
+  },
+  {
+    initials: "AS",
+    name: "Ayush Sorte",
+    programme: "SAP FICO",
+    placedAs: "SAP FICO Consultant",
+    batch: "2025",
+    background: "An accounts background and a first technical role",
+    photo: "/alumni/ayush-sorte.PNG",
+  },
+  {
+    initials: "DB",
+    name: "Dhanashree Bhoj",
+    programme: "SAP MM",
+    placedAs: "SAP MM Consultant",
+    batch: "2025",
+    background: "A weekend batch, trained while employed full time",
+    photo: "/alumni/dhanashree-bhoj.PNG",
+  },
+  {
+    initials: "ND",
+    name: "Neha Deshmukh",
+    programme: "Data Analytics",
+    placedAs: "Data Analyst",
+    batch: "2025",
+    background: "A commerce graduate who had never written a line of SQL",
+    photo: "/alumni/neha-deshmukh.PNG",
+  },
+  {
+    initials: "DD",
+    name: "Dipali Dahane",
+    programme: "Data Analytics",
+    placedAs: "Data Analyst",
+    batch: "2025",
+    background: "A fresh graduate with no technical background",
+    photo: "/alumni/dipali-dahane.PNG",
+  },
+  {
+    initials: "UP",
+    name: "Utkarsh Paliwal",
+    programme: "Data Analytics",
+    placedAs: "Data Analyst",
+    batch: "2026",
+    background: "An engineering graduate looking for a route into analytics",
+    photo: "/alumni/utkarsh-paliwal.PNG",
+  },
+  {
+    initials: "GT",
+    name: "Gaurav Tagde",
+    programme: "Data Analytics",
+    placedAs: "Data Analyst",
+    batch: "2026",
+    background: "A fresh graduate, four portfolio projects and no experience",
+    photo: "/alumni/gaurav-tagde.PNG",
+  },
+  {
+    initials: "AP",
+    name: "Aman Pathan",
+    programme: "SAP MM",
+    placedAs: "SAP MM Consultant",
+    batch: "2026",
+    background: "A weekend batch taken alongside a full-time job",
+    photo: "/alumni/aman-pathan.PNG",
+  },
+  {
+    initials: "AG",
+    name: "Atul Gaiki",
+    programme: "SAP FICO",
+    placedAs: "SAP FICO Consultant",
+    batch: "2026",
+    background: "An accounts executive who wanted the configuration side",
+    photo: "/alumni/atul-gaiki.PNG",
+  },
+  {
+    initials: "AT",
+    name: "Aniket Telrandhe",
+    programme: "SAP MM",
+    placedAs: "SAP MM Consultant",
+    batch: "2026",
+    background: "An engineering graduate, first role in ERP",
+    photo: "/alumni/aniket-telrandhe.PNG",
+  },
 ];
-
-// The six shown on the homepage. Full list lives on /placements.
-export const homePlacements = placements.slice(0, 6);
 
 export const placementStats = {
   named: placements.length,
   courses: [...new Set(placements.map((p) => p.programme))].length,
-  years: [...new Set(placements.map((p) => p.batch))],
-  commonRole: "Data Analyst",
+  years: [...new Set(placements.map((p) => p.batch))].sort(),
+  commonRole: "SAP MM Consultant",
 };
+
+export const homePlacements = placements.slice(0, 6);
+
 
 export const testimonials = [
   {
@@ -303,11 +405,7 @@ export const testimonials = [
   },
 ];
 
-// UX-08 — full names, no honorifics.
-// NOTE: entries flagged `needsVerification` were reconstructed from the audit and
-// the live site. Confirm the spelling, years and LinkedIn URL with each person
-// before this goes public — an unverifiable faculty bio is the same trust problem
-// as an unverifiable placement claim.
+
 export const faculty = [
   {
     initials: "MP",
@@ -319,6 +417,12 @@ export const faculty = [
     teaches: ["Data Analytics", "Data Science"],
     bio: "Twenty-seven years in IT, database management, artificial intelligence and cloud solutions. Teaches SQL, database design and the applied-AI module.",
     tags: ["SQL", "Databases", "Applied AI"],
+    highlights: [
+      "SQL, database design and data modelling",
+      "Applied AI and cloud fundamentals",
+      "Teaches on Data Analytics and Data Science",
+    ],
+    photo: "/faculty/manish-pimpale.jpg",
   },
   {
     initials: "SK",
@@ -330,6 +434,12 @@ export const faculty = [
     teaches: ["SAP"],
     bio: "Twelve years in IT consulting, ERP implementation and supply chain. Runs the SAP MM module and the cross-module integration sessions.",
     tags: ["SAP MM", "SAP PP/QM", "ERP integration"],
+    highlights: [
+      "SAP MM configuration and procure-to-pay",
+      "PP/QM and cross-module integration",
+      "12 years of live ERP implementations",
+    ],
+    photo: "/faculty/shrawan-kumar.jpg",
   },
   {
     initials: "SD",
@@ -342,6 +452,12 @@ export const faculty = [
     teaches: ["SAP"],
     bio: "Eleven years as a practising SAP FICO consultant across manufacturing and services implementations. Teaches the finance and controlling configuration track on live S/4HANA.",
     tags: ["SAP FICO", "S/4HANA", "Financial close"],
+    highlights: [
+      "SAP FICO on live S/4HANA",
+      "General ledger, assets and period close",
+      "Practising consultant, not a career trainer",
+    ],
+    photo: "/faculty/sudhir-deshmukh.jpg",
   },
   {
     initials: "DT",
@@ -353,6 +469,12 @@ export const faculty = [
     teaches: ["Data Analytics", "Data Science", "SAP"],
     bio: "Leads recruitment, learner counselling and the corporate grooming month. Ten years across HR, recruitment and learning-and-development in IT services.",
     tags: ["Corporate grooming", "Interview preparation"],
+    highlights: [
+      "Runs the corporate grooming month",
+      "Resume, LinkedIn and mock interviews",
+      "Counselling and placement preparation",
+    ],
+    photo: "/faculty/dnyaneshwari-talekar.jpg",
   },
   {
     initials: "HW",
@@ -365,6 +487,12 @@ export const faculty = [
     teaches: ["Data Science"],
     bio: "Seven years building and deploying models in production, mostly in retail forecasting and risk. Runs the machine-learning and model-evaluation modules.",
     tags: ["Python", "scikit-learn", "Model deployment"],
+    highlights: [
+      "Machine learning with scikit-learn",
+      "Model evaluation and deployment",
+      "Retail forecasting and risk models",
+    ],
+    photo: "/faculty/harshal-wankhede.jpg",
   },
   {
     initials: "VC",
@@ -377,6 +505,12 @@ export const faculty = [
     teaches: ["Data Analytics"],
     bio: "Five years in analytics and reporting across BI teams, plus classroom teaching. Runs the Excel, Power BI and Tableau track and reviews every portfolio project.",
     tags: ["Power BI", "Tableau", "Excel"],
+    highlights: [
+      "Excel, Power BI and Tableau",
+      "Dashboard design and DAX measures",
+      "Reviews every portfolio project",
+    ],
+    photo: "/faculty/vivek-chandekar.jpg",
   },
 ];
 
@@ -411,7 +545,6 @@ export const grooming = {
   ],
 };
 
-// GEO: question-format headings, direct answer in the first two sentences.
 export const faqs = [
   {
     q: "What IT courses does Techtonic Lab offer in Nagpur?",
@@ -419,7 +552,7 @@ export const faqs = [
   },
   {
     q: "What does a course at Techtonic Lab cost?",
-    a: "All three courses are ₹50,000 for the complete 4-month programme. That covers training, learning material, project datasets or SAP S/4HANA server access, the corporate grooming month and placement preparation. A 6-month EMI at roughly ₹8,334 per month is available. There are no separate registration, examination or certificate charges.",
+    a: "All three courses are ₹49,999 for the complete 4-month programme. That covers training, learning material, project datasets or SAP S/4HANA server access, the corporate grooming month and placement preparation. A 6-month EMI at roughly ₹8,334 per month is available. There are no separate registration, examination or certificate charges.",
   },
   {
     q: "Are the courses suitable for complete beginners?",
@@ -462,9 +595,7 @@ export const footerLinks = {
     { label: "Hire from us", href: "/hire-from-us" },
     { label: "Contact us", href: "/connect-with-us" },
   ],
-  // TODO: when the blog ships, add a "Guides" column here and restore the
-  // { label: "Blog", href: "/blog" } entry in `nav` above. Until then, linking
-  // to pages that do not exist is a 404 on every page of the site.
+ 
   "SAP modules": [
     { label: "SAP FICO course in Nagpur", href: "/sap-course/fico" },
     { label: "SAP MM course in Nagpur", href: "/sap-course/mm" },
@@ -474,15 +605,26 @@ export const footerLinks = {
   ],
 };
 
-// GEO: quick-facts block, structured so AI engines can lift it verbatim.
 export const quickFacts = [
   { value: String(placements.length), label: "Named alumni placed, on record" },
   { value: `${facultyYearsTotal}+`, unit: "yrs", label: "Combined faculty experience" },
   { value: "3", label: "Courses — Data Analytics, Data Science, SAP" },
-  { value: "₹50,000", label: "All-inclusive, published fee" },
+  { value: "₹49,999", label: "All-inclusive, published fee" },
   { value: "4", unit: "months", label: "Training plus corporate grooming" },
   { value: "2", label: "Campuses in Nagpur" },
 ];
 
 export const DISCLAIMER =
   "Techtonic Lab provides placement assistance, not a placement guarantee. Outcomes depend on individual performance, batch, and market conditions at the time of hiring.";
+
+
+export const chatbot = {
+  number: "917000026612", // TODO: replace with the full chatbot number
+  greeting: "Hi! I'd like to know about the courses at Techtonic Lab.",
+};
+
+
+export function whatsappLink(source = "site") {
+  const text = `${chatbot.greeting} [${source}]`;
+  return `https://wa.me/${chatbot.number}?text=${encodeURIComponent(text)}`;
+}

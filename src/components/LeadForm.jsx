@@ -27,7 +27,7 @@ const EMPTY = {
   mobile: "",
   course: "",
   message: "",
-  website: "", // honeypot — real users never see or fill this
+  website: "", 
 };
 
 function validate(v) {
@@ -70,7 +70,6 @@ export default function LeadForm({ courseDefault = "", source = "website" }) {
   const attribution = useRef({});
   const reduce = useReducedMotion();
 
-  // Section 5.2 — capture UTM + gclid so Google Ads offline conversions work later.
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const found = {};
@@ -121,7 +120,6 @@ export default function LeadForm({ courseDefault = "", source = "website" }) {
       setStatus("sent");
       setValues({ ...EMPTY, course: courseDefault });
     } catch (err) {
-      // Never lose a lead to a network blip — tell the person how to reach us.
       console.error(err);
       setStatus("error");
     }

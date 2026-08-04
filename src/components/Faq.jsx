@@ -3,12 +3,7 @@ import SectionHead from "./ui/SectionHead";
 import Stagger from "./ui/Stagger";
 import { faqs, brand } from "@/lib/site";
 
-/**
- * Audit CRIT-1 — this is a native <details>/<summary> accordion.
- * Every answer is in the initial HTML response, so Googlebot, GPTBot,
- * PerplexityBot and ClaudeBot all read it without executing any JavaScript.
- * It also works with the keyboard for free and matches the FAQPage JSON-LD 1-to-1.
- */
+
 export default function Faq() {
   return (
     <section id="faq" aria-labelledby="faq-title" className="scroll-mt-24 py-20 sm:py-28">

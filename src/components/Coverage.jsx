@@ -4,11 +4,7 @@ import Reveal from "./ui/Reveal";
 import Stagger from "./ui/Stagger";
 import { districts, offices, brand } from "@/lib/site";
 
-/**
- * UX-05 — one strip in the DOM, moved with a CSS animation. Never render the
- * list four times. Duplicated once (aria-hidden) purely for a seamless loop,
- * and the animation is disabled under prefers-reduced-motion via globals.css.
- */
+
 function DistrictMarquee() {
   const Row = ({ hidden }) => (
     <ul

@@ -6,10 +6,6 @@ import Reveal from "./ui/Reveal";
 import Prose from "./ui/Prose";
 import { brand } from "@/lib/site";
 
-/**
- * Shared shell for /privacy-policy and /terms-of-service. Renders a sticky
- * in-page contents list on desktop so a long document is actually navigable.
- */
 export default function LegalPage({ doc, breadcrumbs, eyebrow }) {
   const anchor = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -61,7 +57,6 @@ export default function LegalPage({ doc, breadcrumbs, eyebrow }) {
             </div>
           </nav>
 
-          {/* Body */}
           <div>
             {doc.sections.map((s, i) => (
               <Reveal key={s.title} delay={0.02 * i}>

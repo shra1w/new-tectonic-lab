@@ -1,7 +1,4 @@
-// -----------------------------------------------------------------------------
-// Audit Section 8 — JSON-LD. Validate every block at
-// https://search.google.com/test/rich-results before shipping.
-// -----------------------------------------------------------------------------
+
 import { SITE_URL, brand, offices, courses, faqs, faculty } from "./site";
 
 const ORG_ID = `${SITE_URL}/#organization`;

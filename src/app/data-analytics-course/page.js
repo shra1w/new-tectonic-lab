@@ -15,7 +15,7 @@ const breadcrumbs = [
 
 export const metadata = {
   title: "Data Analyst Course in Nagpur — Python, SQL, Power BI",
-  description: "Learn Python, SQL, Power BI, Tableau and applied statistics in a 3-month data analyst course in Nagpur. Fees ₹50,000. Includes corporate grooming and placement preparation.",
+  description: "Learn Python, SQL, Power BI, Tableau and applied statistics in a 3-month data analyst course in Nagpur. Fees ₹49,999. Includes corporate grooming and placement preparation.",
   alternates: { canonical: `/${SLUG}` },
   openGraph: {
     type: "website",
@@ -23,13 +23,13 @@ export const metadata = {
     url: `${SITE_URL}/${SLUG}`,
     siteName: "Techtonic Lab",
     title: "Data Analyst Course in Nagpur — Python, SQL, Power BI",
-    description: "Learn Python, SQL, Power BI, Tableau and applied statistics in a 3-month data analyst course in Nagpur. Fees ₹50,000. Includes corporate grooming and placement preparation.",
+    description: "Learn Python, SQL, Power BI, Tableau and applied statistics in a 3-month data analyst course in Nagpur. Fees ₹49,999. Includes corporate grooming and placement preparation.",
     images: [{ url: "/og/data-analytics-course.jpg", width: 1200, height: 630, alt: "Data Analyst Course at Techtonic Lab, Nagpur" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Data Analyst Course in Nagpur — Python, SQL, Power BI",
-    description: "Learn Python, SQL, Power BI, Tableau and applied statistics in a 3-month data analyst course in Nagpur. Fees ₹50,000. Includes corporate grooming and placement preparation.",
+    description: "Learn Python, SQL, Power BI, Tableau and applied statistics in a 3-month data analyst course in Nagpur. Fees ₹49,999. Includes corporate grooming and placement preparation.",
     images: ["/og/data-analytics-course.jpg"],
   },
 };

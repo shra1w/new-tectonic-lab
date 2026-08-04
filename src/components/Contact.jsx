@@ -3,11 +3,7 @@ import LeadForm from "./LeadForm";
 import Reveal from "./ui/Reveal";
 import { offices, brand } from "@/lib/site";
 
-/**
- * Homepage contact block. The form itself lives in LeadForm.jsx so the same
- * validated, attribution-capturing component is reused on /connect-with-us,
- * every course page and /hire-from-us.
- */
+
 export default function Contact({ source = "homepage" }) {
   return (
     <section

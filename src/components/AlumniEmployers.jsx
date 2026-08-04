@@ -1,79 +1,89 @@
-import { LuBadgeCheck, LuTriangleAlert, LuShieldCheck } from "react-icons/lu";
+import { LuBadgeCheck, LuShieldCheck } from "react-icons/lu";
 import SectionHead from "./ui/SectionHead";
 import Stagger from "./ui/Stagger";
-import ImageSlot from "./ui/ImageSlot";
+import Reveal from "./ui/Reveal";
 import { alumniEmployers } from "@/lib/site";
+import Image from "next/image";
 
-/**
- * Audit CRIT-5 — this replaces the old "Trusted Partners" logo wall.
- * It is a factual claim about where alumni ended up, never a partnership claim.
- * Do not add a company here without a named alumnus on file.
- */
-export default function AlumniEmployers() {
+function EmployerCard({ e }) {
+  const verified = e.verified !== false;
+
+  return (
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-ink-900/70 transition-colors duration-300 hover:border-acid/35">
+      {verified ? (
+        <span className="absolute right-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-acid/30 bg-acid/10 px-2.5 py-1 text-2xs font-semibold text-acid backdrop-blur">
+          <LuBadgeCheck aria-hidden="true" className="h-3 w-3" />
+          Verified
+        </span>
+      ) : null}
+
+      <div className="flex h-32 shrink-0 items-center justify-center border-b border-white/10 bg-white/[0.02] px-8 sm:h-36">
+        {e.logo ? (
+          <Image
+            width={300}
+            height={100}
+            src={e.logo}
+            alt={`${e.company} logo`}
+            loading="lazy"
+            decoding="async"
+            className={`block   object-contain transition-opacity duration-300 group-hover:opacity-100 w-[60%] `}
+          />
+        ) : (
+          <span className="font-display text-xl font-semibold text-zinc-400">
+            {e.company}
+          </span>
+        )}
+      </div>
+
+      <div className="p-5">
+        <h3 className="font-display text-lg font-semibold text-zinc-50">{e.company}</h3>
+      </div>
+    </article>
+  );
+}
+
+export default function AlumniEmployers({ standalone = false }) {
   return (
     <section
       aria-labelledby="employers-title"
-      className="border-y border-white/10 bg-ink-900/40 py-20 sm:py-28"
+      className={
+        standalone
+          ? "py-20 sm:py-24"
+          : "border-y border-white/10 bg-ink-900/40 py-20 sm:py-28"
+      }
     >
       <div className="shell">
         <SectionHead
           id="employers-title"
+          align="center"
           eyebrow="Outcomes"
           title="Companies our alumni work at"
-          intro="A factual claim about where our students ended up — not a partnership claim."
+          intro="A factual claim about where our students ended up — not a partnership claim, and not a logo wall."
         />
 
-        <Stagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" itemClassName="h-full">
+        <Stagger
+          className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+          itemClassName="h-full"
+        >
           {alumniEmployers.map((e) => (
-            <div
-              key={e.company}
-              className={`card flex h-full flex-col p-5 ${
-                e.verified ? "border-acid/25" : "border-dashed"
-              }`}
-            >
-              <div className="flex items-center justify-between gap-3">
-                <ImageSlot
-                  className="h-14 w-32 shrink-0"
-                  rounded="rounded-xl"
-                  note={`${e.company} logo`}
-                  hint=""
-                />
-                {e.verified ? (
-                  <span className="chip !border-acid/30 !bg-acid/10 !text-acid">
-                    <LuBadgeCheck aria-hidden="true" className="h-3.5 w-3.5" />
-                    Verified
-                  </span>
-                ) : (
-                  <span className="chip !border-amber-400/30 !bg-amber-400/10 !text-amber-300">
-                    <LuTriangleAlert aria-hidden="true" className="h-3.5 w-3.5" />
-                    Needs a name
-                  </span>
-                )}
-              </div>
-
-              <h3 className="mt-5 font-display text-lg font-semibold text-zinc-50">{e.company}</h3>
-
-              {e.verified ? (
-                <p className="mt-1.5 text-sm text-zinc-400">
-                  {e.alumnus} — {e.role}
-                </p>
-              ) : (
-                <p className="mt-1.5 text-sm text-amber-300/80">
-                  Name the alumnus before publishing this logo.
-                </p>
-              )}
-            </div>
+            <EmployerCard key={e.company} e={e} />
           ))}
         </Stagger>
 
-        <p className="mt-8 flex max-w-3xl items-start gap-2.5 text-xs leading-relaxed text-zinc-500">
-          <LuShieldCheck aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-600" />
-          <span>
-            Only companies where a Techtonic Lab alumnus works are listed here. We do not display
-            the logo of any company we have no named alumnus at, and we make no claim of formal
-            partnership with any employer listed.
-          </span>
-        </p>
+        <Reveal delay={0.1}>
+          <p className="mx-auto mt-8 flex max-w-3xl items-start gap-2.5 text-xs leading-relaxed text-zinc-500">
+            <LuShieldCheck
+              aria-hidden="true"
+              className="mt-0.5 hidden h-4 w-4 shrink-0 text-zinc-600 sm:block"
+            />
+            <span>
+              Only companies where a Techtonic Lab alumnus works are listed here. We make
+              no claim of formal partnership, affiliation or endorsement with any employer
+              shown, and all logos and trade marks remain the property of their respective
+              owners.
+            </span>
+          </p>
+        </Reveal>
       </div>
     </section>
   );

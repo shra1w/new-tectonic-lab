@@ -22,7 +22,6 @@ export default function Footer() {
     <footer className="border-t border-white/10 bg-ink-900/60">
       <div className="shell py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,2fr)] lg:gap-16">
-          {/* Brand + NAP */}
           <div>
              <Link
       href="/"
@@ -44,7 +43,6 @@ export default function Footer() {
               two campuses, with placement preparation built into every programme.
             </p>
 
-            {/* UX-11 / UX-12 — one social block, icon links with accessible names */}
             <ul className="mt-6 flex items-center gap-2.5">
               {brand.socials.map((s) => {
                 const Icon = SOCIAL_ICONS[s.label];
@@ -79,7 +77,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Link columns */}
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {Object.entries(footerLinks).map(([heading, links]) => (
               <nav key={heading} aria-labelledby={`footer-${heading}`}>
@@ -154,7 +151,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Section 5.1 — registered entity line builds entity trust */}
         <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-zinc-500">
             © {new Date().getFullYear()} Techtonic Lab. Operated by {brand.legalName} · CIN{" "}

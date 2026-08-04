@@ -15,7 +15,7 @@ const breadcrumbs = [
 
 export const metadata = {
   title: "SAP PP/QM Course in Nagpur — Production and Quality",
-  description: "SAP PP/QM course in Nagpur: BOMs, routings, MRP, production orders and quality inspection on live S/4HANA. Included in the ₹50,000 SAP programme.",
+  description: "SAP PP/QM course in Nagpur: BOMs, routings, MRP, production orders and quality inspection on live S/4HANA. Included in the ₹49,999 SAP programme.",
   alternates: { canonical: `/sap-course/${KEY}` },
   openGraph: {
     type: "website",
@@ -23,13 +23,13 @@ export const metadata = {
     url: `${SITE_URL}/sap-course/${KEY}`,
     siteName: "Techtonic Lab",
     title: "SAP PP/QM Course in Nagpur — Production and Quality",
-    description: "SAP PP/QM course in Nagpur: BOMs, routings, MRP, production orders and quality inspection on live S/4HANA. Included in the ₹50,000 SAP programme.",
+    description: "SAP PP/QM course in Nagpur: BOMs, routings, MRP, production orders and quality inspection on live S/4HANA. Included in the ₹49,999 SAP programme.",
     images: [{ url: "/og/sap-course.jpg", width: 1200, height: 630, alt: "SAP PP/QM Course in Nagpur — Production and Quality" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "SAP PP/QM Course in Nagpur — Production and Quality",
-    description: "SAP PP/QM course in Nagpur: BOMs, routings, MRP, production orders and quality inspection on live S/4HANA. Included in the ₹50,000 SAP programme.",
+    description: "SAP PP/QM course in Nagpur: BOMs, routings, MRP, production orders and quality inspection on live S/4HANA. Included in the ₹49,999 SAP programme.",
     images: ["/og/sap-course.jpg"],
   },
 };

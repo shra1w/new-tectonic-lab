@@ -3,7 +3,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Children } from "react";
 
-/** Staggered version of Reveal for grids and lists. */
 export default function Stagger({
   children,
   className = "",

@@ -1,18 +1,7 @@
 import Image from "next/image";
 import { LuImagePlus } from "react-icons/lu";
 
-/**
- * Image placeholder.
- *
- * Pass `src` once you have the real asset and it renders through the optimised
- * next/image pipeline (AVIF/WebP, responsive srcset, no layout shift).
- * Until then it shows a labelled slot telling you exactly what to drop in.
- *
- * The `id` prop (e.g. "IMG-01") maps to a full generation prompt in
- * IMAGE-PROMPTS.md at the repo root.
- *
- *   <ImageSlot src="/photos/classroom.jpg" alt="Nagpur classroom" ... />
- */
+
 export default function ImageSlot({
   src,
   alt = "",

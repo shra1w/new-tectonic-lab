@@ -39,7 +39,7 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
     <>
       <PageHero
         breadcrumbs={breadcrumbs}
-        eyebrow={`${course.duration} · ${course.fee} · Next batch ${course.nextBatch}`}
+        eyebrow={`${course.duration} · ${course.fee} · Upcoming batch ${course.nextBatch}`}
         title={detail.h1}
         summary={detail.summary}
         aside={
@@ -77,7 +77,7 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
               rows={[
                 ["Duration", `${course.duration} — 3 months training + 1 month grooming`],
                 ["Mode", course.mode],
-                ["Next batch", course.nextBatch],
+                ["Upcoming batch", course.nextBatch],
                 ["Fee", `${course.fee} all-inclusive · EMI available`],
                 ["Prerequisites", detail.prerequisites],
                 ["Certification", detail.certification],
@@ -193,7 +193,6 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
         </div>
       </section>
 
-      {/* ---- Projects ---- */}
       <section
         aria-labelledby="projects-title"
         className="border-y border-white/10 bg-ink-900/40 py-20 sm:py-24"
@@ -234,7 +233,6 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
         </div>
       </section>
 
-      {/* ---- Careers ---- */}
       <section aria-labelledby="careers-title" className="py-20 sm:py-24">
         <div className="shell">
           <SectionHead
@@ -281,7 +279,6 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
         </div>
       </section>
 
-      {/* ---- Faculty for this course ---- */}
       <section
         aria-labelledby="course-faculty-title"
         className="border-y border-white/10 bg-ink-900/40 py-20 sm:py-24"
@@ -325,7 +322,6 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
         </div>
       </section>
 
-      {/* ---- Batch schedule ---- */}
       <section aria-labelledby="batch-title" className="py-20 sm:py-24">
         <div className="shell">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
@@ -381,7 +377,6 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
         </div>
       </section>
 
-      {/* ---- Fees ---- */}
       <section
         aria-labelledby="course-fee-title"
         className="border-y border-white/10 bg-ink-900/40 py-20 sm:py-24"
@@ -390,7 +385,7 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
           <SectionHead
             id="course-fee-title"
             eyebrow="Fees"
-            title="₹50,000, itemised"
+            title="₹49,999, itemised"
             intro="One price for the whole four months. No registration fee, no examination fee, no certificate fee, and no tier above this one."
           />
           <Reveal delay={0.08}>
@@ -420,7 +415,6 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
         </div>
       </section>
 
-      {/* ---- FAQ ---- */}
       <section id="faq" aria-labelledby="course-faq-title" className="scroll-mt-24 py-20 sm:py-28">
         <div className="shell grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
           <div className="lg:sticky lg:top-28 lg:self-start">
@@ -451,7 +445,7 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
             <div className="mt-8 flex items-center gap-3 rounded-2xl border border-acid/25 bg-acid/[0.06] p-4">
               <LuBriefcase aria-hidden="true" className="h-5 w-5 shrink-0 text-acid" />
               <p className="text-sm text-zinc-300">
-                Next batch starts <strong className="text-acid">{course.nextBatch}</strong> ·{" "}
+                Upcoming batch starts <strong className="text-acid">{course.nextBatch}</strong> ·{" "}
                 {course.mode}
               </p>
             </div>

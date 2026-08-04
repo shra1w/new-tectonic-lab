@@ -43,28 +43,58 @@ export default function Faculty() {
               />
 
               <div className="flex flex-1 flex-col p-6">
+                {/* Name + title */}
                 <h3 className="font-display text-lg font-semibold text-zinc-50">{p.name}</h3>
-                <p className="mt-1 text-xs leading-relaxed text-zinc-500">
-                  {p.title} · <span className="text-acid">{p.years}</span>
-                </p>
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-zinc-400">{p.bio}</p>
+                <p className="mt-1 text-xs leading-relaxed text-zinc-500">{p.title}</p>
 
-                <ul className="mt-5 flex flex-wrap gap-1.5">
-                  {p.tags.map((tag) => (
-                    <li key={tag} className="chip">
-                      {tag}
+                {/* Experience — large, highlighted */}
+                <div className="mt-5 flex items-end gap-2.5 border-l-2 border-acid/50 pl-3.5">
+                  <span className="font-display text-4xl font-bold leading-none text-acid sm:text-5xl">
+                    {p.yearsNum}+
+                  </span>
+                  <span className="pb-1 text-[0.7rem] font-semibold uppercase tracking-wider text-zinc-400">
+                    years
+                    <br />
+                    in field
+                  </span>
+                </div>
+
+                {/* 2–3 highlights */}
+                <ul className="mt-6 flex-1 space-y-2.5">
+                  {p.highlights.slice(0, 3).map((h) => (
+                    <li
+                      key={h}
+                      className="flex items-start gap-2 text-sm leading-relaxed text-zinc-400"
+                    >
+                      <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-acid" />
+                      {h}
                     </li>
                   ))}
                 </ul>
 
-                {/* Section 7.1 — credential + LinkedIn strengthens entity confidence */}
-                <Link
-                  href="/faculty"
-                  className="mt-5 flex items-center gap-1.5 text-2xs text-zinc-500 transition-colors hover:text-acid"
-                >
-                  <LuLinkedin aria-hidden="true" className="h-3.5 w-3.5" />
-                  Full profile on the faculty page
-                </Link>
+                {/* LinkedIn at bottom */}
+                {/* LinkedIn button at bottom, centered */}
+<div className="mt-6 flex justify-center border-t border-white/10 pt-4">
+  {p.linkedin ? (
+    <Link
+      href={`${p.linkedin}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-1.5 rounded-md border border-acid/40 bg-acid/10 px-4 py-2 text-2xs font-semibold text-acid transition-colors hover:bg-acid/20"
+    >
+      <LuLinkedin aria-hidden="true" className="h-3.5 w-3.5 mt-1" />
+      Connect on LinkedIn
+    </Link>
+  ) : (
+    <Link
+      href="/faculty"
+      className="inline-flex items-center gap-1.5 rounded-md border border-acid/40 bg-acid/10 px-4 py-2 text-2xs font-semibold text-acid transition-colors hover:bg-acid/20"
+    >
+      <LuLinkedin aria-hidden="true" className="h-3.5 w-3.5 mb-1" />
+      See profile
+    </Link>
+  )}
+</div>
               </div>
             </article>
           ))}

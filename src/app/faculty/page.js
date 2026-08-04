@@ -85,58 +85,78 @@ export default function FacultyPage() {
 
           <Stagger className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3" itemClassName="h-full">
             {faculty.map((f) => (
-              <article
-                key={f.name}
-                className="card group flex h-full flex-col overflow-hidden transition-colors duration-300 hover:border-acid/35"
-              >
-                <ImageSlot
-                  className="aspect-[4/3] w-full"
-                  rounded="rounded-none"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  note={`Portrait — ${f.name}`}
-                  hint={`Real photograph, same lighting and framing across all six. 800×600px → /public/faculty/${slug(f.name)}.jpg`}
-                />
+  <article
+    key={f.name}
+    className="card group flex h-full flex-col overflow-hidden transition-colors duration-300 hover:border-acid/35"
+  >
+    <ImageSlot
+      className="aspect-[4/3] w-full"
+      rounded="rounded-none"
+      sizes="(max-width: 768px) 100vw, 33vw"
+      note={`Portrait — ${f.name}`}
+      hint={`Real photograph, same lighting and framing across all six. 800×600px → /public/faculty/${slug(f.name)}.jpg`}
+    />
 
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="font-display text-lg font-semibold text-zinc-50">{f.name}</h3>
-                  <p className="mt-1 text-xs leading-relaxed text-zinc-500">
-                    {f.title} · <span className="text-acid">{f.years}</span>
-                  </p>
-                  <p className="mt-4 flex-1 text-sm leading-relaxed text-zinc-400">{f.bio}</p>
+    <div className="flex flex-1 flex-col p-6">
+      {/* Name + title */}
+      <h3 className="font-display text-lg font-semibold text-zinc-50">{f.name}</h3>
+      <p className="mt-1 text-xs leading-relaxed text-zinc-500">{f.title}</p>
 
-                  <ul className="mt-5 flex flex-wrap gap-1.5">
-                    {f.tags.map((t) => (
-                      <li key={t} className="chip">
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
+      {/* Experience — large, highlighted */}
+      <div className="mt-5 flex items-end gap-2.5 border-l-2 border-acid/50 pl-3.5">
+        <span className="font-display text-4xl font-bold leading-none text-acid sm:text-5xl">
+          {f.yearsNum}+
+        </span>
+        <span className="pb-1 text-[0.7rem] font-semibold uppercase tracking-wider text-zinc-400">
+          years
+          <br />
+          in field
+        </span>
+      </div>
 
-                  <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-white/10 pt-5">
-                    <p className="flex items-center gap-1.5 text-2xs text-zinc-500">
-                      <LuGraduationCap aria-hidden="true" className="h-3.5 w-3.5 text-acid" />
-                      Teaches {f.teaches.join(", ")}
-                    </p>
-                    {f.linkedin ? (
-                      <a
-                        href={f.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-2xs text-zinc-400 hover:text-acid"
-                      >
-                        <LuLinkedin aria-hidden="true" className="h-3.5 w-3.5" />
-                        LinkedIn
-                      </a>
-                    ) : (
-                      <span className="inline-flex items-center gap-1.5 text-2xs text-zinc-600">
-                        <LuLinkedin aria-hidden="true" className="h-3.5 w-3.5" />
-                        Add LinkedIn URL in src/lib/site.js
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </article>
-            ))}
+      {/* 2–3 highlights */}
+      <ul className="mt-6 flex-1 space-y-2.5">
+        {f.highlights.slice(0, 3).map((h) => (
+          <li key={h} className="flex items-start gap-2 text-sm leading-relaxed text-zinc-400">
+            <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-acid" />
+            {h}
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-white/10 pt-5">
+        <p className="flex items-center gap-1.5 text-2xs text-zinc-500">
+          <LuGraduationCap aria-hidden="true" className="h-3.5 w-3.5 text-acid" />
+          Teaches {f.teaches.join(", ")}
+        </p>
+<div className="mt-6 border-t border-white/10 pt-5">
+  <p className="flex items-center justify-center gap-1.5 text-2xs text-zinc-500">
+    <LuGraduationCap aria-hidden="true" className="h-3.5 w-3.5 text-acid" />
+    Teaches {f.teaches.join(", ")}
+  </p>
+  <div className="mt-4 flex justify-center">
+    {f.linkedin ? (
+      <Link
+        href={`${f.linkedin}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 rounded-md border border-acid/40 bg-acid/10 px-4 py-2 text-2xs font-semibold text-acid transition-colors hover:bg-acid/20"
+      >
+        <LuLinkedin aria-hidden="true" className="h-3.5 w-3.5 mt-1" />
+        Connect on LinkedIn
+      </Link>
+    ) : (
+      <span className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/[0.03] px-4 py-2 text-2xs font-semibold text-zinc-600">
+        <LuLinkedin aria-hidden="true" className="h-3.5 w-3.5" />
+        Add LinkedIn URL in src/lib/site.js
+      </span>
+    )}
+  </div>
+</div>
+      </div>
+    </div>
+  </article>
+))}
           </Stagger>
         </div>
       </section>

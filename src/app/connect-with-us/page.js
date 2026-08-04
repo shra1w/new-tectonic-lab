@@ -234,7 +234,7 @@ export default function ContactPage() {
                   <span aria-hidden="true">·</span>
                   <span>{c.duration}</span>
                   <span aria-hidden="true">·</span>
-                  <span>Next batch {c.nextBatch}</span>
+                  <span>Upcoming batch {c.nextBatch}</span>
                 </p>
                 <span className="mt-5 text-sm font-semibold text-acid">
                   Explore the {c.name} course

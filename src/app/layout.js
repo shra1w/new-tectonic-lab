@@ -7,6 +7,7 @@ import WhatsAppFab from "@/components/WhatsAppFab";
 import CookieBanner from "@/components/CookieBanner";
 import { SITE_URL, brand } from "@/lib/site";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
+import FloatingActions from "@/components/FloatingCta";
 
 // Section 12 — self-hosted by next/font, preloaded, font-display: swap.
 // No render-blocking request to fonts.googleapis.com at runtime.
@@ -31,7 +32,7 @@ export const metadata = {
     template: "%s | Techtonic Lab",
   },
   description:
-    "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP with classroom, online, and weekend batches. Fees ₹50,000. Placement preparation included.",
+    "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP with classroom, online, and weekend batches. Fees ₹49,999. Placement preparation included.",
   applicationName: brand.name,
   authors: [{ name: brand.name, url: SITE_URL }],
   creator: brand.name,
@@ -57,7 +58,7 @@ export const metadata = {
     siteName: brand.name,
     title: "Data Analyst, SAP & Data Science Courses in Nagpur | Techtonic Lab",
     description:
-      "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP with classroom, online, and weekend batches. Fees ₹50,000. Placement preparation included.",
+      "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP with classroom, online, and weekend batches. Fees ₹49,999. Placement preparation included.",
     images: [
       {
         url: "/og/homepage.jpg",
@@ -72,7 +73,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Data Analyst, SAP & Data Science Courses in Nagpur | Techtonic Lab",
     description:
-      "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP. Fees ₹50,000. Placement preparation included.",
+      "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP. Fees ₹49,999. Placement preparation included.",
     images: ["/og/homepage.jpg"],
   },
   other: {
@@ -115,8 +116,9 @@ export default function RootLayout({ children }) {
         <main id="main">{children}</main>
         <Footer />
 
-        <WhatsAppFab />
+        {/* <WhatsAppFab /> */}
         <CookieBanner />
+        <FloatingActions />
       </body>
     </html>
   );

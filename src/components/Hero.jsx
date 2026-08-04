@@ -6,129 +6,147 @@ import {
   LuIndianRupee,
   LuLaptop,
   LuGraduationCap,
+  LuBadgeCheck,
+  LuArrowDown,
 } from "react-icons/lu";
+
 import Reveal from "./ui/Reveal";
-import ImageSlot from "./ui/ImageSlot";
-import { courses } from "@/lib/site";
+import HeroBackdrop from "./HeroBackdrop";
+import { courses, placements, facultyYearsTotal } from "@/lib/site";
+
+
+const U = (id) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=2400&q=70`;
+
+const BACKDROP = [
+  { src: U("1514168757508-07ffe9ae125b"), alt: "" }, // monitors on a dark desk
+  { src: U("1562813733-b31f71025d54"), alt: "" }, // working at a laptop, low light
+  { src: U("1510519138101-570d1dca3d66"), alt: "" }, // dark workstation
+  { src: U("1531297484001-80022131f5a1"), alt: "" }, // laptop, dark surface
+];
 
 const rail = [
   { icon: LuGraduationCap, k: "Courses", v: "3 job-ready tracks" },
-  { icon: LuIndianRupee, k: "Fee", v: "₹50,000 all-inclusive" },
-  { icon: LuCalendarDays, k: "Duration", v: "4 months end to end" },
-  { icon: LuLaptop, k: "Modes", v: "Classroom · Online · Weekend" },
+  { icon: LuIndianRupee, k: "Fee", v: "₹49,999 all-in" },
+  { icon: LuCalendarDays, k: "Duration", v: "4 months" },
+  { icon: LuLaptop, k: "Modes", v: "Class · Online · Weekend" },
 ];
 
 export default function Hero() {
   const soonest = courses.reduce((a, b) => (a.startDateISO < b.startDateISO ? a : b));
 
   return (
-    <section className="relative overflow-hidden pb-16 pt-10 sm:pb-24 sm:pt-16">
-      {/* Signature: the dashboard hairline grid the whole page sits on */}
-      <div aria-hidden="true" className="ruled ruled-fade absolute inset-0 -z-10 opacity-[0.55]" />
-      <div
-        aria-hidden="true"
-        className="absolute -top-24 left-1/2 -z-10 h-64 w-[42rem] -translate-x-1/2 bg-acid/[0.07] blur-[120px]"
-      />
+    <section className="relative isolate flex min-h-[92svh] items-center justify-center overflow-hidden py-20 sm:py-24 lg:min-h-[94svh]">
+      <HeroBackdrop images={BACKDROP} />
 
-      <div className="shell">
-        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-14">
-          {/* ---- Left: the thesis ---- */}
-          <div>
-            <Reveal>
-              <p className="chip">
+
+      <div className="shell w-full">
+        <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+          <Reveal>
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <p className="chip !bg-white/[0.06] backdrop-blur">
                 <LuMapPin aria-hidden="true" className="h-3.5 w-3.5 text-acid" />
                 Nagpur · Somalwada &amp; Jaitala Road
               </p>
-            </Reveal>
-
-            <Reveal delay={0.06}>
-              <h1 className="mt-6 font-display text-[2.6rem] font-semibold leading-[1.03] tracking-tightest text-zinc-50 sm:text-6xl lg:text-[4.25rem]">
-                IT courses in Nagpur to elevate your{" "}
-                {/* Signature element: the "selected cell" highlight */}
-                <span className="relative inline-block">
-                  <span
-                    aria-hidden="true"
-                    className="absolute -inset-x-2 -inset-y-1 -z-10 rounded-md bg-acid"
-                  />
-                  <span className="relative text-ink-950">tech career</span>
-                </span>
-              </h1>
-            </Reveal>
-
-            <Reveal delay={0.12}>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg">
-                Job-ready training in Data Analytics, Data Science and SAP — three months of
-                hands-on work plus a month of corporate grooming, taught by consultants who
-                still work in the field.
+              <p className="chip !border-acid/30 !bg-acid/10 !text-acid backdrop-blur">
+                <LuBadgeCheck aria-hidden="true" className="h-3.5 w-3.5" />
+                {placements.length} named alumni on record
               </p>
-            </Reveal>
+            </div>
+          </Reveal>
 
-            <Reveal delay={0.18}>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Link href="/connect-with-us" className="btn-primary w-full sm:w-auto">
-                  Book a free consultation
-                  <LuArrowRight aria-hidden="true" className="h-4 w-4" />
-                </Link>
-                <Link href="#courses" className="btn-ghost w-full sm:w-auto">
-                  Explore the three courses
-                </Link>
-              </div>
-            </Reveal>
+          <Reveal delay={0.06}>
+            <h1 className="mt-7 font-display text-[2.5rem] font-semibold leading-[1.02] tracking-tightest text-zinc-50 sm:text-6xl lg:text-[4.5rem]">
+              IT courses in Nagpur to elevate your{" "}
+              <span className="relative inline-block">
+                <span
+                  aria-hidden="true"
+                  className="absolute -inset-x-2 -inset-y-1 -z-10 rounded-md bg-acid"
+                />
+                <span className="relative text-ink-950">Tech career</span>
+              </span>
+            </h1>
+          </Reveal>
 
-            <Reveal delay={0.24}>
-              <dl className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-4">
-                {rail.map(({ icon: Icon, k, v }) => (
-                  <div key={k} className="bg-ink-950 p-4">
-                    <dt className="flex items-center gap-1.5 text-2xs uppercase tracking-[0.16em] text-zinc-500">
-                      <Icon aria-hidden="true" className="h-3.5 w-3.5 text-acid" />
-                      {k}
-                    </dt>
-                    <dd className="mt-2 font-display text-sm font-semibold leading-snug text-zinc-100">
-                      {v}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </Reveal>
-          </div>
+          <Reveal delay={0.12}>
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-300 sm:text-lg">
+              Job-ready training in Data Analytics, Data Science and SAP — three months
+              of hands-on work plus a month of corporate grooming, taught by consultants
+              who still work in the field.
+            </p>
+          </Reveal>
 
-          {/* ---- Right: campus image + next-batch ticket ---- */}
-          <Reveal delay={0.2} className="lg:pt-4">
-            <div className="relative">
-              <ImageSlot
-                src={"/photos/hero-lab.png"}
-                className="aspect-[4/5] w-full sm:aspect-[16/11] lg:aspect-[4/5]"
-                rounded="rounded-3xl"
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                priority
-                id="IMG-01"
-                note="Homepage hero"
-                hint="See IMAGE-PROMPTS.md for the generation prompt."
-              />
+          <Reveal delay={0.18}>
+            <div className="mt-9 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row sm:items-center">
+              <Link href="/connect-with-us" className="btn-primary w-full sm:w-auto">
+                Book a free consultation
+                <LuArrowRight aria-hidden="true" className="h-4 w-4" />
+              </Link>
+              <Link
+                href="#courses"
+                className="btn-ghost w-full !border-white/20 !bg-white/[0.05] backdrop-blur-md sm:w-auto"
+              >
+                Explore the three courses
+              </Link>
+            </div>
+          </Reveal>
 
-              {/* Next batch ticket */}
-              <div className="card absolute -bottom-6 left-4 right-4 p-4 shadow-lift sm:left-6 sm:right-auto sm:w-[19rem]">
-                <p className="eyebrow">
-                  <span aria-hidden="true" className="h-2 w-2 animate-pulse-dot rounded-full bg-acid" />
-                  Next batch
-                </p>
-                <p className="mt-2.5 font-display text-xl font-semibold text-zinc-50">
+          {/* Upcoming batch strip */}
+          <Reveal delay={0.24}>
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 rounded-full border border-white/10 bg-ink-950/60 px-5 py-3 backdrop-blur-xl">
+              <p className="flex items-center gap-2 text-sm">
+                <span aria-hidden="true" className="h-2 w-2 animate-pulse-dot rounded-full bg-acid" />
+                <span className="text-zinc-400">Upcoming batch</span>
+                <strong className="font-display font-semibold text-zinc-50">
                   {soonest.nextBatch}
-                </p>
-                <p className="mt-1 text-xs text-zinc-500">
-                  {soonest.name} · {soonest.mode}
-                </p>
-                <Link
-                  href="/batches"
-                  className="link-underline mt-3.5 text-xs"
-                >
-                  See every batch date
-                  <LuArrowRight aria-hidden="true" className="h-3.5 w-3.5" />
-                </Link>
-              </div>
+                </strong>
+              </p>
+              <span aria-hidden="true" className="hidden h-4 w-px bg-white/15 sm:block" />
+              <p className="text-xs text-zinc-400">
+                {soonest.name} · {soonest.mode}
+              </p>
+              <Link href="/batches" className="link-underline text-xs">
+                All dates
+                <LuArrowRight aria-hidden="true" className="h-3.5 w-3.5" />
+              </Link>
             </div>
           </Reveal>
         </div>
+
+        <Reveal delay={0.3}>
+          <dl className="mx-auto mt-14 grid max-w-5xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-4">
+            {rail.map(({ icon: Icon, k, v }) => (
+              <div key={k} className="bg-ink-950/75 p-4 backdrop-blur-xl sm:p-5">
+                <dt className="flex items-center gap-1.5 text-2xs uppercase tracking-[0.16em] text-zinc-500">
+                  <Icon aria-hidden="true" className="h-3.5 w-3.5 text-acid" />
+                  {k}
+                </dt>
+                <dd className="mt-2 font-display text-sm font-semibold leading-snug text-zinc-100">
+                  {v}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
+
+        <Reveal delay={0.36}>
+          <p className="mx-auto mt-6 max-w-3xl text-center text-xs text-zinc-500">
+            {facultyYearsTotal}+ years of combined faculty experience · Live SAP S/4HANA
+            server access · Placement assistance, not a guarantee
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.44}>
+          <div className="mt-12 flex justify-center">
+            <Link
+              href="#courses"
+              aria-label="Scroll to the courses"
+              className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-zinc-500 transition-colors hover:border-acid/60 hover:text-acid"
+            >
+              <LuArrowDown aria-hidden="true" className="h-4 w-4 animate-bounce" />
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,10 +1,7 @@
 import Breadcrumbs from "./Breadcrumbs";
 import Reveal from "./Reveal";
 
-/**
- * Shared top-of-page block. Sits on the same hairline grid as the homepage hero
- * so every page reads as one site.
- */
+
 export default function PageHero({
   breadcrumbs,
   eyebrow,

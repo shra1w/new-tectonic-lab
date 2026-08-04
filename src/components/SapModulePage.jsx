@@ -35,7 +35,7 @@ export default function SapModulePage({ mod, breadcrumbs }) {
     },
     {
       q: `What is the fee for learning ${mod.name} in Nagpur?`,
-      a: "₹50,000 covers the whole four-month SAP programme including this module, all the others, live server access, the corporate grooming month and placement preparation. Modules are not sold separately.",
+      a: "₹49,999 covers the whole four-month SAP programme including this module, all the others, live server access, the corporate grooming month and placement preparation. Modules are not sold separately.",
     },
     {
       q: `What jobs can I get with ${mod.name}?`,
@@ -63,8 +63,8 @@ export default function SapModulePage({ mod, breadcrumbs }) {
               ["Best suited to", mod.bestFor],
               ["Market demand", mod.demand],
               ["Server access", "Individual live S/4HANA"],
-              ["Fee", "Included in the ₹50,000 SAP course"],
-              ["Next batch", sap.nextBatch],
+              ["Fee", "Included in the ₹49,999 SAP course"],
+              ["Upcoming batch", sap.nextBatch],
             ]}
           />
         }
@@ -80,7 +80,6 @@ export default function SapModulePage({ mod, breadcrumbs }) {
         </div>
       </PageHero>
 
-      {/* ---- Note: modules are taught together ---- */}
       <section className="py-12 sm:py-16">
         <div className="shell">
           <Reveal>
@@ -104,7 +103,6 @@ export default function SapModulePage({ mod, breadcrumbs }) {
         </div>
       </section>
 
-      {/* ---- Topics ---- */}
       <section
         aria-labelledby="mod-topics-title"
         className="border-y border-white/10 bg-ink-900/40 py-20 sm:py-24"
@@ -134,7 +132,6 @@ export default function SapModulePage({ mod, breadcrumbs }) {
         </div>
       </section>
 
-      {/* ---- Careers + integration ---- */}
       <section aria-labelledby="mod-careers-title" className="py-20 sm:py-24">
         <div className="shell grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-16">
           <div>
@@ -216,7 +213,6 @@ export default function SapModulePage({ mod, breadcrumbs }) {
         </div>
       </section>
 
-      {/* ---- Other modules ---- */}
       <section
         aria-labelledby="other-mods-title"
         className="border-y border-white/10 bg-ink-900/40 py-20 sm:py-24"
@@ -252,7 +248,6 @@ export default function SapModulePage({ mod, breadcrumbs }) {
         </div>
       </section>
 
-      {/* ---- FAQ + enquiry ---- */}
       <section aria-labelledby="mod-faq-title" className="py-20 sm:py-24">
         <div className="shell grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
           <div className="lg:sticky lg:top-28 lg:self-start">

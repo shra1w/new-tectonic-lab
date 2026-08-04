@@ -17,9 +17,9 @@ const breadcrumbs = [
   { name: "Fees", href: "/fees" },
 ];
 
-const TITLE = "Course Fees in Nagpur — ₹50,000 All-Inclusive | Techtonic Lab";
+const TITLE = "Course Fees in Nagpur — ₹49,999 All-Inclusive | Techtonic Lab";
 const DESC =
-  "Techtonic Lab course fees: ₹50,000 for any of the Data Analytics, Data Science or SAP programmes. Four months, EMI at ₹8,334 per month, no registration or certificate charges.";
+  "Techtonic Lab course fees: ₹49,999 for any of the Data Analytics, Data Science or SAP programmes. Four months, EMI at ₹8,334 per month, no registration or certificate charges.";
 
 const NOT_INCLUDED = [
   "Vendor certification exam fees, paid directly to SAP or Microsoft",
@@ -30,7 +30,7 @@ const NOT_INCLUDED = [
 const faqs = [
   {
     q: "How much does a course at Techtonic Lab cost?",
-    a: "All three courses — Data Analytics, Data Science and SAP — cost ₹50,000 for the complete four-month programme. That is three months of core training plus one month of corporate grooming. There is no separate registration, examination or certificate charge, and there is no higher tier.",
+    a: "All three courses — Data Analytics, Data Science and SAP — cost ₹49,999 for the complete four-month programme. That is three months of core training plus one month of corporate grooming. There is no separate registration, examination or certificate charge, and there is no higher tier.",
   },
   {
     q: "Why do all three courses cost the same?",
@@ -42,7 +42,7 @@ const faqs = [
   },
   {
     q: "Are there any hidden charges?",
-    a: "No. The ₹50,000 covers training, learning material, project datasets or SAP S/4HANA server access, four portfolio projects with review, the corporate grooming month, three recorded mock interviews, and placement preparation. The only things paid separately are vendor certification exam fees, which go directly to SAP or Microsoft.",
+    a: "No. The ₹49,999 covers training, learning material, project datasets or SAP S/4HANA server access, four portfolio projects with review, the corporate grooming month, three recorded mock interviews, and placement preparation. The only things paid separately are vendor certification exam fees, which go directly to SAP or Microsoft.",
   },
   {
     q: "Can I pay in instalments without formal EMI?",
@@ -50,7 +50,7 @@ const faqs = [
   },
   {
     q: "Do you offer discounts or scholarships?",
-    a: "There is a modest concession for people enrolling together from the same college or workplace, and case-by-case support for students in genuine financial difficulty. What we will not do is advertise a fake discount against an inflated list price. ₹50,000 is the real number.",
+    a: "There is a modest concession for people enrolling together from the same college or workplace, and case-by-case support for students in genuine financial difficulty. What we will not do is advertise a fake discount against an inflated list price. ₹49,999 is the real number.",
   },
   {
     q: "What happens to my fee if I have to withdraw?",
@@ -58,7 +58,7 @@ const faqs = [
   },
   {
     q: "Is the fee different for online and weekend batches?",
-    a: "No. Classroom, weekend and live online all cost ₹50,000, because all three run the same syllabus with the same faculty and the same project reviews. The online batch is not a cheaper, lighter version.",
+    a: "No. Classroom, weekend and live online all cost ₹49,999, because all three run the same syllabus with the same faculty and the same project reviews. The online batch is not a cheaper, lighter version.",
   },
 ];
 
@@ -96,12 +96,12 @@ export default function FeesPage() {
         breadcrumbs={breadcrumbs}
         eyebrow="Fees"
         title="One price, and it is"
-        highlight="₹50,000"
+        highlight="₹49,999"
         summary="The same for all three courses, published on the site rather than held behind a form. Four months of training and corporate grooming, EMI available at roughly ₹8,334 per month, no registration fee and no certificate fee."
         aside={
           <FactTable
             rows={[
-              ["Fee, any course", "₹50,000"],
+              ["Fee, any course", "₹49,999"],
               ["Duration covered", "4 months"],
               ["EMI", "₹8,334 × 6 months"],
               ["Registration fee", "None"],
@@ -196,7 +196,7 @@ export default function FeesPage() {
               <div className="card h-full p-6 sm:p-7">
                 <h3 className="flex items-center gap-2 font-display text-lg font-semibold text-zinc-50">
                   <LuCheck aria-hidden="true" className="h-4 w-4 text-acid" />
-                  Included in ₹50,000
+                  Included in ₹49,999
                 </h3>
                 <ul className="mt-5 space-y-3">
                   {[
@@ -256,7 +256,7 @@ export default function FeesPage() {
           />
           <Stagger className="mt-10 grid gap-5 lg:grid-cols-3" itemClassName="h-full">
             {[
-              { t: "Pay in full", a: "₹50,000", n: "One payment at enrolment", b: "The simplest option, and nothing further to think about for four months." },
+              { t: "Pay in full", a: "₹49,999", n: "One payment at enrolment", b: "The simplest option, and nothing further to think about for four months." },
               { t: "Two instalments", a: "₹25,000 × 2", n: "At enrolment and before month two", b: "The most common arrangement. No interest and no extra paperwork." },
               { t: "Six-month EMI", a: "≈ ₹8,334 / month", n: "Through our financing partner", b: "Terms depend on the partner and your eligibility, given to you in writing first." },
             ].map((p) => (

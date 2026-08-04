@@ -15,7 +15,7 @@ const breadcrumbs = [
 
 export const metadata = {
   title: "Data Science Course in Nagpur — Python, ML, Statistics",
-  description: "3-month data science course in Nagpur covering Python, machine learning, statistics and real-world projects. Fees ₹50,000. Classroom, online and weekend batches.",
+  description: "3-month data science course in Nagpur covering Python, machine learning, statistics and real-world projects. Fees ₹49,999. Classroom, online and weekend batches.",
   alternates: { canonical: `/${SLUG}` },
   openGraph: {
     type: "website",
@@ -23,13 +23,13 @@ export const metadata = {
     url: `${SITE_URL}/${SLUG}`,
     siteName: "Techtonic Lab",
     title: "Data Science Course in Nagpur — Python, ML, Statistics",
-    description: "3-month data science course in Nagpur covering Python, machine learning, statistics and real-world projects. Fees ₹50,000. Classroom, online and weekend batches.",
+    description: "3-month data science course in Nagpur covering Python, machine learning, statistics and real-world projects. Fees ₹49,999. Classroom, online and weekend batches.",
     images: [{ url: "/og/data-science-course.jpg", width: 1200, height: 630, alt: "Data Science Course at Techtonic Lab, Nagpur" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Data Science Course in Nagpur — Python, ML, Statistics",
-    description: "3-month data science course in Nagpur covering Python, machine learning, statistics and real-world projects. Fees ₹50,000. Classroom, online and weekend batches.",
+    description: "3-month data science course in Nagpur covering Python, machine learning, statistics and real-world projects. Fees ₹49,999. Classroom, online and weekend batches.",
     images: ["/og/data-science-course.jpg"],
   },
 };

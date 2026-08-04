@@ -17,7 +17,7 @@ export default function Fees() {
             id="fees-title"
             eyebrow="Fees and batches"
             title="One price. Published."
-            intro="Every course is ₹50,000 for the full four months. No tiered upsell, no “contact us for pricing”, no separate registration or certificate fee."
+            intro="Every course is ₹49,999 for the full four months. No tiered upsell, no “contact us for pricing”, no separate registration or certificate fee."
           />
           <Link href="/fees" className="link-underline shrink-0 text-sm">
             Full fee breakdown
@@ -81,7 +81,6 @@ export default function Fees() {
           ))}
         </Stagger>
 
-        {/* Section 5.1 — required honest-claim wording */}
         <p className="mt-8 flex items-start gap-2.5 text-xs leading-relaxed text-zinc-500">
           <LuInfo aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-600" />
           <span>

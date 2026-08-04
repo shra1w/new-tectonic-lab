@@ -15,22 +15,22 @@ const breadcrumbs = [
 ];
 
 export const metadata = {
-  title: "Data Science Course Fees in Nagpur — ₹50,000 All-Inclusive",
-  description: "Data science course fees in Nagpur: ₹50,000 for the full 4-month programme, EMI at ₹8,334 per month. No registration, examination or certificate charges.",
+  title: "Data Science Course Fees in Nagpur — ₹49,999 All-Inclusive",
+  description: "Data science course fees in Nagpur: ₹49,999 for the full 4-month programme, EMI at ₹8,334 per month. No registration, examination or certificate charges.",
   alternates: { canonical: `/${SLUG}/fees` },
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/${SLUG}/fees`,
     siteName: "Techtonic Lab",
-    title: "Data Science Course Fees in Nagpur — ₹50,000 All-Inclusive",
-    description: "Data science course fees in Nagpur: ₹50,000 for the full 4-month programme, EMI at ₹8,334 per month. No registration, examination or certificate charges.",
-    images: [{ url: "/og/data-science-course.jpg", width: 1200, height: 630, alt: "Data Science Course Fees in Nagpur — ₹50,000 All-Inclusive" }],
+    title: "Data Science Course Fees in Nagpur — ₹49,999 All-Inclusive",
+    description: "Data science course fees in Nagpur: ₹49,999 for the full 4-month programme, EMI at ₹8,334 per month. No registration, examination or certificate charges.",
+    images: [{ url: "/og/data-science-course.jpg", width: 1200, height: 630, alt: "Data Science Course Fees in Nagpur — ₹49,999 All-Inclusive" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Data Science Course Fees in Nagpur — ₹50,000 All-Inclusive",
-    description: "Data science course fees in Nagpur: ₹50,000 for the full 4-month programme, EMI at ₹8,334 per month. No registration, examination or certificate charges.",
+    title: "Data Science Course Fees in Nagpur — ₹49,999 All-Inclusive",
+    description: "Data science course fees in Nagpur: ₹49,999 for the full 4-month programme, EMI at ₹8,334 per month. No registration, examination or certificate charges.",
     images: ["/og/data-science-course.jpg"],
   },
 };
@@ -41,8 +41,8 @@ export default function Page() {
   const jsonLd = [
     webPageSchema({
       path: `/${SLUG}/fees`,
-      name: "Data Science Course Fees in Nagpur — ₹50,000 All-Inclusive",
-      description: "Data science course fees in Nagpur: ₹50,000 for the full 4-month programme, EMI at ₹8,334 per month. No registration, examination or certificate charges.",
+      name: "Data Science Course Fees in Nagpur — ₹49,999 All-Inclusive",
+      description: "Data science course fees in Nagpur: ₹49,999 for the full 4-month programme, EMI at ₹8,334 per month. No registration, examination or certificate charges.",
     }),
     breadcrumbSchema(breadcrumbs),
     offerSchema(course),

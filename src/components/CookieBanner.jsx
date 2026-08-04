@@ -7,10 +7,7 @@ import { LuCookie } from "react-icons/lu";
 
 const KEY = "tl-cookie-consent";
 
-/**
- * Section 5.1 — DPDP Act 2023 requires notice and consent before any analytics
- * or advertising pixel fires. Nothing loads until the visitor chooses.
- */
+
 export default function CookieBanner() {
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();

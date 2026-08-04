@@ -15,7 +15,7 @@ const breadcrumbs = [
 
 export const metadata = {
   title: "SAP Course in Nagpur — FICO, MM, SD, PP/QM on S/4HANA",
-  description: "SAP course in Nagpur covering FICO, MM, SD and PP/QM with individual live S/4HANA server access, certification guidance and placement preparation. Fees ₹50,000.",
+  description: "SAP course in Nagpur covering FICO, MM, SD and PP/QM with individual live S/4HANA server access, certification guidance and placement preparation. Fees ₹49,999.",
   alternates: { canonical: `/${SLUG}` },
   openGraph: {
     type: "website",
@@ -23,13 +23,13 @@ export const metadata = {
     url: `${SITE_URL}/${SLUG}`,
     siteName: "Techtonic Lab",
     title: "SAP Course in Nagpur — FICO, MM, SD, PP/QM on S/4HANA",
-    description: "SAP course in Nagpur covering FICO, MM, SD and PP/QM with individual live S/4HANA server access, certification guidance and placement preparation. Fees ₹50,000.",
+    description: "SAP course in Nagpur covering FICO, MM, SD and PP/QM with individual live S/4HANA server access, certification guidance and placement preparation. Fees ₹49,999.",
     images: [{ url: "/og/sap-course.jpg", width: 1200, height: 630, alt: "SAP Course at Techtonic Lab, Nagpur" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "SAP Course in Nagpur — FICO, MM, SD, PP/QM on S/4HANA",
-    description: "SAP course in Nagpur covering FICO, MM, SD and PP/QM with individual live S/4HANA server access, certification guidance and placement preparation. Fees ₹50,000.",
+    description: "SAP course in Nagpur covering FICO, MM, SD and PP/QM with individual live S/4HANA server access, certification guidance and placement preparation. Fees ₹49,999.",
     images: ["/og/sap-course.jpg"],
   },
 };
