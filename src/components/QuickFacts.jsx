@@ -8,9 +8,9 @@ export default function QuickFacts() {
         Techtonic Lab at a glance
       </h2>
 
-      <div className="shell py-10 sm:py-12">
+      <div className="shell py-10 sm:py-12 flex justify-center">
         <Stagger
-          className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:grid-cols-6"
+          className="flex items-center gap-10 flex-wrap"
           step={0.05}
         >
           {quickFacts.map((f) => (

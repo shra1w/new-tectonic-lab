@@ -19,12 +19,15 @@ const U = (id) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=2400&q=70`;
 
 const BACKDROP = [
-  { src: U("1514168757508-07ffe9ae125b"), alt: "" }, // monitors on a dark desk
-  { src: U("1562813733-b31f71025d54"), alt: "" }, // working at a laptop, low light
-  { src: U("1510519138101-570d1dca3d66"), alt: "" }, // dark workstation
-  { src: U("1531297484001-80022131f5a1"), alt: "" }, // laptop, dark surface
+  // Learners at desks with laptops — a room mid-session
+  { src: U("1718220216044-006f43e3a9b1") },
+  // Students in front of monitors in a lab
+  { src: U("1629904853716-f0bc54eea481") },
+  // Code on a dark monitor — the darkest of the four
+  { src: U("1632251141959-40b21a6c118c") },
+  // A computer lab, desks and chairs
+  { src: U("1623479322729-28b25c16b011") },
 ];
-
 const rail = [
   { icon: LuGraduationCap, k: "Courses", v: "3 job-ready tracks" },
   { icon: LuIndianRupee, k: "Fee", v: "₹49,999 all-in" },

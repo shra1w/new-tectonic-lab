@@ -87,6 +87,8 @@ export const courses = [
     name: "Data Analytics",
     fullName: "Data Analyst Course in Nagpur",
     flag: "Most enrolled",
+    image: "/photos/courses/data-analytics.png",
+    imageAlt: "Isometric illustration of analytics dashboards and bar charts in the Techtonic Lab lime-on-black style",
     blurb:
       "Learn the full analyst stack — Excel, SQL, Python, Power BI and Tableau — on real datasets, then build a portfolio employers read.",
     duration: "4 months",
@@ -121,6 +123,8 @@ export const courses = [
     name: "Data Science",
     fullName: "Data Science Course in Nagpur",
     flag: "Advanced track",
+    image: "/photos/courses/data-science.png",
+    imageAlt: "Isometric illustration of a neural-network node graph and a fitted model curve in the Techtonic Lab lime-on-black style",
     blurb:
       "Go past reporting into prediction — Python, statistics and machine learning, taught through models you deploy rather than models you read about.",
     duration: "4 months",
@@ -154,6 +158,8 @@ export const courses = [
     name: "SAP",
     fullName: "SAP Course in Nagpur",
     flag: "Highest demand",
+    image: "/photos/courses/sap.png",
+    imageAlt: "Isometric illustration of connected SAP ERP module blocks and a process flow in the Techtonic Lab lime-on-black style",
     blurb:
       "Configure real SAP modules on live S/4HANA server access — the ERP skill Indian employers hire for fastest, taught by working consultants.",
     duration: "4 months",
@@ -405,6 +411,9 @@ export const testimonials = [
   },
 ];
 
+// Replace the existing `faculty` array in src/lib/site.js with this.
+// Corrects three surnames, adds the three LinkedIn URLs, and updates
+// Sudhir's role/highlights to match the source document.
 
 export const faculty = [
   {
@@ -422,46 +431,45 @@ export const faculty = [
       "Applied AI and cloud fundamentals",
       "Teaches on Data Analytics and Data Science",
     ],
-    photo: "/faculty/manish-pimpale.jpg",
+    photo: "/faculty/manish-pimpale.png",
   },
   {
-    initials: "SK",
-    name: "Shrawan Kumar",
-    title: "Faculty — SAP MM and Supply Chain",
+    initials: "SW",
+    name: "Shrawan Wankhede",
+    title: "Faculty — SAP, ERP and Supply Chain",
     years: "12+ years",
     yearsNum: 12,
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/shrawan-wankhede-83bb6586/",
     teaches: ["SAP"],
     bio: "Twelve years in IT consulting, ERP implementation and supply chain. Runs the SAP MM module and the cross-module integration sessions.",
     tags: ["SAP MM", "SAP PP/QM", "ERP integration"],
     highlights: [
-      "SAP MM configuration and procure-to-pay",
-      "PP/QM and cross-module integration",
-      "12 years of live ERP implementations",
+      "SAP S/4HANA, ECC and ERP implementation",
+      "Supply chain lead across FMCG, manufacturing and oil & gas",
+      "MSc Supply Chain, Mumbai University",
     ],
-    photo: "/faculty/shrawan-kumar.jpg",
+    photo: "/faculty/shrawan-wankhede.png",
   },
   {
-    initials: "SD",
-    name: "Sudhir Deshmukh",
-    title: "Faculty — SAP FICO",
-    years: "11+ years",
-    yearsNum: 11,
-    linkedin: null,
-    needsVerification: true,
-    teaches: ["SAP"],
+    initials: "ST",
+    name: "Sudhir Talekar",
+    title: "Faculty — Business Intelligence and Corporate Strategy",
+    years: "12+ years",
+    yearsNum: 12,
+    linkedin: "https://www.linkedin.com/in/sudhir-talekar/",
+    teaches: ["Data Analytics", "Data Science", "SAP"],
     bio: "Eleven years as a practising SAP FICO consultant across manufacturing and services implementations. Teaches the finance and controlling configuration track on live S/4HANA.",
     tags: ["SAP FICO", "S/4HANA", "Financial close"],
     highlights: [
-      "SAP FICO on live S/4HANA",
-      "General ledger, assets and period close",
-      "Practising consultant, not a career trainer",
+      "Business intelligence, market research and strategy",
+      "Corporate grooming and leadership mentoring",
+      "Global client relations across the US, UK and Europe",
     ],
-    photo: "/faculty/sudhir-deshmukh.jpg",
+    photo: "/faculty/sudhir-talekar.png",
   },
   {
     initials: "DT",
-    name: "Dnyaneshwari Talekar",
+    name: "Dnyaneshwari Lanjewar",
     title: "Head of HR, Training and Development",
     years: "10+ years",
     yearsNum: 10,
@@ -474,7 +482,7 @@ export const faculty = [
       "Resume, LinkedIn and mock interviews",
       "Counselling and placement preparation",
     ],
-    photo: "/faculty/dnyaneshwari-talekar.jpg",
+    photo: "/faculty/dnyaneshwari-lanjewar.png",
   },
   {
     initials: "HW",
@@ -492,25 +500,24 @@ export const faculty = [
       "Model evaluation and deployment",
       "Retail forecasting and risk models",
     ],
-    photo: "/faculty/harshal-wankhede.jpg",
+    photo: "/faculty/harshal-wankhede.png",
   },
   {
-    initials: "VC",
-    name: "Vivek Chandekar",
+    initials: "VK",
+    name: "Vivek Khubalkar",
     title: "Faculty — Data Analytics and Business Intelligence",
     years: "5+ years",
     yearsNum: 5,
-    linkedin: null,
-    needsVerification: true,
+    linkedin: "https://www.linkedin.com/in/vivek-khubalkar/",
     teaches: ["Data Analytics"],
     bio: "Five years in analytics and reporting across BI teams, plus classroom teaching. Runs the Excel, Power BI and Tableau track and reviews every portfolio project.",
     tags: ["Power BI", "Tableau", "Excel"],
     highlights: [
-      "Excel, Power BI and Tableau",
-      "Dashboard design and DAX measures",
-      "Reviews every portfolio project",
+      "Power BI dashboards and real-time reporting",
+      "SQL, querying and database fundamentals",
+      "5+ years across industry and classroom teaching",
     ],
-    photo: "/faculty/vivek-chandekar.jpg",
+    photo: "/faculty/vivek-khubalkar.png",
   },
 ];
 
@@ -606,7 +613,7 @@ export const footerLinks = {
 };
 
 export const quickFacts = [
-  { value: String(placements.length), label: "Named alumni placed, on record" },
+  // { value: String(placements.length), label: "Named alumni placed, on record" },
   { value: `${facultyYearsTotal}+`, unit: "yrs", label: "Combined faculty experience" },
   { value: "3", label: "Courses — Data Analytics, Data Science, SAP" },
   { value: "₹49,999", label: "All-inclusive, published fee" },
@@ -625,6 +632,6 @@ export const chatbot = {
 
 
 export function whatsappLink(source = "site") {
-  const text = `${chatbot.greeting} [${source}]`;
+  const text = `${chatbot.greeting}`;
   return `https://wa.me/${chatbot.number}?text=${encodeURIComponent(text)}`;
 }

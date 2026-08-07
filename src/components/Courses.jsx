@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { LuArrowUpRight, LuChartNoAxesColumn, LuBrainCircuit, LuBoxes } from "react-icons/lu";
 import SectionHead from "./ui/SectionHead";
 import Stagger from "./ui/Stagger";
-import ImageSlot from "./ui/ImageSlot";
+import CourseVisual from "./ui/CourseVisual";
 import { courses } from "@/lib/site";
 
 const ICONS = {
@@ -11,34 +12,31 @@ const ICONS = {
   "sap-course": LuBoxes,
 };
 
-const IMAGE_IDS = {
-  "data-analytics-course": "IMG-09",
-  "data-science-course": "IMG-10",
-  "sap-course": "IMG-11",
-};
-
 function CourseCard({ course }) {
   const Icon = ICONS[course.slug];
 
   return (
     <article className="card group relative flex h-full flex-col overflow-hidden transition-colors duration-300 hover:border-acid/35">
-      <div className="flex items-start justify-between gap-3 border-b border-white/10 p-5 sm:p-6">
-        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-acid/25 bg-acid/10 text-acid transition-transform duration-300 group-hover:-translate-y-0.5">
-          <Icon aria-hidden="true" className="h-5 w-5" />
-        </span>
-        <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.14em] text-zinc-400">
-          {course.flag}
-        </span>
-      </div>
+      {/* Image sits at the very top, bleeding to the card edges */}
+      <div className="relative">
+        <CourseVisual
+          src={course.image}
+          alt={course.imageAlt || `${course.name} course illustration`}
+          variant="card"
+          className="aspect-[16/10] w-full"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
 
-      <ImageSlot
-        id={IMAGE_IDS[course.slug]}
-        className="aspect-[16/9] w-full border-x-0 border-t-0"
-        rounded="rounded-none"
-        sizes="(max-width: 768px) 100vw, 33vw"
-        note={`${course.name} — course card`}
-        hint="See IMAGE-PROMPTS.md"
-      />
+        {/* Icon + flag float over the blended lower portion of the image */}
+        <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 sm:p-5">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-acid/25 bg-ink-950/70 text-acid backdrop-blur-sm transition-transform duration-300 group-hover:-translate-y-0.5">
+            <Icon aria-hidden="true" className="h-5 w-5" />
+          </span>
+          <span className="rounded-full border border-white/10 bg-ink-950/70 px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.14em] text-zinc-300 backdrop-blur-sm">
+            {course.flag}
+          </span>
+        </div>
+      </div>
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <h3 className="font-display text-2xl font-semibold tracking-tight text-zinc-50">
