@@ -17,7 +17,7 @@ function Wordmark() {
       <Image src={"/logos/logo.svg"} alt="techtonic-lab-logo" className="" width={50} height={50}/>
       <span className="leading-none pt-1">
         <span className="block font-display text-[1.4625rem] font-semibold tracking-tight text-zinc-50">
-          Techtonic-Lab
+          Techtonic Lab
         </span>
       
       </span>
