@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { LuArrowRight, LuCalendarDays } from "react-icons/lu";
 import Reveal from "./ui/Reveal";
+import BuyCourseButton from "./BuyCourseButton";
 
 export default function FinalCta() {
   return (
@@ -30,10 +31,13 @@ export default function FinalCta() {
                 Book a free consultation
                 <LuArrowRight aria-hidden="true" className="h-4 w-4" />
               </Link>
+                        <BuyCourseButton/>
+
               <Link href="/batches" className="btn-ghost w-full sm:w-auto">
                 <LuCalendarDays aria-hidden="true" className="h-4 w-4" />
                 See all batch dates
               </Link>
+              
             </div>
           </div>
         </Reveal>

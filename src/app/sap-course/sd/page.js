@@ -1,3 +1,4 @@
+
 import SapModulePage from "@/components/SapModulePage";
 import { SITE_URL } from "@/lib/site";
 import { sapModules } from "@/lib/courses";
@@ -38,7 +39,7 @@ export const revalidate = 86400;
 
 export default function Page() {
   const jsonLd = [
-    webPageSchema({ path: `/sap-course/${KEY}`, name: mod.fullName, description: mod.summary }),
+    webPageSchema({ path: `/sap-course/${KEY}`, name: mod?.fullName, description: mod?.summary }),
     breadcrumbSchema(breadcrumbs),
   ];
 

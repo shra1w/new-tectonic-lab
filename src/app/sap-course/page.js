@@ -4,7 +4,7 @@ import { courseDetail } from "@/lib/courses";
 import { breadcrumbSchema, courseSchemaFor, faqSchemaFrom, webPageSchema } from "@/lib/schema";
 
 const SLUG = "sap-course";
-const course = courses.find((c) => c.slug === SLUG);
+const course = courses.find((c) => c?.slug === SLUG);
 const detail = courseDetail[SLUG];
 
 const breadcrumbs = [
@@ -13,23 +13,27 @@ const breadcrumbs = [
   { name: "SAP Course", href: `/${SLUG}` },
 ];
 
+const TITLE = "SAP Course in Nagpur — MM, FICO & PP/QM on Live S/4HANA";
+const DESC =
+  "SAP S/4HANA course in Nagpur covering MM, FICO and PP/QM with individual live server access, certification guidance and placement preparation. All three modules in a 4-month programme. Fees ₹49,999, all-inclusive.";
+
 export const metadata = {
-  title: "SAP Course in Nagpur — FICO, MM, SD, PP/QM on S/4HANA",
-  description: "SAP course in Nagpur covering FICO, MM, SD and PP/QM with individual live S/4HANA server access, certification guidance and placement preparation. Fees ₹49,999.",
+  title: TITLE,
+  description: DESC,
   alternates: { canonical: `/${SLUG}` },
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/${SLUG}`,
     siteName: "Techtonic Lab",
-    title: "SAP Course in Nagpur — FICO, MM, SD, PP/QM on S/4HANA",
-    description: "SAP course in Nagpur covering FICO, MM, SD and PP/QM with individual live S/4HANA server access, certification guidance and placement preparation. Fees ₹49,999.",
+    title: TITLE,
+    description: DESC,
     images: [{ url: "/og/sap-course.jpg", width: 1200, height: 630, alt: "SAP Course at Techtonic Lab, Nagpur" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAP Course in Nagpur — FICO, MM, SD, PP/QM on S/4HANA",
-    description: "SAP course in Nagpur covering FICO, MM, SD and PP/QM with individual live S/4HANA server access, certification guidance and placement preparation. Fees ₹49,999.",
+    title: TITLE,
+    description: DESC,
     images: ["/og/sap-course.jpg"],
   },
 };

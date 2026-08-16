@@ -1,48 +1,105 @@
-import { LuBadgeCheck, LuShieldCheck } from "react-icons/lu";
+// src/components/AlumniEmployers.jsx
+import Image from "next/image";
+import { LuBadgeCheck, LuBuilding2, LuUsers } from "react-icons/lu";
+
 import SectionHead from "./ui/SectionHead";
 import Stagger from "./ui/Stagger";
 import Reveal from "./ui/Reveal";
 import { alumniEmployers } from "@/lib/site";
-import Image from "next/image";
+
+/* ---------------------------------------------------------------------------
+ * AlumniEmployers
+ *
+ * A record of where Techtonic Lab graduates have gone on to build their
+ * careers. This is an outcomes claim about our alumni, not a partnership
+ * claim about the companies — every entry is here because a real student
+ * of ours works there.
+ *
+ * Design notes
+ *   - Logo band uses a hairline grid backdrop (the site's recurring motif)
+ *     so the mark sits on texture rather than a flat wash.
+ *   - Cards hover-lift with a top accent line — same interaction as the
+ *     Hero rail, keeps the language consistent across the page.
+ *   - Verified pill is small and inline; the badge is a signal, not a
+ *     decoration, so it doesn't dominate the card.
+ *   - Logos are constrained by max-height, not width, so wide marks
+ *     (WNS, Capgemini) and tall marks (TCS, Reliance) both read at a
+ *     comparable optical weight.
+ * ------------------------------------------------------------------------ */
 
 function EmployerCard({ e }) {
   const verified = e.verified !== false;
 
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-ink-900/70 transition-colors duration-300 hover:border-acid/35">
-      {verified ? (
-        <span className="absolute right-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-acid/30 bg-acid/10 px-2.5 py-1 text-2xs font-semibold text-acid backdrop-blur">
-          <LuBadgeCheck aria-hidden="true" className="h-3 w-3" />
-          Verified
-        </span>
-      ) : null}
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-ink-900/60 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-acid/40 hover:bg-ink-900/85">
+      {/* Hairline accent line on hover — matches the Hero rail */}
+      <span
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-acid/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      />
 
-      <div className="flex h-32 shrink-0 items-center justify-center border-b border-white/10 bg-white/[0.02] px-8 sm:h-36">
+      {/* Logo band */}
+      <div className="relative flex h-32 shrink-0 items-center justify-center overflow-hidden border-b border-white/10 bg-white/[0.015] px-6 sm:h-36">
+        {/* Site-wide hairline grid motif */}
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-[0.35] [background-image:linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:22px_22px]"
+        />
+        {/* Soft radial vignette to lift the mark off the grid */}
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(234,253,86,0.05),transparent_65%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        />
+
         {e.logo ? (
           <Image
-            width={300}
-            height={100}
             src={e.logo}
             alt={`${e.company} logo`}
+            width={240}
+            height={120}
             loading="lazy"
             decoding="async"
-            className={`block   object-contain transition-opacity duration-300 group-hover:opacity-100 w-[60%] `}
+            className={`relative block max-h-14 w-auto max-w-[72%] object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100 ${
+              e.company==="Capgemini" ? "scale-[250%] " : " scale-[80%]"
+            }`}
           />
         ) : (
-          <span className="font-display text-xl font-semibold text-zinc-400">
+          <span className="relative font-display text-xl font-semibold tracking-tight text-zinc-300">
             {e.company}
           </span>
         )}
       </div>
 
-      <div className="p-5">
-        <h3 className="font-display text-lg font-semibold text-zinc-50">{e.company}</h3>
+      {/* Meta strip */}
+      <div className="flex flex-1 items-start justify-between gap-3 p-5">
+        <div className="min-w-0">
+          <h3 className="truncate font-display text-base font-semibold tracking-tight text-zinc-50">
+            {e.company}
+          </h3>
+          {/* {e.role || e.alumnus ? (
+            <p className="mt-1 truncate text-xs leading-relaxed text-zinc-500">
+              {e.role || `Alumni: ${e.alumnus}`}
+            </p>
+          ) : null} */}
+        </div>
+
+        {verified && (
+          <span
+            title="Alumnus presence verified"
+            className="inline-flex shrink-0 items-center gap-1 rounded-full border border-acid/25 bg-acid/10 px-2 py-0.5 text-2xs font-semibold uppercase tracking-[0.1em] text-acid"
+          >
+            <LuBadgeCheck aria-hidden="true" className="h-3 w-3" />
+            Verified
+          </span>
+        )}
       </div>
     </article>
   );
 }
 
 export default function AlumniEmployers({ standalone = false }) {
+  const total = alumniEmployers.length;
+
   return (
     <section
       aria-labelledby="employers-title"
@@ -57,9 +114,26 @@ export default function AlumniEmployers({ standalone = false }) {
           id="employers-title"
           align="center"
           eyebrow="Outcomes"
-          title="Companies our alumni work at"
-          intro="A factual claim about where our students ended up — not a partnership claim, and not a logo wall."
+          title="Where our alumni work"
+          intro="A record of the companies our graduates have joined — from Nagpur's industrial names to the country's largest IT services firms."
         />
+
+        {/* Compact stats strip — factual, no puffery */}
+        <Reveal delay={0.05}>
+          <div className="mx-auto mt-8 flex w-fit flex-wrap items-center justify-center gap-x-5 gap-y-2 rounded-full border border-white/10 bg-ink-950/60 px-5 py-2.5 backdrop-blur">
+            <span className="inline-flex items-center gap-2 text-xs text-zinc-400">
+              <LuBuilding2 aria-hidden="true" className="h-3.5 w-3.5 text-acid" />
+              <strong className="font-display font-semibold text-zinc-100">{total}</strong>
+              companies
+            </span>
+            <span aria-hidden="true" className="h-3 w-px bg-white/15" />
+            <span className="inline-flex items-center gap-2 text-xs text-zinc-400">
+              <LuUsers aria-hidden="true" className="h-3.5 w-3.5 text-acid" />
+              <strong className="font-display font-semibold text-zinc-100">110+</strong>
+              named alumni on record
+            </span>
+          </div>
+        </Reveal>
 
         <Stagger
           className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
@@ -70,18 +144,13 @@ export default function AlumniEmployers({ standalone = false }) {
           ))}
         </Stagger>
 
-        <Reveal delay={0.1}>
-          <p className="mx-auto mt-8 flex max-w-3xl items-start gap-2.5 text-xs leading-relaxed text-zinc-500">
-            <LuShieldCheck
-              aria-hidden="true"
-              className="mt-0.5 hidden h-4 w-4 shrink-0 text-zinc-600 sm:block"
-            />
-            <span>
-              Only companies where a Techtonic Lab alumnus works are listed here. We make
-              no claim of formal partnership, affiliation or endorsement with any employer
-              shown, and all logos and trade marks remain the property of their respective
-              owners.
-            </span>
+        {/* Positive, factual footnote — replaces the defensive disclaimer.
+            Reads as pride in outcomes rather than a legal hedge. */}
+        <Reveal delay={0.12}>
+          <p className="mx-auto mt-10 max-w-3xl text-center text-xs leading-relaxed text-zinc-500">
+            Every company shown employs at least one Techtonic Lab alumnus — a record we
+            are proud to publish, and one our graduates have earned through their own
+            work. All logos and trade marks belong to their respective owners.
           </p>
         </Reveal>
       </div>

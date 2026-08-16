@@ -1,3 +1,4 @@
+// src/app/batches/page.js
 import Link from "next/link";
 import { LuCalendarDays, LuMapPin, LuClock, LuArrowRight, LuInfo } from "react-icons/lu";
 
@@ -10,7 +11,7 @@ import FaqList from "@/components/ui/FaqList";
 import CtaBand from "@/components/CtaBand";
 
 import { courses, SITE_URL } from "@/lib/site";
-import { batches } from "@/lib/content";
+import { getBatches } from "@/lib/content";
 import { breadcrumbSchema, batchListSchema, faqSchemaFrom, webPageSchema } from "@/lib/schema";
 
 const breadcrumbs = [
@@ -65,9 +66,14 @@ export const metadata = {
   twitter: { card: "summary_large_image", title: TITLE, description: DESC, images: ["/og/batches.jpg"] },
 };
 
+// Hourly revalidation is enough — dates only change at midnight, and getBatches()
+// is called fresh in the component below on every regeneration.
 export const revalidate = 3600;
 
 export default function BatchesPage() {
+  // Compute at render time so ISR revalidations always reflect the current date.
+  const batches = getBatches();
+
   const jsonLd = [
     webPageSchema({ path: "/batches", name: TITLE, description: DESC }),
     breadcrumbSchema(breadcrumbs),
@@ -199,6 +205,7 @@ export default function BatchesPage() {
           <Stagger className="mt-10 grid gap-5 lg:grid-cols-3" itemClassName="h-full">
             {courses.map((c) => {
               const b = batches.find((x) => x.slug === c.slug);
+              if (!b) return null;
               return (
                 <article key={c.slug} className="card flex h-full flex-col p-6">
                   <div className="flex items-center justify-between gap-3">
@@ -278,7 +285,7 @@ export default function BatchesPage() {
           <div className="lg:sticky lg:top-28 lg:self-start">
             <SectionHead
               id="batch-faq-title"
-              eyebrow="FAQ"
+              eyebrow="Questions about batches"
               title="Questions about batches"
               intro="Timing, switching, missed sessions and how a seat is actually held."
             />

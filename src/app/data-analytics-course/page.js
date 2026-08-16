@@ -13,23 +13,27 @@ const breadcrumbs = [
   { name: "Data Analyst Course", href: `/${SLUG}` },
 ];
 
+const TITLE = "Data Analyst Course in Nagpur — 6 Months, SQL, Power BI, Python";
+const DESC =
+  "6-month data analyst course in Nagpur covering SQL, Power BI, Tableau, Python and applied statistics. Fees ₹49,999, all-inclusive. Classroom, online and weekend batches with corporate grooming and placement preparation.";
+
 export const metadata = {
-  title: "Data Analyst Course in Nagpur — Python, SQL, Power BI",
-  description: "Learn Python, SQL, Power BI, Tableau and applied statistics in a 3-month data analyst course in Nagpur. Fees ₹49,999. Includes corporate grooming and placement preparation.",
+  title: TITLE,
+  description: DESC,
   alternates: { canonical: `/${SLUG}` },
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/${SLUG}`,
     siteName: "Techtonic Lab",
-    title: "Data Analyst Course in Nagpur — Python, SQL, Power BI",
-    description: "Learn Python, SQL, Power BI, Tableau and applied statistics in a 3-month data analyst course in Nagpur. Fees ₹49,999. Includes corporate grooming and placement preparation.",
+    title: TITLE,
+    description: DESC,
     images: [{ url: "/og/data-analytics-course.jpg", width: 1200, height: 630, alt: "Data Analyst Course at Techtonic Lab, Nagpur" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Data Analyst Course in Nagpur — Python, SQL, Power BI",
-    description: "Learn Python, SQL, Power BI, Tableau and applied statistics in a 3-month data analyst course in Nagpur. Fees ₹49,999. Includes corporate grooming and placement preparation.",
+    title: TITLE,
+    description: DESC,
     images: ["/og/data-analytics-course.jpg"],
   },
 };

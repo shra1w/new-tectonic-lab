@@ -13,8 +13,8 @@ import { sapModules } from "@/lib/courses";
 import { courses } from "@/lib/site";
 
 export default function SapModulePage({ mod, breadcrumbs }) {
-  const sap = courses.find((c) => c.slug === "sap-course");
-  const others = Object.values(sapModules).filter((m) => m.slug !== mod.slug);
+  const sap = courses.find((c) => c?.slug === "sap-course");
+  const others = Object.values(sapModules).filter((m) => m?.slug !== mod?.slug);
 
   const faqs = [
     {
@@ -227,8 +227,8 @@ export default function SapModulePage({ mod, breadcrumbs }) {
           <Stagger className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" itemClassName="h-full">
             {others.map((m) => (
               <Link
-                key={m.slug}
-                href={`/sap-course/${m.slug}`}
+                key={m?.slug}
+                href={`/sap-course/${m?.slug}`}
                 className="card group flex h-full flex-col p-6 transition-colors duration-300 hover:border-acid/35"
               >
                 <div className="flex items-start justify-between gap-4">
@@ -273,7 +273,7 @@ export default function SapModulePage({ mod, breadcrumbs }) {
             title={`Ask about ${mod.name}`}
             intro="Tell us your background and we will tell you honestly whether this module is where you should specialise — or whether one of the other three suits you better."
           />
-          <LeadForm courseDefault="SAP" source={`sap-${mod.slug}`} />
+          <LeadForm courseDefault="SAP" source={`sap-${mod?.slug}`} />
         </div>
       </section>
 

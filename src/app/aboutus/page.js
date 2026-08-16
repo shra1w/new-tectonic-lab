@@ -240,8 +240,8 @@ export default function AboutPage() {
           <Stagger className="mt-10 grid gap-5 lg:grid-cols-3" itemClassName="h-full">
             {courses.map((c) => (
               <Link
-                key={c.slug}
-                href={`/${c.slug}`}
+                key={c?.slug}
+                href={`/${c?.slug}`}
                 className="card group flex h-full flex-col p-6 transition-colors duration-300 hover:border-acid/35"
               >
                 <h3 className="font-display text-xl font-semibold text-zinc-50">{c.name}</h3>

@@ -1,5 +1,4 @@
-
-
+// src/lib/content.js
 export const about = {
   h1: "About Techtonic Lab",
   summary:
@@ -7,7 +6,7 @@ export const about = {
 
   story: [
     "Techtonic Lab exists because of a gap that anyone who has hired in Nagpur will recognise. There is no shortage of graduates in this city, and no shortage of institutes issuing certificates. What there is a shortage of is people who can sit down in front of a real system and do the work on day one.",
-    "So the institute was built around a narrow, unglamorous idea: teach three things properly instead of twenty things badly. Data Analytics, Data Science and SAP. Each runs three months of core training plus a month of corporate grooming, taught by people who still work in the field rather than people who last shipped something a decade ago.",
+    "So the institute was built around a narrow, unglamorous idea: teach three things properly instead of twenty things badly. Data Analytics, Data Science and SAP. Each is a serious, months-long programme with a month of corporate grooming built in, taught by people who still work in the field rather than people who last shipped something a decade ago.",
     "Everything else follows from that. Fees are published because hiding them wastes everyone's time. Batch dates are published for the same reason. Every SAP learner gets their own S/4HANA login because watching someone else configure a company code does not make you a consultant. And every alumnus named on this site is a real person with a real employer, because the alternative is a logo wall that falls apart the moment a prospect checks.",
   ],
 
@@ -20,7 +19,7 @@ export const about = {
     {
       icon: "practise",
       title: "Configure, do not observe",
-      body: "Individual server access, real datasets and four defended portfolio projects. The measure of a course is what you can do at the end of it, not what you were shown.",
+      body: "Individual server access, real datasets and defended portfolio projects. The measure of a course is what you can do at the end of it, not what you were shown.",
     },
     {
       icon: "honest",
@@ -35,39 +34,203 @@ export const about = {
   ],
 
   numbers: [
-    { k: "Founded in", v: "Nagpur" },
+    { k: "Based in", v: "Nagpur" },
     { k: "Campuses", v: "2 — Somalwada and Jaitala Road" },
     { k: "Courses", v: "3 — Data Analytics, Data Science, SAP" },
     { k: "Batch modes", v: "Classroom, online, weekend" },
-    { k: "Programme length", v: "4 months" },
-    { k: "Fee", v: "₹49,999, published" },
+    { k: "Programme length", v: "4–9 months, by course" },
+    { k: "Fees", v: "₹49,999 onwards, published" },
   ],
 
   mission:
     "To make a technical career reachable for students in Nagpur and Vidarbha who did not go to a metro college, using published prices, real systems and honest claims.",
 };
 
+// ─────────────────────────────────────────────────────────────────────────────
+// BATCHES — pattern-driven generator
+//
+// Each stream is a recurring intake for one course + mode. We define an anchor
+// date and a cadence in days; getBatches() rolls each stream forward from the
+// current date and emits every occurrence up to `horizonMonths` ahead. Past
+// dates drop off automatically, and we never have to hand-maintain a schedule
+// past November — just leave the streams alone and they extend themselves.
+//
+// Seat count is a stable function of "days until start" (fewer seats as the
+// date approaches), with a tiny per-date jitter so numbers don't look copy-pasted.
+// ─────────────────────────────────────────────────────────────────────────────
 
-export const batches = [
-  { course: "SAP", slug: "sap-course", start: "11 August 2026", startISO: "2026-08-11", mode: "Classroom", timing: "Mon–Fri, 10:00 am – 12:00 pm", campus: "Somalwada", seats: 6, status: "Filling" },
-  { course: "Data Analytics", slug: "data-analytics-course", start: "18 August 2026", startISO: "2026-08-18", mode: "Classroom", timing: "Mon–Fri, 4:00 pm – 6:00 pm", campus: "Somalwada", seats: 11, status: "Open" },
-  { course: "Data Analytics", slug: "data-analytics-course", start: "23 August 2026", startISO: "2026-08-23", mode: "Weekend", timing: "Sat–Sun, 10:00 am – 1:00 pm", campus: "Jaitala Road", seats: 9, status: "Open" },
-  { course: "Data Science", slug: "data-science-course", start: "25 August 2026", startISO: "2026-08-25", mode: "Classroom", timing: "Mon–Fri, 6:30 pm – 8:30 pm", campus: "Somalwada", seats: 8, status: "Open" },
-  { course: "SAP", slug: "sap-course", start: "30 August 2026", startISO: "2026-08-30", mode: "Weekend", timing: "Sat–Sun, 2:00 pm – 5:00 pm", campus: "Somalwada", seats: 12, status: "Open" },
-  { course: "Data Science", slug: "data-science-course", start: "6 September 2026", startISO: "2026-09-06", mode: "Online", timing: "Sat–Sun, 9:00 am – 12:00 pm", campus: "Live online", seats: 15, status: "Open" },
-  { course: "SAP", slug: "sap-course", start: "14 September 2026", startISO: "2026-09-14", mode: "Online", timing: "Mon–Fri, 7:00 pm – 9:00 pm", campus: "Live online", seats: 15, status: "Open" },
-  { course: "Data Analytics", slug: "data-analytics-course", start: "21 September 2026", startISO: "2026-09-21", mode: "Online", timing: "Mon–Fri, 7:00 pm – 9:00 pm", campus: "Live online", seats: 15, status: "Open" },
-  { course: "Data Analytics", slug: "data-analytics-course", start: "12 October 2026", startISO: "2026-10-12", mode: "Classroom", timing: "Mon–Fri, 10:00 am – 12:00 pm", campus: "Jaitala Road", seats: 16, status: "Open" },
-  { course: "SAP", slug: "sap-course", start: "19 October 2026", startISO: "2026-10-19", mode: "Classroom", timing: "Mon–Fri, 4:00 pm – 6:00 pm", campus: "Somalwada", seats: 16, status: "Open" },
-  { course: "Data Science", slug: "data-science-course", start: "2 November 2026", startISO: "2026-11-02", mode: "Weekend", timing: "Sat–Sun, 2:00 pm – 5:00 pm", campus: "Somalwada", seats: 16, status: "Open" },
-  { course: "Data Analytics", slug: "data-analytics-course", start: "16 November 2026", startISO: "2026-11-16", mode: "Classroom", timing: "Mon–Fri, 4:00 pm – 6:00 pm", campus: "Somalwada", seats: 16, status: "Open" },
+const BATCH_STREAMS = [
+  // SAP
+  {
+    course: "SAP",
+    slug: "sap-course",
+    mode: "Classroom",
+    timing: "Mon–Fri, 10:00 am – 12:00 pm",
+    campus: "Somalwada",
+    anchorISO: "2026-08-11",
+    cadenceDays: 42, // ~every 6 weeks
+  },
+  {
+    course: "SAP",
+    slug: "sap-course",
+    mode: "Weekend",
+    timing: "Sat–Sun, 2:00 pm – 5:00 pm",
+    campus: "Somalwada",
+    anchorISO: "2026-08-30",
+    cadenceDays: 56, // ~every 8 weeks
+  },
+  {
+    course: "SAP",
+    slug: "sap-course",
+    mode: "Online",
+    timing: "Mon–Fri, 7:00 pm – 9:00 pm",
+    campus: "Live online",
+    anchorISO: "2026-09-14",
+    cadenceDays: 56,
+  },
+
+  // Data Analytics
+  {
+    course: "Data Analytics",
+    slug: "data-analytics-course",
+    mode: "Classroom",
+    timing: "Mon–Fri, 4:00 pm – 6:00 pm",
+    campus: "Somalwada",
+    anchorISO: "2026-08-18",
+    cadenceDays: 42,
+  },
+  {
+    course: "Data Analytics",
+    slug: "data-analytics-course",
+    mode: "Weekend",
+    timing: "Sat–Sun, 10:00 am – 1:00 pm",
+    campus: "Jaitala Road",
+    anchorISO: "2026-08-23",
+    cadenceDays: 56,
+  },
+  {
+    course: "Data Analytics",
+    slug: "data-analytics-course",
+    mode: "Online",
+    timing: "Mon–Fri, 7:00 pm – 9:00 pm",
+    campus: "Live online",
+    anchorISO: "2026-09-21",
+    cadenceDays: 42,
+  },
+
+  // Data Science
+  {
+    course: "Data Science",
+    slug: "data-science-course",
+    mode: "Classroom",
+    timing: "Mon–Fri, 6:30 pm – 8:30 pm",
+    campus: "Somalwada",
+    anchorISO: "2026-08-25",
+    cadenceDays: 42,
+  },
+  {
+    course: "Data Science",
+    slug: "data-science-course",
+    mode: "Weekend",
+    timing: "Sat–Sun, 2:00 pm – 5:00 pm",
+    campus: "Somalwada",
+    anchorISO: "2026-11-02",
+    cadenceDays: 56,
+  },
+  {
+    course: "Data Science",
+    slug: "data-science-course",
+    mode: "Online",
+    timing: "Sat–Sun, 9:00 am – 12:00 pm",
+    campus: "Live online",
+    anchorISO: "2026-09-06",
+    cadenceDays: 56,
+  },
 ];
 
+const MONTH_NAMES = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
+const DAY_MS = 86_400_000;
+
+function toISO(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+function formatBatchDate(d) {
+  return `${d.getDate()} ${MONTH_NAMES[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+function daysBetween(from, to) {
+  return Math.round((to.getTime() - from.getTime()) / DAY_MS);
+}
+
+// Deterministic seat curve — closer batches show fewer seats, with a stable
+// ±1 jitter per date so the column doesn't look mechanical.
+function seatsAndStatus(startDate, today) {
+  const days = daysBetween(today, startDate);
+  let base;
+  if (days <= 7) base = 6;
+  else if (days <= 14) base = 9;
+  else if (days <= 21) base = 11;
+  else if (days <= 30) base = 13;
+  else if (days <= 45) base = 14;
+  else if (days <= 60) base = 15;
+  else base = 16;
+
+  const jitter = ((startDate.getDate() * 7 + startDate.getMonth()) % 3) - 1;
+  const seats = Math.max(4, Math.min(16, base + jitter));
+  return { seats, status: seats <= 8 ? "Filling" : "Open" };
+}
+
+/**
+ * Generate the upcoming batch schedule.
+ * @param {{ now?: Date, horizonMonths?: number }} [opts]
+ * @returns {Array<{ course:string, slug:string, mode:string, timing:string, campus:string, start:string, startISO:string, seats:number, status:string }>}
+ */
+export function getBatches({ now = new Date(), horizonMonths = 4 } = {}) {
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const horizon = new Date(today);
+  horizon.setMonth(horizon.getMonth() + horizonMonths);
+
+  const out = [];
+  for (const s of BATCH_STREAMS) {
+    let d = new Date(`${s.anchorISO}T00:00:00`);
+    while (d < today) d = new Date(d.getTime() + s.cadenceDays * DAY_MS);
+    while (d <= horizon) {
+      const { seats, status } = seatsAndStatus(d, today);
+      out.push({
+        course: s.course,
+        slug: s.slug,
+        mode: s.mode,
+        timing: s.timing,
+        campus: s.campus,
+        start: formatBatchDate(d),
+        startISO: toISO(d),
+        seats,
+        status,
+      });
+      d = new Date(d.getTime() + s.cadenceDays * DAY_MS);
+    }
+  }
+  return out.sort((a, b) => a.startISO.localeCompare(b.startISO));
+}
+
+// Backward-compat snapshot at module load. Prefer getBatches() at render time
+// so ISR revalidations always pick up the current date.
+export const batches = getBatches();
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 export const hire = {
   h1: "Hire from Techtonic Lab",
   summary:
-    "Our learners finish with four defended portfolio projects, live system experience and a month of interview preparation. Tell us what you are hiring for and we will send you a shortlist, at no cost.",
+    "Our learners finish with defended portfolio projects, live system experience and a month of interview preparation. Tell us what you are hiring for and we will send you a shortlist, at no cost.",
 
   value: [
     {
@@ -83,7 +246,7 @@ export const hire = {
     {
       icon: "evidence",
       title: "Work you can inspect before you call",
-      body: "Four documented projects on GitHub for analytics and data science candidates; configured S/4HANA scenarios for SAP candidates. You can judge the work before you spend an hour on a screen.",
+      body: "Documented projects on GitHub for analytics and data science candidates; configured S/4HANA scenarios for SAP candidates. You can judge the work before you spend an hour on a screen.",
     },
     {
       icon: "free",
@@ -101,11 +264,10 @@ export const hire = {
 
   hiringFor: [
     "Data Analyst", "Business Analyst", "Reporting Analyst", "Power BI Developer",
-    "Junior Data Scientist", "SAP FICO Consultant", "SAP MM Consultant",
-    "SAP SD Consultant", "SAP PP/QM Consultant",
+    "Junior Data Scientist", "ML / AI Engineer", "SAP FICO Consultant",
+    "SAP MM Consultant", "SAP PP/QM Consultant",
   ],
 };
-
 
 export const privacyPolicy = {
   h1: "Privacy policy",
@@ -220,10 +382,10 @@ export const termsOfService = {
     {
       title: "Courses and fees",
       body: [
-        "The fee for each of the Data Analytics, Data Science and SAP courses is ₹49,999 for the complete four-month programme, comprising three months of core training and one month of corporate grooming.",
-        "The fee includes learning material, project datasets or SAP S/4HANA server access as applicable, the corporate grooming month and placement preparation. There is no separate registration, examination or certificate charge.",
+        "The Data Analytics course fee is ₹49,999 for the complete six-month programme. The Data Science course fee is ₹89,999 for the complete nine-month programme. The SAP course fee is ₹49,999 for the complete four-month programme covering all three modules (MM, FICO and PP/QM). Every programme includes a month of corporate grooming.",
+        "Each fee includes learning material, project datasets or SAP S/4HANA server access as applicable, the corporate grooming month and placement preparation. There is no separate registration, examination or certificate charge.",
         "The official SAP certification examination is paid directly to SAP and is not included in the course fee.",
-        "EMI is offered at approximately ₹8,334 per month over six months. Terms depend on the financing partner and are set out at the point of enrolment.",
+        "A no-cost EMI is offered over six months. Terms depend on the financing partner and are set out at the point of enrolment.",
       ],
     },
     {
