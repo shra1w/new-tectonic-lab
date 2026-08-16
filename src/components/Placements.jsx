@@ -3,14 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { LuArrowRight, LuInfo, LuBadgeCheck, LuQuote } from "react-icons/lu";
+import { LuArrowRight, LuBadgeCheck, LuQuote, LuSparkles } from "react-icons/lu";
 
 import SectionHead from "./ui/SectionHead";
 import Reveal from "./ui/Reveal";
 import { placements, placementStats, DISCLAIMER } from "@/lib/site";
 
-
-const SPEED_SECONDS = 78; 
+const SPEED_SECONDS = 78;
 
 function Monogram({ initials }) {
   return (
@@ -122,8 +121,8 @@ export default function Placements() {
           id="placements-title"
           align="center"
           eyebrow="Placement stories"
-          title="Real names. Real records."
-          intro={`All ${placementStats.named} alumni we can name, across the ${yearLabel} batches, with the programme they took and the role they were hired into. We publish records rather than a percentage — a percentage cannot be checked, and a name can.`}
+          title="Real names. Real careers."
+          intro={`Every alumnus we can publicly name across the ${yearLabel} batches — the programme they chose, the role they stepped into, and the batch they belonged to. We share names and records rather than percentages, because a real story tells you more than a number ever could.`}
         />
       </div>
 
@@ -162,14 +161,17 @@ export default function Placements() {
               <LuArrowRight aria-hidden="true" className="h-4 w-4" />
             </Link>
 
+            {/* Positive footnote — celebrates the alumni rather than
+                defending the practice of naming them. */}
             <p className="flex max-w-2xl items-start gap-2.5 text-center text-xs leading-relaxed text-zinc-500 sm:text-left">
-              <LuInfo
+              <LuSparkles
                 aria-hidden="true"
-                className="mt-0.5 hidden h-4 w-4 shrink-0 text-zinc-600 sm:block"
+                className="mt-0.5 hidden h-4 w-4 shrink-0 text-acid/70 sm:block"
               />
               <span>
-                Every alumnus named here gave written consent, and we remove an entry the
-                moment one asks. Individual results vary. {DISCLAIMER}
+                Every alumnus above chose to share their story with us — a public
+                record of the careers our graduates have gone on to build, published
+                with their written consent. Individual journeys vary. {DISCLAIMER}
               </span>
             </p>
           </div>

@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { LuMenu, LuX, LuChevronDown, LuPhone } from "react-icons/lu";
 import { nav, brand } from "@/lib/site";
 import Image from "next/image";
+import BuyCourseButton from "./BuyCourseButton";
 
 function Wordmark() {
   return (
@@ -17,7 +18,7 @@ function Wordmark() {
       <Image src={"/logos/logo.svg"} alt="techtonic-lab-logo" className="" width={50} height={50}/>
       <span className="leading-none pt-1">
         <span className="block font-display text-[1.4625rem] font-semibold tracking-tight text-zinc-50">
-          Techtonic Lab
+          Techtonic-Lab
         </span>
       
       </span>
@@ -105,13 +106,7 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href={brand.phoneHref}
-            aria-label={`Call Techtonic Lab on ${brand.phone}`}
-            className="hidden h-11 w-11 place-items-center rounded-full border border-white/15 text-zinc-300 transition-colors hover:border-acid/60 hover:text-acid sm:grid"
-          >
-            <LuPhone aria-hidden="true" className="h-4 w-4" />
-          </a>
+        <BuyCourseButton />
 
           <Link
             href="/connect-with-us"

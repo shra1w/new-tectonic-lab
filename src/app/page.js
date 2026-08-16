@@ -21,10 +21,15 @@ import {
   personSchemas,
 } from "@/lib/schema";
 
+const TITLE = "Data Analytics, Data Science & SAP Courses in Nagpur | Techtonic Lab";
+const DESC =
+  "Job-ready IT courses in Nagpur — Data Analytics (6 months), Data Science (9 months) and SAP S/4HANA (4 months). Fees from ₹49,999. Classroom, online and weekend batches with placement preparation.";
+const DESC_SHORT =
+  "Job-ready IT courses in Nagpur — Data Analytics, Data Science and SAP. Fees from ₹49,999. Placement preparation included.";
+
 export const metadata = {
-  title: "Data Analyst, SAP & Data Science Courses in Nagpur | Techtonic Lab",
-  description:
-    "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP with classroom, online, and weekend batches. Fees ₹49,999. Placement preparation included.",
+  title: TITLE,
+  description: DESC,
   alternates: { canonical: "/" },
   // Next.js merges metadata shallowly, so openGraph/twitter must be declared in
   // full here or the parent's og:image is dropped (audit SEO-05, SEO-07).
@@ -33,9 +38,8 @@ export const metadata = {
     locale: "en_IN",
     url: `${SITE_URL}/`,
     siteName: "Techtonic Lab",
-    title: "Data Analyst, SAP & Data Science Courses in Nagpur | Techtonic Lab",
-    description:
-      "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP with classroom, online, and weekend batches. Fees ₹49,999. Placement preparation included.",
+    title: TITLE,
+    description: DESC,
     images: [
       {
         url: "/og/homepage.jpg",
@@ -47,9 +51,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Data Analyst, SAP & Data Science Courses in Nagpur | Techtonic Lab",
-    description:
-      "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP. Fees ₹49,999. Placement preparation included.",
+    title: TITLE,
+    description: DESC_SHORT,
     images: ["/og/homepage.jpg"],
   },
 };

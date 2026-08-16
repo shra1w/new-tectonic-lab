@@ -1,5 +1,3 @@
-
-
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://techtoniccorporate.com";
 
 export const brand = {
@@ -35,7 +33,7 @@ export const offices = [
     lat: 21.0839766,
     lng: 79.0799313,
     directions: "https://www.google.com/maps/search/?api=1&query=21.0839766,79.0799313",
-    imagePath:"/photos/head-office.png"
+    imagePath: "/photos/head-office.png",
   },
   {
     id: "branch-office",
@@ -51,7 +49,7 @@ export const offices = [
     lng: 79.0102,
     directions:
       "https://www.google.com/maps/search/?api=1&query=Hiranwar+Layout+Jaitala+Road+Nagpur",
-      imagePath:"/photos/branch-office.png"
+    imagePath: "/photos/branch-office.png",
   },
 ];
 
@@ -64,14 +62,14 @@ export const nav = [
       {
         label: "Data Analytics",
         href: "/data-analytics-course",
-        note: "Excel, SQL, Python, Power BI, Tableau",
+        note: "SQL, Power BI/Tableau, Python, Advanced Excel, Statistics",
       },
       {
         label: "Data Science",
         href: "/data-science-course",
-        note: "Python, machine learning, statistics",
+        note: "Python, ML, Deep Learning, NLP, GenAI & LLMs",
       },
-      { label: "SAP", href: "/sap-course", note: "FICO, MM, SD, PP/QM, S/4HANA" },
+      { label: "SAP", href: "/sap-course", note: "S/4HANA MM, FICO, PP/QM, Integration" },
     ],
   },
   { label: "Fees", href: "/fees" },
@@ -90,29 +88,30 @@ export const courses = [
     image: "/photos/courses/data-analytics.png",
     imageAlt: "Isometric illustration of analytics dashboards and bar charts in the Techtonic Lab lime-on-black style",
     blurb:
-      "Learn the full analyst stack — Excel, SQL, Python, Power BI and Tableau — on real datasets, then build a portfolio employers read.",
-    duration: "4 months",
+      "Learn the full analyst stack — Advanced Excel, SQL, Power BI or Tableau, Python, and Applied Statistics — on real datasets, then build a portfolio employers read.",
+    duration: "6 months",
+    durationMonths: 6,
     nextBatch: "18 August 2026",
     startDateISO: "2026-08-18",
-    endDateISO: "2026-12-18",
+    endDateISO: "2027-02-18",
     mode: "Classroom / Online / Weekend",
     fee: "₹49,999",
     feeNumeric: "49999",
     courseCode: "TL-DA-001",
     level: "Beginner to intermediate",
-    tools: ["Microsoft Excel", "SQL", "Python", "Microsoft Power BI", "Tableau Desktop"],
+    tools: ["MySQL", "Power BI", "Tableau", "Python", "Advanced Excel", "AWS / Azure (Bonus)"],
     teaches: [
-      "Python programming for data analysis",
-      "SQL for data querying",
-      "Microsoft Excel for analytics",
-      "Power BI dashboards",
-      "Tableau visualisations",
-      "Applied statistics and hypothesis testing",
+      "SQL database design, queries, joins, window functions & CTEs",
+      "Power BI & Tableau interactive dashboards and DAX modeling",
+      "Python programming, NumPy, Pandas, Matplotlib & Seaborn",
+      "Applied statistics, probability & hypothesis testing",
+      "Advanced Excel (VLOOKUP, XLOOKUP, Pivot Tables, Macros & VBA)",
+      "Introduction to Cloud Services (AWS / Azure) and End-to-End Capstone Project",
     ],
     includes: [
-      "4 months of training",
+      "6 months of training",
       "All learning material and datasets",
-      "4 portfolio projects",
+      "End-to-End industry portfolio projects",
       "1 month corporate grooming",
       "3 recorded mock interviews",
       "Placement preparation and referrals",
@@ -126,31 +125,33 @@ export const courses = [
     image: "/photos/courses/data-science.png",
     imageAlt: "Isometric illustration of a neural-network node graph and a fitted model curve in the Techtonic Lab lime-on-black style",
     blurb:
-      "Go past reporting into prediction — Python, statistics and machine learning, taught through models you deploy rather than models you read about.",
-    duration: "4 months",
+      "Go past reporting into production AI — Python, machine learning, deep learning, NLP, and Generative AI/LLMs, taught through models you deploy.",
+    duration: "9 months",
+    durationMonths: 9,
     nextBatch: "25 August 2026",
     startDateISO: "2026-08-25",
-    endDateISO: "2026-12-25",
+    endDateISO: "2027-05-25",
     mode: "Classroom / Online / Weekend",
-    fee: "₹49,999",
-    feeNumeric: "49999",
+    fee: "₹89,999",
+    feeNumeric: "89999",
     courseCode: "TL-DS-001",
     level: "Intermediate",
-    tools: ["Python", "pandas", "scikit-learn", "SQL", "Statistics"],
+    tools: ["Python", "Pandas", "Scikit-Learn", "TensorFlow / PyTorch", "OpenCV", "LangChain & LLMs", "Flask / FastAPI / Streamlit", "Git & GitHub"],
     teaches: [
-      "Python for data science",
-      "Applied statistics and probability",
-      "Machine learning with scikit-learn",
-      "Data wrangling with pandas",
-      "Model evaluation and deployment",
+      "Advanced Python, EDA, Data Wrangling & Feature Engineering",
+      "Supervised & Unsupervised Machine Learning with Scikit-Learn",
+      "Deep Learning (ANN, CNN, RNN, LSTM) with TensorFlow/Keras",
+      "Natural Language Processing (NLP) & Computer Vision (OpenCV)",
+      "Generative AI, Prompt Engineering, LLMs, LangChain & RAG",
+      "Model Deployment (Flask, FastAPI, Streamlit, Docker basics) & Cloud Fundamentals",
     ],
     includes: [
-      "4 months of training",
+      "9 months of training",
       "All learning material and datasets",
-      "4 portfolio projects",
+      "End-to-End industry Capstone projects",
       "1 month corporate grooming",
       "3 recorded mock interviews",
-      "Placement preparation and referrals",
+      "Placement preparation, GitHub portfolio setup, and referrals",
     ],
   },
   {
@@ -161,34 +162,71 @@ export const courses = [
     image: "/photos/courses/sap.png",
     imageAlt: "Isometric illustration of connected SAP ERP module blocks and a process flow in the Techtonic Lab lime-on-black style",
     blurb:
-      "Configure real SAP modules on live S/4HANA server access — the ERP skill Indian employers hire for fastest, taught by working consultants.",
+      "Configure real SAP modules on live S/4HANA server access — featuring Sourcing & Procurement (MM), FICO, and PP-QM — taught by working consultants.",
     duration: "4 months",
+    durationMonths: 4,
     nextBatch: "11 August 2026",
     startDateISO: "2026-08-11",
     endDateISO: "2026-12-11",
     mode: "Classroom / Online / Weekend",
     fee: "₹49,999",
     feeNumeric: "49999",
+    feeNote: "per module",
     courseCode: "TL-SAP-001",
     level: "Beginner to intermediate",
-    tools: ["SAP S/4HANA", "SAP FICO", "SAP MM", "SAP SD", "SAP PP/QM"],
+    tools: ["SAP S/4HANA", "SAP MM (Sourcing & Procurement)", "SAP FICO", "SAP PP/QM", "SAP Fiori"],
     teaches: [
-      "SAP FICO configuration",
-      "SAP MM procurement cycle",
-      "SAP SD order to cash",
-      "SAP PP/QM planning and quality",
-      "Cross-module integration on S/4HANA",
+      "SAP S/4HANA MM: Purchasing, Inventory Management, Physical Inventory & Valuation",
+      "SAP S/4HANA FICO: GL, Account Payable/Receivable, Asset Accounting & Controlling",
+      "SAP S/4HANA PP/QM: Demand Management, MRP, Production Orders & Quality Inspection",
+      "Pricing Procedure, Release Strategy, Document Splitting & GST/TDS Configuration",
+      "Cross-Module Integration (MM-FI, MM-SD, PP-QM, PP-MM, QM-MM)",
+      "System Landscape, ASAP Methodology, Tables, Reports & Real-Time Industry Case Studies",
     ],
     includes: [
-      "4 months of training",
-      "All learning material and datasets",
-      "Live SAP S/4HANA server access",
+      "4 months of training per module",
+      "All learning material and documentation",
+      "Live SAP S/4HANA server access from Day 1",
       "1 month corporate grooming",
       "3 recorded mock interviews",
       "Placement preparation and referrals",
     ],
   },
 ];
+
+/* ---------------------------------------------------------------------------
+   Fees & EMI — single source of truth.
+   EMI is derived from each course's feeNumeric so the numbers can never drift
+   from the price. Call emiPerMonth(course.feeNumeric) anywhere it is shown.
+--------------------------------------------------------------------------- */
+
+export const EMI_MONTHS = 6; // no-cost EMI tenure
+
+export function formatINR(amount) {
+  const n = Number(String(amount).replace(/[^\d.]/g, ""));
+  return "₹" + Math.round(n).toLocaleString("en-IN");
+}
+
+export function emiPerMonth(feeNumeric, months = EMI_MONTHS) {
+  const n = Number(String(feeNumeric).replace(/[^\d.]/g, ""));
+  if (!n || !months) return 0;
+  return Math.ceil(n / months); // round up so the instalments always cover the fee
+}
+
+// Convenience map: { "data-analytics-course": { fee, feeNumeric, emi, emiText }, ... }
+export const feeTable = courses.reduce((acc, c) => {
+  const emi = emiPerMonth(c.feeNumeric);
+  acc[c.slug] = {
+    name: c.name,
+    fee: c.fee,
+    feeNumeric: c.feeNumeric,
+    feeNote: c.feeNote || null,
+    duration: c.duration,
+    emi,
+    emiText: `${formatINR(emi)}/mo × ${EMI_MONTHS}`,
+  };
+  return acc;
+}, {});
 
 export const differentiators = [
   {
@@ -204,12 +242,12 @@ export const differentiators = [
   {
     icon: "price",
     title: "Published fees, published dates",
-    body: "₹49,999 for any of the three courses, every batch date listed on the site. You should not have to fill a form to find out what something costs.",
+    body: "₹49,999 for SAP and Data Analytics, ₹89,999 for Data Science — every fee and every batch date is listed on the site. You should not have to fill a form to find out what something costs.",
   },
   {
     icon: "grooming",
     title: "A month of corporate grooming, included",
-    body: "Resume and LinkedIn rebuilds, three recorded mock interviews with written feedback, aptitude practice and salary-negotiation coaching — built into the fee, not sold as an add-on.",
+    body: "Resume and LinkedIn rebuilds, three recorded mock interviews with written feedback, aptitude practice and salary-negotiation coaching — a ₹29,999 programme built into the fee, not sold as an add-on.",
   },
   {
     icon: "projects",
@@ -243,8 +281,10 @@ export const alumniEmployers = [
     company: "Capgemini",
     logo: "/logos/capgemini.svg",
     invert: true,
-    alumnus: null,}]
- 
+    alumnus: null,
+    role: null,
+  },
+];
 
 export const placements = [
   {
@@ -358,7 +398,6 @@ export const placementStats = {
 
 export const homePlacements = placements.slice(0, 6);
 
-
 export const testimonials = [
   {
     initials: "PR",
@@ -410,10 +449,6 @@ export const testimonials = [
       "Weekend batches meant I never had to leave my job while I trained. Same faculty, same server access, same syllabus as the weekday batch.",
   },
 ];
-
-// Replace the existing `faculty` array in src/lib/site.js with this.
-// Corrects three surnames, adds the three LinkedIn URLs, and updates
-// Sudhir's role/highlights to match the source document.
 
 export const faculty = [
   {
@@ -531,6 +566,8 @@ export const districts = [
 export const grooming = {
   intro:
     "Technical skill gets you the interview. The month after your course ends is about everything that gets you the offer — how you present a project, how you answer a question you do not know, and how you talk about money without flinching.",
+  standalonePrice: "₹29,999",
+  standalonePriceNumeric: "29999",
   pillars: [
     {
       icon: "interview",
@@ -555,11 +592,11 @@ export const grooming = {
 export const faqs = [
   {
     q: "What IT courses does Techtonic Lab offer in Nagpur?",
-    a: "Techtonic Lab runs three job-oriented programmes: Data Analytics, Data Science, and SAP (FICO, MM, SD and PP/QM). Each runs for 3 months of core training plus 1 month of corporate grooming, and each is available as a classroom, online or weekend batch.",
+    a: "Techtonic Lab runs three job-oriented programmes: Data Analytics (6 months), Data Science (9 months), and SAP (4 months per module — FICO, MM Sourcing & Procurement, and PP/QM). Every programme includes a month of corporate grooming and placement preparation, and each is available as a classroom, online or weekend batch.",
   },
   {
     q: "What does a course at Techtonic Lab cost?",
-    a: "All three courses are ₹49,999 for the complete 4-month programme. That covers training, learning material, project datasets or SAP S/4HANA server access, the corporate grooming month and placement preparation. A 6-month EMI at roughly ₹8,334 per month is available. There are no separate registration, examination or certificate charges.",
+    a: `Fees are published per course: Data Analytics is ₹49,999 for 6 months, Data Science is ₹89,999 for 9 months, and each SAP module is ₹49,999 for 4 months. Every fee is all-inclusive — training, learning material, project datasets or SAP S/4HANA server access, the corporate grooming month (a ₹29,999 programme, included free) and placement preparation, with no separate registration, examination or certificate charges. A ${EMI_MONTHS}-month no-cost EMI is available: about ${formatINR(emiPerMonth("49999"))} per month for the ₹49,999 courses and ${formatINR(emiPerMonth("89999"))} per month for Data Science.`,
   },
   {
     q: "Are the courses suitable for complete beginners?",
@@ -602,7 +639,7 @@ export const footerLinks = {
     { label: "Hire from us", href: "/hire-from-us" },
     { label: "Contact us", href: "/connect-with-us" },
   ],
- 
+
   "SAP modules": [
     { label: "SAP FICO course in Nagpur", href: "/sap-course/fico" },
     { label: "SAP MM course in Nagpur", href: "/sap-course/mm" },
@@ -616,20 +653,18 @@ export const quickFacts = [
   // { value: String(placements.length), label: "Named alumni placed, on record" },
   { value: `${facultyYearsTotal}+`, unit: "yrs", label: "Combined faculty experience" },
   { value: "3", label: "Courses — Data Analytics, Data Science, SAP" },
-  { value: "₹49,999", label: "All-inclusive, published fee" },
-  { value: "4", unit: "months", label: "Training plus corporate grooming" },
+  { value: "₹49,999", unit: "onwards", label: "All-inclusive, published fees" },
+  { value: "4–9", unit: "months", label: "Programme length, by course" },
   { value: "2", label: "Campuses in Nagpur" },
 ];
 
 export const DISCLAIMER =
   "Techtonic Lab provides placement assistance, not a placement guarantee. Outcomes depend on individual performance, batch, and market conditions at the time of hiring.";
 
-
 export const chatbot = {
   number: "917000026612", // TODO: replace with the full chatbot number
   greeting: "Hi! I'd like to know about the courses at Techtonic Lab.",
 };
-
 
 export function whatsappLink(source = "site") {
   const text = `${chatbot.greeting}`;

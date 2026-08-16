@@ -1,8 +1,26 @@
-
-import { SITE_URL, brand, offices, courses, faqs, faculty } from "./site";
+import {
+  SITE_URL,
+  brand,
+  offices,
+  courses,
+  faqs,
+  faculty,
+  EMI_MONTHS,
+  formatINR,
+  emiPerMonth,
+} from "./site";
 
 const ORG_ID = `${SITE_URL}/#organization`;
 export const ORG_ID_EXPORT = ORG_ID;
+
+/* Duration helper. ISO-8601 durations for whole months are "P6M", never
+   "PT4M" — the T prefix is for time-of-day (hours/minutes/seconds), so "PT4M"
+   actually means four MINUTES. Reading course.durationMonths keeps every
+   course honest instead of sharing one hard-coded value. */
+function isoMonths(course) {
+  const m = Number(course.durationMonths) || 0;
+  return m > 0 ? `P${m}M` : undefined;
+}
 
 export function organizationSchema() {
   return {
@@ -46,7 +64,7 @@ export function localBusinessSchemas() {
     "@type": "LocalBusiness",
     "@id": `${SITE_URL}/#${o.id}`,
     name: `${brand.name} — ${o.label} (${o.area})`,
-    image: `${SITE_URL}/photos/${o.id}.jpg`,
+    image: `${SITE_URL}/photos/${o.id}.png`,
     telephone: "+91-8766069947",
     email: brand.email,
     priceRange: "₹₹",
@@ -72,23 +90,21 @@ export function localBusinessSchemas() {
 }
 
 export function courseSchemas() {
-  return courses.map((c) => ({
-    "@context": "https://schema.org",
-    "@type": "Course",
-    name: c.fullName,
-    description: c.blurb,
-    provider: {
-      "@type": "EducationalOrganization",
-      "@id": ORG_ID,
-      name: brand.name,
-      sameAs: `${SITE_URL}/`,
-    },
-    url: `${SITE_URL}/${c.slug}`,
-    courseCode: c.courseCode,
-    educationalLevel: c.level,
-    teaches: c.teaches,
-    inLanguage: "en",
-    hasCourseInstance: {
+  return courses.map((c) => {
+    const workload = isoMonths(c);
+
+    // The named instructors for this course, matched on `teaches`.
+    const instructors = faculty
+      .filter((f) => Array.isArray(f.teaches) && f.teaches.includes(c.name))
+      .map((f) => ({ "@type": "Person", name: f.name }));
+
+    // SAP is priced per module — say so in the description so the Offer price
+    // is not read as a whole-course figure.
+    const description = c.feeNote
+      ? `${c.blurb} Fee is ${c.fee} ${c.feeNote}.`
+      : c.blurb;
+
+    const courseInstance = {
       "@type": "CourseInstance",
       courseMode: ["Onsite", "Blended", "Online"],
       location: {
@@ -96,19 +112,43 @@ export function courseSchemas() {
         name: `${brand.name}, ${offices[0].area}`,
         address: `${offices[0].street}, ${offices[0].locality}, ${offices[0].region}`,
       },
-      courseWorkload: "PT4M",
       startDate: c.startDateISO,
       endDate: c.endDateISO,
-    },
-    offers: {
-      "@type": "Offer",
-      category: "Paid course",
-      price: c.feeNumeric,
-      priceCurrency: "INR",
-      availability: "https://schema.org/InStock",
+      ...(workload ? { courseWorkload: workload } : {}),
+      ...(instructors.length ? { instructor: instructors } : {}),
+    };
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      name: c.fullName,
+      description,
+      provider: {
+        "@type": "EducationalOrganization",
+        "@id": ORG_ID,
+        name: brand.name,
+        sameAs: `${SITE_URL}/`,
+      },
       url: `${SITE_URL}/${c.slug}`,
-    },
-  }));
+      courseCode: c.courseCode,
+      educationalLevel: c.level,
+      teaches: c.teaches,
+      inLanguage: "en",
+      // Course-level duration too, so it is present even where a crawler
+      // ignores the instance.
+      ...(workload ? { timeRequired: workload } : {}),
+      hasCourseInstance: courseInstance,
+      offers: {
+        "@type": "Offer",
+        category: "Paid course",
+        price: c.feeNumeric,
+        priceCurrency: "INR",
+        priceValidUntil: c.endDateISO,
+        availability: "https://schema.org/InStock",
+        url: `${SITE_URL}/${c.slug}`,
+      },
+    };
+  });
 }
 
 // Must match the visible FAQ block 1-to-1.
@@ -125,15 +165,23 @@ export function faqSchema() {
 }
 
 export function personSchemas() {
-  return faculty.map((p) => ({
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: p.name,
-    jobTitle: p.title,
-    worksFor: { "@id": ORG_ID },
-    description: `${p.years} — ${p.bio}`,
-    image: `${SITE_URL}/faculty/${p.name.toLowerCase().replace(/\s+/g, "-")}.jpg`,
-  }));
+  return faculty.map((p) => {
+    const out = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: p.name,
+      jobTitle: p.title,
+      worksFor: { "@id": ORG_ID },
+      description: `${p.years} — ${p.bio}`,
+    };
+    // Photo path comes straight from the data so the extension can never
+    // drift from the real file (now .png, previously .jpg).
+    if (p.photo) out.image = `${SITE_URL}${p.photo}`;
+    // Only three faculty have a public profile; guard so the others do not
+    // emit an empty sameAs.
+    if (p.linkedin) out.sameAs = [p.linkedin];
+    return out;
+  });
 }
 
 export function websiteSchema() {
@@ -222,6 +270,7 @@ export function offerSchema(course) {
     url: `${SITE_URL}/${course.slug}/fees`,
     price: course.feeNumeric,
     priceCurrency: "INR",
+    priceValidUntil: course.endDateISO,
     availability: "https://schema.org/InStock",
     category: "Paid course",
     offeredBy: { "@id": ORG_ID_EXPORT },

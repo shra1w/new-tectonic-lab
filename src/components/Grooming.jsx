@@ -4,6 +4,7 @@ import Reveal from "./ui/Reveal";
 import Stagger from "./ui/Stagger";
 import ImageSlot from "./ui/ImageSlot";
 import { grooming } from "@/lib/site";
+import BuyCourseButton from "./BuyCourseButton";
 
 const ICONS = { interview: LuMicVocal, workplace: LuBuilding2 };
 
@@ -36,6 +37,10 @@ export default function Grooming() {
                 );
               })}
             </Stagger>
+            <div className=" w-full mt-6 flex justify-center">
+            <BuyCourseButton/>
+
+            </div>
           </div>
 
           <Reveal delay={0.12} className="lg:pt-16">
@@ -44,14 +49,25 @@ export default function Grooming() {
 
               <p className="eyebrow !text-acid">
                 <LuSparkles aria-hidden="true" className="h-3.5 w-3.5" />
-                Included in the fee
+                Included free
               </p>
-              <h3 className="mt-4 font-display text-2xl font-semibold leading-tight text-zinc-50 sm:text-[1.75rem]">
-                One month of corporate grooming, at no extra cost
+
+              <h3 className="mt-4 font-display text-lg font-semibold leading-snug text-zinc-50 sm:text-xl">
+                A ₹29,999 corporate grooming programme — yours free
               </h3>
-              <p className="mt-4 text-sm leading-relaxed text-zinc-300">
-                It is part of the ₹49,999, not an add-on sold later. Every learner on every
-                course gets it, in every batch mode.
+
+              <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <span className="text-sm text-zinc-500 line-through decoration-zinc-600">
+                  ₹29,999
+                </span>
+                <span className="font-display text-base font-semibold text-acid">
+                  Free with your course
+                </span>
+              </div>
+
+              <p className="mt-3 text-[13px] leading-relaxed text-zinc-400">
+                That is the standalone price of the grooming month. Every learner on every
+                course gets it, in every batch mode, at no extra cost.
               </p>
 
               <ul className="mt-6 flex flex-wrap gap-2">

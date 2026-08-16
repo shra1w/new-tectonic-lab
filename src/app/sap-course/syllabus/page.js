@@ -4,7 +4,7 @@ import { courseDetail } from "@/lib/courses";
 import { breadcrumbSchema, webPageSchema, syllabusSchema } from "@/lib/schema";
 
 const SLUG = "sap-course";
-const course = courses.find((c) => c.slug === SLUG);
+const course = courses.find((c) => c?.slug === SLUG);
 const detail = courseDetail[SLUG];
 
 const breadcrumbs = [
