@@ -75,6 +75,8 @@ export default function AboutPage() {
         summary={about.summary}
         aside={
           <ImageSlot
+            src="/photos/hero-lab.png"
+            alt="The Techtonic Lab training lab in Nagpur"
             id="IMG-02"
             className="aspect-[4/3] w-full lg:aspect-[4/5]"
             rounded="rounded-3xl"
@@ -235,7 +237,7 @@ export default function AboutPage() {
             id="about-courses-title"
             eyebrow="What we teach"
             title="Three, and only three"
-            intro="Every course runs three months of core training plus a month of corporate grooming, at the same fee."
+            intro="Every course pairs hands-on core training with a month of corporate grooming. Data Analytics runs six months, Data Science nine, and SAP four — chosen by where you want to end up, not by price."
           />
           <Stagger className="mt-10 grid gap-5 lg:grid-cols-3" itemClassName="h-full">
             {courses.map((c) => (

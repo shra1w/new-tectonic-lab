@@ -153,8 +153,8 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-zinc-500">
-            © {new Date().getFullYear()} Techtonic Lab. Operated by {brand.legalName} · CIN{" "}
-            {brand.cin}.
+            © {new Date().getFullYear()} Techtonic Lab. Operated by {brand.legalName}
+            {brand.cin && !brand.cin.includes("[") ? <> · CIN {brand.cin}</> : null}.
           </p>
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs">
             <li>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { LuCheck, LuInfo, LuArrowRight } from "react-icons/lu";
 import SectionHead from "./ui/SectionHead";
 import Stagger from "./ui/Stagger";
-import { courses, DISCLAIMER } from "@/lib/site";
+import { courses, DISCLAIMER, EMI_MONTHS, emiPerMonth, formatINR } from "@/lib/site";
 
 export default function Fees() {
   return (
@@ -16,8 +16,8 @@ export default function Fees() {
           <SectionHead
             id="fees-title"
             eyebrow="Fees and batches"
-            title="One price. Published."
-            intro="Every course is ₹49,999 for the full four months. No tiered upsell, no “contact us for pricing”, no separate registration or certificate fee."
+            title="Published fees. No surprises."
+            intro="Every fee is published in full and all-inclusive — no tiered upsell, no “contact us for pricing”, no separate registration or certificate fee."
           />
           <Link href="/fees" className="link-underline shrink-0 text-sm">
             Full fee breakdown
@@ -41,7 +41,7 @@ export default function Fees() {
 
               <h3 className="font-display text-xl font-semibold text-zinc-50">{course.name}</h3>
               <p className="mt-1.5 text-xs text-zinc-500">
-                3 months + 1 month corporate grooming
+                {(course.durationMonths || 0) - 1} months + 1 month corporate grooming
               </p>
 
               <p className="mt-6 flex items-baseline gap-2">
@@ -51,7 +51,7 @@ export default function Fees() {
                 <span className="text-xs text-zinc-500">all-inclusive</span>
               </p>
               <p className="mt-2 text-xs text-zinc-500">
-                or ₹8,334 × 6 months on EMI · no hidden charges
+                or {formatINR(emiPerMonth(course.feeNumeric))} × {EMI_MONTHS} months on EMI · no hidden charges
               </p>
 
               <ul className="mt-6 space-y-2.5 border-t border-white/10 pt-6">

@@ -16,7 +16,7 @@ const BRAND = {
   acid: "#EAFD56",
   ink: "#0A0A0B",
   phone: "+91 87660 69947",
-  siteUrl: "https://techtoniclab.com",
+  siteUrl: "https://techtoniccorporate.com",
   address: "Somalwada & Jaitala Road, Nagpur, Maharashtra",
 };
 
@@ -202,7 +202,7 @@ function userEmailHtml(lead) {
             ${BRAND.name} · ${BRAND.address}
           </p>
           <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;color:#a8a29e;">
-            You're receiving this because you submitted the consultation form at techtoniclab.com.
+            You're receiving this because you submitted the consultation form at techtoniccorporate.com.
           </p>
         </td></tr>
       </table>
@@ -219,33 +219,43 @@ export async function sendLeadEmails(lead) {
   const adminTo = process.env.EMAIL_SEND_TO || process.env.SMTP_EMAIL;
   const fullName = `${lead.firstName} ${lead.lastName}`.trim();
 
-  const results = await Promise.allSettled([
-    // Admin notification
-    transport.sendMail({
-      from,
-      to: adminTo,
-      replyTo: lead.email,
-      subject: `New lead — ${fullName} · ${lead.course}`,
-      html: adminEmailHtml(lead),
-    }),
+  const jobs = [
+    // Admin notification — always sent.
+    {
+      label: "admin",
+      mail: {
+        from,
+        to: adminTo,
+        replyTo: lead.email || undefined,
+        subject: `New lead — ${fullName} · ${lead.course}`,
+        html: adminEmailHtml(lead),
+      },
+    },
+  ];
 
-    // User confirmation
-    transport.sendMail({
-      from,
-      to: lead.email,
-      subject: `We've received your request — ${BRAND.name}`,
-      html: userEmailHtml(lead),
-    }),
-  ]);
+  // User confirmation — only when the lead actually gave an email address.
+  if (lead.email) {
+    jobs.push({
+      label: "user",
+      mail: {
+        from,
+        to: lead.email,
+        subject: `We've received your request — ${BRAND.name}`,
+        html: userEmailHtml(lead),
+      },
+    });
+  }
+
+  const results = await Promise.allSettled(jobs.map((j) => transport.sendMail(j.mail)));
 
   results.forEach((r, i) => {
     if (r.status === "rejected") {
-      console.error(`[mailer] ${i === 0 ? "admin" : "user"} email failed:`, r.reason);
+      console.error(`[mailer] ${jobs[i].label} email failed:`, r.reason);
     }
   });
 
   return {
-    admin: results[0].status === "fulfilled",
-    user: results[1].status === "fulfilled",
+    admin: results[0]?.status === "fulfilled",
+    user: jobs[1] ? results[1]?.status === "fulfilled" : false,
   };
 }

@@ -57,10 +57,10 @@ export default function Faculty() {
             id="faculty-title"
             eyebrow="The team"
             title="Meet the faculty"
-            intro={`Six instructors, ${facultyYearsTotal}+ years of combined industry experience across IT, ERP, business intelligence and HR.`}
+            intro={`Three instructors, ${facultyYearsTotal}+ years of combined industry experience across SAP, data analytics and data science.`}
           />
           <Link href="/faculty" className="link-underline shrink-0 text-sm">
-            Meet all six faculty members
+            Meet the faculty
             <LuArrowRight aria-hidden="true" className="h-4 w-4" />
           </Link>
         </div>

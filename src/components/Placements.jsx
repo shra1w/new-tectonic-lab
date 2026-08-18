@@ -83,7 +83,7 @@ function AlumniCard({ p, index }) {
             aria-hidden="true"
             className="mb-1.5 h-3.5 w-3.5 text-acid/60 transition-transform duration-300 group-hover/card:scale-110"
           />
-          Started with {p.background.charAt(0).toLowerCase() + p.background.slice(1)}.
+          {p.background.charAt(0).toUpperCase() + p.background.slice(1)}.
         </p>
       ) : null}
     </article>

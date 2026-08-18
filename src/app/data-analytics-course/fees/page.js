@@ -16,7 +16,7 @@ const breadcrumbs = [
 
 export const metadata = {
   title: "Data Analyst Course Fees in Nagpur — ₹49,999 All-Inclusive",
-  description: "Data analyst course fees in Nagpur: ₹49,999 for the full 4-month programme, EMI at ₹8,334 per month. Itemised, with what is and is not included.",
+  description: "Data analyst course fees in Nagpur: ₹49,999 for the full 6-month programme, EMI at ₹8,334 per month. Itemised, with what is and is not included.",
   alternates: { canonical: `/${SLUG}/fees` },
   openGraph: {
     type: "website",
@@ -24,13 +24,13 @@ export const metadata = {
     url: `${SITE_URL}/${SLUG}/fees`,
     siteName: "Techtonic Lab",
     title: "Data Analyst Course Fees in Nagpur — ₹49,999 All-Inclusive",
-    description: "Data analyst course fees in Nagpur: ₹49,999 for the full 4-month programme, EMI at ₹8,334 per month. Itemised, with what is and is not included.",
+    description: "Data analyst course fees in Nagpur: ₹49,999 for the full 6-month programme, EMI at ₹8,334 per month. Itemised, with what is and is not included.",
     images: [{ url: "/og/data-analytics-course.jpg", width: 1200, height: 630, alt: "Data Analyst Course Fees in Nagpur — ₹49,999 All-Inclusive" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Data Analyst Course Fees in Nagpur — ₹49,999 All-Inclusive",
-    description: "Data analyst course fees in Nagpur: ₹49,999 for the full 4-month programme, EMI at ₹8,334 per month. Itemised, with what is and is not included.",
+    description: "Data analyst course fees in Nagpur: ₹49,999 for the full 6-month programme, EMI at ₹8,334 per month. Itemised, with what is and is not included.",
     images: ["/og/data-analytics-course.jpg"],
   },
 };
@@ -42,7 +42,7 @@ export default function Page() {
     webPageSchema({
       path: `/${SLUG}/fees`,
       name: "Data Analyst Course Fees in Nagpur — ₹49,999 All-Inclusive",
-      description: "Data analyst course fees in Nagpur: ₹49,999 for the full 4-month programme, EMI at ₹8,334 per month. Itemised, with what is and is not included.",
+      description: "Data analyst course fees in Nagpur: ₹49,999 for the full 6-month programme, EMI at ₹8,334 per month. Itemised, with what is and is not included.",
     }),
     breadcrumbSchema(breadcrumbs),
     offerSchema(course),

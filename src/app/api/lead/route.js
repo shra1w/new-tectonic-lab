@@ -31,10 +31,12 @@ export async function POST(request) {
     return NextResponse.json({ ok: true }, { status: 200 });
   }
 
-  // Validation
+  // Validation. Email is optional — a phone-callback lead (e.g. the floating
+  // counselling form) may not include one — but if present it must be valid.
   if (!body.firstName?.trim()) return bad("firstName");
   if (!body.lastName?.trim()) return bad("lastName");
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((body.email || "").trim())) return bad("email");
+  const email = (body.email || "").trim();
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return bad("email");
   const mobile = String(body.mobile || "").replace(/\D/g, "");
   if (!/^[6-9]\d{9}$/.test(mobile)) return bad("mobile");
   if (!body.course?.trim()) return bad("course");
@@ -50,7 +52,7 @@ export async function POST(request) {
   const row = {
     first_name: body.firstName.trim(),
     last_name: body.lastName.trim(),
-    email: body.email.trim().toLowerCase(),
+    email: email ? email.toLowerCase() : null,
     mobile,
     course: body.course.trim(),
     message: body.message?.trim() || null,

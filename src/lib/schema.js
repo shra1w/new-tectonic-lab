@@ -5,6 +5,7 @@ import {
   courses,
   faqs,
   faculty,
+  directors,
   EMI_MONTHS,
   formatINR,
   emiPerMonth,
@@ -179,6 +180,22 @@ export function personSchemas() {
     if (p.photo) out.image = `${SITE_URL}${p.photo}`;
     // Only three faculty have a public profile; guard so the others do not
     // emit an empty sameAs.
+    if (p.linkedin) out.sameAs = [p.linkedin];
+    return out;
+  });
+}
+
+export function directorPersonSchemas() {
+  return directors.map((p) => {
+    const out = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: p.name,
+      jobTitle: p.title,
+      worksFor: { "@id": ORG_ID },
+      description: p.bio,
+    };
+    if (p.photo) out.image = `${SITE_URL}${p.photo}`;
     if (p.linkedin) out.sameAs = [p.linkedin];
     return out;
   });

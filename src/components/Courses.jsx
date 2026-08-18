@@ -109,7 +109,7 @@ export default function Courses() {
           id="courses-title"
           eyebrow="Our courses"
           title="Three courses. One clear path."
-          intro="Each runs three months of core training plus a month of corporate grooming. Same fee, same grooming, same placement preparation across all three."
+          intro="Each pairs hands-on core training with a month of corporate grooming, and the same placement preparation across all three. Pick the one that fits where you want to go."
         />
 
         <Stagger className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3" itemClassName="h-full">

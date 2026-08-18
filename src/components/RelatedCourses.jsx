@@ -15,7 +15,7 @@ export default function RelatedCourses({ exclude }) {
           id="related-title"
           eyebrow="Explore other courses"
           title="The other two tracks"
-          intro="Same fee, same four-month shape, same grooming month. Different destination."
+          intro="The same all-inclusive shape and grooming month, each with its own length and fee. Different destination — pick where you want to end up."
         />
 
         <Stagger className="mt-10 grid gap-5 md:grid-cols-2" itemClassName="h-full">

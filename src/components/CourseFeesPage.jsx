@@ -8,7 +8,8 @@ import Reveal from "./ui/Reveal";
 import Stagger from "./ui/Stagger";
 import FaqList from "./ui/FaqList";
 import CtaBand from "./CtaBand";
-import { courses, DISCLAIMER } from "@/lib/site";
+import BuyCourseButton from "./BuyCourseButton";
+import { courses, DISCLAIMER, EMI_MONTHS, emiPerMonth, formatINR } from "@/lib/site";
 
 const NOT_INCLUDED = [
   "The official SAP certification exam fee, paid directly to SAP",
@@ -18,14 +19,19 @@ const NOT_INCLUDED = [
 ];
 
 export default function CourseFeesPage({ course, detail, breadcrumbs }) {
+  const trainingMonths = (course.durationMonths || 0) - 1;
+  const emiMonthly = formatINR(emiPerMonth(course.feeNumeric));
+  const emiText = `${emiMonthly} × ${EMI_MONTHS} months`;
+  const halfPayment = `${formatINR(Math.ceil(Number(course.feeNumeric) / 2))} × 2`;
+
   const feeFaqs = [
     {
       q: `What is the total fee for the ${course.fullName}?`,
-      a: `The total fee is ₹49,999 for the complete four-month programme — three months of core training plus one month of corporate grooming. There is no separate registration fee, examination fee or certificate fee, and there is no higher tier.`,
+      a: `The total fee is ${course.fee} for the complete ${course.duration} programme — ${trainingMonths} months of core training plus one month of corporate grooming. There is no separate registration fee, examination fee or certificate fee, and there is no higher tier.`,
     },
     {
       q: "Is EMI available, and what does it cost?",
-      a: "Yes. A six-month EMI works out at approximately ₹8,334 per month with no additional interest charged by Techtonic Lab. Exact terms depend on the financing partner and are set out in writing before you commit.",
+      a: `Yes. A ${EMI_MONTHS}-month EMI works out at approximately ${emiMonthly} per month with no additional interest charged by Techtonic Lab. Exact terms depend on the financing partner and are set out in writing before you commit.`,
     },
     {
       q: "What is included in the fee?",
@@ -37,7 +43,7 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
     },
     {
       q: "What is not included?",
-      a: "Vendor certification exam fees are paid directly to SAP or Microsoft and are not part of the ₹49,999. Travel and a personal laptop are also on you, though campus machines are available if you do not have one.",
+      a: "Vendor certification exam fees are paid directly to SAP or Microsoft and are not part of the course fee. Travel and a personal laptop are also on you, though campus machines are available if you do not have one.",
     },
     {
       q: "Can I pay in instalments without EMI?",
@@ -45,15 +51,15 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
     },
     {
       q: "Do you offer any concessions?",
-      a: "There is a modest concession for learners enrolling together from the same college or workplace, and case-by-case support for students in genuine financial difficulty. We will not advertise a fake discount against an inflated list price — ₹49,999 is the real number.",
+      a: `There is a modest concession for learners enrolling together from the same college or workplace, and case-by-case support for students in genuine financial difficulty. We will not advertise a fake discount against an inflated list price — ${course.fee} is the real number.`,
     },
     {
       q: "What is the refund policy?",
       a: "If you withdraw before the batch starts, you are refunded in full less any non-recoverable third-party charges. After the batch begins, the refund position is set out in our terms of service, because the seat, the server licence and the faculty time have been committed.",
     },
     {
-      q: `Why is the ${course.name} course the same price as the other two?`,
-      a: "Because the programme shape is the same — same hours, same grooming month, same placement preparation. Pricing courses differently would push people towards a course based on cost rather than on which one actually suits them.",
+      q: `Why is the ${course.name} course priced the way it is?`,
+      a: "The fee reflects the length of the programme and what it includes — every training hour, the grooming month and full placement preparation, with nothing held back for a higher tier. We would rather you chose a course on where you want to end up than on price.",
     },
   ];
 
@@ -63,17 +69,17 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
         breadcrumbs={breadcrumbs}
         eyebrow="Fees"
         title={`${course.fullName} fees —`}
-        highlight="₹49,999"
-        summary={`Published, itemised and all-inclusive. Four months of training and corporate grooming, with EMI available at roughly ₹8,334 per month. You should not have to fill in a form to find out what a course costs.`}
+        highlight={course.fee}
+        summary={`Published, itemised and all-inclusive. ${course.duration} of training and corporate grooming, with EMI available at roughly ${emiMonthly} per month. You should not have to fill in a form to find out what a course costs.`}
         aside={
           <FactTable
             rows={[
-              ["Total fee", "₹49,999"],
-              ["EMI", "₹8,334 × 6 months"],
+              ["Total fee", course.fee],
+              ["EMI", emiText],
               ["Registration fee", "None"],
               ["Certificate fee", "None"],
               ["Examination fee", "None"],
-              ["Duration covered", "4 months"],
+              ["Duration covered", course.duration],
               ["Upcoming batch", course.nextBatch],
             ]}
           />
@@ -84,6 +90,7 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
             Talk to a counsellor about payment
             <LuArrowRight aria-hidden="true" className="h-4 w-4" />
           </Link>
+          <BuyCourseButton size="lg" className="w-full sm:w-auto" />
           <Link href={`/${course.slug}`} className="btn-ghost w-full sm:w-auto">
             Back to the {course.name} course
           </Link>
@@ -96,7 +103,7 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
           <SectionHead
             id="included-title"
             eyebrow="Itemised"
-            title="What the ₹49,999 actually buys"
+            title={`What the ${course.fee} actually buys`}
             intro="Listed line by line, including the things it does not cover — because the second list is the one institutes usually leave out."
           />
 
@@ -167,19 +174,19 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
             {[
               {
                 title: "Pay in full",
-                amount: "₹49,999",
+                amount: course.fee,
                 note: "One payment at enrolment",
                 body: "The simplest option. Nothing further to think about for the rest of the programme.",
               },
               {
                 title: "Two instalments",
-                amount: "₹25,000 × 2",
+                amount: halfPayment,
                 note: "At enrolment and before month two",
                 body: "The most common arrangement. No interest, no paperwork beyond the enrolment form.",
               },
               {
-                title: "Six-month EMI",
-                amount: "≈ ₹8,334 / month",
+                title: `${EMI_MONTHS}-month EMI`,
+                amount: `≈ ${emiMonthly} / month`,
                 note: "Through our financing partner",
                 body: "Terms depend on the partner and your eligibility, and are given to you in writing before you commit to anything.",
               },
@@ -214,7 +221,7 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
             id="compare-title"
             eyebrow="Compare"
             title="All three courses, side by side"
-            intro="Same fee, same shape. Choose on where you want to end up, not on price."
+            intro="Published prices and the same all-inclusive shape. Choose on where you want to end up, not on price."
           />
           <Reveal className="mt-10">
             <div className="card overflow-hidden">

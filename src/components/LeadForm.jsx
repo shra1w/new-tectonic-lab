@@ -22,6 +22,7 @@ const EMPTY = {
   mobile: "",
   course: "",
   message: "",
+  consent: false,
   website: "",
 };
 
@@ -34,6 +35,7 @@ function validate(v) {
   if (!/^[6-9]\d{9}$/.test(v.mobile.replace(/\D/g, "")))
     e.mobile = "Enter a 10-digit Indian mobile number.";
   if (!v.course) e.course = "Pick a course, or choose “Not sure yet”.";
+  if (!v.consent) e.consent = "Please tick the box so we can call or WhatsApp you.";
   return e;
 }
 
@@ -97,6 +99,12 @@ export default function LeadForm({ courseDefault = "", source = "website" }) {
   const set = (name) => (e) => {
     setValues((v) => ({ ...v, [name]: e.target.value }));
     setErrors((prev) => (prev[name] ? { ...prev, [name]: undefined } : prev));
+  };
+
+  const setConsent = (e) => {
+    const checked = e.target.checked;
+    setValues((v) => ({ ...v, consent: checked }));
+    setErrors((prev) => (prev.consent ? { ...prev, consent: undefined } : prev));
   };
 
   async function handleSubmit(e) {
@@ -234,7 +242,7 @@ export default function LeadForm({ courseDefault = "", source = "website" }) {
                   type="text"
                   autoComplete="given-name"
                   className={inputCx}
-                  placeholder="xxxxxxx"
+                  placeholder="Rahul"
                   value={values.firstName}
                   onChange={set("firstName")}
                   aria-invalid={!!errors.firstName}
@@ -249,7 +257,7 @@ export default function LeadForm({ courseDefault = "", source = "website" }) {
                   type="text"
                   autoComplete="family-name"
                   className={inputCx}
-                  placeholder="xxxxxx"
+                  placeholder="Sharma"
                   value={values.lastName}
                   onChange={set("lastName")}
                   aria-invalid={!!errors.lastName}
@@ -284,7 +292,7 @@ export default function LeadForm({ courseDefault = "", source = "website" }) {
                   autoComplete="tel-national"
                   maxLength={10}
                   className={inputCx}
-                  placeholder="----------"
+                  placeholder="9876543210"
                   value={values.mobile}
                   onChange={set("mobile")}
                   aria-invalid={!!errors.mobile}
@@ -347,6 +355,39 @@ export default function LeadForm({ courseDefault = "", source = "website" }) {
               />
             </div>
 
+            <div>
+              <label htmlFor="consent" className="flex cursor-pointer items-start gap-3">
+                <input
+                  id="consent"
+                  name="consent"
+                  type="checkbox"
+                  checked={values.consent}
+                  onChange={setConsent}
+                  aria-invalid={!!errors.consent}
+                  aria-describedby={errors.consent ? "consent-error" : undefined}
+                  className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded border-white/20 bg-ink-950 text-acid accent-acid focus:outline-none focus-visible:ring-2 focus-visible:ring-acid"
+                />
+                <span className="text-xs leading-relaxed text-zinc-500">
+                  I agree to be contacted by Techtonic Lab by phone, WhatsApp or email about my
+                  enquiry, and I accept the{" "}
+                  <Link href="/privacy-policy" className="text-zinc-300 underline underline-offset-2">
+                    privacy policy
+                  </Link>{" "}
+                  and{" "}
+                  <Link href="/terms-of-service" className="text-zinc-300 underline underline-offset-2">
+                    terms of service
+                  </Link>
+                  . We never sell your data.
+                </span>
+              </label>
+              {errors.consent ? (
+                <p id="consent-error" role="alert" className="mt-1.5 flex items-center gap-1.5 text-2xs text-red-400">
+                  <LuCircleAlert aria-hidden="true" className="h-3.5 w-3.5" />
+                  {errors.consent}
+                </p>
+              ) : null}
+            </div>
+
             <button
               type="submit"
               disabled={isSending}
@@ -366,16 +407,7 @@ export default function LeadForm({ courseDefault = "", source = "website" }) {
             </button>
 
             <p className="text-xs leading-relaxed text-zinc-500">
-              We call within 4 business hours, Monday to Saturday. By submitting this form
-              you agree to our{" "}
-              <Link href="/privacy-policy" className="text-zinc-300 underline underline-offset-2">
-                privacy policy
-              </Link>{" "}
-              and{" "}
-              <Link href="/terms-of-service" className="text-zinc-300 underline underline-offset-2">
-                terms of service
-              </Link>
-              . We never sell your data.
+              We call within 4 business hours, Monday to Saturday.
             </p>
           </fieldset>
         </motion.form>

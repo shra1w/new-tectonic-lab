@@ -30,7 +30,7 @@ import { LuShoppingCart } from "react-icons/lu";
  * ---------------------------------------------------------------------- */
 
 export default function BuyCourseButton({
-  href = "https://learn.techtoniccorporate.com",
+  href = "/connect-with-us",
   variant = "cta",
   size,             // "sm" | "md" | "lg" — auto-picks by variant if omitted
   label,            // override the default text

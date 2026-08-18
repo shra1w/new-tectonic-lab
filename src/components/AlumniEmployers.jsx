@@ -5,7 +5,7 @@ import { LuBadgeCheck, LuBuilding2, LuUsers } from "react-icons/lu";
 import SectionHead from "./ui/SectionHead";
 import Stagger from "./ui/Stagger";
 import Reveal from "./ui/Reveal";
-import { alumniEmployers } from "@/lib/site";
+import { alumniEmployers, placementStats } from "@/lib/site";
 
 /* ---------------------------------------------------------------------------
  * AlumniEmployers
@@ -129,7 +129,7 @@ export default function AlumniEmployers({ standalone = false }) {
             <span aria-hidden="true" className="h-3 w-px bg-white/15" />
             <span className="inline-flex items-center gap-2 text-xs text-zinc-400">
               <LuUsers aria-hidden="true" className="h-3.5 w-3.5 text-acid" />
-              <strong className="font-display font-semibold text-zinc-100">110+</strong>
+              <strong className="font-display font-semibold text-zinc-100">{placementStats.named}</strong>
               named alumni on record
             </span>
           </div>

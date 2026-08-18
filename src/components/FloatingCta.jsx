@@ -25,7 +25,7 @@ const WA_GREEN = "#25D366";
 
 /* ── the counselling form ────────────────────────────────────────────────── */
 
-const EMPTY = { name: "", mobile: "", course: "", email: "", website: "" };
+const EMPTY = { name: "", mobile: "", course: "", email: "", consent: false, website: "" };
 
 function validate(v) {
   const e = {};
@@ -35,6 +35,7 @@ function validate(v) {
   if (!v.course) e.course = "Pick a course, or choose “Not sure yet”.";
   if (v.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.email.trim()))
     e.email = "That email address doesn't look right.";
+  if (!v.consent) e.consent = "Please tick the box so we can call you back.";
   return e;
 }
 
@@ -130,6 +131,12 @@ function CounsellingDialog({ open, onClose }) {
     setErrors((p) => (p[name] ? { ...p, [name]: undefined } : p));
   };
 
+  const setConsent = (e) => {
+    const checked = e.target.checked;
+    setValues((v) => ({ ...v, consent: checked }));
+    setErrors((p) => (p.consent ? { ...p, consent: undefined } : p));
+  };
+
   async function handleSubmit(e) {
     e.preventDefault();
     if (values.website) return; // honeypot
@@ -143,19 +150,37 @@ function CounsellingDialog({ open, onClose }) {
 
     setStatus("sending");
 
+    // Split the single name field into first/last for the shared /api/lead
+    // endpoint. A one-word name reuses itself as the surname so the record
+    // is never rejected for a blank last name.
+    const parts = values.name.trim().split(/\s+/);
+    const firstName = parts[0];
+    const lastName = parts.slice(1).join(" ") || parts[0];
+
     const payload = {
-      name: values.name.trim(),
+      firstName,
+      lastName,
       mobile: values.mobile.replace(/\D/g, "").slice(-10),
       course: values.course,
       email: values.email.trim() || null,
       source: "floating-counselling",
+      landing_page: typeof window !== "undefined" ? window.location.pathname : null,
       submittedAt: new Date().toISOString(),
     };
 
-    console.log("Free counselling request →", payload);
-
-    await new Promise((r) => setTimeout(r, 600));
-    setStatus("sent");
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error || `Request failed (${res.status})`);
+      setStatus("sent");
+    } catch (err) {
+      console.error("[counselling] submit failed:", err);
+      setStatus("error");
+    }
   }
 
   return (
@@ -256,6 +281,22 @@ function CounsellingDialog({ open, onClose }) {
                     </p>
 
                     <form onSubmit={handleSubmit} noValidate className="mt-7 space-y-4">
+                      {status === "error" ? (
+                        <p
+                          role="alert"
+                          className="flex items-start gap-2.5 rounded-xl border border-red-500/30 bg-red-500/10 p-3.5 text-2xs leading-relaxed text-red-300"
+                        >
+                          <LuCircleAlert aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
+                          <span>
+                            That didn't send. Please try again, or call us on{" "}
+                            <a href="tel:+918766069947" className="underline underline-offset-2">
+                              +91 87660 69947
+                            </a>
+                            .
+                          </span>
+                        </p>
+                      ) : null}
+
                       <Field label="Your name" name="name" error={errors.name}>
                         <input
                           ref={firstField}
@@ -346,6 +387,31 @@ function CounsellingDialog({ open, onClose }) {
                         />
                       </div>
 
+                      <div>
+                        <label htmlFor="consent" className="flex cursor-pointer items-start gap-2.5">
+                          <input
+                            id="consent"
+                            name="consent"
+                            type="checkbox"
+                            checked={values.consent}
+                            onChange={setConsent}
+                            aria-invalid={!!errors.consent}
+                            aria-describedby={errors.consent ? "consent-error" : undefined}
+                            className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded border-white/20 bg-ink-950 accent-acid focus:outline-none focus-visible:ring-2 focus-visible:ring-acid"
+                          />
+                          <span className="text-2xs leading-relaxed text-zinc-500">
+                            I agree to be contacted by phone, WhatsApp or email about my enquiry.
+                            We never sell your data, and there is no obligation to enrol.
+                          </span>
+                        </label>
+                        {errors.consent ? (
+                          <p id="consent-error" role="alert" className="mt-1.5 flex items-center gap-1.5 text-2xs text-red-400">
+                            <LuCircleAlert aria-hidden="true" className="h-3.5 w-3.5" />
+                            {errors.consent}
+                          </p>
+                        ) : null}
+                      </div>
+
                       <button
                         type="submit"
                         disabled={status === "sending"}
@@ -365,8 +431,7 @@ function CounsellingDialog({ open, onClose }) {
                       </button>
 
                       <p className="text-2xs leading-relaxed text-zinc-500">
-                        We call within 4 business hours, Mon–Sat. We never sell your data,
-                        and there is no obligation to enrol.
+                        We call within 4 business hours, Mon–Sat.
                       </p>
                     </form>
                   </motion.div>

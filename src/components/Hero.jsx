@@ -76,7 +76,7 @@ export default function Hero() {
               </p>
               <p className="chip !border-acid/30 !bg-acid/10 !text-acid backdrop-blur">
                 <LuBadgeCheck aria-hidden="true" className="h-3.5 w-3.5" />
-                110+ recent alumni
+                Real, named placements
               </p>
             </div>
           </Reveal>

@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { LuArrowRight } from "react-icons/lu";
 import Reveal from "./ui/Reveal";
+import BuyCourseButton from "./BuyCourseButton";
 
 export default function CtaBand({
   title = "Not sure which course fits you?",
   body = "A 20-minute call with a counsellor, no obligation and no sales script. We will look at your background and tell you which of the three — if any — makes sense.",
   primary = { href: "/connect-with-us", label: "Book a free consultation" },
   secondary = { href: "/batches", label: "See all batch dates" },
+  buy = true,
+  buyHref,
 }) {
   return (
     <section aria-labelledby="cta-band-title" className="py-20 sm:py-28">
@@ -30,6 +33,9 @@ export default function CtaBand({
                 {primary.label}
                 <LuArrowRight aria-hidden="true" className="h-4 w-4" />
               </Link>
+              {buy ? (
+                <BuyCourseButton href={buyHref} size="lg" className="w-full sm:w-auto" />
+              ) : null}
               {secondary ? (
                 <Link href={secondary.href} className="btn-ghost w-full sm:w-auto">
                   {secondary.label}

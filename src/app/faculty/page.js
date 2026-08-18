@@ -9,8 +9,8 @@ import ImageSlot from "@/components/ui/ImageSlot";
 import FactTable from "@/components/ui/FactTable";
 import CtaBand from "@/components/CtaBand";
 
-import { faculty, facultyYearsTotal, courses, SITE_URL } from "@/lib/site";
-import { breadcrumbSchema, personSchemas, webPageSchema } from "@/lib/schema";
+import { faculty, facultyYearsTotal, directors, courses, SITE_URL } from "@/lib/site";
+import { breadcrumbSchema, personSchemas, directorPersonSchemas, webPageSchema } from "@/lib/schema";
 
 const breadcrumbs = [
   { name: "Home", href: "/" },
@@ -19,7 +19,7 @@ const breadcrumbs = [
 
 const TITLE = "Meet the Faculty at Techtonic Lab, Nagpur";
 const DESC =
-  "The Techtonic Lab faculty — six industry professionals teaching Data Analytics, Data Science and SAP courses in Nagpur, with 5 to 27 years of hands-on experience each.";
+  "The Techtonic Lab faculty — three industry professionals teaching Data Analytics, Data Science and SAP courses in Nagpur, with 5 to 12 years of hands-on experience each, led by directors Rupali Wankhede and Dhyaneshwari Talekar.";
 
 export const metadata = {
   title: TITLE,
@@ -48,6 +48,7 @@ export default function FacultyPage() {
     webPageSchema({ path: "/faculty", name: TITLE, description: DESC }),
     breadcrumbSchema(breadcrumbs),
     ...personSchemas(),
+    ...directorPersonSchemas(),
   ];
 
   return (
@@ -59,13 +60,13 @@ export default function FacultyPage() {
         eyebrow="The team"
         title="Meet the"
         highlight="faculty"
-        summary={`Six instructors, ${facultyYearsTotal}+ years of combined industry experience across IT, ERP, business intelligence and HR. Every one of them still works in the field — the SAP modules are taught by consultants who have run real implementations, not by career trainers.`}
+        summary={`Three instructors, ${facultyYearsTotal}+ years of combined industry experience across SAP, data analytics and data science. Every one of them still works in the field — the SAP track is taught by a consultant who has run real implementations, not by a career trainer.`}
         aside={
           <FactTable
             rows={[
               ["Instructors", String(faculty.length)],
+              ["Directors", String(directors.length)],
               ["Combined experience", `${facultyYearsTotal}+ years`],
-              ["Longest tenure", "27+ years in IT and databases"],
               ["Courses covered", String(courses.length)],
               ["Campuses", "Somalwada and Jaitala Road"],
             ]}
@@ -90,11 +91,13 @@ export default function FacultyPage() {
     className="card group flex h-full flex-col overflow-hidden transition-colors duration-300 hover:border-acid/35"
   >
     <ImageSlot
+      src={f.photo}
+      alt={`${f.name}, ${f.title} at Techtonic Lab`}
       className="aspect-[4/3] w-full"
       rounded="rounded-none"
       sizes="(max-width: 768px) 100vw, 33vw"
       note={`Portrait — ${f.name}`}
-      hint={`Real photograph, same lighting and framing across all six. 800×600px → /public/faculty/${slug(f.name)}.jpg`}
+      hint={`Real photograph, same lighting and framing across all three. 800×600px → /public/faculty/${slug(f.name)}.jpg`}
     />
 
     <div className="flex flex-1 flex-col p-6">
@@ -161,6 +164,67 @@ export default function FacultyPage() {
         </div>
       </section>
 
+      {/* ---- Directors ---- */}
+      <section aria-labelledby="directors-title" className="border-t border-white/10 py-20 sm:py-24">
+        <div className="shell">
+          <SectionHead
+            id="directors-title"
+            eyebrow="Leadership"
+            title="The directors"
+            intro="The two people who run Techtonic Lab and set the standard the faculty teach to — from published fees and honest placement records to the support every learner gets."
+          />
+
+          <Stagger className="mt-10 grid gap-5 sm:grid-cols-2 lg:mx-auto lg:max-w-3xl" itemClassName="h-full">
+            {directors.map((d) => (
+              <article
+                key={d.name}
+                className="card group flex h-full flex-col overflow-hidden transition-colors duration-300 hover:border-acid/35"
+              >
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink-950">
+                  {d.photo ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={d.photo}
+                      alt={`${d.name}, ${d.title} at Techtonic Lab`}
+                      className="h-full w-full object-cover object-top"
+                    />
+                  ) : (
+                    <span className="ruled grid h-full w-full place-items-center bg-gradient-to-br from-acid/20 to-acid/[0.04] font-display text-4xl font-semibold text-acid">
+                      {d.initials}
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="font-display text-lg font-semibold text-zinc-50">{d.name}</h3>
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-acid">
+                    {d.title}
+                  </p>
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-zinc-400">{d.bio}</p>
+
+                  {d.highlights?.length ? (
+                    <ul className="mt-5 space-y-2.5 border-t border-white/10 pt-5">
+                      {d.highlights.map((h) => (
+                        <li
+                          key={h}
+                          className="flex items-start gap-2 text-sm leading-relaxed text-zinc-400"
+                        >
+                          <span
+                            aria-hidden="true"
+                            className="mt-2 h-1 w-1 shrink-0 rounded-full bg-acid"
+                          />
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
+              </article>
+            ))}
+          </Stagger>
+        </div>
+      </section>
+
       {/* ---- By course ---- */}
       <section
         aria-labelledby="by-course-title"
@@ -171,7 +235,7 @@ export default function FacultyPage() {
             id="by-course-title"
             eyebrow="By course"
             title="Who teaches what"
-            intro="Every course has at least two named instructors plus the corporate grooming lead, so a single person being unavailable never stalls a batch."
+            intro="Who runs each track, named, with the years behind them. You meet the person who teaches your course in week one — every batch is taught and reviewed live, never handed to a recording."
           />
           <Stagger className="mt-10 grid gap-5 lg:grid-cols-3" itemClassName="h-full">
             {courses.map((c) => {

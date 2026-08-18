@@ -16,7 +16,7 @@ const breadcrumbs = [
 
 export const metadata = {
   title: "Data Analyst Course Syllabus in Nagpur — Full Module List",
-  description: "The complete data analyst course syllabus: six modules covering Excel, SQL, Python, statistics, Power BI and Tableau, with hours, tools and projects for each.",
+  description: "The complete data analyst course syllabus: seven modules covering Excel, SQL, Python, statistics, Power BI and Tableau, with hours, tools and projects for each.",
   alternates: { canonical: `/${SLUG}/syllabus` },
   openGraph: {
     type: "website",
@@ -24,13 +24,13 @@ export const metadata = {
     url: `${SITE_URL}/${SLUG}/syllabus`,
     siteName: "Techtonic Lab",
     title: "Data Analyst Course Syllabus in Nagpur — Full Module List",
-    description: "The complete data analyst course syllabus: six modules covering Excel, SQL, Python, statistics, Power BI and Tableau, with hours, tools and projects for each.",
+    description: "The complete data analyst course syllabus: seven modules covering Excel, SQL, Python, statistics, Power BI and Tableau, with hours, tools and projects for each.",
     images: [{ url: "/og/data-analytics-course.jpg", width: 1200, height: 630, alt: "Data Analyst Course Syllabus in Nagpur — Full Module List" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Data Analyst Course Syllabus in Nagpur — Full Module List",
-    description: "The complete data analyst course syllabus: six modules covering Excel, SQL, Python, statistics, Power BI and Tableau, with hours, tools and projects for each.",
+    description: "The complete data analyst course syllabus: seven modules covering Excel, SQL, Python, statistics, Power BI and Tableau, with hours, tools and projects for each.",
     images: ["/og/data-analytics-course.jpg"],
   },
 };
@@ -42,7 +42,7 @@ export default function Page() {
     webPageSchema({
       path: `/${SLUG}/syllabus`,
       name: "Data Analyst Course Syllabus in Nagpur — Full Module List",
-      description: "The complete data analyst course syllabus: six modules covering Excel, SQL, Python, statistics, Power BI and Tableau, with hours, tools and projects for each.",
+      description: "The complete data analyst course syllabus: seven modules covering Excel, SQL, Python, statistics, Power BI and Tableau, with hours, tools and projects for each.",
     }),
     breadcrumbSchema(breadcrumbs),
     syllabusSchema(course, detail),

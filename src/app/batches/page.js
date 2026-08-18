@@ -100,8 +100,8 @@ export default function BatchesPage() {
               ["Upcoming batches listed", String(batches.length)],
               ["Modes", "Classroom, weekend, online"],
               ["Campuses", "Somalwada, Jaitala Road, live online"],
-              ["Programme length", "4 months"],
-              ["Fee", "₹49,999 for any course"],
+              ["Programme length", "4–9 months, by course"],
+              ["Fee", "₹49,999–₹89,999, by course"],
             ]}
           />
         }
@@ -124,7 +124,7 @@ export default function BatchesPage() {
             id="schedule-title"
             eyebrow="Full schedule"
             title="All batches, all three courses"
-            intro="Sorted by start date. Every one of these runs the same four-month programme."
+            intro="Sorted by start date, across Data Analytics, Data Science and SAP. Each runs its own programme length and fee — the details are on each course page."
           />
 
           <Reveal className="mt-10">

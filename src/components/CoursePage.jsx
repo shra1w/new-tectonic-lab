@@ -21,13 +21,16 @@ import CourseVisual from "./ui/CourseVisual";
 import RelatedCourses from "./RelatedCourses";
 import CtaBand from "./CtaBand";
 import LeadForm from "./LeadForm";
+import BuyCourseButton from "./BuyCourseButton";
 
-import { faculty } from "@/lib/site";
+import { faculty, EMI_MONTHS, emiPerMonth, formatINR } from "@/lib/site";
 import { batches } from "@/lib/content";
 
 export default function CoursePage({ course, detail, breadcrumbs }) {
   const courseFaculty = faculty.filter((f) => f.teaches.includes(course.name));
   const upcoming = batches.filter((b) => b.slug === course.slug).slice(0, 4);
+  const trainingMonths = (course.durationMonths || 0) - 1;
+  const emiText = `${formatINR(emiPerMonth(course.feeNumeric))} × ${EMI_MONTHS} months`;
 
   return (
     <>
@@ -52,6 +55,7 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
             Book a free demo class
             <LuArrowRight aria-hidden="true" className="h-4 w-4" />
           </Link>
+          <BuyCourseButton href={`/${course.slug}/fees`} size="lg" className="w-full sm:w-auto" />
           <Link href={`/${course.slug}/syllabus`} className="btn-ghost w-full sm:w-auto">
             <LuDownload aria-hidden="true" className="h-4 w-4" />
             Download the course brochure
@@ -68,7 +72,7 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
           <Reveal>
             <FactTable
               rows={[
-                ["Duration", `${course.duration} — 3 months training + 1 month grooming`],
+                ["Duration", `${course.duration} — ${trainingMonths} months training + 1 month grooming`],
                 ["Mode", course.mode],
                 ["Next batch", course.nextBatch],
                 ["Fee", `${course.fee} all-inclusive · EMI available`],
@@ -119,7 +123,7 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
               id="curriculum-title"
               eyebrow="Curriculum"
               title="What you will actually build, module by module"
-              intro="Six modules across four months. Every module lists the topics, the tools and the thing you finish with."
+              intro={`${detail.modules.length} modules across ${course.duration}. Every module lists the topics, the tools and the thing you finish with.`}
             />
             <Link href={`/${course.slug}/syllabus`} className="link-underline shrink-0 text-sm">
               Full syllabus with hours
@@ -288,7 +292,7 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
               intro="The people who will actually be in the room, named, with the years behind each of them."
             />
             <Link href="/faculty" className="link-underline shrink-0 text-sm">
-              Meet all six faculty members
+              Meet the faculty
               <LuArrowRight aria-hidden="true" className="h-4 w-4" />
             </Link>
           </div>
@@ -297,6 +301,8 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
             {courseFaculty.map((f) => (
               <article key={f.name} className="card flex h-full flex-col overflow-hidden">
                 <ImageSlot
+                  src={f.photo}
+                  alt={`${f.name}, ${f.title} at Techtonic Lab`}
                   className="aspect-[4/3] w-full"
                   rounded="rounded-none"
                   sizes="(max-width: 768px) 100vw, 33vw"
@@ -383,8 +389,8 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
           <SectionHead
             id="course-fee-title"
             eyebrow="Fees"
-            title="₹50,000, itemised"
-            intro="One price for the whole four months. No registration fee, no examination fee, no certificate fee, and no tier above this one."
+            title={`${course.fee}, itemised`}
+            intro={`One price for the whole ${course.duration}. No registration fee, no examination fee, no certificate fee, and no tier above this one.`}
           />
           <Reveal delay={0.08}>
             <div className="card p-6 sm:p-7">
@@ -395,7 +401,7 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
                 <span className="text-xs text-zinc-500">all-inclusive</span>
               </p>
               <p className="mt-2 text-xs text-zinc-500">
-                or ₹8,334 × 6 months on EMI · no hidden charges
+                or {emiText} on EMI · no hidden charges
               </p>
               <ul className="mt-6 space-y-2.5 border-t border-white/10 pt-6">
                 {course.includes.map((i) => (
@@ -460,6 +466,7 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
         body="Book a free 20-minute consultation, or come and sit in on a live session before you decide. Both are free and neither commits you to anything."
         primary={{ href: "/connect-with-us", label: "Book a free consultation" }}
         secondary={{ href: "/placements", label: "See our placement records" }}
+        buyHref={`/${course.slug}/fees`}
       />
     </>
   );

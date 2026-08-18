@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { LuInfo, LuBadgeCheck, LuTriangleAlert, LuShieldCheck, LuArrowRight } from "react-icons/lu";
 
 import PageHero from "@/components/ui/PageHero";
@@ -120,7 +121,14 @@ export default function PlacementsPage() {
                 className="card group flex h-full flex-col p-5 transition-colors duration-300 hover:border-acid/35"
               >
                 <div className="flex items-center gap-4">
-                  <ImageSlot className="h-14 w-14 shrink-0" rounded="rounded-full" note={p.initials} hint="" />
+                  <ImageSlot
+                    src={p.photo}
+                    alt={`${p.name}, ${p.placedAs}`}
+                    className="h-14 w-14 shrink-0"
+                    rounded="rounded-full"
+                    note={p.initials}
+                    hint=""
+                  />
                   <div className="min-w-0">
                     <h3 className="truncate font-display text-base font-semibold text-zinc-50">
                       {p.name}
@@ -208,7 +216,21 @@ export default function PlacementsPage() {
                 className={`card flex h-full flex-col p-5 ${e.verified ? "border-acid/25" : "border-dashed"}`}
               >
                 <div className="flex items-center justify-between gap-3">
-                  <ImageSlot className="h-14 w-32 shrink-0" rounded="rounded-xl" note={`${e.company} logo`} hint="" />
+                  <div className="grid h-14 w-32 shrink-0 place-items-center overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] px-3">
+                    {e.logo ? (
+                      <Image
+                        src={e.logo}
+                        alt={`${e.company} logo`}
+                        width={200}
+                        height={80}
+                        className="max-h-9 w-auto max-w-full object-contain"
+                      />
+                    ) : (
+                      <span className="font-display text-sm font-semibold text-zinc-300">
+                        {e.company}
+                      </span>
+                    )}
+                  </div>
                   {e.verified ? (
                     <span className="chip !border-acid/30 !bg-acid/10 !text-acid">
                       <LuBadgeCheck aria-hidden="true" className="h-3.5 w-3.5" />
@@ -293,7 +315,9 @@ export default function PlacementsPage() {
                   {t.quote}
                 </blockquote>
                 <figcaption className="mt-6 flex items-center gap-3 border-t border-white/10 pt-5">
-                  <ImageSlot className="h-11 w-11 shrink-0" rounded="rounded-full" note={t.initials} hint="" />
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-acid/25 bg-gradient-to-br from-acid/20 to-acid/[0.05] font-display text-sm font-semibold text-acid">
+                    {t.initials}
+                  </span>
                   <div className="min-w-0">
                     <p className="truncate font-display text-sm font-semibold text-zinc-50">{t.name}</p>
                     <p className="truncate text-xs text-zinc-500">{t.role}</p>

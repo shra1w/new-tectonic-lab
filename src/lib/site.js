@@ -171,7 +171,6 @@ export const courses = [
     mode: "Classroom / Online / Weekend",
     fee: "₹49,999",
     feeNumeric: "49999",
-    feeNote: "per module",
     courseCode: "TL-SAP-001",
     level: "Beginner to intermediate",
     tools: ["SAP S/4HANA", "SAP MM (Sourcing & Procurement)", "SAP FICO", "SAP PP/QM", "SAP Fiori"],
@@ -184,7 +183,7 @@ export const courses = [
       "System Landscape, ASAP Methodology, Tables, Reports & Real-Time Industry Case Studies",
     ],
     includes: [
-      "4 months of training per module",
+      "4 months of training across all modules",
       "All learning material and documentation",
       "Live SAP S/4HANA server access from Day 1",
       "1 month corporate grooming",
@@ -232,7 +231,7 @@ export const differentiators = [
   {
     icon: "faculty",
     title: "Faculty who still work in the field",
-    body: "Six instructors with a combined 72+ years across IT, ERP, business intelligence and HR. The SAP modules are taught by consultants who have run real implementations.",
+    body: "Three instructors with a combined 29+ years across SAP, data analytics and data science. The SAP track is taught by a consultant who has run real implementations, not by a career trainer.",
   },
   {
     icon: "server",
@@ -400,15 +399,6 @@ export const homePlacements = placements.slice(0, 6);
 
 export const testimonials = [
   {
-    initials: "PR",
-    name: "Pranal Rewatkar",
-    role: "SAP MM Consultant, InfoKrafts",
-    course: "SAP MM",
-    verified: true,
-    quote:
-      "Thanks to Techtonic Lab's expert training and strong industry connections, I got placed at InfoKrafts in no time!",
-  },
-  {
     initials: "ND",
     name: "Neha Deshmukh",
     role: "Data Analyst",
@@ -448,39 +438,31 @@ export const testimonials = [
     quote:
       "Weekend batches meant I never had to leave my job while I trained. Same faculty, same server access, same syllabus as the weekday batch.",
   },
+  {
+    initials: "PR",
+    name: "Pranal Rewatkar",
+    role: "SAP MM Consultant, InfoKrafts",
+    course: "SAP MM",
+    verified: true,
+    quote:
+      "From a B.Com background I had never touched an ERP. Running the full procurement cycle myself on the live server — release strategy, pricing procedure, the lot — is what I could actually walk an interviewer through.",
+  },
 ];
 
 export const faculty = [
   {
-    initials: "MP",
-    name: "Manish Pimpale",
-    title: "Faculty — IT, Database Management and AI",
-    years: "27+ years",
-    yearsNum: 27,
-    linkedin: null,
-    teaches: ["Data Analytics", "Data Science"],
-    bio: "Twenty-seven years in IT, database management, artificial intelligence and cloud solutions. Teaches SQL, database design and the applied-AI module.",
-    tags: ["SQL", "Databases", "Applied AI"],
-    highlights: [
-      "SQL, database design and data modelling",
-      "Applied AI and cloud fundamentals",
-      "Teaches on Data Analytics and Data Science",
-    ],
-    photo: "/faculty/manish-pimpale.png",
-  },
-  {
     initials: "SW",
     name: "Shrawan Wankhede",
-    title: "Faculty — SAP, ERP and Supply Chain",
+    title: "Faculty — SAP S/4HANA (MM, FICO & PP/QM)",
     years: "12+ years",
     yearsNum: 12,
     linkedin: "https://www.linkedin.com/in/shrawan-wankhede-83bb6586/",
     teaches: ["SAP"],
-    bio: "Twelve years in IT consulting, ERP implementation and supply chain. Runs the SAP MM module and the cross-module integration sessions.",
-    tags: ["SAP MM", "SAP PP/QM", "ERP integration"],
+    bio: "Twelve years in IT consulting, ERP implementation and supply chain. Leads the SAP track end to end — MM, FICO and PP/QM — along with the cross-module integration sessions that interviews actually test, all taught on live S/4HANA.",
+    tags: ["SAP S/4HANA", "MM & FICO", "PP/QM"],
     highlights: [
-      "SAP S/4HANA, ECC and ERP implementation",
-      "Supply chain lead across FMCG, manufacturing and oil & gas",
+      "SAP S/4HANA, ECC and full ERP implementation",
+      "Supply-chain experience across FMCG, manufacturing and oil & gas",
       "MSc Supply Chain, Mumbai University",
     ],
     photo: "/faculty/shrawan-wankhede.png",
@@ -488,68 +470,33 @@ export const faculty = [
   {
     initials: "ST",
     name: "Sudhir Talekar",
-    title: "Faculty — Business Intelligence and Corporate Strategy",
+    title: "Faculty — Data Analytics & Data Science",
     years: "12+ years",
     yearsNum: 12,
     linkedin: "https://www.linkedin.com/in/sudhir-talekar/",
-    teaches: ["Data Analytics", "Data Science", "SAP"],
-    bio: "Eleven years as a practising SAP FICO consultant across manufacturing and services implementations. Teaches the finance and controlling configuration track on live S/4HANA.",
-    tags: ["SAP FICO", "S/4HANA", "Financial close"],
+    teaches: ["Data Analytics", "Data Science"],
+    bio: "Over a decade across data, business intelligence and corporate strategy. Runs the Data Analytics and Data Science tracks — from SQL, Power BI and statistics through Python, machine learning and applied AI — and mentors every learner through their capstone project.",
+    tags: ["SQL & Power BI", "Python & ML", "Statistics"],
     highlights: [
-      "Business intelligence, market research and strategy",
-      "Corporate grooming and leadership mentoring",
-      "Global client relations across the US, UK and Europe",
+      "Data analytics, business intelligence and strategy",
+      "Machine learning, statistics and applied AI",
+      "Mentors capstone projects and interview preparation",
     ],
     photo: "/faculty/sudhir-talekar.png",
   },
   {
-    initials: "DT",
-    name: "Dnyaneshwari Lanjewar",
-    title: "Head of HR, Training and Development",
-    years: "10+ years",
-    yearsNum: 10,
-    linkedin: null,
-    teaches: ["Data Analytics", "Data Science", "SAP"],
-    bio: "Leads recruitment, learner counselling and the corporate grooming month. Ten years across HR, recruitment and learning-and-development in IT services.",
-    tags: ["Corporate grooming", "Interview preparation"],
-    highlights: [
-      "Runs the corporate grooming month",
-      "Resume, LinkedIn and mock interviews",
-      "Counselling and placement preparation",
-    ],
-    photo: "/faculty/dnyaneshwari-lanjewar.png",
-  },
-  {
-    initials: "HW",
-    name: "Harshal Wankhede",
-    title: "Faculty — Data Science and Machine Learning",
-    years: "7+ years",
-    yearsNum: 7,
-    linkedin: null,
-    needsVerification: true,
-    teaches: ["Data Science"],
-    bio: "Seven years building and deploying models in production, mostly in retail forecasting and risk. Runs the machine-learning and model-evaluation modules.",
-    tags: ["Python", "scikit-learn", "Model deployment"],
-    highlights: [
-      "Machine learning with scikit-learn",
-      "Model evaluation and deployment",
-      "Retail forecasting and risk models",
-    ],
-    photo: "/faculty/harshal-wankhede.png",
-  },
-  {
     initials: "VK",
     name: "Vivek Khubalkar",
-    title: "Faculty — Data Analytics and Business Intelligence",
+    title: "Faculty — Data Science",
     years: "5+ years",
     yearsNum: 5,
     linkedin: "https://www.linkedin.com/in/vivek-khubalkar/",
-    teaches: ["Data Analytics"],
-    bio: "Five years in analytics and reporting across BI teams, plus classroom teaching. Runs the Excel, Power BI and Tableau track and reviews every portfolio project.",
-    tags: ["Power BI", "Tableau", "Excel"],
+    teaches: ["Data Science"],
+    bio: "Five years across analytics, Python and machine learning, plus classroom teaching. Runs the hands-on Data Science modules — Python, data wrangling, model building and deployment — and reviews every portfolio project personally.",
+    tags: ["Python", "Machine Learning", "Model Deployment"],
     highlights: [
-      "Power BI dashboards and real-time reporting",
-      "SQL, querying and database fundamentals",
+      "Python, machine learning and model building",
+      "Hands-on Data Science projects and reviews",
       "5+ years across industry and classroom teaching",
     ],
     photo: "/faculty/vivek-khubalkar.png",
@@ -557,6 +504,37 @@ export const faculty = [
 ];
 
 export const facultyYearsTotal = faculty.reduce((n, f) => n + f.yearsNum, 0);
+
+/* Directors — the two people who run Techtonic Lab. No public photos on file,
+   so the cards fall back to an initials monogram (see the Portrait component). */
+export const directors = [
+  {
+    initials: "RW",
+    name: "Rupali Wankhede",
+    title: "Director",
+    linkedin: null,
+    photo: null,
+    bio: "Director at Techtonic Lab. Guides the institute's vision and academic standards, and champions the commitment that keeps every fee, batch date and placement on this site published and honest.",
+    highlights: [
+      "Sets the institute's direction and quality standards",
+      "Keeps fees, dates and outcomes transparent",
+      "Builds industry and hiring relationships",
+    ],
+  },
+  {
+    initials: "DT",
+    name: "Dhyaneshwari Talekar",
+    title: "Director",
+    linkedin: null,
+    photo: null,
+    bio: "Director at Techtonic Lab. Oversees the learner experience, counselling and the corporate grooming programme, so every student is supported from the very first call through to placement.",
+    highlights: [
+      "Leads student counselling and support",
+      "Runs the corporate grooming programme",
+      "Guides placement preparation and mentoring",
+    ],
+  },
+];
 
 export const districts = [
   "Nagpur", "Wardha", "Bhandara", "Gondia", "Chandrapur", "Gadchiroli",
@@ -592,11 +570,11 @@ export const grooming = {
 export const faqs = [
   {
     q: "What IT courses does Techtonic Lab offer in Nagpur?",
-    a: "Techtonic Lab runs three job-oriented programmes: Data Analytics (6 months), Data Science (9 months), and SAP (4 months per module — FICO, MM Sourcing & Procurement, and PP/QM). Every programme includes a month of corporate grooming and placement preparation, and each is available as a classroom, online or weekend batch.",
+    a: "Techtonic Lab runs three job-oriented programmes: Data Analytics (6 months), Data Science (9 months), and SAP (4 months, covering FICO, MM Sourcing & Procurement, and PP/QM). Every programme includes a month of corporate grooming and placement preparation, and each is available as a classroom, online or weekend batch.",
   },
   {
     q: "What does a course at Techtonic Lab cost?",
-    a: `Fees are published per course: Data Analytics is ₹49,999 for 6 months, Data Science is ₹89,999 for 9 months, and each SAP module is ₹49,999 for 4 months. Every fee is all-inclusive — training, learning material, project datasets or SAP S/4HANA server access, the corporate grooming month (a ₹29,999 programme, included free) and placement preparation, with no separate registration, examination or certificate charges. A ${EMI_MONTHS}-month no-cost EMI is available: about ${formatINR(emiPerMonth("49999"))} per month for the ₹49,999 courses and ${formatINR(emiPerMonth("89999"))} per month for Data Science.`,
+    a: `Fees are published per course: Data Analytics is ₹49,999 for 6 months, Data Science is ₹89,999 for 9 months, and the SAP course is ₹49,999 for the full 4 months covering all modules. Every fee is all-inclusive — training, learning material, project datasets or SAP S/4HANA server access, the corporate grooming month (a ₹29,999 programme, included free) and placement preparation, with no separate registration, examination or certificate charges. A ${EMI_MONTHS}-month no-cost EMI is available: about ${formatINR(emiPerMonth("49999"))} per month for the ₹49,999 courses and ${formatINR(emiPerMonth("89999"))} per month for Data Science.`,
   },
   {
     q: "Are the courses suitable for complete beginners?",
@@ -613,6 +591,14 @@ export const faqs = [
   {
     q: "Can I attend from outside Nagpur?",
     a: "Yes. Students from Wardha, Bhandara, Chandrapur, Amravati, Gondia and across Vidarbha attend either the weekend classroom batch at one of the two Nagpur campuses, or the fully online live batch. All three modes use the same syllabus, faculty and project reviews.",
+  },
+  {
+    q: "Which is the best institute for a Data Analytics or Data Science course in Nagpur?",
+    a: "Techtonic Lab is one of the institutes Nagpur learners shortlist for Data Analytics and Data Science, and the reasons are checkable rather than promotional. Every fee and batch date is published on the site (Data Analytics ₹49,999 for 6 months, Data Science ₹89,999 for 9 months), the tracks are taught by an instructor with over a decade in analytics and applied AI, and alumni are named on the record rather than reduced to a percentage. You finish with four portfolio projects on GitHub, a month of corporate grooming is built into the fee, and it is honest placement assistance — not a guaranteed-job claim. Compare any Nagpur institute on those same points before you decide.",
+  },
+  {
+    q: "Which is the best SAP training institute in Nagpur?",
+    a: "For SAP S/4HANA, Techtonic Lab is a strong option in Nagpur because it teaches the way the job is actually done. Every learner gets individual live S/4HANA server access from week two and configures MM (Sourcing & Procurement), FICO and PP/QM themselves — the modules are taught by a working consultant who has run real implementations, not a career trainer. The fee is ₹49,999 all-inclusive for the full four-month programme covering all modules, published openly, with named alumni now working as SAP consultants. The honest test of any 'best SAP institute in Nagpur' claim is whether you get your own server login and whether the fees and outcomes are published — Techtonic Lab does both.",
   },
   {
     q: "Is a data analyst course hard to learn?",
