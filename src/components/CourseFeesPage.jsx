@@ -142,7 +142,7 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
                 <ul className="mt-5 space-y-3">
                   {NOT_INCLUDED.map((i) => (
                     <li key={i} className="flex items-start gap-2.5 text-sm text-zinc-400">
-                      <LuX aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-600" />
+                      <LuX aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-500" />
                       {i}
                     </li>
                   ))}
@@ -207,7 +207,7 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
 
           <Reveal delay={0.1}>
             <p className="mt-8 flex items-start gap-2.5 text-xs leading-relaxed text-zinc-500">
-              <LuInfo aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-600" />
+              <LuInfo aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-500" />
               <span>{DISCLAIMER}</span>
             </p>
           </Reveal>

@@ -225,6 +225,17 @@ export function getBatches({ now = new Date(), horizonMonths = 4 } = {}) {
 // so ISR revalidations always pick up the current date.
 export const batches = getBatches();
 
+// Soonest upcoming batch per course slug, computed against the current date.
+// This is what powers course.nextBatch / startDateISO across the site so no
+// page can ever render a batch date that is already in the past.
+export function soonestBatchByCourse(now = new Date()) {
+  const map = {};
+  for (const b of getBatches({ now })) {
+    if (!map[b.slug]) map[b.slug] = b;
+  }
+  return map;
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const hire = {

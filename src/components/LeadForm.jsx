@@ -71,7 +71,7 @@ function DotLoader({ tone = "dark" }) {
 }
 
 const inputCx =
-  "w-full rounded-xl border border-white/[0.12] bg-ink-950 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 transition-colors focus:border-acid focus:outline-none disabled:opacity-60 disabled:cursor-not-allowed";
+  "w-full rounded-xl border border-white/[0.12] bg-ink-950 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-500 transition-colors focus:border-acid focus:outline-none disabled:opacity-60 disabled:cursor-not-allowed";
 
 export default function LeadForm({ courseDefault = "", source = "website" }) {
   const [values, setValues] = useState({ ...EMPTY, course: courseDefault });

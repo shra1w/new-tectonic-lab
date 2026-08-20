@@ -166,7 +166,7 @@ export default function PlacementsPage() {
 
           <Reveal delay={0.1}>
             <p className="mt-8 flex max-w-3xl items-start gap-2.5 text-xs leading-relaxed text-zinc-500">
-              <LuInfo aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-600" />
+              <LuInfo aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-500" />
               <span>Shared with student consent. Individual results vary. {DISCLAIMER}</span>
             </p>
           </Reveal>
@@ -259,7 +259,7 @@ export default function PlacementsPage() {
 
           <Reveal delay={0.1}>
             <p className="mt-8 flex max-w-3xl items-start gap-2.5 text-xs leading-relaxed text-zinc-500">
-              <LuShieldCheck aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-600" />
+              <LuShieldCheck aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-500" />
               <span>
                 Only companies where a Techtonic Lab alumnus works are listed here. We do not
                 display the logo of any company we have no named alumnus at, and we make no claim

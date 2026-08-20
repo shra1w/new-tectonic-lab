@@ -7,6 +7,7 @@ import { LuArrowRight, LuBadgeCheck, LuQuote, LuSparkles } from "react-icons/lu"
 
 import SectionHead from "./ui/SectionHead";
 import Reveal from "./ui/Reveal";
+import MarqueePause from "./ui/MarqueePause";
 import { placements, placementStats, DISCLAIMER } from "@/lib/site";
 
 const SPEED_SECONDS = 78;
@@ -91,7 +92,10 @@ function AlumniCard({ p, index }) {
 }
 
 export default function Placements() {
-  const [paused, setPaused] = useState(false);
+  // Explicit pause (button) is authoritative; hover is a transient convenience.
+  const [userPaused, setUserPaused] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const paused = userPaused || hovered;
 
   const years = placementStats.years;
   const yearLabel =
@@ -129,11 +133,8 @@ export default function Placements() {
       <Reveal delay={0.1}>
         <div
           className="mask-fade-x relative mt-12 select-none"
-          onPointerEnter={() => setPaused(true)}
-          onPointerLeave={() => setPaused(false)}
-          onTouchStart={() => setPaused(true)}
-          onTouchEnd={() => setPaused(false)}
-          onTouchCancel={() => setPaused(false)}
+          onPointerEnter={() => setHovered(true)}
+          onPointerLeave={() => setHovered(false)}
         >
           <div
             className="flex w-max animate-slide-x motion-reduce:animate-none"
@@ -147,10 +148,9 @@ export default function Placements() {
           </div>
         </div>
 
-        <p className="shell mt-5 text-center text-2xs text-zinc-600">
-          <span className="hidden sm:inline">Hover to pause</span>
-          <span className="sm:hidden">Touch and hold to pause</span>
-        </p>
+        <div className="shell mt-5 flex justify-center">
+          <MarqueePause paused={userPaused} onToggle={() => setUserPaused((p) => !p)} />
+        </div>
       </Reveal>
 
       <div className="shell">

@@ -105,7 +105,7 @@ function PasswordOverlay({ onAuth }) {
             setPwd(e.target.value);
             if (status === "error") setStatus("idle");
           }}
-          className="w-full rounded-xl border border-white/[0.12] bg-ink-950 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 transition-colors focus:border-acid focus:outline-none"
+          className="w-full rounded-xl border border-white/[0.12] bg-ink-950 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-500 transition-colors focus:border-acid focus:outline-none"
           placeholder="••••••••••"
           aria-invalid={status === "error"}
         />
@@ -128,7 +128,7 @@ function PasswordOverlay({ onAuth }) {
           {status === "checking" ? "Verifying…" : "Unlock"}
         </button>
 
-        <p className="mt-6 text-center text-2xs text-zinc-600">
+        <p className="mt-6 text-center text-2xs text-zinc-500">
           Techtonic Lab · Leads Console
         </p>
       </motion.form>
@@ -249,7 +249,7 @@ function LeadCard({ lead }) {
       {lead.message ? (
         <div className="border-t border-white/[0.06] px-5 py-4">
           <p className="flex gap-2 text-sm leading-relaxed text-zinc-300">
-            <LuMessageSquare aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-600" />
+            <LuMessageSquare aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-500" />
             <span className="whitespace-pre-wrap">{lead.message}</span>
           </p>
         </div>
@@ -267,7 +267,7 @@ function LeadCard({ lead }) {
           >
             <div className="grid gap-4 p-5 sm:grid-cols-2">
               <div>
-                <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.14em] text-zinc-600">
+                <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
                   Submission
                 </p>
                 <dl className="space-y-1.5 text-xs">
@@ -297,7 +297,7 @@ function LeadCard({ lead }) {
               </div>
 
               <div>
-                <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.14em] text-zinc-600">
+                <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
                   Attribution
                 </p>
                 {hasUtm ? (
@@ -336,7 +336,7 @@ function LeadCard({ lead }) {
                     ) : null}
                   </dl>
                 ) : (
-                  <p className="text-xs text-zinc-600">Direct / no attribution.</p>
+                  <p className="text-xs text-zinc-500">Direct / no attribution.</p>
                 )}
               </div>
             </div>
@@ -500,7 +500,7 @@ function Console({ pwd, onSignOut }) {
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Search by name, email, phone, message…"
-              className="w-full rounded-xl border border-white/10 bg-ink-900/60 py-3 pl-11 pr-4 text-sm text-zinc-100 placeholder:text-zinc-600 transition-colors focus:border-acid focus:outline-none"
+              className="w-full rounded-xl border border-white/10 bg-ink-900/60 py-3 pl-11 pr-4 text-sm text-zinc-100 placeholder:text-zinc-500 transition-colors focus:border-acid focus:outline-none"
             />
           </div>
           <select
@@ -554,7 +554,7 @@ function Console({ pwd, onSignOut }) {
           )}
         </div>
 
-        <p className="mt-12 text-center text-2xs text-zinc-600">
+        <p className="mt-12 text-center text-2xs text-zinc-500">
           Showing {filtered.length} of {leads.length} · Session ends when you close this tab.
         </p>
       </div>

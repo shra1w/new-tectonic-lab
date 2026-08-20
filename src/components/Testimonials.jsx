@@ -5,6 +5,7 @@ import { LuBadgeCheck, LuQuote } from "react-icons/lu";
 
 import SectionHead from "./ui/SectionHead";
 import Reveal from "./ui/Reveal";
+import MarqueePause from "./ui/MarqueePause";
 import { testimonials } from "@/lib/site";
 
 // Fail fast: a marquee with nothing to show is a bug, not an empty state.
@@ -103,7 +104,9 @@ function TestimonialCard({ t, index }) {
 }
 
 export default function Testimonials() {
-  const [paused, setPaused] = useState(false);
+  const [userPaused, setUserPaused] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const paused = userPaused || hovered;
 
   const strip = (duplicate) => (
     <ul
@@ -138,11 +141,8 @@ export default function Testimonials() {
       <Reveal delay={0.1}>
         <div
           className="mask-fade-x relative mt-14 select-none"
-          onPointerEnter={() => setPaused(true)}
-          onPointerLeave={() => setPaused(false)}
-          onTouchStart={() => setPaused(true)}
-          onTouchEnd={() => setPaused(false)}
-          onTouchCancel={() => setPaused(false)}
+          onPointerEnter={() => setHovered(true)}
+          onPointerLeave={() => setHovered(false)}
         >
           <div
             className="flex w-max animate-slide-x motion-reduce:animate-none"
@@ -157,10 +157,9 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <p className="shell mt-6 text-center text-2xs text-zinc-600">
-          <span className="hidden sm:inline">Hover to pause</span>
-          <span className="sm:hidden">Touch and hold to pause</span>
-        </p>
+        <div className="shell mt-6 flex justify-center">
+          <MarqueePause paused={userPaused} onToggle={() => setUserPaused((p) => !p)} />
+        </div>
       </Reveal>
     </section>
   );

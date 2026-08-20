@@ -40,7 +40,7 @@ function validate(v) {
 }
 
 const inputCx =
-  "w-full rounded-xl border border-white/[0.12] bg-ink-950 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 transition-colors focus:border-acid focus:outline-none";
+  "w-full rounded-xl border border-white/[0.12] bg-ink-950 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-500 transition-colors focus:border-acid focus:outline-none";
 
 function Field({ label, name, error, optional, children }) {
   return (
@@ -51,7 +51,7 @@ function Field({ label, name, error, optional, children }) {
       >
         {label}
         {optional ? (
-          <span className="text-2xs font-normal text-zinc-600">optional</span>
+          <span className="text-2xs font-normal text-zinc-500">optional</span>
         ) : (
           <span className="text-acid">*</span>
         )}

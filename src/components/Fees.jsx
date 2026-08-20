@@ -40,8 +40,8 @@ export default function Fees() {
               ) : null}
 
               <h3 className="font-display text-xl font-semibold text-zinc-50">{course.name}</h3>
-              <p className="mt-1.5 text-xs text-zinc-500">
-                {(course.durationMonths || 0) - 1} months + 1 month corporate grooming
+              <p className="mt-1.5 text-xs text-zinc-400">
+                {course.duration} total · {(course.durationMonths || 0) - 1} months training + 1 month grooming
               </p>
 
               <p className="mt-6 flex items-baseline gap-2">
@@ -82,7 +82,7 @@ export default function Fees() {
         </Stagger>
 
         <p className="mt-8 flex items-start gap-2.5 text-xs leading-relaxed text-zinc-500">
-          <LuInfo aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-600" />
+          <LuInfo aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-500" />
           <span>
             Techtonic Lab provides <strong className="font-semibold text-zinc-300">placement
             assistance, not a placement guarantee</strong>. {DISCLAIMER.split(". ").slice(1).join(". ")}

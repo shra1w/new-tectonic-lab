@@ -37,7 +37,7 @@ export default function LegalPage({ doc, breadcrumbs, eyebrow }) {
                     href={`#${anchor(s.title)}`}
                     className="flex gap-3 text-sm text-zinc-400 transition-colors hover:text-acid"
                   >
-                    <span className="font-display text-2xs text-zinc-600">
+                    <span className="font-display text-2xs text-zinc-500">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     {s.title}

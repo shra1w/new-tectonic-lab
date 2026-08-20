@@ -149,7 +149,7 @@ export default function FacultyPage() {
         Connect on LinkedIn
       </Link>
     ) : (
-      <span className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/[0.03] px-4 py-2 text-2xs font-semibold text-zinc-600">
+      <span className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/[0.03] px-4 py-2 text-2xs font-semibold text-zinc-500">
         <LuLinkedin aria-hidden="true" className="h-3.5 w-3.5" />
         Add LinkedIn URL in src/lib/site.js
       </span>

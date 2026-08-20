@@ -1,4 +1,20 @@
+import { soonestBatchByCourse } from "./content";
+
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://techtoniccorporate.com";
+
+/* Batch dates are never hand-typed on a course. `_soonest(slug)` reads the
+   soonest upcoming batch from the pattern-driven schedule (see content.js),
+   recomputed on every render/ISR pass, so a past date can never ship.
+   `_addMonthsISO` derives the end date from the start + programme length. */
+function _soonest(slug) {
+  return soonestBatchByCourse()[slug] || null;
+}
+function _addMonthsISO(iso, months) {
+  if (!iso) return null;
+  const d = new Date(`${iso}T00:00:00`);
+  d.setMonth(d.getMonth() + (Number(months) || 0));
+  return d.toISOString().slice(0, 10);
+}
 
 export const brand = {
   name: "Techtonic Lab",
@@ -91,9 +107,9 @@ export const courses = [
       "Learn the full analyst stack — Advanced Excel, SQL, Power BI or Tableau, Python, and Applied Statistics — on real datasets, then build a portfolio employers read.",
     duration: "6 months",
     durationMonths: 6,
-    nextBatch: "18 August 2026",
-    startDateISO: "2026-08-18",
-    endDateISO: "2027-02-18",
+    get nextBatch() { return _soonest(this.slug)?.start ?? "Enquire for dates"; },
+    get startDateISO() { return _soonest(this.slug)?.startISO ?? null; },
+    get endDateISO() { return _addMonthsISO(_soonest(this.slug)?.startISO, this.durationMonths); },
     mode: "Classroom / Online / Weekend",
     fee: "₹49,999",
     feeNumeric: "49999",
@@ -109,7 +125,7 @@ export const courses = [
       "Introduction to Cloud Services (AWS / Azure) and End-to-End Capstone Project",
     ],
     includes: [
-      "6 months of training",
+      "5 months of core training",
       "All learning material and datasets",
       "End-to-End industry portfolio projects",
       "1 month corporate grooming",
@@ -128,9 +144,9 @@ export const courses = [
       "Go past reporting into production AI — Python, machine learning, deep learning, NLP, and Generative AI/LLMs, taught through models you deploy.",
     duration: "9 months",
     durationMonths: 9,
-    nextBatch: "25 August 2026",
-    startDateISO: "2026-08-25",
-    endDateISO: "2027-05-25",
+    get nextBatch() { return _soonest(this.slug)?.start ?? "Enquire for dates"; },
+    get startDateISO() { return _soonest(this.slug)?.startISO ?? null; },
+    get endDateISO() { return _addMonthsISO(_soonest(this.slug)?.startISO, this.durationMonths); },
     mode: "Classroom / Online / Weekend",
     fee: "₹89,999",
     feeNumeric: "89999",
@@ -146,7 +162,7 @@ export const courses = [
       "Model Deployment (Flask, FastAPI, Streamlit, Docker basics) & Cloud Fundamentals",
     ],
     includes: [
-      "9 months of training",
+      "8 months of core training",
       "All learning material and datasets",
       "End-to-End industry Capstone projects",
       "1 month corporate grooming",
@@ -165,9 +181,9 @@ export const courses = [
       "Configure real SAP modules on live S/4HANA server access — featuring Sourcing & Procurement (MM), FICO, and PP-QM — taught by working consultants.",
     duration: "4 months",
     durationMonths: 4,
-    nextBatch: "11 August 2026",
-    startDateISO: "2026-08-11",
-    endDateISO: "2026-12-11",
+    get nextBatch() { return _soonest(this.slug)?.start ?? "Enquire for dates"; },
+    get startDateISO() { return _soonest(this.slug)?.startISO ?? null; },
+    get endDateISO() { return _addMonthsISO(_soonest(this.slug)?.startISO, this.durationMonths); },
     mode: "Classroom / Online / Weekend",
     fee: "₹49,999",
     feeNumeric: "49999",
@@ -183,7 +199,7 @@ export const courses = [
       "System Landscape, ASAP Methodology, Tables, Reports & Real-Time Industry Case Studies",
     ],
     includes: [
-      "4 months of training across all modules",
+      "3 months of core training across all modules",
       "All learning material and documentation",
       "Live SAP S/4HANA server access from Day 1",
       "1 month corporate grooming",

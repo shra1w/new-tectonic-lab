@@ -10,9 +10,9 @@ import { LuShoppingCart } from "react-icons/lu";
  * action on the site — nav bar, hero, course cards, mid-page bands, footer.
  *
  * Variants
- *   • "cta"     Full lime button that says "Buy course". The default.
+ *   • "cta"     Full lime button that says "Reserve your seat". The default.
  *               Use in hero, course cards, mid-page CTA bands.
- *   • "header"  Compact acid-outline button with cart + "Buy" label.
+ *   • "header"  Compact acid-outline button with cart + "Reserve" label.
  *               Text collapses on mobile so the nav shows the icon only.
  *   • "ghost"   Muted outline. For secondary placements where the primary
  *               CTA already lives above or below it.
@@ -41,7 +41,7 @@ export default function BuyCourseButton({
   const isHeader = variant === "header";
   const resolvedSize = size ?? (isHeader ? "sm" : "md");
 
-  const defaultLabel = isHeader ? "Buy" : "Buy course";
+  const defaultLabel = isHeader ? "Reserve" : "Reserve your seat";
   const text = label ?? defaultLabel;
 
   const base =
@@ -79,7 +79,7 @@ export default function BuyCourseButton({
   return (
     <Link
       href={href}
-      aria-label={ariaLabel ?? (isHeader ? "Buy a course" : undefined)}
+      aria-label={ariaLabel ?? (isHeader ? "Reserve a seat" : undefined)}
       className={[base, sizes[resolvedSize], variants[variant], className].join(" ")}
       {...rest}
     >

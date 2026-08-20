@@ -167,7 +167,7 @@ export default function Footer() {
                 Terms of service
               </Link>
             </li>
-            <li className="text-zinc-600">Last updated: {brand.lastUpdated}</li>
+            <li className="text-zinc-500">Last updated: {brand.lastUpdated}</li>
           </ul>
         </div>
       </div>

@@ -17,6 +17,11 @@ const nextConfig = {
   },
 
   async headers() {
+    // Any non-production deployment (Vercel preview builds, branch URLs) must
+    // never be indexed — otherwise a *.vercel.app preview competes with the
+    // canonical domain and dilutes the Nagpur rankings.
+    const isProduction = process.env.VERCEL_ENV === "production";
+
     return [
       {
         source: "/:path*",
@@ -24,6 +29,9 @@ const nextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          ...(isProduction
+            ? []
+            : [{ key: "X-Robots-Tag", value: "noindex, nofollow" }]),
         ],
       },
     ];

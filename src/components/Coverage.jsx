@@ -2,35 +2,8 @@ import { LuMapPin, LuClock, LuNavigation, LuPhone } from "react-icons/lu";
 import SectionHead from "./ui/SectionHead";
 import Reveal from "./ui/Reveal";
 import Stagger from "./ui/Stagger";
-import { districts, offices, brand } from "@/lib/site";
-
-
-function DistrictMarquee() {
-  const Row = ({ hidden }) => (
-    <ul
-      aria-hidden={hidden || undefined}
-      className="flex shrink-0 items-center gap-2.5 pr-2.5"
-    >
-      {districts.map((d) => (
-        <li
-          key={d}
-          className="whitespace-nowrap rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-zinc-300"
-        >
-          {d}
-        </li>
-      ))}
-    </ul>
-  );
-
-  return (
-    <div className="mask-fade-x mt-10 overflow-hidden">
-      <div className="flex w-max animate-slide-x motion-reduce:animate-none">
-        <Row />
-        <Row hidden />
-      </div>
-    </div>
-  );
-}
+import DistrictMarquee from "./DistrictMarquee";
+import { offices, brand } from "@/lib/site";
 
 export default function Coverage() {
   return (

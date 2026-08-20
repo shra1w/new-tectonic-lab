@@ -180,7 +180,7 @@ export default function BatchesPage() {
 
           <Reveal delay={0.08}>
             <p className="mt-6 flex items-start gap-2.5 text-xs leading-relaxed text-zinc-500">
-              <LuInfo aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-600" />
+              <LuInfo aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-500" />
               <span>
                 Dates are our current schedule. If a batch cannot run on its published date we will
                 offer you the next equivalent batch or a full refund of anything paid for it.
