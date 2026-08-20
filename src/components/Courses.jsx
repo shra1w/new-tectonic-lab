@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { LuArrowUpRight, LuChartNoAxesColumn, LuBrainCircuit, LuBoxes } from "react-icons/lu";
+import { LuArrowUpRight, LuChartNoAxesColumn, LuBrainCircuit, LuBoxes, LuSparkles } from "react-icons/lu";
 import SectionHead from "./ui/SectionHead";
 import Stagger from "./ui/Stagger";
 import CourseVisual from "./ui/CourseVisual";
+import BuyCourseButton from "./BuyCourseButton";
 import { courses } from "@/lib/site";
 
 const ICONS = {
@@ -117,6 +118,55 @@ export default function Courses() {
             <CourseCard key={course.slug} course={course} />
           ))}
         </Stagger>
+
+        {/* Corporate Grooming — an add-on course. Free with any of the three
+            programmes above, but also available to buy on its own. */}
+        <article className="card group relative mt-5 flex flex-col overflow-hidden transition-colors duration-300 hover:border-acid/35 md:flex-row">
+          <div className="relative md:w-2/5">
+            <CourseVisual
+              src="/photos/grooming.jpeg"
+              alt="Corporate grooming and interview training at Techtonic Lab, Nagpur"
+              variant="card"
+              className="aspect-[16/10] w-full md:h-full"
+              sizes="(max-width: 768px) 100vw, 40vw"
+            />
+            <span className="absolute left-4 top-4 rounded-full border border-acid/25 bg-ink-950/70 px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.14em] text-acid backdrop-blur-sm">
+              Add-on course
+            </span>
+          </div>
+
+          <div className="flex flex-1 flex-col p-5 sm:p-6">
+            <h3 className="font-display text-2xl font-semibold tracking-tight text-zinc-50">
+              Corporate Grooming
+            </h3>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-400">
+              A one-month programme that turns trained learners into hireable
+              professionals — resume and LinkedIn rebuild, three recorded mock
+              interviews with feedback, aptitude practice and workplace
+              communication. Included free with every course above, or enroll
+              in it on its own.
+            </p>
+
+            <div className="mt-5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className="font-display text-2xl font-semibold text-acid">₹29,999</span>
+              <span className="text-sm text-zinc-500">standalone</span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-acid/30 bg-acid/[0.08] px-3 py-1 text-xs font-medium text-acid">
+                <LuSparkles aria-hidden="true" className="h-3.5 w-3.5" />
+                Free with any course
+              </span>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <BuyCourseButton label="Buy grooming separately" ariaLabel="Buy the corporate grooming programme separately" />
+              <Link
+                href="/connect-with-us"
+                className="text-sm font-semibold text-zinc-400 transition-colors hover:text-acid"
+              >
+                Ask about it
+              </Link>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
   );

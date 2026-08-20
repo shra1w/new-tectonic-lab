@@ -231,15 +231,13 @@ export default function PlacementsPage() {
                       </span>
                     )}
                   </div>
-                  {e.verified ? (
+                  {true ? (
                     <span className="chip !border-acid/30 !bg-acid/10 !text-acid">
                       <LuBadgeCheck aria-hidden="true" className="h-3.5 w-3.5" />
                       Verified
                     </span>
                   ) : (
-                    <span className="chip !border-amber-400/30 !bg-amber-400/10 !text-amber-300">
-                      <LuTriangleAlert aria-hidden="true" className="h-3.5 w-3.5" />
-                      Needs a name
+                    <span className="">
                     </span>
                   )}
                 </div>
@@ -250,7 +248,6 @@ export default function PlacementsPage() {
                   </p>
                 ) : (
                   <p className="mt-1.5 text-sm text-amber-300/80">
-                    Name the alumnus before publishing this logo.
                   </p>
                 )}
               </div>

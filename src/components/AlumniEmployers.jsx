@@ -39,7 +39,7 @@ function EmployerCard({ e }) {
       />
 
       {/* Logo band */}
-      <div className="relative flex h-32 shrink-0 items-center justify-center overflow-hidden border-b border-white/10 bg-white/[0.015] px-6 sm:h-36">
+      <div className="relative flex h-24 shrink-0 items-center justify-center overflow-hidden border-b border-white/10 bg-white/[0.015] px-4 sm:h-28">
         {/* Site-wide hairline grid motif */}
         <span
           aria-hidden="true"
@@ -64,16 +64,16 @@ function EmployerCard({ e }) {
             }`}
           />
         ) : (
-          <span className="relative font-display text-xl font-semibold tracking-tight text-zinc-300">
+          <span className="relative text-center font-display text-base font-semibold tracking-tight text-zinc-200 sm:text-lg">
             {e.company}
           </span>
         )}
       </div>
 
       {/* Meta strip */}
-      <div className="flex flex-1 items-start justify-between gap-3 p-5">
+      <div className="flex flex-1 items-start justify-between gap-2 p-3.5">
         <div className="min-w-0">
-          <h3 className="truncate font-display text-base font-semibold tracking-tight text-zinc-50">
+          <h3 className="truncate font-display text-sm font-semibold tracking-tight text-zinc-50">
             {e.company}
           </h3>
           {/* {e.role || e.alumnus ? (
@@ -119,7 +119,7 @@ export default function AlumniEmployers({ standalone = false }) {
         />
 
         {/* Compact stats strip — factual, no puffery */}
-        <Reveal delay={0.05}>
+        {/* <Reveal delay={0.05}>
           <div className="mx-auto mt-8 flex w-fit flex-wrap items-center justify-center gap-x-5 gap-y-2 rounded-full border border-white/10 bg-ink-950/60 px-5 py-2.5 backdrop-blur">
             <span className="inline-flex items-center gap-2 text-xs text-zinc-400">
               <LuBuilding2 aria-hidden="true" className="h-3.5 w-3.5 text-acid" />
@@ -133,10 +133,10 @@ export default function AlumniEmployers({ standalone = false }) {
               named alumni on record
             </span>
           </div>
-        </Reveal>
+        </Reveal> */}
 
         <Stagger
-          className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
           itemClassName="h-full"
         >
           {alumniEmployers.map((e) => (

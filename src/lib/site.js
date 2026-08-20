@@ -299,6 +299,13 @@ export const alumniEmployers = [
     alumnus: null,
     role: null,
   },
+  // Text-only entries — no logo yet. Rendered as a set company name.
+  { company: "TCS", logo: "/logos/tcs.png", alumnus: null, role: null },
+  { company: "Accenture", logo: "/logos/accenture.svg", alumnus: null, role: null },
+  { company: "Reliance", logo: "/logos/reliance.png", alumnus: null, role: null },
+  { company: "WNS Global", logo: "/logos/wns.png", alumnus: null, role: null },
+  // { company: "Solar Industries", logo: null, alumnus: null, role: null },
+  { company: "Bajaj Steel", logo: "/logos/bajaj-steel.jpg", alumnus: null, role: null },
 ];
 
 export const placements = [
@@ -529,7 +536,7 @@ export const directors = [
     name: "Rupali Wankhede",
     title: "Director",
     linkedin: null,
-    photo: null,
+    photo: "/faculty/rupali-d1.png",
     bio: "Director at Techtonic Lab. Guides the institute's vision and academic standards, and champions the commitment that keeps every fee, batch date and placement on this site published and honest.",
     highlights: [
       "Sets the institute's direction and quality standards",
@@ -542,7 +549,7 @@ export const directors = [
     name: "Dhyaneshwari Talekar",
     title: "Director",
     linkedin: null,
-    photo: null,
+    photo: "/faculty/dhyaneshwari-d2.png",
     bio: "Director at Techtonic Lab. Oversees the learner experience, counselling and the corporate grooming programme, so every student is supported from the very first call through to placement.",
     highlights: [
       "Leads student counselling and support",

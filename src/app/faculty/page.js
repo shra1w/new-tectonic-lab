@@ -180,13 +180,14 @@ export default function FacultyPage() {
                 key={d.name}
                 className="card group flex h-full flex-col overflow-hidden transition-colors duration-300 hover:border-acid/35"
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink-950">
+                <div className="relative aspect-[4/3] w-full  bg-ink-950">
                   {d.photo ? (
                     // eslint-disable-next-line @next/next/no-img-element
+
                     <img
                       src={d.photo}
                       alt={`${d.name}, ${d.title} at Techtonic Lab`}
-                      className="h-full w-full object-cover object-top"
+                      className="h-[20rem] w-full object-cover "
                     />
                   ) : (
                     <span className="ruled grid h-full w-full place-items-center bg-gradient-to-br from-acid/20 to-acid/[0.04] font-display text-4xl font-semibold text-acid">
