@@ -23,9 +23,9 @@ import {
 
 const TITLE = "Data Analytics, Data Science & SAP Courses in Nagpur | Techtonic Lab";
 const DESC =
-  "Job-ready IT courses in Nagpur — Data Analytics (6 months), Data Science (9 months) and SAP S/4HANA (4 months). Fees from ₹49,999. Classroom, online and weekend batches with placement preparation.";
+  "Job-ready IT courses in Nagpur — Data Analytics (6 months), Data Science (9 months) and SAP S/4HANA offered as four standalone modules (MM, FICO, PP/QM, SD), each ₹49,999. Classroom, online and weekend batches with placement preparation.";
 const DESC_SHORT =
-  "Job-ready IT courses in Nagpur — Data Analytics, Data Science and SAP. Fees from ₹49,999. Placement preparation included.";
+  "Job-ready IT courses in Nagpur — Data Analytics, Data Science and SAP (four S/4HANA modules, ₹49,999 each). Placement preparation included.";
 
 export const metadata = {
   title: TITLE,

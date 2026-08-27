@@ -8,6 +8,7 @@ import {
   LuFolderGit2,
   LuCalendarDays,
   LuChevronRight,
+  LuArrowUpRight,
 } from "react-icons/lu";
 
 import PageHero from "./ui/PageHero";
@@ -26,7 +27,8 @@ import BuyCourseButton from "./BuyCourseButton";
 import { faculty, EMI_MONTHS, emiPerMonth, formatINR } from "@/lib/site";
 import { batches } from "@/lib/content";
 
-export default function CoursePage({ course, detail, breadcrumbs }) {
+export default function CoursePage({ course, detail, breadcrumbs, modules }) {
+  const moduleList = modules ? Object.values(modules) : [];
   const courseFaculty = faculty.filter((f) => f.teaches.includes(course.name));
   const upcoming = batches.filter((b) => b.slug === course.slug).slice(0, 4);
   const trainingMonths = (course.durationMonths || 0) - 1;
@@ -189,6 +191,102 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
           </Stagger>
         </div>
       </section>
+
+      {/* ---- Modules (SAP: four standalone modules, ₹49,999 each) ---- */}
+      {moduleList.length > 0 ? (
+        <section
+          aria-labelledby="modules-title"
+          className="border-y border-white/10 bg-ink-900/40 py-20 sm:py-24"
+        >
+          <div className="shell">
+            <SectionHead
+              id="modules-title"
+              eyebrow="Choose your module"
+              title={`${moduleList.length} standalone modules, ${course.fee} each`}
+              intro="Every module is a complete course in its own right, mapped to one end-to-end business process and taught on your own live S/4HANA server. Pick the one that fits your background — you can always add another later."
+            />
+
+            {/* Per-module price note — the unit is one module, never a bundle total */}
+            <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-acid/25 bg-acid/[0.06] p-5 sm:flex-row sm:items-center sm:justify-between">
+              <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <span className="font-display text-3xl font-semibold tracking-tightest text-acid">
+                  {course.fee}
+                </span>
+                <span className="text-sm font-medium text-zinc-200">per module</span>
+                <span className="text-xs text-zinc-500">
+                  · all-inclusive · live server access · EMI available
+                </span>
+              </p>
+              <Link href="/connect-with-us" className="btn-ghost shrink-0 !py-2.5 !text-[0.8125rem]">
+                Not sure which one? Ask a counsellor
+              </Link>
+            </div>
+
+            <Stagger
+              className="mt-6 grid gap-5 sm:grid-cols-2"
+              itemClassName="h-full"
+            >
+              {moduleList.map((m) => (
+                <div key={m.slug} className="card flex h-full flex-col p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="min-w-0">
+                      {m.process ? (
+                        <span className="inline-flex items-center rounded-full border border-acid/25 bg-acid/[0.06] px-2.5 py-0.5 text-2xs font-semibold uppercase tracking-[0.12em] text-acid">
+                          {m.process}
+                        </span>
+                      ) : null}
+                      <h3 className="mt-2.5 font-display text-xl font-semibold text-zinc-50">
+                        {m.name}
+                      </h3>
+                      <p className="mt-0.5 text-xs text-zinc-500">{m.tagline}</p>
+                    </div>
+                    <span className="chip shrink-0 !border-acid/30 !text-acid">{m.fee || course.fee}</span>
+                  </div>
+
+                  <p className="mt-4 text-sm leading-relaxed text-zinc-400">{m.summary}</p>
+
+                  {Array.isArray(m.topics) && m.topics.length ? (
+                    <ul className="mt-4 flex-1 space-y-2">
+                      {m.topics.slice(0, 4).map((t) => (
+                        <li key={t} className="flex items-start gap-2.5 text-sm text-zinc-300">
+                          <LuCheck aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-acid" />
+                          <span className="leading-snug">{t}</span>
+                        </li>
+                      ))}
+                      {m.topics.length > 4 ? (
+                        <li className="pl-[1.625rem] text-xs text-zinc-500">
+                          + {m.topics.length - 4} more topics
+                        </li>
+                      ) : null}
+                    </ul>
+                  ) : (
+                    <div className="flex-1" />
+                  )}
+
+                  <div className="mt-6 flex flex-wrap items-center gap-3">
+                    <Link
+                      href={`/${course.slug}/${m.slug}`}
+                      className="group inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-zinc-100 transition-colors hover:border-acid/50 hover:bg-acid/10 hover:text-acid"
+                    >
+                      Explore {m.name}
+                      <LuArrowUpRight
+                        aria-hidden="true"
+                        className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      />
+                    </Link>
+                    <Link
+                      href="/connect-with-us"
+                      className="text-xs font-semibold text-zinc-500 transition-colors hover:text-acid"
+                    >
+                      Enquire
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </Stagger>
+          </div>
+        </section>
+      ) : null}
 
       {/* ---- Projects ---- */}
       <section
@@ -389,15 +487,22 @@ export default function CoursePage({ course, detail, breadcrumbs }) {
           <SectionHead
             id="course-fee-title"
             eyebrow="Fees"
-            title={`${course.fee}, itemised`}
-            intro={`One price for the whole ${course.duration}. No registration fee, no examination fee, no certificate fee, and no tier above this one.`}
+            title={course.feeNote ? `${course.fee} ${course.feeNote}, itemised` : `${course.fee}, itemised`}
+            intro={
+              course.feeNote
+                ? "One price per module — no registration fee, no examination fee, no certificate fee, and no tier above this one. Take a single module, or add another as you specialise."
+                : `One price for the whole ${course.duration}. No registration fee, no examination fee, no certificate fee, and no tier above this one.`
+            }
           />
           <Reveal delay={0.08}>
             <div className="card p-6 sm:p-7">
-              <p className="flex items-baseline gap-2">
+              <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
                 <span className="font-display text-4xl font-semibold tracking-tightest text-acid">
                   {course.fee}
                 </span>
+                {course.feeNote ? (
+                  <span className="text-sm font-medium text-zinc-200">{course.feeNote}</span>
+                ) : null}
                 <span className="text-xs text-zinc-500">all-inclusive</span>
               </p>
               <p className="mt-2 text-xs text-zinc-500">

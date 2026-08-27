@@ -9,6 +9,7 @@ import Stagger from "./ui/Stagger";
 import FaqList from "./ui/FaqList";
 import LeadForm from "./LeadForm";
 import CtaBand from "./CtaBand";
+import BuyCourseButton from "./BuyCourseButton";
 import { sapModules } from "@/lib/courses";
 import { courses } from "@/lib/site";
 
@@ -26,8 +27,8 @@ export default function SapModulePage({ mod, breadcrumbs }) {
       a: `${mod.bestFor} suit this module best. That said, all four functional modules are business configuration rather than programming, so no technical degree is required for any of them.`,
     },
     {
-      q: `How many hours of ${mod.name} are in the Techtonic Lab SAP course?`,
-      a: `${mod.hours}. The SAP programme at Techtonic Lab covers FICO, MM, SD and PP/QM together over four months, plus the cross-module integration sessions that interviews actually test.`,
+      q: `How is ${mod.name} taught at Techtonic Lab?`,
+      a: `${mod.hours}. Techtonic Lab offers four standalone SAP modules — MM, FICO, PP/QM and SD — each taught hands-on on live S/4HANA, plus the cross-module integration sessions that interviews actually test.`,
     },
     {
       q: `Do I get live S/4HANA access for ${mod.name}?`,
@@ -35,7 +36,7 @@ export default function SapModulePage({ mod, breadcrumbs }) {
     },
     {
       q: `What is the fee for learning ${mod.name} in Nagpur?`,
-      a: "₹49,999 covers the whole four-month SAP programme including this module, all the others, live server access, the corporate grooming month and placement preparation. Modules are not sold separately.",
+      a: `${mod.name} is ${mod.fee || "₹49,999"}, all-inclusive — live S/4HANA server access, all learning material, the corporate grooming month and placement preparation. Each of the four SAP modules is priced the same and can be taken on its own, with a no-cost EMI available.`,
     },
     {
       q: `What jobs can I get with ${mod.name}?`,
@@ -59,11 +60,12 @@ export default function SapModulePage({ mod, breadcrumbs }) {
             rows={[
               ["Module", mod.name],
               ["Area", mod.tagline],
-              ["Hours", mod.hours],
+              ["Business process", mod.process || mod.tagline],
+              ["Format", mod.hours],
               ["Best suited to", mod.bestFor],
               ["Market demand", mod.demand],
               ["Server access", "Individual live S/4HANA"],
-              ["Fee", "Included in the ₹49,999 SAP course"],
+              ["Fee", `${mod.fee || "₹49,999"} · standalone, all-inclusive`],
               ["Upcoming batch", sap.nextBatch],
             ]}
           />
@@ -74,6 +76,12 @@ export default function SapModulePage({ mod, breadcrumbs }) {
             Book a free consultation
             <LuArrowRight aria-hidden="true" className="h-4 w-4" />
           </Link>
+          <BuyCourseButton
+            href="#enquire"
+            size="lg"
+            label={`Enroll — ${mod.fee || sap.fee} / module`}
+            className="w-full sm:w-auto"
+          />
           <Link href="/sap-course" className="btn-ghost w-full sm:w-auto">
             See the full SAP course
           </Link>
@@ -88,15 +96,15 @@ export default function SapModulePage({ mod, breadcrumbs }) {
                 <LuServer aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-acid" />
                 <p className="text-sm leading-relaxed text-zinc-300">
                   <strong className="font-semibold text-zinc-100">
-                    {mod.name} is not sold as a standalone course.
+                    {mod.name} is a standalone course — {mod.fee || "₹49,999"}, all-inclusive.
                   </strong>{" "}
-                  It is taught inside the four-month SAP programme alongside FICO, MM, SD and
-                  PP/QM, because consultants get hired on integration knowledge, not on one
-                  module in isolation.
+                  Take it on its own, or add another of the four SAP modules as you specialise.
+                  Either way you configure it yourself on individual live S/4HANA access, and we
+                  still cover the cross-module integration that interviews test.
                 </p>
               </div>
               <Link href="/sap-course" className="btn-ghost shrink-0 !py-2.5 !text-[0.8125rem]">
-                How the programme works
+                See all four modules
               </Link>
             </div>
           </Reveal>
@@ -263,8 +271,9 @@ export default function SapModulePage({ mod, breadcrumbs }) {
       </section>
 
       <section
+        id="enquire"
         aria-labelledby="mod-enquiry-title"
-        className="border-y border-white/10 bg-ink-900/40 py-20 sm:py-24"
+        className="scroll-mt-24 border-y border-white/10 bg-ink-900/40 py-20 sm:py-24"
       >
         <div className="shell grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
           <SectionHead

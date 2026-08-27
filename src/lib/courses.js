@@ -4,7 +4,8 @@
 // syllabus PDFs (Data Analyst, Data Science, SAP MM / FICO / PP-QM).
 //
 // Durations and fees live in site.js and must match: Data Analytics 6 months,
-// Data Science 9 months, SAP 4 months (all three modules, one programme).
+// Data Science 9 months. SAP is sold as four standalone modules (MM, FICO,
+// PP/QM, SD), each ₹49,999 — never surface a combined all-four total.
 // -----------------------------------------------------------------------------
 
 export const courseDetail = {
@@ -422,9 +423,9 @@ export const courseDetail = {
   },
 
   "sap-course": {
-    h1: "SAP Course in Nagpur — MM, FICO and PP/QM on Live S/4HANA",
+    h1: "SAP Course in Nagpur — MM, FICO, PP/QM & SD on Live S/4HANA",
     summary:
-      "Configure real SAP S/4HANA modules on individual server access from day one — Sourcing & Procurement (MM), Finance & Controlling (FICO) and Production Planning & Quality (PP/QM). All three modules in one four-month programme, taught by working consultants. Classroom, online and weekend batches in Nagpur.",
+      "Configure real SAP S/4HANA modules on individual server access from day one — Sourcing & Procurement (MM), Finance & Controlling (FICO), Production Planning & Quality (PP/QM) and Sales & Distribution (SD). Four standalone modules, each ₹49,999, taught by working consultants. Classroom, online and weekend batches in Nagpur.",
     primaryKeyword: "SAP course in Nagpur",
     prerequisites: "None for functional modules. A commerce or business background helps for FICO.",
     certification: "Techtonic Lab completion certificate, plus SAP certification guidance",
@@ -463,7 +464,7 @@ export const courseDetail = {
       {
         n: "02",
         title: "SAP MM — Sourcing & Procurement",
-        hours: "Weeks (within the 4-month programme)",
+        hours: "Standalone module on live S/4HANA",
         topics: [
           "Enterprise structure — company, plant, storage location, purchasing org",
           "Master data — material, business partner, info record, source list, quota",
@@ -479,7 +480,7 @@ export const courseDetail = {
       {
         n: "03",
         title: "SAP FICO — Finance & Controlling",
-        hours: "Weeks (within the 4-month programme)",
+        hours: "Standalone module on live S/4HANA",
         topics: [
           "Organisation structure — company code, credit control, business area",
           "General ledger, fiscal year variant, document splitting, parallel ledgers",
@@ -495,7 +496,7 @@ export const courseDetail = {
       {
         n: "04",
         title: "SAP PP/QM — Production & Quality",
-        hours: "Weeks (within the 4-month programme)",
+        hours: "Standalone module on live S/4HANA",
         topics: [
           "Enterprise structure and PP master data — material, BOM, work centre, routing",
           "Production versions, demand management and MRP run",
@@ -510,6 +511,21 @@ export const courseDetail = {
       },
       {
         n: "05",
+        title: "SAP SD — Sales & Distribution",
+        hours: "Standalone module on live S/4HANA",
+        topics: [
+          "Enterprise structure — sales organisation, distribution channel, division, sales area",
+          "Master data — customer, material, customer-material info and condition records",
+          "Sales documents — inquiry, quotation, order, contracts and scheduling agreements",
+          "Item categories, schedule lines, copy control and the pricing procedure",
+          "Availability check (ATP), shipping, delivery, picking and post goods issue",
+          "Billing, credit/debit memos, returns, credit management and SD-FI integration",
+        ],
+        tools: ["SAP SD", "SAP S/4HANA"],
+        project: "Run a full order-to-cash cycle from sales order through to billing",
+      },
+      {
+        n: "06",
         title: "Integration, certification and grooming",
         hours: "1 month",
         topics: [
@@ -520,7 +536,7 @@ export const courseDetail = {
           "Salary negotiation for consultants",
         ],
         tools: ["SAP S/4HANA", "LinkedIn"],
-        project: "An end-to-end business scenario touching MM, FICO and PP/QM",
+        project: "An end-to-end business scenario touching MM, FICO, PP/QM and SD",
       },
     ],
 
@@ -554,14 +570,14 @@ export const courseDetail = {
     careers: [
       { role: "SAP FICO Consultant", entry: "₹3.5L – ₹5.5L", mid: "₹8L – ₹16L" },
       { role: "SAP MM Consultant", entry: "₹3.5L – ₹5L", mid: "₹7L – ₹14L" },
-      { role: "SAP PP Consultant", entry: "₹3.5L – ₹5.5L", mid: "₹8L – ₹15L" },
-      { role: "SAP QM Consultant", entry: "₹3.5L – ₹5L", mid: "₹7L – ₹13L" },
+      { role: "SAP SD Consultant", entry: "₹3.5L – ₹5.5L", mid: "₹8L – ₹15L" },
+      { role: "SAP PP/QM Consultant", entry: "₹3.5L – ₹5.5L", mid: "₹8L – ₹15L" },
     ],
 
     faqs: [
       {
         q: "Which SAP modules does Techtonic Lab teach in Nagpur?",
-        a: "Techtonic Lab teaches three functional modules on live S/4HANA server access — SAP MM (Sourcing & Procurement), SAP FICO (Finance & Controlling) and SAP PP/QM (Production Planning & Quality Management) — along with the cross-module integration sessions that interviews actually test. All three are covered in a single four-month programme.",
+        a: "Techtonic Lab teaches four functional modules on live S/4HANA server access — SAP MM (Sourcing & Procurement), SAP FICO (Finance & Controlling), SAP PP/QM (Production Planning & Quality Management) and SAP SD (Sales & Distribution). Each is a standalone course priced at ₹49,999, and every module also covers the cross-module integration sessions that interviews actually test.",
       },
       {
         q: "Do I get my own SAP S/4HANA server access?",
@@ -569,7 +585,7 @@ export const courseDetail = {
       },
       {
         q: "What is the fee for the SAP course in Nagpur?",
-        a: "The fee is ₹49,999 for the complete four-month programme covering all three modules — MM, FICO and PP/QM — including live S/4HANA server access, all learning material, the corporate grooming month and placement preparation. A no-cost EMI is available at roughly ₹8,334 per month over six months. There is no per-module charge.",
+        a: "Each SAP module — MM, FICO, PP/QM or SD — is ₹49,999, all-inclusive: live S/4HANA server access, all learning material, the corporate grooming month and placement preparation. You choose the module that fits your background and can add another later. A no-cost EMI is available at roughly ₹8,334 per month over six months, with no separate registration, examination or certificate charge.",
       },
       {
         q: "Who can do an SAP course — is a technical degree needed?",
@@ -577,7 +593,7 @@ export const courseDetail = {
       },
       {
         q: "Which SAP module has the most jobs in India?",
-        a: "SAP FICO and SAP MM consistently carry the highest volume of Indian openings. PP/QM is smaller but less crowded, which can work in your favour. Because all three modules are covered in one programme, you can decide where to specialise once you have configured each of them.",
+        a: "SAP FICO and SAP MM consistently carry the highest volume of Indian openings; SAP SD is strong across distribution and consumer goods, while PP/QM is smaller but less crowded, which can work in your favour. Since each module is a standalone course, you can start with the one that matches your background and add another as you specialise.",
       },
       {
         q: "Is SAP certification included in the course fee?",
@@ -602,10 +618,14 @@ export const sapModules = {
     name: "SAP MM",
     fullName: "SAP MM Course in Nagpur — Sourcing & Procurement on S/4HANA",
     tagline: "Sourcing & Procurement (Materials Management)",
+    process: "Procure-to-Pay",
+    fee: "₹49,999",
+    focus:
+      "The purchasing side of the business — vendors, purchase orders, inventory and invoice verification.",
     summary:
       "Configure the full procure-to-pay cycle on live S/4HANA — enterprise structure, master data, purchasing, release strategies, inventory management, valuation and invoice verification. The fastest route from a procurement or stores role into consulting.",
     bestFor: "Procurement, stores and supply-chain backgrounds",
-    hours: "Part of the four-month SAP programme on live S/4HANA",
+    hours: "A standalone module on live S/4HANA",
     demand: "Very high, especially in manufacturing",
     topics: [
       "Organisational structure — company code, plant, storage location, purchasing org",
@@ -631,10 +651,14 @@ export const sapModules = {
     name: "SAP FICO",
     fullName: "SAP FICO Course in Nagpur — Finance and Controlling on S/4HANA",
     tagline: "Finance and Controlling",
+    process: "Record-to-Report",
+    fee: "₹49,999",
+    focus:
+      "The finance backbone — general ledger, AP/AR, asset accounting and Indian GST/TDS. Highest hiring volume.",
     summary:
       "Configure organisation structure, general ledger, document splitting, parallel ledgers, AP/AR, asset accounting and Indian GST/TDS on live S/4HANA. The module Indian employers hire for in the highest volume, and the natural route for commerce graduates.",
     bestFor: "Commerce, BBA and accounting backgrounds",
-    hours: "Part of the four-month SAP programme on live S/4HANA",
+    hours: "A standalone module on live S/4HANA",
     demand: "Highest volume of Indian openings",
     topics: [
       "Organisation structure — company code, credit control area, business area",
@@ -661,10 +685,14 @@ export const sapModules = {
     name: "SAP PP/QM",
     fullName: "SAP PP/QM Course in Nagpur — Production Planning and Quality Management",
     tagline: "Production Planning and Quality Management",
+    process: "Plan-to-Produce",
+    fee: "₹49,999",
+    focus:
+      "The manufacturing floor — BOMs, routings, MRP, production orders and quality inspection.",
     summary:
       "Configure BOMs, routings, work centres, MRP and production orders, then the inspection lots, results recording and usage decisions that release them — with full PP-MM, PP-SD and QM integration on live S/4HANA. A smaller, less crowded field than FICO or MM.",
     bestFor: "Engineering and manufacturing backgrounds",
-    hours: "Part of the four-month SAP programme on live S/4HANA",
+    hours: "A standalone module on live S/4HANA",
     demand: "Smaller volume, but noticeably less competition",
     topics: [
       "Enterprise structure for PP and MRP areas",
@@ -691,10 +719,14 @@ export const sapModules = {
     name: "SAP SD",
     fullName: "SAP SD Course in Nagpur — Sales and Distribution",
     tagline: "Sales and Distribution",
+    process: "Order-to-Cash",
+    fee: "₹49,999",
+    focus:
+      "The selling side of the business — sales orders, pricing, delivery, billing and returns.",
     summary:
       "Configure order-to-cash from sales area design through pricing, delivery, billing and returns on live S/4HANA — enterprise structure, sales documents, availability check, shipping and billing, with full MM and FICO integration.",
     bestFor: "Sales, order management and customer-facing backgrounds",
-    hours: "Part of the four-month SAP programme on live S/4HANA",
+    hours: "A standalone module on live S/4HANA",
     demand: "High, especially in distribution and consumer goods",
     topics: [
       "Enterprise structure — sales organisation, distribution channel, division, sales area",

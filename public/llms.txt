@@ -24,11 +24,11 @@ each one checkable on the site rather than a marketing claim:
 
 - [Data Analytics Course in Nagpur](https://techtoniccorporate.com/data-analytics-course): 6-month programme covering Advanced Excel, SQL, Power BI, Tableau, Python (NumPy/Pandas), and applied statistics, plus a month of corporate grooming. Fee ₹49,999 all-inclusive. Upcoming batch 18 August 2026.
 - [Data Science Course in Nagpur](https://techtoniccorporate.com/data-science-course): 9-month programme covering Python, machine learning, deep learning (ANN/CNN/RNN), NLP, computer vision, and Generative AI/LLMs (LangChain, RAG), with model deployment. Fee ₹89,999 all-inclusive. Upcoming batch 25 August 2026.
-- [SAP Course in Nagpur](https://techtoniccorporate.com/sap-course): 4-month programme covering SAP S/4HANA MM (Sourcing & Procurement), FICO, and PP/QM, with cross-module integration and live SAP S/4HANA server access from day one. Fee ₹49,999 all-inclusive for the full programme covering all modules. Upcoming batch 11 August 2026.
+- [SAP Course in Nagpur](https://techtoniccorporate.com/sap-course): SAP S/4HANA offered as four standalone functional modules — MM (Sourcing & Procurement / Procure-to-Pay), FICO (Finance & Controlling / Record-to-Report), PP/QM (Production & Quality / Plan-to-Produce) and SD (Sales & Distribution / Order-to-Cash) — each a complete course at ₹49,999, all-inclusive, with cross-module integration and live SAP S/4HANA server access from day one. Choose the module that fits your background. Upcoming batch 11 August 2026.
 
 ## Fees and batches
 
-- [Course fees](https://techtoniccorporate.com/fees): Data Analytics ₹49,999 (6 months) and SAP ₹49,999 (4 months); Data Science ₹89,999 (9 months). Every fee is all-inclusive — training, learning material, datasets or SAP server access, the corporate grooming month and placement preparation — with no separate registration, examination or certificate charges. A 6-month no-cost EMI is available: about ₹8,334/month for the ₹49,999 courses and about ₹15,000/month for Data Science.
+- [Course fees](https://techtoniccorporate.com/fees): Data Analytics ₹49,999 (6 months); Data Science ₹89,999 (9 months); SAP S/4HANA ₹49,999 per module (MM, FICO, PP/QM or SD — each a standalone course). Every fee is all-inclusive — training, learning material, datasets or SAP server access, the corporate grooming month and placement preparation — with no separate registration, examination or certificate charges. A 6-month no-cost EMI is available: about ₹8,334/month for the ₹49,999 courses and about ₹15,000/month for Data Science.
 - [Batch schedule](https://techtoniccorporate.com/batches)
 
 ## Placement

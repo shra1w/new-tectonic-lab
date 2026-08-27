@@ -27,7 +27,9 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
   const feeFaqs = [
     {
       q: `What is the total fee for the ${course.fullName}?`,
-      a: `The total fee is ${course.fee} for the complete ${course.duration} programme — ${trainingMonths} months of core training plus one month of corporate grooming. There is no separate registration fee, examination fee or certificate fee, and there is no higher tier.`,
+      a: course.feeNote
+        ? `Each SAP module — MM, FICO, PP/QM or SD — is ${course.fee}, all-inclusive. That covers full training in the module, individual live S/4HANA server access, the corporate grooming month and placement preparation, with no separate registration, examination or certificate fee and no higher tier. Take one module, or add another as you specialise.`
+        : `The total fee is ${course.fee} for the complete ${course.duration} programme — ${trainingMonths} months of core training plus one month of corporate grooming. There is no separate registration fee, examination fee or certificate fee, and there is no higher tier.`,
     },
     {
       q: "Is EMI available, and what does it cost?",
@@ -70,11 +72,11 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
         eyebrow="Fees"
         title={`${course.fullName} fees —`}
         highlight={course.fee}
-        summary={`Published, itemised and all-inclusive. ${course.duration} of training and corporate grooming, with EMI available at roughly ${emiMonthly} per month. You should not have to fill in a form to find out what a course costs.`}
+        summary={`${course.feeNote ? `Each SAP module is ${course.fee}, ${course.feeNote}. ` : ""}Published, itemised and all-inclusive. ${course.duration} of training and corporate grooming, with EMI available at roughly ${emiMonthly} per month. You should not have to fill in a form to find out what a course costs.`}
         aside={
           <FactTable
             rows={[
-              ["Total fee", course.fee],
+              ["Total fee", course.feeNote ? `${course.fee} ${course.feeNote}` : course.fee],
               ["EMI", emiText],
               ["Registration fee", "None"],
               ["Certificate fee", "None"],
@@ -257,7 +259,12 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
                             {c.name}
                           </Link>
                         </th>
-                        <td className="px-5 py-4 font-medium text-acid sm:px-6">{c.fee}</td>
+                        <td className="px-5 py-4 font-medium text-acid sm:px-6">
+                          {c.fee}
+                          {c.feeNote ? (
+                            <span className="text-2xs font-normal text-zinc-500"> {c.feeNote}</span>
+                          ) : null}
+                        </td>
                         <td className="px-5 py-4 text-zinc-400 sm:px-6">{c.duration}</td>
                         <td className="px-5 py-4 text-zinc-400 sm:px-6">{c.nextBatch}</td>
                       </tr>

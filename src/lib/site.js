@@ -85,7 +85,7 @@ export const nav = [
         href: "/data-science-course",
         note: "Python, ML, Deep Learning, NLP, GenAI & LLMs",
       },
-      { label: "SAP", href: "/sap-course", note: "S/4HANA MM, FICO, PP/QM, Integration" },
+      { label: "SAP", href: "/sap-course", note: "S/4HANA MM, FICO, PP/QM, SD, Integration" },
     ],
   },
   { label: "Fees", href: "/fees" },
@@ -94,6 +94,16 @@ export const nav = [
   { label: "About", href: "/aboutus" },
   { label: "Contact", href: "/connect-with-us" },
 ];
+
+/* ---------------------------------------------------------------------------
+   Student portal — the login link for already-enrolled students.
+   `url` points at the student sub-domain / LMS. The button (header + footer)
+   reads from here, so changing this single value updates both.
+--------------------------------------------------------------------------- */
+export const studentPortal = {
+  label: "Student Login",
+  url: "https://learn.techtoniccorporate.com",
+};
 
 export const courses = [
   {
@@ -178,7 +188,7 @@ export const courses = [
     image: "/photos/courses/sap.png",
     imageAlt: "Isometric illustration of connected SAP ERP module blocks and a process flow in the Techtonic Lab lime-on-black style",
     blurb:
-      "Configure real SAP modules on live S/4HANA server access — featuring Sourcing & Procurement (MM), FICO, and PP-QM — taught by working consultants.",
+      "Four job-ready SAP modules on live S/4HANA — MM, FICO, PP/QM and SD — each a standalone course at ₹49,999, taught by working consultants. Pick the one that fits your background.",
     duration: "4 months",
     durationMonths: 4,
     get nextBatch() { return _soonest(this.slug)?.start ?? "Enquire for dates"; },
@@ -187,22 +197,24 @@ export const courses = [
     mode: "Classroom / Online / Weekend",
     fee: "₹49,999",
     feeNumeric: "49999",
+    feeNote: "per module",
     courseCode: "TL-SAP-001",
     level: "Beginner to intermediate",
-    tools: ["SAP S/4HANA", "SAP MM (Sourcing & Procurement)", "SAP FICO", "SAP PP/QM", "SAP Fiori"],
+    tools: ["SAP S/4HANA", "SAP MM", "SAP FICO", "SAP PP/QM", "SAP SD", "SAP Fiori"],
     teaches: [
       "SAP S/4HANA MM: Purchasing, Inventory Management, Physical Inventory & Valuation",
       "SAP S/4HANA FICO: GL, Account Payable/Receivable, Asset Accounting & Controlling",
       "SAP S/4HANA PP/QM: Demand Management, MRP, Production Orders & Quality Inspection",
+      "SAP S/4HANA SD: Sales Orders, Pricing, Delivery, Billing & Order-to-Cash",
       "Pricing Procedure, Release Strategy, Document Splitting & GST/TDS Configuration",
-      "Cross-Module Integration (MM-FI, MM-SD, PP-QM, PP-MM, QM-MM)",
+      "Cross-Module Integration (MM-FI, MM-SD, PP-QM, PP-MM, QM-MM, SD-FI)",
       "System Landscape, ASAP Methodology, Tables, Reports & Real-Time Industry Case Studies",
     ],
     includes: [
-      "3 months of core training across all modules",
+      "Full training in your chosen module",
       "All learning material and documentation",
-      "Live SAP S/4HANA server access from Day 1",
-      "1 month corporate grooming",
+      "Individual live SAP S/4HANA server access from Day 1",
+      "1 month corporate grooming (included free)",
       "3 recorded mock interviews",
       "Placement preparation and referrals",
     ],
@@ -593,11 +605,11 @@ export const grooming = {
 export const faqs = [
   {
     q: "What IT courses does Techtonic Lab offer in Nagpur?",
-    a: "Techtonic Lab runs three job-oriented programmes: Data Analytics (6 months), Data Science (9 months), and SAP (4 months, covering FICO, MM Sourcing & Procurement, and PP/QM). Every programme includes a month of corporate grooming and placement preparation, and each is available as a classroom, online or weekend batch.",
+    a: "Techtonic Lab runs three job-oriented tracks: Data Analytics (6 months), Data Science (9 months), and SAP S/4HANA — offered as four standalone modules, FICO, MM (Sourcing & Procurement), PP/QM and SD (Sales & Distribution), each ₹49,999. Every programme includes a month of corporate grooming and placement preparation, and each is available as a classroom, online or weekend batch.",
   },
   {
     q: "What does a course at Techtonic Lab cost?",
-    a: `Fees are published per course: Data Analytics is ₹49,999 for 6 months, Data Science is ₹89,999 for 9 months, and the SAP course is ₹49,999 for the full 4 months covering all modules. Every fee is all-inclusive — training, learning material, project datasets or SAP S/4HANA server access, the corporate grooming month (a ₹29,999 programme, included free) and placement preparation, with no separate registration, examination or certificate charges. A ${EMI_MONTHS}-month no-cost EMI is available: about ${formatINR(emiPerMonth("49999"))} per month for the ₹49,999 courses and ${formatINR(emiPerMonth("89999"))} per month for Data Science.`,
+    a: `Fees are published openly: Data Analytics is ₹49,999 for 6 months, Data Science is ₹89,999 for 9 months, and each SAP S/4HANA module — MM, FICO, PP/QM or SD — is ₹49,999. Every fee is all-inclusive — training, learning material, project datasets or SAP S/4HANA server access, the corporate grooming month (a ₹29,999 programme, included free) and placement preparation, with no separate registration, examination or certificate charges. A ${EMI_MONTHS}-month no-cost EMI is available: about ${formatINR(emiPerMonth("49999"))} per month for the ₹49,999 courses and ${formatINR(emiPerMonth("89999"))} per month for Data Science.`,
   },
   {
     q: "Are the courses suitable for complete beginners?",
@@ -621,7 +633,7 @@ export const faqs = [
   },
   {
     q: "Which is the best SAP training institute in Nagpur?",
-    a: "For SAP S/4HANA, Techtonic Lab is a strong option in Nagpur because it teaches the way the job is actually done. Every learner gets individual live S/4HANA server access from week two and configures MM (Sourcing & Procurement), FICO and PP/QM themselves — the modules are taught by a working consultant who has run real implementations, not a career trainer. The fee is ₹49,999 all-inclusive for the full four-month programme covering all modules, published openly, with named alumni now working as SAP consultants. The honest test of any 'best SAP institute in Nagpur' claim is whether you get your own server login and whether the fees and outcomes are published — Techtonic Lab does both.",
+    a: "For SAP S/4HANA, Techtonic Lab is a strong option in Nagpur because it teaches the way the job is actually done. Every learner gets individual live S/4HANA server access from week two and configures a real module — MM (Sourcing & Procurement), FICO, PP/QM or SD (Sales & Distribution) — taught by a working consultant who has run real implementations, not a career trainer. Each module is a standalone course at ₹49,999, all-inclusive and published openly, with named alumni now working as SAP consultants. The honest test of any 'best SAP institute in Nagpur' claim is whether you get your own server login and whether the fees and outcomes are published — Techtonic Lab does both.",
   },
   {
     q: "Is a data analyst course hard to learn?",

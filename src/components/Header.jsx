@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { LuMenu, LuX, LuChevronDown, LuPhone } from "react-icons/lu";
-import { nav, brand } from "@/lib/site";
+import { LuMenu, LuX, LuChevronDown, LuPhone, LuGraduationCap } from "react-icons/lu";
+import { nav, brand, studentPortal } from "@/lib/site";
 import Image from "next/image";
 import BuyCourseButton from "./BuyCourseButton";
 
@@ -17,7 +17,7 @@ function Wordmark() {
     >
       <Image src={"/logos/logo.svg"} alt="techtonic-lab-logo" className="" width={50} height={50}/>
       <span className="leading-none pt-1">
-        <span className="block font-display text-[1.4625rem] font-semibold tracking-tight text-zinc-50">
+        <span className="block font-display text-nowrap text-[1.4625rem] font-semibold tracking-tight text-zinc-50">
           Techtonic-Lab
         </span>
       
@@ -105,15 +105,23 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2">
-        <BuyCourseButton />
-
-          <Link
-            href="/connect-with-us"
-            className="btn-primary hidden !py-2.5 !text-[0.8125rem] sm:inline-flex"
+        <div className="flex shrink-0 items-center gap-2">
+          {/* Student Login — full label on desktop, icon-only on tablet so it
+              never wraps or crowds the Reserve button. Hidden on mobile (it
+              also lives in the mobile drawer below). */}
+          <a
+            href={studentPortal.url}
+            target={studentPortal.url.startsWith("http") ? "_blank" : undefined}
+            rel={studentPortal.url.startsWith("http") ? "noopener noreferrer" : undefined}
+            aria-label={studentPortal.label}
+            title={studentPortal.label}
+            className="hidden h-10 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 px-3 text-[0.8125rem] font-medium text-zinc-300 transition-colors hover:border-acid/50 hover:text-acid sm:inline-flex lg:px-3.5"
           >
-            Book a free consultation
-          </Link>
+            <LuGraduationCap aria-hidden="true" className="h-4 w-4 shrink-0" />
+            <span className="hidden lg:inline">{studentPortal.label}</span>
+          </a>
+
+          <BuyCourseButton variant="header" className="shrink-0" />
 
           <button
             type="button"
@@ -183,6 +191,16 @@ export default function Header() {
                 >
                   Book a free consultation
                 </Link>
+                <a
+                  href={studentPortal.url}
+                  target={studentPortal.url.startsWith("http") ? "_blank" : undefined}
+                  rel={studentPortal.url.startsWith("http") ? "noopener noreferrer" : undefined}
+                  onClick={() => setOpen(false)}
+                  className="btn-ghost w-full"
+                >
+                  <LuGraduationCap aria-hidden="true" className="h-4 w-4" />
+                  {studentPortal.label}
+                </a>
                 <a href={brand.phoneHref} className="btn-ghost w-full">
                   <LuPhone aria-hidden="true" className="h-4 w-4" />
                   {brand.phone}

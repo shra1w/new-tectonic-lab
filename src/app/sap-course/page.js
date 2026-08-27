@@ -1,6 +1,6 @@
 import CoursePage from "@/components/CoursePage";
 import { courses, SITE_URL } from "@/lib/site";
-import { courseDetail } from "@/lib/courses";
+import { courseDetail, sapModules } from "@/lib/courses";
 import { breadcrumbSchema, courseSchemaFor, faqSchemaFrom, webPageSchema } from "@/lib/schema";
 
 const SLUG = "sap-course";
@@ -13,9 +13,9 @@ const breadcrumbs = [
   { name: "SAP Course", href: `/${SLUG}` },
 ];
 
-const TITLE = "SAP Course in Nagpur — MM, FICO & PP/QM on Live S/4HANA";
+const TITLE = "SAP Course in Nagpur — MM, FICO, PP/QM & SD on Live S/4HANA";
 const DESC =
-  "SAP S/4HANA course in Nagpur covering MM, FICO and PP/QM with individual live server access, certification guidance and placement preparation. All three modules in a 4-month programme. Fees ₹49,999, all-inclusive.";
+  "SAP S/4HANA training in Nagpur offered as four standalone modules — MM, FICO, PP/QM and SD — each ₹49,999, all-inclusive, with individual live server access, certification guidance and placement preparation.";
 
 export const metadata = {
   title: TITLE,
@@ -58,7 +58,7 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <CoursePage course={course} detail={detail} breadcrumbs={breadcrumbs} />
+      <CoursePage course={course} detail={detail} breadcrumbs={breadcrumbs} modules={sapModules} />
     </>
   );
 }

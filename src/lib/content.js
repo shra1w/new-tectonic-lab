@@ -393,7 +393,7 @@ export const termsOfService = {
     {
       title: "Courses and fees",
       body: [
-        "The Data Analytics course fee is ₹49,999 for the complete six-month programme. The Data Science course fee is ₹89,999 for the complete nine-month programme. The SAP course fee is ₹49,999 for the complete four-month programme covering all three modules (MM, FICO and PP/QM). Every programme includes a month of corporate grooming.",
+        "The Data Analytics course fee is ₹49,999 for the complete six-month programme. The Data Science course fee is ₹89,999 for the complete nine-month programme. SAP S/4HANA is offered as four standalone modules — MM, FICO, PP/QM and SD — each priced at ₹49,999. Every programme includes a month of corporate grooming.",
         "Each fee includes learning material, project datasets or SAP S/4HANA server access as applicable, the corporate grooming month and placement preparation. There is no separate registration, examination or certificate charge.",
         "The official SAP certification examination is paid directly to SAP and is not included in the course fee.",
         "A no-cost EMI is offered over six months. Terms depend on the financing partner and are set out at the point of enrolment.",

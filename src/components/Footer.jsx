@@ -7,8 +7,9 @@ import {
   LuMail,
   LuMessageCircle,
   LuMapPin,
+  LuGraduationCap,
 } from "react-icons/lu";
-import { brand, offices, footerLinks } from "@/lib/site";
+import { brand, offices, footerLinks, studentPortal } from "@/lib/site";
 import Image from "next/image";
 
 const SOCIAL_ICONS = {
@@ -22,11 +23,11 @@ export default function Footer() {
     <footer className="border-t border-white/10 bg-ink-900/60">
       <div className="shell py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,2fr)] lg:gap-16">
-          <div>
+          <div className="text-center sm:text-left">
              <Link
       href="/"
       aria-label="Techtonic Lab — home"
-      className="group flex items-center gap-1"
+      className="group flex items-center justify-center gap-1 sm:justify-start"
     >
       <Image src={"/logos/logo.svg"} alt="techtonic-lab-logo" className="" width={50} height={50}/>
       <span className="leading-none pt-1">
@@ -37,13 +38,13 @@ export default function Footer() {
       </span>
     </Link>
 
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-zinc-400">
+            <p className="mx-auto mt-5 max-w-sm text-sm leading-relaxed text-zinc-400 sm:mx-0">
               Techtonic Lab is an IT training institute in Nagpur offering job-ready courses in
               Data Analytics, Data Science and SAP. Classroom, online and weekend batches across
               two campuses, with placement preparation built into every programme.
             </p>
 
-            <ul className="mt-6 flex items-center gap-2.5">
+            <ul className="mt-6 flex items-center justify-center gap-2.5 sm:justify-start">
               {brand.socials.map((s) => {
                 const Icon = SOCIAL_ICONS[s.label];
                 return (
@@ -65,7 +66,7 @@ export default function Footer() {
             <div className="mt-8 space-y-5">
               {offices.map((o) => (
                 <div key={o.id}>
-                  <p className="flex items-center gap-1.5 text-2xs font-semibold uppercase tracking-[0.16em] text-zinc-500">
+                  <p className="flex items-center justify-center gap-1.5 text-2xs font-semibold uppercase tracking-[0.16em] text-zinc-500 sm:justify-start">
                     <LuMapPin aria-hidden="true" className="h-3 w-3 text-acid" />
                     {o.label}
                   </p>
@@ -77,7 +78,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-10 text-center sm:grid-cols-2 sm:text-left lg:grid-cols-4">
             {Object.entries(footerLinks).map(([heading, links]) => (
               <nav key={heading} aria-labelledby={`footer-${heading}`}>
                 <h2
@@ -146,17 +147,28 @@ export default function Footer() {
                     Contact us
                   </Link>
                 </li>
+                <li>
+                  <a
+                    href={studentPortal.url}
+                    target={studentPortal.url.startsWith("http") ? "_blank" : undefined}
+                    rel={studentPortal.url.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="inline-flex items-center gap-2 whitespace-nowrap text-sm font-medium text-acid transition-colors hover:text-acid-soft"
+                  >
+                    <LuGraduationCap aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
+                    {studentPortal.label}
+                  </a>
+                </li>
               </ul>
             </nav>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col items-center gap-4 border-t border-white/10 pt-7 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <p className="text-xs text-zinc-500">
             © {new Date().getFullYear()} Techtonic Lab. Operated by {brand.legalName}
             {brand.cin && !brand.cin.includes("[") ? <> · CIN {brand.cin}</> : null}.
           </p>
-          <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs">
+          <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs sm:justify-start">
             <li>
               <Link href="/privacy-policy" className="text-zinc-500 hover:text-acid">
                 Privacy policy
