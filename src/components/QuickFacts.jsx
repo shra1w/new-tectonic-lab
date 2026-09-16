@@ -5,7 +5,7 @@ export default function QuickFacts() {
   return (
     <section aria-labelledby="quick-facts" className="border-y border-white/10 bg-ink-900/40">
       <h2 id="quick-facts" className="sr-only">
-        Techtonic Lab at a glance
+        TECHTONIC LAB at a glance
       </h2>
 
       <div className="shell py-10 sm:py-12 flex justify-center">

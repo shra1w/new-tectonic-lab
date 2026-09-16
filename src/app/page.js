@@ -77,6 +77,7 @@ export default function HomePage() {
       />
 
       <Hero />
+      
       <QuickFacts />
       <Courses />
       <Faculty />

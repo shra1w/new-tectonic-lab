@@ -82,7 +82,7 @@ export default function CoursePage({ course, detail, breadcrumbs, modules }) {
                 ["Certification", detail.certification],
                 ["Placement support", "Yes — assistance, not a guarantee"],
                 ["Language", detail.language],
-                ["Campuses", "Somalwada and Jaitala Road, Nagpur"],
+                ["Campuses", "Manish Nagar and Vasudev Nagar, Nagpur"],
               ]}
             />
           </Reveal>
@@ -340,7 +340,7 @@ export default function CoursePage({ course, detail, breadcrumbs, modules }) {
           />
           <Reveal className="mt-10">
             <div className="card overflow-hidden">
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto hide-scrollbar">
                 <table className="w-full min-w-[34rem] text-sm">
                   <caption className="sr-only">
                     Roles and indicative salary ranges after the {course.name} course
@@ -400,7 +400,7 @@ export default function CoursePage({ course, detail, breadcrumbs, modules }) {
               <article key={f.name} className="card flex h-full flex-col overflow-hidden">
                 <ImageSlot
                   src={f.photo}
-                  alt={`${f.name}, ${f.title} at Techtonic Lab`}
+                  alt={`${f.name}, ${f.title} at TECHTONIC LAB`}
                   className="aspect-[4/3] w-full"
                   rounded="rounded-none"
                   sizes="(max-width: 768px) 100vw, 33vw"

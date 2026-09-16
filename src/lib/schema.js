@@ -29,7 +29,7 @@ export function organizationSchema() {
     "@type": "EducationalOrganization",
     "@id": ORG_ID,
     name: brand.name,
-    alternateName: "Techtonic Lab Institute",
+    alternateName: "TECHTONIC LAB Institute",
     url: `${SITE_URL}/`,
     logo: {
       "@type": "ImageObject",
@@ -39,7 +39,7 @@ export function organizationSchema() {
     },
     image: `${SITE_URL}/og/homepage.jpg`,
     description:
-      "Techtonic Lab is an IT training institute in Nagpur offering courses in Data Analytics, Data Science, and SAP with placement preparation and support.",
+      "TECHTONIC LAB is an IT training institute in Nagpur offering courses in Data Analytics, Data Science, and SAP with placement preparation and support.",
     email: brand.email,
     telephone: "+91-8766069947",
     address: {
@@ -266,7 +266,7 @@ export function syllabusSchema(course, detail) {
     "@context": "https://schema.org",
     "@type": "Course",
     name: `${course.fullName} — syllabus`,
-    description: `Module-by-module syllabus for the ${course.fullName} at Techtonic Lab, including topics, tools, hours and the project built in each module.`,
+    description: `Module-by-module syllabus for the ${course.fullName} at TECHTONIC LAB, including topics, tools, hours and the project built in each module.`,
     url: `${SITE_URL}/${course.slug}/syllabus`,
     provider: { "@id": ORG_ID_EXPORT },
     hasPart: detail.modules.map((m) => ({
@@ -320,7 +320,7 @@ export function batchListSchema(batches) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Upcoming batches at Techtonic Lab",
+    name: "Upcoming batches at TECHTONIC LAB",
     itemListElement: batches.map((b, i) => ({
       "@type": "ListItem",
       position: i + 1,
@@ -329,7 +329,7 @@ export function batchListSchema(batches) {
         name: `${b.course} — ${b.mode} batch starting ${b.start}`,
         courseMode: b.mode === "Online" ? "Online" : "Onsite",
         startDate: b.startISO,
-        location: { "@type": "Place", name: `Techtonic Lab, ${b.campus}` },
+        location: { "@type": "Place", name: `TECHTONIC LAB, ${b.campus}` },
         url: `${SITE_URL}/${b.slug}`,
       },
     })),

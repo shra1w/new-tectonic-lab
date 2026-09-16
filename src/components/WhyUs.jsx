@@ -25,7 +25,7 @@ export default function WhyUs() {
       <div className="shell">
         <SectionHead
           id="why-title"
-          eyebrow="Why Techtonic Lab"
+          eyebrow="Why TECHTONIC LAB"
           title="What actually makes the difference"
           intro="Six specifics, not six adjectives. Every one of these is checkable before you pay."
         />

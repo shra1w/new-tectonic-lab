@@ -5,12 +5,12 @@ import { LuBadgeCheck, LuBuilding2, LuUsers } from "react-icons/lu";
 import SectionHead from "./ui/SectionHead";
 import Stagger from "./ui/Stagger";
 import Reveal from "./ui/Reveal";
-import { alumniEmployers, placementStats } from "@/lib/site";
+import { alumniEmployers, placementStats, moreEmployersCount } from "@/lib/site";
 
 /* ---------------------------------------------------------------------------
  * AlumniEmployers
  *
- * A record of where Techtonic Lab graduates have gone on to build their
+ * A record of where TECHTONIC LAB graduates have gone on to build their
  * careers. This is an outcomes claim about our alumni, not a partnership
  * claim about the companies — every entry is here because a real student
  * of ours works there.
@@ -142,13 +142,21 @@ export default function AlumniEmployers({ standalone = false }) {
           {alumniEmployers.map((e) => (
             <EmployerCard key={e.company} e={e} />
           ))}
+
+          <article className="flex h-full flex-col items-center justify-center rounded-2xl border border-dashed border-white/15 bg-ink-900/60 p-5 text-center backdrop-blur-sm">
+            <p className="font-display text-2xl font-semibold tracking-tight text-acid sm:text-3xl">
+              {moreEmployersCount}+
+            </p>
+            <p className="mt-1.5 text-sm font-semibold text-zinc-100">more companies</p>
+            <p className="mt-0.5 text-xs text-zinc-500">where our alumni work</p>
+          </article>
         </Stagger>
 
         {/* Positive, factual footnote — replaces the defensive disclaimer.
             Reads as pride in outcomes rather than a legal hedge. */}
         <Reveal delay={0.12}>
           <p className="mx-auto mt-10 max-w-3xl text-center text-xs leading-relaxed text-zinc-500">
-            Every company shown employs at least one Techtonic Lab alumnus — a record we
+            Every company shown employs at least one TECHTONIC LAB alumnus — a record we
             are proud to publish, and one our graduates have earned through their own
             work. All logos and trade marks belong to their respective owners.
           </p>

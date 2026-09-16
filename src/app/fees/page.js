@@ -14,8 +14,7 @@ import {
   DISCLAIMER,
   SITE_URL,
   formatINR,
-  emiPerMonth,
-  EMI_MONTHS,
+  installmentPlan,
   feeTable,
 } from "@/lib/site";
 import { breadcrumbSchema, faqSchemaFrom, offerSchema, webPageSchema } from "@/lib/schema";
@@ -25,22 +24,15 @@ import { breadcrumbSchema, faqSchemaFrom, offerSchema, webPageSchema } from "@/l
    the real prices. Add a course, remove one, change a fee — this page
    updates on the next build with no editing here. */
 const feeNumbers = courses.map((c) => Number(c.feeNumeric));
-const emiNumbers = courses.map((c) => emiPerMonth(c.feeNumeric));
 const durationNumbers = courses.map((c) => c.durationMonths);
 
 const minFee = Math.min(...feeNumbers);
 const maxFee = Math.max(...feeNumbers);
-const minEmi = Math.min(...emiNumbers);
-const maxEmi = Math.max(...emiNumbers);
 const minDur = Math.min(...durationNumbers);
 const maxDur = Math.max(...durationNumbers);
 
 const feeRange =
   minFee === maxFee ? formatINR(minFee) : `${formatINR(minFee)} – ${formatINR(maxFee)}`;
-const emiRange =
-  minEmi === maxEmi
-    ? `${formatINR(minEmi)} / month`
-    : `${formatINR(minEmi)} – ${formatINR(maxEmi)} / month`;
 const durationRange =
   minDur === maxDur ? `${minDur} months` : `${minDur}–${maxDur} months`;
 
@@ -49,12 +41,12 @@ const breadcrumbs = [
   { name: "Fees", href: "/fees" },
 ];
 
-const TITLE = `Course Fees in Nagpur — ${feeRange} All-Inclusive | Techtonic Lab`;
-const DESC = `Techtonic Lab course fees, published in full: ${formatINR(
+const TITLE = `Course Fees in Nagpur — ${feeRange} All-Inclusive | TECHTONIC LAB`;
+const DESC = `TECHTONIC LAB course fees, published in full: ${formatINR(
   49999
 )} for the 6-month Data Analytics and 4-month SAP programmes, ${formatINR(
   89999
-)} for the 9-month Data Science course. ${EMI_MONTHS}-month no-cost EMI available, no registration or certificate charges.`;
+)} for the 9-month Data Science course. Payable in 3 instalments, no registration or certificate charges.`;
 
 const NOT_INCLUDED = [
   "Vendor certification exam fees, paid directly to SAP or Microsoft",
@@ -64,12 +56,12 @@ const NOT_INCLUDED = [
 
 const faqs = [
   {
-    q: "How much does a course at Techtonic Lab cost?",
+    q: "How much does a course at TECHTONIC LAB cost?",
     a: `Data Analytics is ${formatINR(
       49999
-    )} for the complete 6-month programme, SAP is ${formatINR(
+    )} for the complete 6-month programme, each SAP S/4HANA module — MM, FICO, PP/QM or SD — is ${formatINR(
       49999
-    )} for the complete 4-month programme covering MM, FICO and PP/QM, and Data Science is ${formatINR(
+    )} as a standalone course, and Data Science is ${formatINR(
       89999
     )} for the complete 9-month programme. Every fee is all-inclusive — there is no separate registration, examination or certificate charge.`,
   },
@@ -78,30 +70,30 @@ const faqs = [
     a: "Because they differ in length and depth. Data Science runs nine months and takes you through machine learning, deep learning, NLP and generative AI on top of the analytics foundation, so the fee reflects the additional teaching time and infrastructure. Data Analytics and SAP land at the same fee because their programmes are comparable in scope end to end.",
   },
   {
-    q: "Is EMI available for the course fee?",
-    a: `Yes. A ${EMI_MONTHS}-month no-cost EMI is offered through our financing partner. That works out to about ${formatINR(
-      emiPerMonth(49999)
-    )} per month for the ${formatINR(
+    q: "Can I pay the fee in instalments?",
+    a: `Yes. Every course is payable in 3 instalments at no extra cost — ${formatINR(
+      20000
+    )} + ${formatINR(15000)} + ${formatINR(15000)} for the ${formatINR(
       49999
-    )} courses and about ${formatINR(
-      emiPerMonth(89999)
-    )} per month for Data Science. Exact terms depend on the partner and your eligibility, and are given to you in writing before you commit to anything.`,
+    )} courses and each SAP module, and ${formatINR(35000)} + ${formatINR(
+      30000
+    )} + ${formatINR(24999)} for Data Science. The schedule is given to you in writing before you commit to anything.`,
   },
   {
     q: "Are there any hidden charges?",
-    a: "No. The published fee covers training, learning material, project datasets or SAP S/4HANA server access, portfolio projects with review, the corporate grooming month, three recorded mock interviews, and placement preparation. The only things paid separately are vendor certification exam fees, which go directly to SAP or Microsoft.",
+    a: "No. The published fee covers training, learning material, project datasets or SAP S/4HANA server access, portfolio projects with review, the corporate grooming month, three live mock interviews, and placement preparation. The only things paid separately are vendor certification exam fees, which go directly to SAP or Microsoft.",
   },
   {
-    q: "Can I pay in instalments without formal EMI?",
-    a: "Yes. The most common arrangement is roughly half the fee at enrolment and the balance before the second month begins, at no extra cost. Raise it on your first call — you will not have to negotiate for it.",
+    q: "When are the instalments due?",
+    a: "The first instalment confirms your seat at enrolment, and the remaining two fall across the early part of the course. The exact dates are set out in writing before you commit, and there is no extra charge for paying in parts.",
   },
   {
     q: "Do you offer discounts or scholarships?",
     a: "There is a modest concession for people enrolling together from the same college or workplace, and case-by-case support for students in genuine financial difficulty. What we will not do is advertise a fake discount against an inflated list price — the numbers on this page are the real numbers.",
   },
   {
-    q: "What happens to my fee if I have to withdraw?",
-    a: "If you withdraw before the batch starts you are refunded in full, less any non-recoverable third-party charges. After the batch begins the position is set out in our terms of service, because the seat, the server licence and the faculty time have already been committed.",
+    q: "What is the refund policy?",
+    a: "Fees once paid are non-refundable, because the seat, the SAP server licence and the faculty time are committed as soon as you enrol. That is exactly why the consultation is free and the fees, dates and syllabus are published — settle every question first, and pay only when you are certain.",
   },
   {
     q: "Is the fee different for online and weekend batches?",
@@ -117,7 +109,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/fees`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: TITLE,
     description: DESC,
     images: [{ url: "/og/fees.jpg", width: 1200, height: 630, alt: TITLE }],
@@ -158,15 +150,15 @@ export default function FeesPage() {
           49999
         )} for Data Analytics and SAP, ${formatINR(
           89999
-        )} for Data Science, with a ${EMI_MONTHS}-month no-cost EMI on all three and no registration, examination or certificate charge.`}
+        )} for Data Science, payable in 3 instalments each, with no registration, examination or certificate charge.`}
         aside={
           <FactTable
             rows={[
               ["Fee range", feeRange],
               ["Data Analytics", `${feeTable["data-analytics-course"].fee} · 6 months`],
               ["Data Science", `${feeTable["data-science-course"].fee} · 9 months`],
-              ["SAP", `${feeTable["sap-course"].fee} · 4 months`],
-              ["EMI, no cost", `${emiRange} × ${EMI_MONTHS} months`],
+              ["SAP", `${feeTable["sap-course"].fee} · per module`],
+              ["Instalments", "3 per course, no extra cost"],
               ["Registration fee", "None"],
               ["Certificate fee", "None"],
             ]}
@@ -196,7 +188,7 @@ export default function FeesPage() {
           <Stagger className="mt-10 grid gap-5 lg:grid-cols-3" itemClassName="h-full">
             {courses.map((c, i) => {
               const trainingMonths = Math.max(1, c.durationMonths - 1);
-              const emi = emiPerMonth(c.feeNumeric);
+              const plan = installmentPlan(c);
               return (
                 <article
                   key={c.slug}
@@ -223,7 +215,7 @@ export default function FeesPage() {
                     <span className="text-xs text-zinc-500">all-inclusive</span>
                   </p>
                   <p className="mt-2 text-xs text-zinc-500">
-                    or {formatINR(emi)} × {EMI_MONTHS} months on no-cost EMI
+                    or 3 instalments — {plan.text}
                   </p>
 
                   <ul className="mt-6 flex-1 space-y-2.5 border-t border-white/10 pt-6">
@@ -288,10 +280,10 @@ export default function FeesPage() {
                     "Live SAP S/4HANA server access (SAP course)",
                     "End-to-end portfolio or capstone projects with personal review",
                     "One month of corporate grooming",
-                    "Three recorded mock interviews with written feedback",
+                    "Three live mock interviews with written feedback",
                     "Resume and LinkedIn rebuild",
                     "Placement preparation and referrals",
-                    "Techtonic Lab course-completion certificate",
+                    "TECHTONIC LAB course-completion certificate",
                     "Repeat any module once, free, within twelve months",
                   ].map((i) => (
                     <li
@@ -346,10 +338,10 @@ export default function FeesPage() {
           <SectionHead
             id="pay-title"
             eyebrow="Payment"
-            title="Three ways to pay, same total"
+            title="Two ways to pay, same total"
             intro="We do not charge more for paying in parts, and we do not discount for paying in full. Whatever your course fee is, it is the number on the card above."
           />
-          <Stagger className="mt-10 grid gap-5 lg:grid-cols-3" itemClassName="h-full">
+          <Stagger className="mt-10 grid gap-5 lg:grid-cols-2" itemClassName="h-full">
             {[
               {
                 t: "Pay in full",
@@ -358,22 +350,10 @@ export default function FeesPage() {
                 b: "The simplest option. Nothing further to think about for the duration of your course.",
               },
               {
-                t: "Two instalments",
-                a: "50% + 50%",
-                n: "At enrolment and before month two",
-                b: "The most common arrangement. No interest and no extra paperwork, whichever course you take.",
-              },
-              {
-                t: `${EMI_MONTHS}-month no-cost EMI`,
-                a: `${formatINR(minEmi)} – ${formatINR(maxEmi)} / mo`,
-                n: "Through our financing partner",
-                b: `About ${formatINR(
-                  emiPerMonth(49999)
-                )} a month for the ${formatINR(
-                  49999
-                )} courses, ${formatINR(
-                  emiPerMonth(89999)
-                )} for Data Science. Exact terms depend on eligibility and are given to you in writing first.`,
+                t: "3 instalments",
+                a: "₹20K + ₹15K + ₹15K",
+                n: "Across the early part of the course",
+                b: "The most common arrangement — the fee split into three instalments (₹35K + ₹30K + ₹24,999 for Data Science). No interest and no extra paperwork.",
               },
             ].map((p) => (
               <div key={p.t} className="card h-full p-6">

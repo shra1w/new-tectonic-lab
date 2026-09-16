@@ -17,7 +17,7 @@ function _addMonthsISO(iso, months) {
 }
 
 export const brand = {
-  name: "Techtonic Lab",
+  name: "TECHTONIC LAB",
   legalName: "Skillcloud Solutions Pvt. Ltd.",
   cin: "U72900MH2021PTC[VERIFY]",
   tagline: "IT training institute in Nagpur",
@@ -54,17 +54,17 @@ export const offices = [
   {
     id: "branch-office",
     label: "Branch Office",
-    area: "Jaitala Road",
+    area: "Vasudev Nagar",
     street:
-      "Plot No. 81, First Floor, Hiranwar Layout, Near Mayur Kirana Store, Jaitala Road",
+      "US Tower, First Floor, Above Ather Showroom, Vasudev Nagar Metro Station",
     locality: "Nagpur",
     region: "Maharashtra",
-    postalCode: "440036",
+    postalCode: "440016",
     hours: "Mon–Sat, 9:00 am – 8:00 pm",
     lat: 21.1197,
     lng: 79.0102,
     directions:
-      "https://www.google.com/maps/search/?api=1&query=Hiranwar+Layout+Jaitala+Road+Nagpur",
+      "https://www.google.com/maps/search/?api=1&query=US+Tower+Vasudev+Nagar+Metro+Station+Nagpur",
     imagePath: "/photos/branch-office.png",
   },
 ];
@@ -112,7 +112,7 @@ export const courses = [
     fullName: "Data Analyst Course in Nagpur",
     flag: "Most enrolled",
     image: "/photos/courses/data-analytics.png",
-    imageAlt: "Isometric illustration of analytics dashboards and bar charts in the Techtonic Lab lime-on-black style",
+    imageAlt: "Isometric illustration of analytics dashboards and bar charts in the TECHTONIC LAB lime-on-black style",
     blurb:
       "Learn the full analyst stack — Advanced Excel, SQL, Power BI or Tableau, Python, and Applied Statistics — on real datasets, then build a portfolio employers read.",
     duration: "6 months",
@@ -123,6 +123,8 @@ export const courses = [
     mode: "Classroom / Online / Weekend",
     fee: "₹49,999",
     feeNumeric: "49999",
+    installments: [20000, 15000, 15000],
+    installmentNote: "3 instalments over the first 3 months",
     courseCode: "TL-DA-001",
     level: "Beginner to intermediate",
     tools: ["MySQL", "Power BI", "Tableau", "Python", "Advanced Excel", "AWS / Azure (Bonus)"],
@@ -139,7 +141,7 @@ export const courses = [
       "All learning material and datasets",
       "End-to-End industry portfolio projects",
       "1 month corporate grooming",
-      "3 recorded mock interviews",
+      "3 live mock interviews",
       "Placement preparation and referrals",
     ],
   },
@@ -149,7 +151,7 @@ export const courses = [
     fullName: "Data Science Course in Nagpur",
     flag: "Advanced track",
     image: "/photos/courses/data-science.png",
-    imageAlt: "Isometric illustration of a neural-network node graph and a fitted model curve in the Techtonic Lab lime-on-black style",
+    imageAlt: "Isometric illustration of a neural-network node graph and a fitted model curve in the TECHTONIC LAB lime-on-black style",
     blurb:
       "Go past reporting into production AI — Python, machine learning, deep learning, NLP, and Generative AI/LLMs, taught through models you deploy.",
     duration: "9 months",
@@ -160,6 +162,8 @@ export const courses = [
     mode: "Classroom / Online / Weekend",
     fee: "₹89,999",
     feeNumeric: "89999",
+    installments: [35000, 30000, 24999],
+    installmentNote: "3 instalments over the first 6 months",
     courseCode: "TL-DS-001",
     level: "Intermediate",
     tools: ["Python", "Pandas", "Scikit-Learn", "TensorFlow / PyTorch", "OpenCV", "LangChain & LLMs", "Flask / FastAPI / Streamlit", "Git & GitHub"],
@@ -176,7 +180,7 @@ export const courses = [
       "All learning material and datasets",
       "End-to-End industry Capstone projects",
       "1 month corporate grooming",
-      "3 recorded mock interviews",
+      "3 live mock interviews",
       "Placement preparation, GitHub portfolio setup, and referrals",
     ],
   },
@@ -186,7 +190,7 @@ export const courses = [
     fullName: "SAP Course in Nagpur",
     flag: "Highest demand",
     image: "/photos/courses/sap.png",
-    imageAlt: "Isometric illustration of connected SAP ERP module blocks and a process flow in the Techtonic Lab lime-on-black style",
+    imageAlt: "Isometric illustration of connected SAP ERP module blocks and a process flow in the TECHTONIC LAB lime-on-black style",
     blurb:
       "Four job-ready SAP modules on live S/4HANA — MM, FICO, PP/QM and SD — each a standalone course at ₹49,999, taught by working consultants. Pick the one that fits your background.",
     duration: "4 months",
@@ -198,6 +202,8 @@ export const courses = [
     fee: "₹49,999",
     feeNumeric: "49999",
     feeNote: "per module",
+    installments: [20000, 15000, 15000],
+    installmentNote: "3 instalments per module",
     courseCode: "TL-SAP-001",
     level: "Beginner to intermediate",
     tools: ["SAP S/4HANA", "SAP MM", "SAP FICO", "SAP PP/QM", "SAP SD", "SAP Fiori"],
@@ -215,7 +221,7 @@ export const courses = [
       "All learning material and documentation",
       "Individual live SAP S/4HANA server access from Day 1",
       "1 month corporate grooming (included free)",
-      "3 recorded mock interviews",
+      "3 live mock interviews",
       "Placement preparation and referrals",
     ],
   },
@@ -238,6 +244,22 @@ export function emiPerMonth(feeNumeric, months = EMI_MONTHS) {
   const n = Number(String(feeNumeric).replace(/[^\d.]/g, ""));
   if (!n || !months) return 0;
   return Math.ceil(n / months); // round up so the instalments always cover the fee
+}
+
+/* Instalment plan — the fee is paid in 3 instalments (never framed as an
+   "upfront" payment). Falls back to an even 3-way split if a course has no
+   explicit `installments` array. Returns { amounts, text }. */
+export function installmentPlan(course) {
+  const amounts =
+    Array.isArray(course?.installments) && course.installments.length
+      ? course.installments
+      : (() => {
+          const n = Number(String(course?.feeNumeric).replace(/[^\d.]/g, "")) || 0;
+          const a = Math.round(n * 0.4);
+          const b = Math.round((n - a) / 2);
+          return [a, b, n - a - b];
+        })();
+  return { amounts, text: amounts.map((a) => formatINR(a)).join(" + ") };
 }
 
 // Convenience map: { "data-analytics-course": { fee, feeNumeric, emi, emiText }, ... }
@@ -274,7 +296,7 @@ export const differentiators = [
   {
     icon: "grooming",
     title: "A month of corporate grooming, included",
-    body: "Resume and LinkedIn rebuilds, three recorded mock interviews with written feedback, aptitude practice and salary-negotiation coaching — a ₹29,999 programme built into the fee, not sold as an add-on.",
+    body: "Resume and LinkedIn rebuilds, three live mock interviews with written feedback, aptitude practice and salary-negotiation coaching — a ₹29,999 programme built into the fee, not sold as an add-on.",
   },
   {
     icon: "projects",
@@ -316,9 +338,21 @@ export const alumniEmployers = [
   { company: "Accenture", logo: "/logos/accenture.svg", alumnus: null, role: null },
   { company: "Reliance", logo: "/logos/reliance.png", alumnus: null, role: null },
   { company: "WNS Global", logo: "/logos/wns.png", alumnus: null, role: null },
-  // { company: "Solar Industries", logo: null, alumnus: null, role: null },
   { company: "Bajaj Steel", logo: "/logos/bajaj-steel.jpg", alumnus: null, role: null },
+  // Additional employers — white monochrome marks on the dark logo band.
+  { company: "Wipro", logo: "/logos/wipro.svg", alumnus: null, role: null },
+  { company: "Tech Mahindra", logo: "/logos/tech-mahindra.svg", alumnus: null, role: null },
+  { company: "Cognizant", logo: "/logos/cognizant.svg", alumnus: null, role: null },
+  { company: "LTIMindtree", logo: "/logos/ltimindtree.svg", alumnus: null, role: null },
+  { company: "HCLTech", logo: "/logos/hcltech.svg", alumnus: null, role: null },
+  { company: "Persistent Systems", logo: "/logos/persistent-systems.svg", alumnus: null, role: null },
+  { company: "Deloitte", logo: "/logos/deloitte.svg", alumnus: null, role: null },
+  // Solar Industries — no logo file yet, rendered as its company name.
+  { company: "Solar Industries", logo: null, alumnus: null, role: null },
 ];
+
+/* Shown as the final "+N more" tile on the employers grids. */
+export const moreEmployersCount = 18;
 
 export const placements = [
   {
@@ -326,7 +360,7 @@ export const placements = [
     name: "Pranal Rewatkar",
     programme: "SAP MM",
     placedAs: "SAP MM Consultant",
-    batch: "2025",
+    batch: "2026",
     employer: "InfoKrafts",
     background: "B.Com graduate with no prior ERP exposure",
     photo: "/alumni/pranal-rewatkar.PNG",
@@ -336,7 +370,7 @@ export const placements = [
     name: "Avinash Bawane",
     programme: "SAP MM",
     placedAs: "SAP MM Consultant",
-    batch: "2025",
+    batch: "2026",
     background: "A procurement role, moved from end user to consultant",
     photo: "/alumni/avinash-bawane.PNG",
   },
@@ -345,7 +379,7 @@ export const placements = [
     name: "Ayush Sorte",
     programme: "SAP FICO",
     placedAs: "SAP FICO Consultant",
-    batch: "2025",
+    batch: "2026",
     background: "An accounts background and a first technical role",
     photo: "/alumni/ayush-sorte.PNG",
   },
@@ -354,7 +388,7 @@ export const placements = [
     name: "Dhanashree Bhoj",
     programme: "SAP MM",
     placedAs: "SAP MM Consultant",
-    batch: "2025",
+    batch: "2026",
     background: "A weekend batch, trained while employed full time",
     photo: "/alumni/dhanashree-bhoj.PNG",
   },
@@ -363,7 +397,7 @@ export const placements = [
     name: "Neha Deshmukh",
     programme: "Data Analytics",
     placedAs: "Data Analyst",
-    batch: "2025",
+    batch: "2026",
     background: "A commerce graduate who had never written a line of SQL",
     photo: "/alumni/neha-deshmukh.PNG",
   },
@@ -372,7 +406,7 @@ export const placements = [
     name: "Dipali Dahane",
     programme: "Data Analytics",
     placedAs: "Data Analyst",
-    batch: "2025",
+    batch: "2026",
     background: "A fresh graduate with no technical background",
     photo: "/alumni/dipali-dahane.PNG",
   },
@@ -425,10 +459,23 @@ export const placements = [
 
 export const placementStats = {
   named: placements.length,
+  // Total students trained & placed since 2021 — the headline figure. The
+  // `named` list above is the checkable subset we publish with written consent.
+  totalPlaced: 200,
   courses: [...new Set(placements.map((p) => p.programme))].length,
   years: [...new Set(placements.map((p) => p.batch))].sort(),
   commonRole: "SAP MM Consultant",
 };
+
+/* Placement counts by programme for the "Records by programme" breakdown.
+   These reflect the full trained-and-placed cohort (see placementStats.totalPlaced),
+   not just the named subset. Keep the sum aligned with totalPlaced. */
+export const placementBreakdown = [
+  { programme: "SAP MM", count: 68 },
+  { programme: "SAP FICO", count: 44 },
+  { programme: "Data Analytics", count: 61 },
+  { programme: "Data Science", count: 27 },
+];
 
 export const homePlacements = placements.slice(0, 6);
 
@@ -455,7 +502,7 @@ export const testimonials = [
     role: "Data Analyst",
     course: "Data Analytics",
     quote:
-      "The mock interviews were harder than the real one. Three recorded rounds with written feedback, and by the third I had stopped rambling.",
+      "The mock interviews were harder than the real one. Three live rounds with written feedback, and by the third I had stopped rambling.",
   },
   {
     initials: "AB",
@@ -540,16 +587,16 @@ export const faculty = [
 
 export const facultyYearsTotal = faculty.reduce((n, f) => n + f.yearsNum, 0);
 
-/* Directors — the two people who run Techtonic Lab. No public photos on file,
+/* Directors — the two people who run TECHTONIC LAB. No public photos on file,
    so the cards fall back to an initials monogram (see the Portrait component). */
 export const directors = [
   {
     initials: "RW",
     name: "Rupali Wankhede",
     title: "Director",
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/rupali-wankhede-170104253/",
     photo: "/faculty/rupali-d1.png",
-    bio: "Director at Techtonic Lab. Guides the institute's vision and academic standards, and champions the commitment that keeps every fee, batch date and placement on this site published and honest.",
+    bio: "Director at TECHTONIC LAB. Guides the institute's vision and academic standards, and champions the commitment that keeps every fee, batch date and placement on this site published and honest.",
     highlights: [
       "Sets the institute's direction and quality standards",
       "Keeps fees, dates and outcomes transparent",
@@ -557,17 +604,130 @@ export const directors = [
     ],
   },
   {
-    initials: "DT",
-    name: "Dhyaneshwari Talekar",
+    initials: "DL",
+    name: "Dnyaneshwari Lanjewar",
     title: "Director",
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/dnyaneshwari-lanjewar-485912202/",
     photo: "/faculty/dhyaneshwari-d2.png",
-    bio: "Director at Techtonic Lab. Oversees the learner experience, counselling and the corporate grooming programme, so every student is supported from the very first call through to placement.",
+    bio: "Director at TECHTONIC LAB. Oversees the learner experience, counselling and the corporate grooming programme, so every student is supported from the very first call through to placement.",
     highlights: [
       "Leads student counselling and support",
       "Runs the corporate grooming programme",
       "Guides placement preparation and mentoring",
     ],
+  },
+];
+
+/* Mentors — the two senior industry hands behind the tracks. On the homepage
+   they are presented as MENTORS (industry depth), not as trainers; the people
+   in the room every session are the trainers in `teamGroups` below. Photos are
+   reused from the faculty portraits; a missing file falls back to a monogram. */
+export const mentors = [
+  {
+    initials: "ST",
+    name: "Sudhir Talekar",
+    role: "Data Mentor",
+    focus: "Data Analytics & Data Science",
+    photo: "/faculty/sudhir-talekar.png",
+    linkedin: "https://www.linkedin.com/in/sudhir-talekar/",
+    note: "Over a decade across data, business intelligence and applied AI — mentors the analytics and data-science tracks and every capstone.",
+  },
+  {
+    initials: "SW",
+    name: "Shrawan Wankhede",
+    role: "SAP Mentor",
+    focus: "SAP S/4HANA — MM, FICO, PP/QM & SD",
+    photo: "/faculty/shrawan-wankhede.png",
+    linkedin: "https://www.linkedin.com/in/shrawan-wankhede-83bb6586/",
+    note: "Twelve years in ERP implementation and supply-chain consulting — mentors the SAP track and its cross-module integration.",
+  },
+];
+
+/* The wider team, shown below the mentors on the homepage as labelled groups.
+   Every member degrades to an initials monogram until a photo is dropped in,
+   so slots can be filled in one at a time. Set `featured: true` on a member to
+   give them the highlighted "best" card. Replace the placeholder names/roles
+   and add /public/team/*.png photos as they come in. */
+export const teamGroups = [
+  {
+    key: "trainers",
+    eyebrow: "Trainers",
+    title: "Who runs your batch",
+    intro: "The trainers in the room every session — teaching, reviewing projects and prepping you for interviews. Vivek and Abhinav run the Data Analytics and Data Science tracks.",
+    members: [
+      {
+        initials: "VK",
+        name: "Vivek Khubalkar",
+        role: "Data Analytics & Data Science Trainer",
+        photo: "/faculty/vivek-khubalkar.png",
+        linkedin: "https://www.linkedin.com/in/vivek-khubalkar/",
+      },
+      {
+        initials: "AD",
+        name: "Abhinav Dusariwar",
+        role: "Data Analytics & Data Science Trainer",
+        photo: "/team/abhinav-dusariwar.jpg",
+        linkedin: "https://www.linkedin.com/in/abhinav-dusariwar/",
+      },
+    ],
+  },
+  {
+    key: "counsellors",
+    eyebrow: "Counsellors",
+    title: "The first people you speak to",
+    intro: "They map your background to the right track — honestly, including when the answer is none of them.",
+    members: [
+      {
+        initials: "MD",
+        name: "Mayuri Deshmukh",
+        role: "Career Counselor",
+        photo: "/team/mayuri-deshmukh.jpg",
+        linkedin: null,
+      },
+      {
+        initials: "VS",
+        name: "Vaishnavi Sonule",
+        role: "Career Counselor",
+        photo: "/team/vaishnavi_sonule.png",
+        linkedin: "https://www.linkedin.com/in/vaishnavi-sonule-7715a423a/",
+      },
+    ],
+  },
+  {
+    key: "placement",
+    eyebrow: "HR & Placement",
+    title: "The placement team",
+    intro: "Resume and LinkedIn rebuilds, live mock interviews and referrals to hiring contacts.",
+    members: [
+      {
+        initials: "AK",
+        name: "Anuj Kulkarni",
+        role: "Placement & HR Coordinator",
+        photo: "/team/anuj-kulkarni.jpg",
+        linkedin: "https://www.linkedin.com/in/anuj-kulkarni-98b7bb27b/",
+      },
+    ],
+  },
+];
+
+/* Operations & tech support — shown on the About page (not the homepage team
+   section), since these roles support the institute rather than teach a batch. */
+export const operationsTeam = [
+  {
+    initials: "TC",
+    name: "Tejas Chitriv",
+    role: "Operations Manager",
+    focus: "Scheduling, campuses and the day-to-day that keeps every batch running smoothly.",
+    photo: "/team/tejas-chitriv.jpg",
+    linkedin: "https://www.linkedin.com/in/tejas-chitriv-296971360/",
+  },
+  {
+    initials: "SR",
+    name: "Saurabh Radke",
+    role: "Technical Support & Systems",
+    focus: "The servers, the site and the tools every batch depends on.",
+    photo: null,
+    linkedin: null,
   },
 ];
 
@@ -585,7 +745,7 @@ export const grooming = {
     {
       icon: "interview",
       title: "Interview grooming",
-      body: "Three recorded mock interviews with written feedback, plus a line-by-line resume and LinkedIn rebuild.",
+      body: "Three live mock interviews taken by industry-expert interviewers who still hire for these roles, with written feedback — plus a line-by-line resume and LinkedIn rebuild.",
     },
     {
       icon: "workplace",
@@ -604,24 +764,24 @@ export const grooming = {
 
 export const faqs = [
   {
-    q: "What IT courses does Techtonic Lab offer in Nagpur?",
-    a: "Techtonic Lab runs three job-oriented tracks: Data Analytics (6 months), Data Science (9 months), and SAP S/4HANA — offered as four standalone modules, FICO, MM (Sourcing & Procurement), PP/QM and SD (Sales & Distribution), each ₹49,999. Every programme includes a month of corporate grooming and placement preparation, and each is available as a classroom, online or weekend batch.",
+    q: "What IT courses does TECHTONIC LAB offer in Nagpur?",
+    a: "TECHTONIC LAB runs three job-oriented tracks: Data Analytics (6 months), Data Science (9 months), and SAP S/4HANA — offered as four standalone modules, FICO, MM (Sourcing & Procurement), PP/QM and SD (Sales & Distribution), each ₹49,999. Every programme includes a month of corporate grooming and placement preparation, and each is available as a classroom, online or weekend batch.",
   },
   {
-    q: "What does a course at Techtonic Lab cost?",
-    a: `Fees are published openly: Data Analytics is ₹49,999 for 6 months, Data Science is ₹89,999 for 9 months, and each SAP S/4HANA module — MM, FICO, PP/QM or SD — is ₹49,999. Every fee is all-inclusive — training, learning material, project datasets or SAP S/4HANA server access, the corporate grooming month (a ₹29,999 programme, included free) and placement preparation, with no separate registration, examination or certificate charges. A ${EMI_MONTHS}-month no-cost EMI is available: about ${formatINR(emiPerMonth("49999"))} per month for the ₹49,999 courses and ${formatINR(emiPerMonth("89999"))} per month for Data Science.`,
+    q: "What does a course at TECHTONIC LAB cost?",
+    a: `Fees are published openly: Data Analytics is ₹49,999 for 6 months, Data Science is ₹89,999 for 9 months, and each SAP S/4HANA module — MM, FICO, PP/QM or SD — is ₹49,999. Every fee is all-inclusive — training, learning material, project datasets or SAP S/4HANA server access, the corporate grooming month (a ₹29,999 programme, included free) and placement preparation, with no separate registration, examination or certificate charges. Fees can be paid in 3 instalments — ₹20,000 + ₹15,000 + ₹15,000 for the ₹49,999 courses and each SAP module, and ₹35,000 + ₹30,000 + ₹24,999 for Data Science.`,
   },
   {
     q: "Are the courses suitable for complete beginners?",
     a: "Yes. The Data Analytics and SAP courses assume no prior technical background — Data Analytics opens with Excel, and SAP's functional modules are business configuration rather than programming. Data Science is the one course where prior comfort with mathematics genuinely helps, though it still teaches Python from the beginning.",
   },
   {
-    q: "Does Techtonic Lab guarantee placement?",
-    a: "No. Techtonic Lab provides placement assistance, not a placement guarantee. That means resume and LinkedIn rebuilds, recorded mock interviews, aptitude practice and referrals to hiring contacts. Any institute promising a guaranteed job or an assured salary should be treated with caution — outcomes always depend on individual performance and the hiring market.",
+    q: "Does TECHTONIC LAB guarantee placement?",
+    a: "No. TECHTONIC LAB provides placement assistance, not a placement guarantee. That means resume and LinkedIn rebuilds, live mock interviews, aptitude practice and referrals to hiring contacts. Any institute promising a guaranteed job or an assured salary should be treated with caution — outcomes always depend on individual performance and the hiring market.",
   },
   {
     q: "Will I receive a certificate after completing the course?",
-    a: "Yes, you receive a Techtonic Lab course-completion certificate. We also guide you towards the relevant vendor certification — Microsoft PL-300 for Power BI, or official SAP module certification — which carries considerably more weight with employers than any institute certificate on its own.",
+    a: "Yes, you receive a TECHTONIC LAB course-completion certificate. We also guide you towards the relevant vendor certification — Microsoft PL-300 for Power BI, or official SAP module certification — which carries considerably more weight with employers than any institute certificate on its own.",
   },
   {
     q: "Can I attend from outside Nagpur?",
@@ -629,19 +789,19 @@ export const faqs = [
   },
   {
     q: "Which is the best institute for a Data Analytics or Data Science course in Nagpur?",
-    a: "Techtonic Lab is one of the institutes Nagpur learners shortlist for Data Analytics and Data Science, and the reasons are checkable rather than promotional. Every fee and batch date is published on the site (Data Analytics ₹49,999 for 6 months, Data Science ₹89,999 for 9 months), the tracks are taught by an instructor with over a decade in analytics and applied AI, and alumni are named on the record rather than reduced to a percentage. You finish with four portfolio projects on GitHub, a month of corporate grooming is built into the fee, and it is honest placement assistance — not a guaranteed-job claim. Compare any Nagpur institute on those same points before you decide.",
+    a: "TECHTONIC LAB is one of the institutes Nagpur learners shortlist for Data Analytics and Data Science, and the reasons are checkable rather than promotional. Every fee and batch date is published on the site (Data Analytics ₹49,999 for 6 months, Data Science ₹89,999 for 9 months), the tracks are taught by an instructor with over a decade in analytics and applied AI, and alumni are named on the record rather than reduced to a percentage. You finish with four portfolio projects on GitHub, a month of corporate grooming is built into the fee, and it is honest placement assistance — not a guaranteed-job claim. Compare any Nagpur institute on those same points before you decide.",
   },
   {
     q: "Which is the best SAP training institute in Nagpur?",
-    a: "For SAP S/4HANA, Techtonic Lab is a strong option in Nagpur because it teaches the way the job is actually done. Every learner gets individual live S/4HANA server access from week two and configures a real module — MM (Sourcing & Procurement), FICO, PP/QM or SD (Sales & Distribution) — taught by a working consultant who has run real implementations, not a career trainer. Each module is a standalone course at ₹49,999, all-inclusive and published openly, with named alumni now working as SAP consultants. The honest test of any 'best SAP institute in Nagpur' claim is whether you get your own server login and whether the fees and outcomes are published — Techtonic Lab does both.",
+    a: "For SAP S/4HANA, TECHTONIC LAB is a strong option in Nagpur because it teaches the way the job is actually done. Every learner gets individual live S/4HANA server access from week two and configures a real module — MM (Sourcing & Procurement), FICO, PP/QM or SD (Sales & Distribution) — taught by a working consultant who has run real implementations, not a career trainer. Each module is a standalone course at ₹49,999, all-inclusive and published openly, with named alumni now working as SAP consultants. The honest test of any 'best SAP institute in Nagpur' claim is whether you get your own server login and whether the fees and outcomes are published — TECHTONIC LAB does both.",
   },
   {
     q: "Is a data analyst course hard to learn?",
     a: "It is demanding but not mathematically hard. The real difficulty is consistency — around 6 to 8 hours of practice a week outside class. The concepts are business logic rather than advanced mathematics, which is why learners from commerce and arts backgrounds complete it every batch.",
   },
   {
-    q: "How do I contact Techtonic Lab?",
-    a: "Call or WhatsApp +91 87660 69947, email admin@techtoniccorporate.com, or visit either campus: the head office at SAI NIT-JIT PLAZA, Third Floor, Manish Nagar, Somalwada, or the branch office on Jaitala Road. Both are open Monday to Saturday, 9:00 am to 8:00 pm.",
+    q: "How do I contact TECHTONIC LAB?",
+    a: "Call or WhatsApp +91 87660 69947, email admin@techtoniccorporate.com, or visit either campus: the head office at SAI NIT-JIT PLAZA, Third Floor, Manish Nagar, Somalwada, or the branch office at US Tower, Vasudev Nagar Metro Station. Both are open Monday to Saturday, 9:00 am to 8:00 pm.",
   },
 ];
 
@@ -654,7 +814,7 @@ export const footerLinks = {
     { label: "Batch schedule", href: "/batches" },
   ],
   Institute: [
-    { label: "About Techtonic Lab", href: "/aboutus" },
+    { label: "About TECHTONIC LAB", href: "/aboutus" },
     { label: "Meet the faculty", href: "/faculty" },
     { label: "Placement records", href: "/placements" },
     { label: "Hire from us", href: "/hire-from-us" },
@@ -673,18 +833,18 @@ export const footerLinks = {
 export const quickFacts = [
   // { value: String(placements.length), label: "Named alumni placed, on record" },
   { value: `${facultyYearsTotal}+`, unit: "yrs", label: "Combined faculty experience" },
-  { value: "3", label: "Courses — Data Analytics, Data Science, SAP" },
+  { value: "6", label: "Job-ready tracks — DA, DS & 4 SAP modules" },
   { value: "₹49,999", unit: "onwards", label: "All-inclusive, published fees" },
   { value: "4–9", unit: "months", label: "Programme length, by course" },
   { value: "2", label: "Campuses in Nagpur" },
 ];
 
 export const DISCLAIMER =
-  "Techtonic Lab provides placement assistance, not a placement guarantee. Outcomes depend on individual performance, batch, and market conditions at the time of hiring.";
+  "TECHTONIC LAB provides placement assistance, not a placement guarantee. Outcomes depend on individual performance, batch, and market conditions at the time of hiring.";
 
 export const chatbot = {
   number: "917000026612", // TODO: replace with the full chatbot number
-  greeting: "Hi! I'd like to know about the courses at Techtonic Lab.",
+  greeting: "Hi! I'd like to know about the courses at TECHTONIC LAB.",
 };
 
 export function whatsappLink(source = "site") {

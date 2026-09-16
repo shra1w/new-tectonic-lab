@@ -49,7 +49,7 @@ const durationRange =
   minMonths === maxMonths ? `${minMonths} months` : `${minMonths}–${maxMonths} months`;
 
 const rail = [
-  { icon: LuGraduationCap, k: "Courses", v: "3 job-ready tracks", sub: "DA · DS · SAP" },
+  { icon: LuGraduationCap, k: "Courses", v: "6 job-ready tracks", sub: "DA · DS · SAP MM · FICO · SD · PP/QM" },
   { icon: LuIndianRupee, k: "Fee", v: feeRange, sub: "All-inclusive, no add-ons" },
   { icon: LuCalendarDays, k: "Duration", v: durationRange, sub: "By programme" },
   { icon: LuLaptop, k: "Modes", v: "Class · Online · Weekend", sub: "Same syllabus" },
@@ -84,14 +84,14 @@ export default function Hero() {
           <Reveal delay={0.06}>
             {/* More generous leading across all sizes — gives the words room and
                 keeps the acid highlight clear of the line above. */}
-            <h1 className="mt-7 font-display text-[2.5rem] font-semibold leading-[1.28] tracking-tight text-zinc-50 sm:text-6xl sm:leading-[1.16] sm:tracking-tightest lg:text-[4.5rem] lg:leading-[1.08]">
+            <h1 className="mt-7 font-display text-[2.35rem] font-semibold leading-[1.2] tracking-tight text-zinc-50 sm:text-[3.5rem] sm:leading-[1.12] sm:tracking-tightest lg:text-[4rem] lg:leading-[1.05]">
               IT courses in Nagpur to elevate your{" "}
-              <span className="relative inline-block">
+              <span className="relative inline-block whitespace-nowrap">
                 <span
                   aria-hidden="true"
-                  className="absolute -inset-x-2 -inset-y-0.5 -z-10 rounded-md bg-acid sm:-inset-y-1"
+                  className="absolute -inset-x-1 inset-y-0 -z-10 rounded-md bg-acid"
                 />
-                <span className="relative text-ink-950">Tech career</span>
+                <span className="relative px-1 text-ink-950">Tech career</span>
               </span>
             </h1>
           </Reveal>
@@ -107,7 +107,7 @@ export default function Hero() {
 
           <Reveal delay={0.18}>
             <div className="mt-9 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row sm:items-center">
-              <BuyCourseButton/>
+              {/* <BuyCourseButton/> */}
               <Link href="/connect-with-us" className="btn-primary w-full sm:w-auto">
                 Book a free consultation
                 <LuArrowRight aria-hidden="true" className="h-4 w-4" />

@@ -27,9 +27,9 @@ const breadcrumbs = [
   { name: "Hire from us", href: "/hire-from-us" },
 ];
 
-const TITLE = "Hire from Techtonic Lab — Nagpur Analytics and SAP Talent";
+const TITLE = "Hire from TECHTONIC LAB — Nagpur Analytics and SAP Talent";
 const DESC =
-  "Hire Data Analytics, Data Science and SAP candidates from Techtonic Lab in Nagpur. Interview-ready, four documented portfolio projects each, no placement fee for employers.";
+  "Hire Data Analytics, Data Science and SAP candidates from TECHTONIC LAB in Nagpur. Interview-ready, four documented portfolio projects each, no placement fee for employers.";
 
 const ICONS = {
   shortlist: LuUsersRound,
@@ -40,7 +40,7 @@ const ICONS = {
 
 const faqs = [
   {
-    q: "Does Techtonic Lab charge employers a placement fee?",
+    q: "Does TECHTONIC LAB charge employers a placement fee?",
     a: "No. There is no fee to hire from us. Our incentive is that the person you hire stays named on our placements page, which only works if the match was a good one in the first place.",
   },
   {
@@ -49,7 +49,7 @@ const faqs = [
   },
   {
     q: "How prepared are the candidates?",
-    a: "Every candidate has completed four documented portfolio projects with review, a resume and LinkedIn rebuild, three recorded mock interviews with written feedback, and aptitude practice. SAP candidates have configured on live S/4HANA rather than watching a demonstration.",
+    a: "Every candidate has completed four documented portfolio projects with review, a resume and LinkedIn rebuild, three live mock interviews with written feedback, and aptitude practice. SAP candidates have configured on live S/4HANA rather than watching a demonstration.",
   },
   {
     q: "How long does it take to get a shortlist?",
@@ -73,7 +73,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/hire-from-us`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: TITLE,
     description: DESC,
     images: [{ url: "/og/hire.jpg", width: 1200, height: 630, alt: TITLE }],
@@ -98,7 +98,7 @@ export default function HirePage() {
         breadcrumbs={breadcrumbs}
         eyebrow="For employers"
         title="Hire from"
-        highlight="Techtonic Lab"
+        highlight="TECHTONIC LAB"
         summary={hire.summary}
         aside={
           <FactTable

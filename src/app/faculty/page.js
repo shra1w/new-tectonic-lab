@@ -9,7 +9,7 @@ import ImageSlot from "@/components/ui/ImageSlot";
 import FactTable from "@/components/ui/FactTable";
 import CtaBand from "@/components/CtaBand";
 
-import { faculty, facultyYearsTotal, directors, courses, SITE_URL } from "@/lib/site";
+import { faculty, facultyYearsTotal, directors, SITE_URL } from "@/lib/site";
 import { breadcrumbSchema, personSchemas, directorPersonSchemas, webPageSchema } from "@/lib/schema";
 
 const breadcrumbs = [
@@ -17,9 +17,9 @@ const breadcrumbs = [
   { name: "Faculty", href: "/faculty" },
 ];
 
-const TITLE = "Meet the Faculty at Techtonic Lab, Nagpur";
+const TITLE = "Meet the Faculty at TECHTONIC LAB, Nagpur";
 const DESC =
-  "The Techtonic Lab faculty — three industry professionals teaching Data Analytics, Data Science and SAP courses in Nagpur, with 5 to 12 years of hands-on experience each, led by directors Rupali Wankhede and Dhyaneshwari Talekar.";
+  "The TECHTONIC LAB faculty — industry professionals teaching Data Analytics, Data Science and SAP courses in Nagpur, with hands-on experience each, led by directors Rupali Wankhede and Dnyaneshwari Lanjewar.";
 
 export const metadata = {
   title: TITLE,
@@ -29,7 +29,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/faculty`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: TITLE,
     description: DESC,
     images: [{ url: "/og/faculty.jpg", width: 1200, height: 630, alt: TITLE }],
@@ -60,15 +60,15 @@ export default function FacultyPage() {
         eyebrow="The team"
         title="Meet the"
         highlight="faculty"
-        summary={`Three instructors, ${facultyYearsTotal}+ years of combined industry experience across SAP, data analytics and data science. Every one of them still works in the field — the SAP track is taught by a consultant who has run real implementations, not by a career trainer.`}
+        summary={`Instructors and mentors with ${facultyYearsTotal}+ years of combined industry experience across SAP, data analytics and data science. Every one of them still works in the field — the SAP track is taught by a consultant who has run real implementations, not by a career trainer.`}
         aside={
           <FactTable
             rows={[
-              ["Instructors", String(faculty.length)],
+              ["Instructors", "12"],
               ["Directors", String(directors.length)],
               ["Combined experience", `${facultyYearsTotal}+ years`],
-              ["Courses covered", String(courses.length)],
-              ["Campuses", "Somalwada and Jaitala Road"],
+              ["Courses covered", "6"],
+              ["Campuses", "Manish Nagar and Vasudev Nagar"],
             ]}
           />
         }
@@ -92,7 +92,7 @@ export default function FacultyPage() {
   >
     <ImageSlot
       src={f.photo}
-      alt={`${f.name}, ${f.title} at Techtonic Lab`}
+      alt={`${f.name}, ${f.title} at TECHTONIC LAB`}
       className="aspect-[4/3] w-full"
       rounded="rounded-none"
       sizes="(max-width: 768px) 100vw, 33vw"
@@ -171,7 +171,7 @@ export default function FacultyPage() {
             id="directors-title"
             eyebrow="Leadership"
             title="The directors"
-            intro="The two people who run Techtonic Lab and set the standard the faculty teach to — from published fees and honest placement records to the support every learner gets."
+            intro="The two people who run TECHTONIC LAB and set the standard the faculty teach to — from published fees and honest placement records to the support every learner gets."
           />
 
           <Stagger className="mt-10 grid gap-5 sm:grid-cols-2 lg:mx-auto lg:max-w-3xl" itemClassName="h-full">
@@ -186,7 +186,7 @@ export default function FacultyPage() {
 
                     <img
                       src={d.photo}
-                      alt={`${d.name}, ${d.title} at Techtonic Lab`}
+                      alt={`${d.name}, ${d.title} at TECHTONIC LAB`}
                       className="h-[20rem] w-full object-cover "
                     />
                   ) : (
@@ -222,50 +222,6 @@ export default function FacultyPage() {
                 </div>
               </article>
             ))}
-          </Stagger>
-        </div>
-      </section>
-
-      {/* ---- By course ---- */}
-      <section
-        aria-labelledby="by-course-title"
-        className="border-y border-white/10 bg-ink-900/40 py-20 sm:py-24"
-      >
-        <div className="shell">
-          <SectionHead
-            id="by-course-title"
-            eyebrow="By course"
-            title="Who teaches what"
-            intro="Who runs each track, named, with the years behind them. You meet the person who teaches your course in week one — every batch is taught and reviewed live, never handed to a recording."
-          />
-          <Stagger className="mt-10 grid gap-5 lg:grid-cols-3" itemClassName="h-full">
-            {courses.map((c) => {
-              const team = faculty.filter((f) => f.teaches.includes(c.name));
-              return (
-                <div key={c.slug} className="card flex h-full flex-col p-6">
-                  <h3 className="font-display text-lg font-semibold text-zinc-50">{c.name}</h3>
-                  <ul className="mt-5 flex-1 space-y-3">
-                    {team.map((f) => (
-                      <li key={f.name} className="flex items-start gap-3">
-                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/10 bg-white/[0.03] font-display text-2xs font-semibold text-acid">
-                          {f.initials}
-                        </span>
-                        <span className="text-sm">
-                          <span className="block font-medium text-zinc-100">{f.name}</span>
-                          <span className="block text-xs text-zinc-500">{f.years}</span>
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href={`/${c.slug}`}
-                    className="mt-6 text-sm font-semibold text-acid hover:text-acid-soft"
-                  >
-                    Explore the {c.name} course
-                  </Link>
-                </div>
-              );
-            })}
           </Stagger>
         </div>
       </section>

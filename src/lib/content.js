@@ -1,11 +1,11 @@
 // src/lib/content.js
 export const about = {
-  h1: "About Techtonic Lab",
+  h1: "About TECHTONIC LAB",
   summary:
-    "Techtonic Lab is an IT training institute in Nagpur teaching Data Analytics, Data Science and SAP to students, graduates and working professionals across Vidarbha.",
+    "TECHTONIC LAB is an IT training institute in Nagpur teaching Data Analytics, Data Science and SAP to students, graduates and working professionals across Vidarbha.",
 
   story: [
-    "Techtonic Lab exists because of a gap that anyone who has hired in Nagpur will recognise. There is no shortage of graduates in this city, and no shortage of institutes issuing certificates. What there is a shortage of is people who can sit down in front of a real system and do the work on day one.",
+    "TECHTONIC LAB exists because of a gap that anyone who has hired in Nagpur will recognise. There is no shortage of graduates in this city, and no shortage of institutes issuing certificates. What there is a shortage of is people who can sit down in front of a real system and do the work on day one.",
     "So the institute was built around a narrow, unglamorous idea: teach three things properly instead of twenty things badly. Data Analytics, Data Science and SAP. Each is a serious, months-long programme with a month of corporate grooming built in, taught by people who still work in the field rather than people who last shipped something a decade ago.",
     "Everything else follows from that. Fees are published because hiding them wastes everyone's time. Batch dates are published for the same reason. Every SAP learner gets their own S/4HANA login because watching someone else configure a company code does not make you a consultant. And every alumnus named on this site is a real person with a real employer, because the alternative is a logo wall that falls apart the moment a prospect checks.",
   ],
@@ -35,8 +35,8 @@ export const about = {
 
   numbers: [
     { k: "Based in", v: "Nagpur" },
-    { k: "Campuses", v: "2 — Somalwada and Jaitala Road" },
-    { k: "Courses", v: "3 — Data Analytics, Data Science, SAP" },
+    { k: "Campuses", v: "2 — Manish Nagar and Vasudev Nagar" },
+    { k: "Courses", v: "6 — Data Analytics, Data Science & 4 SAP modules" },
     { k: "Batch modes", v: "Classroom, online, weekend" },
     { k: "Programme length", v: "4–9 months, by course" },
     { k: "Fees", v: "₹49,999 onwards, published" },
@@ -104,7 +104,7 @@ const BATCH_STREAMS = [
     slug: "data-analytics-course",
     mode: "Weekend",
     timing: "Sat–Sun, 10:00 am – 1:00 pm",
-    campus: "Jaitala Road",
+    campus: "Vasudev Nagar",
     anchorISO: "2026-08-23",
     cadenceDays: 56,
   },
@@ -239,7 +239,7 @@ export function soonestBatchByCourse(now = new Date()) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const hire = {
-  h1: "Hire from Techtonic Lab",
+  h1: "Hire from TECHTONIC LAB",
   summary:
     "Our learners finish with defended portfolio projects, live system experience and a month of interview preparation. Tell us what you are hiring for and we will send you a shortlist, at no cost.",
 
@@ -252,7 +252,7 @@ export const hire = {
     {
       icon: "ready",
       title: "Interview-ready on arrival",
-      body: "Every candidate has completed three recorded mock interviews with written feedback, a resume rebuild and aptitude practice. You spend your interview slots assessing, not teaching people how to be interviewed.",
+      body: "Every candidate has completed three live mock interviews with written feedback, a resume rebuild and aptitude practice. You spend your interview slots assessing, not teaching people how to be interviewed.",
     },
     {
       icon: "evidence",
@@ -284,12 +284,12 @@ export const privacyPolicy = {
   h1: "Privacy policy",
   updated: "1 August 2026",
   intro:
-    "This policy explains what personal data Techtonic Lab collects, why we collect it, how long we keep it, and the rights you have over it under India's Digital Personal Data Protection Act, 2023.",
+    "This policy explains what personal data TECHTONIC LAB collects, why we collect it, how long we keep it, and the rights you have over it under India's Digital Personal Data Protection Act, 2023.",
   sections: [
     {
       title: "Who we are",
       body: [
-        "Techtonic Lab is an IT training institute operated by Skillcloud Solutions Pvt. Ltd., with campuses at Manish Nagar, Somalwada and Jaitala Road, Nagpur, Maharashtra.",
+        "TECHTONIC LAB is an IT training institute operated by Skillcloud Solutions Pvt. Ltd., with campuses at Manish Nagar and Vasudev Nagar, Nagpur, Maharashtra.",
         "For the purposes of the Digital Personal Data Protection Act, 2023, Skillcloud Solutions Pvt. Ltd. is the Data Fiduciary for the personal data described in this policy.",
       ],
     },
@@ -381,12 +381,12 @@ export const termsOfService = {
   h1: "Terms of service",
   updated: "1 August 2026",
   intro:
-    "These terms govern the use of this website and enrolment in any Techtonic Lab course. Please read them before you enrol.",
+    "These terms govern the use of this website and enrolment in any TECHTONIC LAB course. Please read them before you enrol.",
   sections: [
     {
       title: "About these terms",
       body: [
-        "This website is operated by Skillcloud Solutions Pvt. Ltd., trading as Techtonic Lab. By using the site or enrolling in a course you accept these terms.",
+        "This website is operated by Skillcloud Solutions Pvt. Ltd., trading as TECHTONIC LAB. By using the site or enrolling in a course you accept these terms.",
         "We may update these terms. The version in force is the one published here, with the date shown at the top of this page.",
       ],
     },
@@ -396,7 +396,7 @@ export const termsOfService = {
         "The Data Analytics course fee is ₹49,999 for the complete six-month programme. The Data Science course fee is ₹89,999 for the complete nine-month programme. SAP S/4HANA is offered as four standalone modules — MM, FICO, PP/QM and SD — each priced at ₹49,999. Every programme includes a month of corporate grooming.",
         "Each fee includes learning material, project datasets or SAP S/4HANA server access as applicable, the corporate grooming month and placement preparation. There is no separate registration, examination or certificate charge.",
         "The official SAP certification examination is paid directly to SAP and is not included in the course fee.",
-        "A no-cost EMI is offered over six months. Terms depend on the financing partner and are set out at the point of enrolment.",
+        "Fees may be paid in three instalments. The instalment schedule is set out at the point of enrolment.",
       ],
     },
     {
@@ -409,17 +409,15 @@ export const termsOfService = {
     {
       title: "Refunds and withdrawal",
       body: [
-        "If you withdraw before the batch start date, amounts paid are refunded in full less any non-recoverable third-party charges.",
-        "If you withdraw within [7] days of the batch start date, [X]% of the fee is refunded.",
-        "After that period, fees are not refundable, because the seat, the server licence and the faculty time have been committed. This clause must be reviewed and the bracketed figures fixed by counsel before publication.",
-        "Refunds are processed to the original payment method within [21] working days of approval.",
+        "Fees once paid are non-refundable. A seat is confirmed only when payment is made, and at that point the seat, the SAP S/4HANA server licence and the faculty time are committed to you.",
+        "Because of this, please use the free consultation to settle any question about the batch, the schedule and whether the course fits your background before you pay — we would rather answer everything first than take a payment that has to be unwound.",
       ],
     },
     {
       title: "Placement assistance",
       body: [
-        "Techtonic Lab provides placement assistance. We do not guarantee employment, a job offer, an interview, or any particular salary.",
-        "Placement assistance means resume and LinkedIn preparation, three recorded mock interviews with written feedback, aptitude practice, and referral of your profile to hiring contacts where your work matches the role.",
+        "TECHTONIC LAB provides placement assistance. We do not guarantee employment, a job offer, an interview, or any particular salary.",
+        "Placement assistance means resume and LinkedIn preparation, three live mock interviews with written feedback, aptitude practice, and referral of your profile to hiring contacts where your work matches the role.",
         "Outcomes depend on individual performance, attendance, project quality and market conditions at the time of hiring.",
         "Any statement anywhere else that appears to promise guaranteed placement is superseded by this clause.",
       ],
@@ -435,7 +433,7 @@ export const termsOfService = {
       title: "Server access and licensed material",
       body: [
         "SAP S/4HANA credentials are issued to you personally for the duration of your programme and may not be shared, resold or used for commercial work.",
-        "Course material, datasets, recordings and project briefs remain the intellectual property of Techtonic Lab and are licensed to you for personal study only.",
+        "Course material, datasets, recordings and project briefs remain the intellectual property of TECHTONIC LAB and are licensed to you for personal study only.",
         "Work you produce during the course — your projects, notebooks and configurations — belongs to you, and you are free to publish it in your portfolio.",
       ],
     },

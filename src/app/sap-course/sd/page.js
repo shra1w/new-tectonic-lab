@@ -22,7 +22,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/sap-course/${KEY}`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: "SAP SD Course in Nagpur — Sales and Distribution",
     description: "SAP SD course in Nagpur: configure order-to-cash from sales area design through pricing, delivery, billing and returns on live S/4HANA server access.",
     images: [{ url: "/og/sap-course.jpg", width: 1200, height: 630, alt: "SAP SD Course in Nagpur — Sales and Distribution" }],

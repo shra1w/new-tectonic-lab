@@ -260,7 +260,7 @@ export default function HeroCube({ images = DEFAULT_IMAGES, className = "" }) {
       onBlur={resume}
       tabIndex={0}
       role="img"
-      aria-label="Rotating gallery of images from the Techtonic Lab training floor"
+      aria-label="Rotating gallery of images from the TECHTONIC LAB training floor"
     >
   
       <motion.div

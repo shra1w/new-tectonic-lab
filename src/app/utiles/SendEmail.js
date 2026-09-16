@@ -32,7 +32,7 @@ export async function sendEmail(data) {
             from: email_from,
             to: email_to,
             replyTo: data.Email, // Add reply-to field
-            subject: "Connection from Techtonic Lab Website",
+            subject: "Connection from TECHTONIC LAB Website",
             html: `
                 <div style="font-family: Arial, sans-serif; padding: 20px;">
                     <h2 style="color: #333;">Contact Form Submission</h2>

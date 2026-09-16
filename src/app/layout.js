@@ -28,8 +28,8 @@ const body = Figtree({
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Data Analyst, SAP & Data Science Courses in Nagpur | Techtonic Lab",
-    template: "%s | Techtonic Lab",
+    default: "Data Analyst, SAP & Data Science Courses in Nagpur | TECHTONIC LAB",
+    template: "%s | TECHTONIC LAB",
   },
   description:
     "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP with classroom, online, and weekend batches. Fees ₹49,999. Placement preparation included.",
@@ -56,7 +56,7 @@ export const metadata = {
     locale: "en_IN",
     url: `${SITE_URL}/`,
     siteName: brand.name,
-    title: "Data Analyst, SAP & Data Science Courses in Nagpur | Techtonic Lab",
+    title: "Data Analyst, SAP & Data Science Courses in Nagpur | TECHTONIC LAB",
     description:
       "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP with classroom, online, and weekend batches. Fees ₹49,999. Placement preparation included.",
     images: [
@@ -64,14 +64,14 @@ export const metadata = {
         url: "/og/homepage.jpg",
         width: 1200,
         height: 630,
-        alt: "Techtonic Lab — IT training institute in Nagpur",
+        alt: "TECHTONIC LAB — IT training institute in Nagpur",
       },
     ],
   },
   // SEO-06 / SEO-07
   twitter: {
     card: "summary_large_image",
-    title: "Data Analyst, SAP & Data Science Courses in Nagpur | Techtonic Lab",
+    title: "Data Analyst, SAP & Data Science Courses in Nagpur | TECHTONIC LAB",
     description:
       "Job-ready IT courses in Nagpur — Data Analytics, Data Science, and SAP. Fees ₹49,999. Placement preparation included.",
     images: ["/og/homepage.jpg"],

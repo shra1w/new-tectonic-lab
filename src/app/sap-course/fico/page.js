@@ -21,7 +21,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/sap-course/${KEY}`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: "SAP FICO Course in Nagpur — Finance and Controlling",
     description: "SAP FICO course in Nagpur: configure company codes, general ledger, asset accounting and cost centres on live S/4HANA. A standalone module at ₹49,999, all-inclusive.",
     images: [{ url: "/og/sap-course.jpg", width: 1200, height: 630, alt: "SAP FICO Course in Nagpur — Finance and Controlling" }],

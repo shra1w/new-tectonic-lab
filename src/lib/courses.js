@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // Per-course detail: hero copy, audience, module-by-module syllabus, projects,
-// careers and page-level FAQs. Modules mirror the official Techtonic Lab
+// careers and page-level FAQs. Modules mirror the official TECHTONIC LAB
 // syllabus PDFs (Data Analyst, Data Science, SAP MM / FICO / PP-QM).
 //
 // Durations and fees live in site.js and must match: Data Analytics 6 months,
@@ -15,7 +15,7 @@ export const courseDetail = {
       "Six months of hands-on training in Advanced Excel, SQL, Power BI or Tableau, Python and applied statistics, plus a month of corporate grooming. Classroom, online and weekend batches in Nagpur.",
     primaryKeyword: "data analyst course in Nagpur",
     prerequisites: "None. The course opens with SQL and Excel and introduces Python gradually.",
-    certification: "Techtonic Lab completion certificate, plus guidance towards Microsoft PL-300",
+    certification: "TECHTONIC LAB completion certificate, plus guidance towards Microsoft PL-300",
     language: "English, with Hindi and Marathi explanation on request",
 
     audience: [
@@ -127,7 +127,7 @@ export const courseDetail = {
           "Introduction to cloud services (AWS / Azure)",
           "End-to-end capstone project",
           "Resume and LinkedIn rebuild, GitHub portfolio",
-          "Three recorded mock interviews and aptitude practice",
+          "Three live mock interviews and aptitude practice",
           "Salary negotiation",
         ],
         tools: ["AWS / Azure", "GitHub", "LinkedIn"],
@@ -171,7 +171,7 @@ export const courseDetail = {
 
     faqs: [
       {
-        q: "How long is the data analyst course at Techtonic Lab?",
+        q: "How long is the data analyst course at TECHTONIC LAB?",
         a: "The Data Analyst course runs for 6 months, covering SQL, Power BI or Tableau, Python, statistics and Advanced Excel, and ending with a cloud bonus module, an end-to-end capstone and a month of corporate grooming. Classroom, online and weekend batches all cover the same syllabus with the same faculty.",
       },
       {
@@ -180,15 +180,15 @@ export const courseDetail = {
       },
       {
         q: "What is the fee for the data analyst course in Nagpur?",
-        a: "The fee is ₹49,999 for the complete six-month programme. A no-cost EMI is available at roughly ₹8,334 per month over six months. The fee includes all learning material, project datasets, the corporate grooming month and placement preparation. There is no separate registration, examination or certificate charge.",
+        a: "The fee is ₹49,999 for the complete six-month programme, payable in 3 instalments of ₹20,000 + ₹15,000 + ₹15,000 across the first three months. The fee includes all learning material, project datasets, the corporate grooming month and placement preparation. There is no separate registration, examination or certificate charge.",
       },
       {
         q: "Which tools will I learn in the data analyst course?",
         a: "SQL on MySQL, Microsoft Power BI and Tableau, Python with pandas and NumPy, and Advanced Excel including Power Query and VBA. Applied statistics runs alongside them, plus an introduction to AWS or Azure as a bonus module.",
       },
       {
-        q: "Does Techtonic Lab offer placement assistance for data analysts?",
-        a: "Yes. The programme includes a resume and LinkedIn rebuild, three recorded mock interviews with written feedback, aptitude practice and referrals to hiring contacts. Techtonic Lab provides placement assistance, not a placement guarantee.",
+        q: "Does TECHTONIC LAB offer placement assistance for data analysts?",
+        a: "Yes. The programme includes a resume and LinkedIn rebuild, three live mock interviews with written feedback, aptitude practice and referrals to hiring contacts. TECHTONIC LAB provides placement assistance, not a placement guarantee.",
       },
       {
         q: "What salary can a data analyst expect in Nagpur?",
@@ -219,7 +219,7 @@ export const courseDetail = {
       "Nine months from Python foundations through machine learning, deep learning, NLP, computer vision and Generative AI/LLMs, taught through models you build and deploy, plus a month of corporate grooming. Classroom, online and weekend batches in Nagpur.",
     primaryKeyword: "data science course in Nagpur",
     prerequisites: "Comfort with school-level mathematics helps. Python is taught from scratch.",
-    certification: "Techtonic Lab completion certificate, plus guidance on vendor certification",
+    certification: "TECHTONIC LAB completion certificate, plus guidance on vendor certification",
     language: "English, with Hindi and Marathi explanation on request",
 
     audience: [
@@ -388,7 +388,7 @@ export const courseDetail = {
 
     faqs: [
       {
-        q: "How long is the data science course at Techtonic Lab?",
+        q: "How long is the data science course at TECHTONIC LAB?",
         a: "The Data Science course runs for 9 months, covering Python, statistics, machine learning, deep learning, NLP, computer vision and Generative AI/LLMs, ending with model deployment, an end-to-end capstone and a month of corporate grooming. Classroom, online and weekend batches all follow the same syllabus.",
       },
       {
@@ -397,7 +397,7 @@ export const courseDetail = {
       },
       {
         q: "What is the fee for the data science course in Nagpur?",
-        a: "The fee is ₹89,999 for the complete nine-month programme, reflecting the additional deep learning, NLP, computer vision and Generative AI content. A no-cost EMI is available at roughly ₹15,000 per month over six months, and there are no separate registration or certificate charges.",
+        a: "The fee is ₹89,999 for the complete nine-month programme, reflecting the additional deep learning, NLP, computer vision and Generative AI content. It is payable in 3 instalments of ₹35,000 + ₹30,000 + ₹24,999 across the first six months, and there are no separate registration or certificate charges.",
       },
       {
         q: "What is the difference between the data analytics and data science courses?",
@@ -412,8 +412,8 @@ export const courseDetail = {
         a: "You deploy one. The final module takes a model or a RAG application you built earlier all the way to a running endpoint using Flask, FastAPI or Streamlit, because being able to demonstrate a live system in an interview separates you from candidates who only have notebooks.",
       },
       {
-        q: "Does Techtonic Lab guarantee a data science job?",
-        a: "No. Techtonic Lab provides placement assistance, not a placement guarantee. That means resume and LinkedIn rebuilds, recorded mock interviews, aptitude practice and referrals. Any institute promising a guaranteed job should be treated with caution.",
+        q: "Does TECHTONIC LAB guarantee a data science job?",
+        a: "No. TECHTONIC LAB provides placement assistance, not a placement guarantee. That means resume and LinkedIn rebuilds, live mock interviews, aptitude practice and referrals. Any institute promising a guaranteed job should be treated with caution.",
       },
       {
         q: "When does the next data science batch start?",
@@ -428,7 +428,7 @@ export const courseDetail = {
       "Configure real SAP S/4HANA modules on individual server access from day one — Sourcing & Procurement (MM), Finance & Controlling (FICO), Production Planning & Quality (PP/QM) and Sales & Distribution (SD). Four standalone modules, each ₹49,999, taught by working consultants. Classroom, online and weekend batches in Nagpur.",
     primaryKeyword: "SAP course in Nagpur",
     prerequisites: "None for functional modules. A commerce or business background helps for FICO.",
-    certification: "Techtonic Lab completion certificate, plus SAP certification guidance",
+    certification: "TECHTONIC LAB completion certificate, plus SAP certification guidance",
     language: "English, with Hindi and Marathi explanation on request",
 
     audience: [
@@ -532,7 +532,7 @@ export const courseDetail = {
           "Cross-module integration scenarios and the end-to-end manufacturing cycle",
           "SAP tables, reports and ASAP methodology",
           "SAP certification exam preparation",
-          "Resume and LinkedIn rebuild, three recorded mock interviews",
+          "Resume and LinkedIn rebuild, three live mock interviews",
           "Salary negotiation for consultants",
         ],
         tools: ["SAP S/4HANA", "LinkedIn"],
@@ -576,8 +576,8 @@ export const courseDetail = {
 
     faqs: [
       {
-        q: "Which SAP modules does Techtonic Lab teach in Nagpur?",
-        a: "Techtonic Lab teaches four functional modules on live S/4HANA server access — SAP MM (Sourcing & Procurement), SAP FICO (Finance & Controlling), SAP PP/QM (Production Planning & Quality Management) and SAP SD (Sales & Distribution). Each is a standalone course priced at ₹49,999, and every module also covers the cross-module integration sessions that interviews actually test.",
+        q: "Which SAP modules does TECHTONIC LAB teach in Nagpur?",
+        a: "TECHTONIC LAB teaches four functional modules on live S/4HANA server access — SAP MM (Sourcing & Procurement), SAP FICO (Finance & Controlling), SAP PP/QM (Production Planning & Quality Management) and SAP SD (Sales & Distribution). Each is a standalone course priced at ₹49,999, and every module also covers the cross-module integration sessions that interviews actually test.",
       },
       {
         q: "Do I get my own SAP S/4HANA server access?",
@@ -585,7 +585,7 @@ export const courseDetail = {
       },
       {
         q: "What is the fee for the SAP course in Nagpur?",
-        a: "Each SAP module — MM, FICO, PP/QM or SD — is ₹49,999, all-inclusive: live S/4HANA server access, all learning material, the corporate grooming month and placement preparation. You choose the module that fits your background and can add another later. A no-cost EMI is available at roughly ₹8,334 per month over six months, with no separate registration, examination or certificate charge.",
+        a: "Each SAP module — MM, FICO, PP/QM or SD — is ₹49,999, all-inclusive: live S/4HANA server access, all learning material, the corporate grooming month and placement preparation. You choose the module that fits your background and can add another later. Each module is payable in 3 instalments of ₹20,000 + ₹15,000 + ₹15,000, with no separate registration, examination or certificate charge.",
       },
       {
         q: "Who can do an SAP course — is a technical degree needed?",
@@ -597,17 +597,77 @@ export const courseDetail = {
       },
       {
         q: "Is SAP certification included in the course fee?",
-        a: "The official SAP certification exam is paid separately to SAP and is not included in the ₹49,999 course fee. What is included is full preparation guidance for it, plus a Techtonic Lab completion certificate. We will tell you honestly whether the official exam is worth the cost in your particular case.",
+        a: "The official SAP certification exam is paid separately to SAP and is not included in the ₹49,999 course fee. What is included is full preparation guidance for it, plus a TECHTONIC LAB completion certificate. We will tell you honestly whether the official exam is worth the cost in your particular case.",
       },
       {
-        q: "Does Techtonic Lab guarantee an SAP job?",
-        a: "No. Techtonic Lab provides placement assistance, not a placement guarantee. Alumni working as SAP consultants are named on the placements page along with their programme and batch.",
+        q: "Does TECHTONIC LAB guarantee an SAP job?",
+        a: "No. TECHTONIC LAB provides placement assistance, not a placement guarantee. Alumni working as SAP consultants are named on the placements page along with their programme and batch.",
       },
       {
         q: "When does the next SAP batch start?",
         a: "The next SAP batch begins on 11 August 2026, with classroom, online and weekend options. Later batch dates are published on the batches page.",
       },
     ],
+  },
+};
+
+/* Basic details for each Data Analytics / Data Science module button, shown in
+   the pop-up when a learner taps a module on the course card — the same "tap a
+   module to see what it covers" pattern used for the SAP modules, so all course
+   cards behave and size the same way. Keyed by the exact tool label used in
+   `courses[].tools`. */
+export const toolInfo = {
+  "MySQL": {
+    blurb: "The querying backbone of analytics — pull, join and shape data straight from a relational database.",
+    learn: ["Joins, subqueries, CTEs and window functions", "Database design and normalisation", "Answering real business questions in SQL"],
+  },
+  "Power BI": {
+    blurb: "Microsoft's industry-standard BI tool for turning raw tables into dashboards a manager actually uses.",
+    learn: ["Power Query transformations and data modelling", "DAX measures and time-intelligence", "Interactive, stakeholder-ready dashboards"],
+  },
+  "Tableau": {
+    blurb: "Drag-and-drop visual analytics for fast, exploratory dashboards and storytelling.",
+    learn: ["Connections and calculated fields", "Advanced charts and filters", "Publishing and sharing dashboards"],
+  },
+  "Python": {
+    blurb: "The core programming language for analysis, automation and machine learning.",
+    learn: ["Fundamentals, data structures and functions", "NumPy and pandas for data work", "Matplotlib and Seaborn for plots"],
+  },
+  "Advanced Excel": {
+    blurb: "The tool every workplace already runs on — taken to an analyst level.",
+    learn: ["Lookup family, PivotTables and slicers", "Power Query and Power Pivot", "Macros and VBA automation"],
+  },
+  "AWS / Azure (Bonus)": {
+    blurb: "A bonus introduction to the cloud services analytics increasingly runs on.",
+    learn: ["Cloud fundamentals and key services", "Where data pipelines live in the cloud", "Deploying a simple workload"],
+  },
+  "Pandas": {
+    blurb: "The workhorse library for cleaning, reshaping and analysing tabular data in Python.",
+    learn: ["DataFrames, indexing and GroupBy", "Merging, joining and reshaping", "Cleaning and feature engineering"],
+  },
+  "Scikit-Learn": {
+    blurb: "The go-to library for classical machine learning models and evaluation.",
+    learn: ["Regression, trees, random forest and SVM", "Clustering and dimensionality reduction", "Cross-validation and tuning"],
+  },
+  "TensorFlow / PyTorch": {
+    blurb: "The two frameworks used to build and train deep neural networks.",
+    learn: ["ANN, CNN, RNN and LSTM architectures", "Training, transfer learning and evaluation", "Image and sequence models"],
+  },
+  "OpenCV": {
+    blurb: "The standard library for computer vision and image processing.",
+    learn: ["Image processing fundamentals", "Object detection", "Face recognition basics"],
+  },
+  "LangChain & LLMs": {
+    blurb: "Build applications on top of Large Language Models — the most in-demand AI skill today.",
+    learn: ["Prompt engineering and the OpenAI APIs", "LangChain and Retrieval-Augmented Generation (RAG)", "AI agents and a GenAI app"],
+  },
+  "Flask / FastAPI / Streamlit": {
+    blurb: "Take a model out of a notebook and put it behind a working endpoint or app.",
+    learn: ["REST APIs with Flask and FastAPI", "Streamlit data apps", "Docker basics for deployment"],
+  },
+  "Git & GitHub": {
+    blurb: "Version control and the portfolio home hiring managers actually read.",
+    learn: ["Branching, commits and pull requests", "Publishing a project portfolio", "Collaboration workflows"],
   },
 };
 

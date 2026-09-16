@@ -22,7 +22,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/${SLUG}/fees`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: "Data Analyst Course Fees in Nagpur — ₹49,999 All-Inclusive",
     description: "Data analyst course fees in Nagpur: ₹49,999 for the full 6-month programme, EMI at ₹8,334 per month. Itemised, with what is and is not included.",
     images: [{ url: "/og/data-analytics-course.jpg", width: 1200, height: 630, alt: "Data Analyst Course Fees in Nagpur — ₹49,999 All-Inclusive" }],

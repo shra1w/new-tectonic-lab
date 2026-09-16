@@ -242,7 +242,7 @@ export default function LeadForm({ courseDefault = "", source = "website" }) {
                   type="text"
                   autoComplete="given-name"
                   className={inputCx}
-                  placeholder="Rahul"
+                  placeholder="Your first name"
                   value={values.firstName}
                   onChange={set("firstName")}
                   aria-invalid={!!errors.firstName}
@@ -257,7 +257,7 @@ export default function LeadForm({ courseDefault = "", source = "website" }) {
                   type="text"
                   autoComplete="family-name"
                   className={inputCx}
-                  placeholder="Sharma"
+                  placeholder="Your last name"
                   value={values.lastName}
                   onChange={set("lastName")}
                   aria-invalid={!!errors.lastName}
@@ -275,7 +275,7 @@ export default function LeadForm({ courseDefault = "", source = "website" }) {
                   inputMode="email"
                   autoComplete="email"
                   className={inputCx}
-                  placeholder="you@example.com"
+                  placeholder="Your email address"
                   value={values.email}
                   onChange={set("email")}
                   aria-invalid={!!errors.email}
@@ -292,7 +292,7 @@ export default function LeadForm({ courseDefault = "", source = "website" }) {
                   autoComplete="tel-national"
                   maxLength={10}
                   className={inputCx}
-                  placeholder="9876543210"
+                  placeholder="10-digit mobile number"
                   value={values.mobile}
                   onChange={set("mobile")}
                   aria-invalid={!!errors.mobile}
@@ -368,7 +368,7 @@ export default function LeadForm({ courseDefault = "", source = "website" }) {
                   className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded border-white/20 bg-ink-950 text-acid accent-acid focus:outline-none focus-visible:ring-2 focus-visible:ring-acid"
                 />
                 <span className="text-xs leading-relaxed text-zinc-500">
-                  I agree to be contacted by Techtonic Lab by phone, WhatsApp or email about my
+                  I agree to be contacted by TECHTONIC LAB by phone, WhatsApp or email about my
                   enquiry, and I accept the{" "}
                   <Link href="/privacy-policy" className="text-zinc-300 underline underline-offset-2">
                     privacy policy

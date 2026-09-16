@@ -2,7 +2,7 @@ import Link from "next/link";
 import { LuCheck, LuInfo, LuArrowRight } from "react-icons/lu";
 import SectionHead from "./ui/SectionHead";
 import Stagger from "./ui/Stagger";
-import { courses, DISCLAIMER, EMI_MONTHS, emiPerMonth, formatINR } from "@/lib/site";
+import { courses, DISCLAIMER, installmentPlan } from "@/lib/site";
 
 export default function Fees() {
   return (
@@ -51,7 +51,7 @@ export default function Fees() {
                 <span className="text-xs text-zinc-500">all-inclusive</span>
               </p>
               <p className="mt-2 text-xs text-zinc-500">
-                or {formatINR(emiPerMonth(course.feeNumeric))} × {EMI_MONTHS} months on EMI · no hidden charges
+                or 3 instalments — {installmentPlan(course).text} · no hidden charges
               </p>
 
               <ul className="mt-6 space-y-2.5 border-t border-white/10 pt-6">
@@ -84,7 +84,7 @@ export default function Fees() {
         <p className="mt-8 flex items-start gap-2.5 text-xs leading-relaxed text-zinc-500">
           <LuInfo aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-500" />
           <span>
-            Techtonic Lab provides <strong className="font-semibold text-zinc-300">placement
+            TECHTONIC LAB provides <strong className="font-semibold text-zinc-300">placement
             assistance, not a placement guarantee</strong>. {DISCLAIMER.split(". ").slice(1).join(". ")}
           </span>
         </p>

@@ -24,7 +24,7 @@ export default function WhatsAppFab() {
           href={brand.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Chat with Techtonic Lab on WhatsApp"
+          aria-label="Chat with TECHTONIC LAB on WhatsApp"
           initial={reduce ? false : { opacity: 0, scale: 0.85, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={reduce ? {} : { opacity: 0, scale: 0.85, y: 12 }}

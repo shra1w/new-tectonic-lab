@@ -6,19 +6,18 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { LuMenu, LuX, LuChevronDown, LuPhone, LuGraduationCap } from "react-icons/lu";
 import { nav, brand, studentPortal } from "@/lib/site";
 import Image from "next/image";
-import BuyCourseButton from "./BuyCourseButton";
 
 function Wordmark() {
   return (
     <Link
       href="/"
-      aria-label="Techtonic Lab — home"
+      aria-label="TECHTONIC LAB — home"
       className="group flex items-center gap-1"
     >
       <Image src={"/logos/logo.svg"} alt="techtonic-lab-logo" className="" width={50} height={50}/>
       <span className="leading-none pt-1">
         <span className="block font-display text-nowrap text-[1.4625rem] font-semibold tracking-tight text-zinc-50">
-          Techtonic-Lab
+          TECHTONIC-LAB
         </span>
       
       </span>
@@ -120,8 +119,6 @@ export default function Header() {
             <LuGraduationCap aria-hidden="true" className="h-4 w-4 shrink-0" />
             <span className="hidden lg:inline">{studentPortal.label}</span>
           </a>
-
-          <BuyCourseButton variant="header" className="shrink-0" />
 
           <button
             type="button"

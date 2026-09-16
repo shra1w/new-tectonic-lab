@@ -21,14 +21,14 @@ const breadcrumbs = [
   { name: "Contact", href: "/connect-with-us" },
 ];
 
-const TITLE = "Contact Techtonic Lab — Nagpur IT Training Institute";
+const TITLE = "Contact TECHTONIC LAB — Nagpur IT Training Institute";
 const DESC =
-  "Contact Techtonic Lab in Nagpur — Somalwada head office and Jaitala Road branch. Call +91 87660 69947 or email admin@techtoniccorporate.com to book a free consultation.";
+  "Contact TECHTONIC LAB in Nagpur — Manish Nagar head office and Vasudev Nagar branch. Call +91 87660 69947 or email admin@techtoniccorporate.com to book a free consultation.";
 
 const faqs = [
   {
-    q: "How do I contact Techtonic Lab?",
-    a: "Call or WhatsApp +91 87660 69947, email admin@techtoniccorporate.com, or visit either campus — the head office at SAI NIT-JIT PLAZA, Third Floor, Manish Nagar, Somalwada, or the branch office on Jaitala Road. Both are open Monday to Saturday, 9:00 am to 8:00 pm.",
+    q: "How do I contact TECHTONIC LAB?",
+    a: "Call or WhatsApp +91 87660 69947, email admin@techtoniccorporate.com, or visit either campus — the head office at SAI NIT-JIT PLAZA, Third Floor, Manish Nagar, Somalwada, or the branch office at US Tower, Vasudev Nagar Metro Station. Both are open Monday to Saturday, 9:00 am to 8:00 pm.",
   },
   {
     q: "How quickly will someone get back to me?",
@@ -60,7 +60,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/connect-with-us`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: TITLE,
     description: DESC,
     images: [{ url: "/og/contact.jpg", width: 1200, height: 630, alt: TITLE }],
@@ -197,7 +197,7 @@ export default function ContactPage() {
 
             <div className="card overflow-hidden">
               <iframe
-                title="Map showing the Techtonic Lab head office in Somalwada, Nagpur"
+                title="Map showing the TECHTONIC LAB head office in Somalwada, Nagpur"
                 src="https://www.google.com/maps?q=21.0839766,79.0799313&hl=en&z=16&output=embed"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

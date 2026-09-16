@@ -8,8 +8,8 @@ const breadcrumbs = [
   { name: "Terms of service", href: "/terms-of-service" },
 ];
 
-const TITLE = "Terms of Service — Techtonic Lab";
-const DESC = "Terms governing enrolment at Techtonic Lab: fees, refunds, placement assistance, attendance, server access and use of course material.";
+const TITLE = "Terms of Service — TECHTONIC LAB";
+const DESC = "Terms governing enrolment at TECHTONIC LAB: fees, refunds, placement assistance, attendance, server access and use of course material.";
 
 export const metadata = {
   title: TITLE,
@@ -20,7 +20,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/terms-of-service`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: TITLE,
     description: DESC,
     images: [{ url: "/og/homepage.jpg", width: 1200, height: 630, alt: TITLE }],

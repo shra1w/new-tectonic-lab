@@ -4,7 +4,8 @@ import SectionHead from "./ui/SectionHead";
 import Stagger from "./ui/Stagger";
 import CourseVisual from "./ui/CourseVisual";
 import BuyCourseButton from "./BuyCourseButton";
-import { courses, EMI_MONTHS, emiPerMonth, formatINR } from "@/lib/site";
+import CourseModules from "./CourseModules";
+import { courses, installmentPlan } from "@/lib/site";
 import { sapModules } from "@/lib/courses";
 
 const ICONS = {
@@ -48,7 +49,7 @@ function CardShell({ course, children }) {
    tinted block with a large acid figure, the EMI line and an all-inclusive tag,
    instead of hiding in the spec rows. `unit` shows "/ module" for SAP. */
 function FeeHighlight({ course, unit }) {
-  const emi = formatINR(emiPerMonth(course.feeNumeric));
+  const plan = installmentPlan(course);
 
   return (
     <div className="mt-5 flex items-center justify-between gap-3 rounded-2xl border border-acid/25 bg-gradient-to-br from-acid/[0.12] to-acid/[0.03] px-4 py-3.5">
@@ -62,7 +63,7 @@ function FeeHighlight({ course, unit }) {
           ) : null}
         </div>
         <p className="mt-1.5 text-2xs text-zinc-400">
-          ≈ {emi}/mo · {EMI_MONTHS}-month no-cost EMI
+          3 instalments · {plan.text}
         </p>
       </div>
       <span className="shrink-0 rounded-full border border-acid/30 bg-acid/10 px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-acid">
@@ -133,13 +134,7 @@ function CourseCard({ course }) {
         ]}
       />
 
-      <ul className="mt-5 flex flex-wrap gap-1.5">
-        {course.tools.map((tool) => (
-          <li key={tool} className="chip">
-            {tool}
-          </li>
-        ))}
-      </ul>
+      <CourseModules tools={course.tools} />
 
       <ExploreLink course={course} />
       <SubLinks course={course} />
@@ -182,12 +177,12 @@ function SapCourseCard({ course }) {
             <li key={m.slug}>
               <Link
                 href={`/sap-course/${m.slug}`}
-                className="group/mod flex items-center justify-between gap-2 rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2 text-sm font-medium text-zinc-200 transition-colors hover:border-acid/40 hover:bg-acid/[0.06] hover:text-acid"
+                className="group/mod flex items-center justify-between gap-2 rounded-lg border border-acid/30 bg-acid/[0.08] px-3 py-2 text-sm font-semibold text-acid transition-colors hover:border-acid/60 hover:bg-acid/[0.16] hover:text-acid"
               >
                 {m.name}
                 <LuArrowUpRight
                   aria-hidden="true"
-                  className="h-3.5 w-3.5 shrink-0 text-zinc-500 transition-colors group-hover/mod:text-acid"
+                  className="h-3.5 w-3.5 shrink-0 text-acid/70 transition-colors group-hover/mod:text-acid"
                 />
               </Link>
             </li>
@@ -212,8 +207,8 @@ export default function Courses() {
         <SectionHead
           id="courses-title"
           eyebrow="Our courses"
-          title="Three career tracks. Four SAP modules."
-          intro="Each pairs hands-on core training with a month of corporate grooming and the same placement preparation. SAP is offered as four standalone modules — take one, or stack more as you specialise."
+          title="Six job-ready tracks."
+          intro="Data Analytics, Data Science and four standalone SAP modules — each pairs hands-on core training with a month of corporate grooming and the same placement preparation. Take one SAP module, or stack more as you specialise."
         />
 
         <Stagger className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3" itemClassName="h-full">
@@ -232,7 +227,7 @@ export default function Courses() {
           <div className="relative md:w-2/5">
             <CourseVisual
               src="/photos/grooming.jpeg"
-              alt="Corporate grooming and interview training at Techtonic Lab, Nagpur"
+              alt="Corporate grooming and interview training at TECHTONIC LAB, Nagpur"
               variant="card"
               className="aspect-[16/10] w-full md:h-full"
               sizes="(max-width: 768px) 100vw, 40vw"
@@ -248,8 +243,8 @@ export default function Courses() {
             </h3>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-400">
               A one-month programme that turns trained learners into hireable
-              professionals — resume and LinkedIn rebuild, three recorded mock
-              interviews with feedback, aptitude practice and workplace
+              professionals — resume and LinkedIn rebuild, three live mock
+              interviews with industry experts and feedback, aptitude practice and workplace
               communication. Included free with every course above, or enroll
               in it on its own.
             </p>

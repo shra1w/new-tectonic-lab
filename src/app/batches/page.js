@@ -19,13 +19,13 @@ const breadcrumbs = [
   { name: "Batches", href: "/batches" },
 ];
 
-const TITLE = "Batch Schedule — Upcoming Course Dates in Nagpur | Techtonic Lab";
+const TITLE = "Batch Schedule — Upcoming Course Dates in Nagpur | TECHTONIC LAB";
 const DESC =
-  "Every upcoming Data Analytics, Data Science and SAP batch at Techtonic Lab Nagpur — start dates, timings, mode, campus and seats remaining. Published in advance.";
+  "Every upcoming Data Analytics, Data Science and SAP batch at TECHTONIC LAB Nagpur — start dates, timings, mode, campus and seats remaining. Published in advance.";
 
 const faqs = [
   {
-    q: "How often do new batches start at Techtonic Lab?",
+    q: "How often do new batches start at TECHTONIC LAB?",
     a: "A new batch starts roughly every two weeks across the three courses, and each individual course begins a new intake about once a month. Weekday classroom, weekend classroom and live online batches all run on their own cycles.",
   },
   {
@@ -58,7 +58,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/batches`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: TITLE,
     description: DESC,
     images: [{ url: "/og/batches.jpg", width: 1200, height: 630, alt: TITLE }],
@@ -99,7 +99,7 @@ export default function BatchesPage() {
               ["Upcoming batch", `${next.course} · ${next.start}`],
               ["Upcoming batches listed", String(batches.length)],
               ["Modes", "Classroom, weekend, online"],
-              ["Campuses", "Somalwada, Jaitala Road, live online"],
+              ["Campuses", "Manish Nagar, Vasudev Nagar, live online"],
               ["Programme length", "4–9 months, by course"],
               ["Fee", "₹49,999–₹89,999, by course"],
             ]}
@@ -129,7 +129,7 @@ export default function BatchesPage() {
 
           <Reveal className="mt-10">
             <div className="card overflow-hidden">
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto hide-scrollbar">
                 <table className="w-full min-w-[52rem] text-sm">
                   <caption className="sr-only">
                     Upcoming batch start dates, modes, timings, campuses and seats remaining

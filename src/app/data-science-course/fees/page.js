@@ -22,7 +22,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/${SLUG}/fees`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: "Data Science Course Fees in Nagpur — ₹89,999 All-Inclusive",
     description: "Data science course fees in Nagpur: ₹89,999 for the full 9-month programme, EMI at ₹15,000 per month. No registration, examination or certificate charges.",
     images: [{ url: "/og/data-science-course.jpg", width: 1200, height: 630, alt: "Data Science Course Fees in Nagpur — ₹89,999 All-Inclusive" }],

@@ -22,7 +22,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/${SLUG}/syllabus`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: "Data Science Course Syllabus in Nagpur — Full Module List",
     description: "The complete data science course syllabus: Python, pandas, statistics, machine learning and deployment, with hours, tools and projects for every module.",
     images: [{ url: "/og/data-science-course.jpg", width: 1200, height: 630, alt: "Data Science Course Syllabus in Nagpur — Full Module List" }],

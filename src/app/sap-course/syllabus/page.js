@@ -22,7 +22,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/${SLUG}/syllabus`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: "SAP Course Syllabus in Nagpur — FICO, MM, SD, PP/QM",
     description: "The complete SAP course syllabus: S/4HANA foundations, FICO, MM, SD and PP/QM configuration, with hours, topics and the scenario built in each module.",
     images: [{ url: "/og/sap-course.jpg", width: 1200, height: 630, alt: "SAP Course Syllabus in Nagpur — FICO, MM, SD, PP/QM" }],

@@ -7,6 +7,7 @@ import {
   LuMessageSquareWarning,
   LuMapPin,
   LuClock,
+  LuLinkedin,
 } from "react-icons/lu";
 
 import PageHero from "@/components/ui/PageHero";
@@ -19,7 +20,7 @@ import Prose from "@/components/ui/Prose";
 import CtaBand from "@/components/CtaBand";
 
 import { about } from "@/lib/content";
-import { brand, offices, courses, faculty, facultyYearsTotal, districts, SITE_URL } from "@/lib/site";
+import { brand, offices, courses, faculty, facultyYearsTotal, districts, operationsTeam, SITE_URL } from "@/lib/site";
 import { breadcrumbSchema, organizationSchema, webPageSchema } from "@/lib/schema";
 
 const breadcrumbs = [
@@ -27,9 +28,9 @@ const breadcrumbs = [
   { name: "About", href: "/aboutus" },
 ];
 
-const TITLE = "About Techtonic Lab — IT Training Institute in Nagpur";
+const TITLE = "About TECHTONIC LAB — IT Training Institute in Nagpur";
 const DESC =
-  "Techtonic Lab is a Nagpur-based IT training institute offering job-ready courses in Data Analytics, Data Science and SAP for students, graduates and working professionals.";
+  "TECHTONIC LAB is a Nagpur-based IT training institute offering job-ready courses in Data Analytics, Data Science and SAP for students, graduates and working professionals.";
 
 const ICONS = {
   publish: LuEye,
@@ -46,7 +47,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/aboutus`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: TITLE,
     description: DESC,
     images: [{ url: "/og/about.jpg", width: 1200, height: 630, alt: TITLE }],
@@ -76,7 +77,7 @@ export default function AboutPage() {
         aside={
           <ImageSlot
             src="/photos/hero-lab.png"
-            alt="The Techtonic Lab training lab in Nagpur"
+            alt="The TECHTONIC LAB training lab in Nagpur"
             id="IMG-02"
             className="aspect-[4/3] w-full lg:aspect-[4/5]"
             rounded="rounded-3xl"
@@ -148,7 +149,7 @@ export default function AboutPage() {
             <SectionHead
               id="numbers-title"
               eyebrow="The institute"
-              title="What Techtonic Lab is, factually"
+              title="What TECHTONIC LAB is, factually"
               intro="No adjectives. Everything on this list can be checked before you pay us anything."
             />
             <Reveal delay={0.1}>
@@ -167,6 +168,58 @@ export default function AboutPage() {
               ]}
             />
           </Reveal>
+        </div>
+      </section>
+
+      {/* ---- Operations & tech support ---- */}
+      <section aria-labelledby="ops-title" className="border-t border-white/10 py-20 sm:py-24">
+        <div className="shell">
+          <SectionHead
+            id="ops-title"
+            eyebrow="Behind the scenes"
+            title="Operations & tech support"
+            intro="The people who keep the campuses, the schedule and the systems running so the teaching team can focus on the batch."
+          />
+          <Stagger className="mt-10 grid gap-5 sm:grid-cols-2 lg:mx-auto lg:max-w-4xl" itemClassName="h-full">
+            {operationsTeam.map((m) => (
+              <article
+                key={m.name}
+                className="card group flex h-full overflow-hidden transition-colors duration-300 hover:border-acid/35"
+              >
+                <div className="relative w-32 shrink-0 overflow-hidden bg-ink-950 sm:w-40">
+                  {m.photo ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={m.photo}
+                      alt={`${m.name}, ${m.role} at TECHTONIC LAB`}
+                      className="h-full w-full object-cover object-top"
+                    />
+                  ) : (
+                    <span className="ruled grid h-full min-h-[11rem] w-full place-items-center bg-gradient-to-br from-acid/20 to-acid/[0.04] font-display text-3xl font-semibold text-acid">
+                      {m.initials}
+                    </span>
+                  )}
+                </div>
+                <div className="flex flex-1 flex-col justify-center p-5 sm:p-6">
+                  <h3 className="font-display text-lg font-semibold text-zinc-50">{m.name}</h3>
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-acid">{m.role}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-400">{m.focus}</p>
+                  {m.linkedin ? (
+                    <a
+                      href={m.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${m.name} on LinkedIn`}
+                      className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-md border border-acid/40 bg-acid/10 px-3.5 py-2 text-2xs font-semibold text-acid transition-colors hover:bg-acid/20"
+                    >
+                      <LuLinkedin aria-hidden="true" className="h-3.5 w-3.5" />
+                      Connect on LinkedIn
+                    </a>
+                  ) : null}
+                </div>
+              </article>
+            ))}
+          </Stagger>
         </div>
       </section>
 

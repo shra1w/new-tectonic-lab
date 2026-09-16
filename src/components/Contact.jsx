@@ -74,7 +74,7 @@ export default function Contact({ source = "homepage" }) {
           {/* Section 13.1 — embedded map supports local SEO */}
           <div className="card overflow-hidden">
             <iframe
-              title="Map showing the Techtonic Lab head office in Somalwada, Nagpur"
+              title="Map showing the TECHTONIC LAB head office in Somalwada, Nagpur"
               src="https://www.google.com/maps?q=21.0839766,79.0799313&hl=en&z=16&output=embed"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

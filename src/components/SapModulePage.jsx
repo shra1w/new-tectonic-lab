@@ -27,8 +27,8 @@ export default function SapModulePage({ mod, breadcrumbs }) {
       a: `${mod.bestFor} suit this module best. That said, all four functional modules are business configuration rather than programming, so no technical degree is required for any of them.`,
     },
     {
-      q: `How is ${mod.name} taught at Techtonic Lab?`,
-      a: `${mod.hours}. Techtonic Lab offers four standalone SAP modules — MM, FICO, PP/QM and SD — each taught hands-on on live S/4HANA, plus the cross-module integration sessions that interviews actually test.`,
+      q: `How is ${mod.name} taught at TECHTONIC LAB?`,
+      a: `${mod.hours}. TECHTONIC LAB offers four standalone SAP modules — MM, FICO, PP/QM and SD — each taught hands-on on live S/4HANA, plus the cross-module integration sessions that interviews actually test.`,
     },
     {
       q: `Do I get live S/4HANA access for ${mod.name}?`,
@@ -36,7 +36,7 @@ export default function SapModulePage({ mod, breadcrumbs }) {
     },
     {
       q: `What is the fee for learning ${mod.name} in Nagpur?`,
-      a: `${mod.name} is ${mod.fee || "₹49,999"}, all-inclusive — live S/4HANA server access, all learning material, the corporate grooming month and placement preparation. Each of the four SAP modules is priced the same and can be taken on its own, with a no-cost EMI available.`,
+      a: `${mod.name} is ${mod.fee || "₹49,999"}, all-inclusive — live S/4HANA server access, all learning material, the corporate grooming month and placement preparation. Each of the four SAP modules is priced the same, can be taken on its own, and is payable in 3 instalments of ₹20,000 + ₹15,000 + ₹15,000.`,
     },
     {
       q: `What jobs can I get with ${mod.name}?`,
@@ -151,7 +151,7 @@ export default function SapModulePage({ mod, breadcrumbs }) {
             />
             <Reveal className="mt-8">
               <div className="card overflow-hidden">
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto hide-scrollbar">
                   <table className="w-full min-w-[30rem] text-sm">
                     <caption className="sr-only">Roles and salary ranges for {mod.name}</caption>
                     <thead>

@@ -8,8 +8,8 @@ const breadcrumbs = [
   { name: "Privacy policy", href: "/privacy-policy" },
 ];
 
-const TITLE = "Privacy Policy — Techtonic Lab";
-const DESC = "How Techtonic Lab collects, uses and retains personal data, your rights under India's DPDP Act 2023, and how to contact our grievance officer.";
+const TITLE = "Privacy Policy — TECHTONIC LAB";
+const DESC = "How TECHTONIC LAB collects, uses and retains personal data, your rights under India's DPDP Act 2023, and how to contact our grievance officer.";
 
 export const metadata = {
   title: TITLE,
@@ -20,7 +20,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/privacy-policy`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: TITLE,
     description: DESC,
     images: [{ url: "/og/homepage.jpg", width: 1200, height: 630, alt: TITLE }],

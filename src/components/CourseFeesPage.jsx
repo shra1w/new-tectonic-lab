@@ -9,20 +9,26 @@ import Stagger from "./ui/Stagger";
 import FaqList from "./ui/FaqList";
 import CtaBand from "./CtaBand";
 import BuyCourseButton from "./BuyCourseButton";
-import { courses, DISCLAIMER, EMI_MONTHS, emiPerMonth, formatINR } from "@/lib/site";
+import { courses, DISCLAIMER, formatINR, installmentPlan } from "@/lib/site";
 
-const NOT_INCLUDED = [
-  "The official SAP certification exam fee, paid directly to SAP",
-  "The Microsoft PL-300 exam fee, paid directly to Microsoft",
-  "Travel to and from either campus",
-  "A personal laptop — we can lend one on campus if you do not have one",
-];
+/* The "not included" list is course-specific: the SAP certification exam is
+   only relevant to the SAP course, and the Microsoft PL-300 exam only to the
+   data courses. */
+function notIncludedFor(course) {
+  const isSap = course.slug === "sap-course";
+  return [
+    isSap
+      ? "The official SAP certification exam fee, paid directly to SAP"
+      : "The Microsoft PL-300 exam fee, paid directly to Microsoft",
+    "Travel to and from either campus",
+    "A personal laptop — we can lend one on campus if you do not have one",
+  ];
+}
 
 export default function CourseFeesPage({ course, detail, breadcrumbs }) {
   const trainingMonths = (course.durationMonths || 0) - 1;
-  const emiMonthly = formatINR(emiPerMonth(course.feeNumeric));
-  const emiText = `${emiMonthly} × ${EMI_MONTHS} months`;
-  const halfPayment = `${formatINR(Math.ceil(Number(course.feeNumeric) / 2))} × 2`;
+  const plan = installmentPlan(course);
+  const NOT_INCLUDED = notIncludedFor(course);
 
   const feeFaqs = [
     {
@@ -32,8 +38,8 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
         : `The total fee is ${course.fee} for the complete ${course.duration} programme — ${trainingMonths} months of core training plus one month of corporate grooming. There is no separate registration fee, examination fee or certificate fee, and there is no higher tier.`,
     },
     {
-      q: "Is EMI available, and what does it cost?",
-      a: `Yes. A ${EMI_MONTHS}-month EMI works out at approximately ${emiMonthly} per month with no additional interest charged by Techtonic Lab. Exact terms depend on the financing partner and are set out in writing before you commit.`,
+      q: "Can I pay in instalments?",
+      a: `Yes. The fee is payable in 3 instalments — ${plan.text} — ${course.installmentNote || "spread across the early part of the course"}, with no extra charge for paying in parts. The schedule is set out in writing before you commit.`,
     },
     {
       q: "What is included in the fee?",
@@ -41,15 +47,15 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
         course.slug === "sap-course"
           ? "individual SAP S/4HANA server access"
           : "project datasets and tool licences used in class"
-      }, four portfolio projects with review, the full month of corporate grooming, three recorded mock interviews, and placement preparation and referrals.`,
+      }, four portfolio projects with review, the full month of corporate grooming, three live mock interviews, and placement preparation and referrals.`,
     },
     {
       q: "What is not included?",
-      a: "Vendor certification exam fees are paid directly to SAP or Microsoft and are not part of the course fee. Travel and a personal laptop are also on you, though campus machines are available if you do not have one.",
-    },
-    {
-      q: "Can I pay in instalments without EMI?",
-      a: "Yes. A common arrangement is a first payment at enrolment and the balance before the second month begins. Talk to the counsellor on your first call — we will not make you ask twice.",
+      a: `${
+        course.slug === "sap-course"
+          ? "The official SAP certification exam fee is paid directly to SAP and is not part of the course fee."
+          : "The Microsoft PL-300 exam fee is paid directly to Microsoft and is not part of the course fee."
+      } Travel and a personal laptop are also on you, though campus machines are available if you do not have one.`,
     },
     {
       q: "Do you offer any concessions?",
@@ -57,7 +63,7 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
     },
     {
       q: "What is the refund policy?",
-      a: "If you withdraw before the batch starts, you are refunded in full less any non-recoverable third-party charges. After the batch begins, the refund position is set out in our terms of service, because the seat, the server licence and the faculty time have been committed.",
+      a: "Fees once paid are non-refundable, because the seat, the server licence and the faculty time are committed as soon as you enrol. This is exactly why the consultation is free and the fees, dates and syllabus are all published — settle every question before you pay, and pay only when you are sure.",
     },
     {
       q: `Why is the ${course.name} course priced the way it is?`,
@@ -72,12 +78,12 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
         eyebrow="Fees"
         title={`${course.fullName} fees —`}
         highlight={course.fee}
-        summary={`${course.feeNote ? `Each SAP module is ${course.fee}, ${course.feeNote}. ` : ""}Published, itemised and all-inclusive. ${course.duration} of training and corporate grooming, with EMI available at roughly ${emiMonthly} per month. You should not have to fill in a form to find out what a course costs.`}
+        summary={`${course.feeNote ? `Each SAP module is ${course.fee}, ${course.feeNote}. ` : ""}Published, itemised and all-inclusive. ${course.duration} of training and corporate grooming, payable in 3 instalments. You should not have to fill in a form to find out what a course costs.`}
         aside={
           <FactTable
             rows={[
               ["Total fee", course.feeNote ? `${course.fee} ${course.feeNote}` : course.fee],
-              ["EMI", emiText],
+              ["Instalments", `3 — ${plan.text}`],
               ["Registration fee", "None"],
               ["Certificate fee", "None"],
               ["Examination fee", "None"],
@@ -125,7 +131,7 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
                   ))}
                   <li className="flex items-start gap-2.5 text-sm text-zinc-300">
                     <LuCheck aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-acid" />
-                    Techtonic Lab course-completion certificate
+                    TECHTONIC LAB course-completion certificate
                   </li>
                   <li className="flex items-start gap-2.5 text-sm text-zinc-300">
                     <LuCheck aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-acid" />
@@ -169,10 +175,10 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
           <SectionHead
             id="payment-title"
             eyebrow="Payment"
-            title="Three ways to pay"
+            title="Two ways to pay"
             intro="Whichever you choose, the total is the same. We do not charge more for paying in parts."
           />
-          <Stagger className="mt-10 grid gap-5 lg:grid-cols-3" itemClassName="h-full">
+          <Stagger className="mt-10 grid gap-5 lg:grid-cols-2" itemClassName="h-full">
             {[
               {
                 title: "Pay in full",
@@ -181,16 +187,10 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
                 body: "The simplest option. Nothing further to think about for the rest of the programme.",
               },
               {
-                title: "Two instalments",
-                amount: halfPayment,
-                note: "At enrolment and before month two",
-                body: "The most common arrangement. No interest, no paperwork beyond the enrolment form.",
-              },
-              {
-                title: `${EMI_MONTHS}-month EMI`,
-                amount: `≈ ${emiMonthly} / month`,
-                note: "Through our financing partner",
-                body: "Terms depend on the partner and your eligibility, and are given to you in writing before you commit to anything.",
+                title: "3 instalments",
+                amount: plan.text,
+                note: course.installmentNote || "Spread across the early part of the course",
+                body: "The most common arrangement — the fee split into three instalments, with no interest and no paperwork beyond the enrolment form.",
               },
             ].map((p) => (
               <div key={p.title} className="card h-full p-6">
@@ -227,7 +227,7 @@ export default function CourseFeesPage({ course, detail, breadcrumbs }) {
           />
           <Reveal className="mt-10">
             <div className="card overflow-hidden">
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto hide-scrollbar">
                 <table className="w-full min-w-[38rem] text-sm">
                   <caption className="sr-only">Fee and duration comparison across all courses</caption>
                   <thead>

@@ -22,7 +22,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/${SLUG}/syllabus`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: "Data Analyst Course Syllabus in Nagpur — Full Module List",
     description: "The complete data analyst course syllabus: seven modules covering Excel, SQL, Python, statistics, Power BI and Tableau, with hours, tools and projects for each.",
     images: [{ url: "/og/data-analytics-course.jpg", width: 1200, height: 630, alt: "Data Analyst Course Syllabus in Nagpur — Full Module List" }],

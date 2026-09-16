@@ -22,7 +22,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/${SLUG}/fees`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: "SAP Course Fees in Nagpur — ₹49,999 with S/4HANA Access",
     description: "SAP course fees in Nagpur: each S/4HANA module — MM, FICO, PP/QM or SD — is ₹49,999, all-inclusive, with live server access. EMI at ₹8,334 per month. Itemised in full.",
     images: [{ url: "/og/sap-course.jpg", width: 1200, height: 630, alt: "SAP Course Fees in Nagpur — ₹49,999 with S/4HANA Access" }],

@@ -26,20 +26,20 @@ export default function Footer() {
           <div className="text-center sm:text-left">
              <Link
       href="/"
-      aria-label="Techtonic Lab — home"
+      aria-label="TECHTONIC LAB — home"
       className="group flex items-center justify-center gap-1 sm:justify-start"
     >
       <Image src={"/logos/logo.svg"} alt="techtonic-lab-logo" className="" width={50} height={50}/>
       <span className="leading-none pt-1">
         <span className="block font-display text-[1.4625rem] font-semibold tracking-tight text-zinc-50">
-          Techtonic-Lab
+          TECHTONIC-LAB
         </span>
       
       </span>
     </Link>
 
             <p className="mx-auto mt-5 max-w-sm text-sm leading-relaxed text-zinc-400 sm:mx-0">
-              Techtonic Lab is an IT training institute in Nagpur offering job-ready courses in
+              TECHTONIC LAB is an IT training institute in Nagpur offering job-ready courses in
               Data Analytics, Data Science and SAP. Classroom, online and weekend batches across
               two campuses, with placement preparation built into every programme.
             </p>
@@ -53,7 +53,7 @@ export default function Footer() {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`Techtonic Lab on ${s.label}`}
+                      aria-label={`TECHTONIC LAB on ${s.label}`}
                       className="grid h-10 w-10 place-items-center rounded-full border border-white/[0.12] text-zinc-400 transition-colors hover:border-acid/60 hover:text-acid"
                     >
                       <Icon aria-hidden="true" className="h-4 w-4" />
@@ -165,7 +165,7 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col items-center gap-4 border-t border-white/10 pt-7 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <p className="text-xs text-zinc-500">
-            © {new Date().getFullYear()} Techtonic Lab. Operated by {brand.legalName}
+            © {new Date().getFullYear()} TECHTONIC LAB. Operated by {brand.legalName}
             {brand.cin && !brand.cin.includes("[") ? <> · CIN {brand.cin}</> : null}.
           </p>
           <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs sm:justify-start">

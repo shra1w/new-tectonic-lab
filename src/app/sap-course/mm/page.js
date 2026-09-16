@@ -21,7 +21,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/sap-course/${KEY}`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: "SAP MM Course in Nagpur — Materials Management",
     description: "SAP MM course in Nagpur: configure the full procure-to-pay cycle — master data, purchase orders, goods receipt and invoice verification — on live S/4HANA.",
     images: [{ url: "/og/sap-course.jpg", width: 1200, height: 630, alt: "SAP MM Course in Nagpur — Materials Management" }],

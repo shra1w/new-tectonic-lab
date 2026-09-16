@@ -12,12 +12,12 @@ import "server-only";
 import nodemailer from "nodemailer";
 
 const BRAND = {
-  name: "Techtonic Lab",
+  name: "TECHTONIC LAB",
   acid: "#EAFD56",
   ink: "#0A0A0B",
   phone: "+91 87660 69947",
   siteUrl: "https://techtoniccorporate.com",
-  address: "Somalwada & Jaitala Road, Nagpur, Maharashtra",
+  address: "Manish Nagar & Vasudev Nagar, Nagpur, Maharashtra",
 };
 
 let cachedTransport = null;
@@ -193,7 +193,7 @@ function userEmailHtml(lead) {
         <tr><td style="padding:32px 40px 36px;">
           <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#44403c;">
             Warm regards,<br/>
-            <strong style="color:#292524;">The Techtonic Lab team</strong>
+            <strong style="color:#292524;">The TECHTONIC LAB team</strong>
           </p>
         </td></tr>
 

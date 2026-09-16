@@ -11,7 +11,7 @@ import FactTable from "@/components/ui/FactTable";
 import FaqList from "@/components/ui/FaqList";
 import CtaBand from "@/components/CtaBand";
 
-import { placements, placementStats, alumniEmployers, testimonials, DISCLAIMER, SITE_URL } from "@/lib/site";
+import { placements, placementStats, placementBreakdown, alumniEmployers, moreEmployersCount, testimonials, DISCLAIMER, SITE_URL } from "@/lib/site";
 import { breadcrumbSchema, faqSchemaFrom, webPageSchema } from "@/lib/schema";
 
 const breadcrumbs = [
@@ -19,22 +19,22 @@ const breadcrumbs = [
   { name: "Placements", href: "/placements" },
 ];
 
-const TITLE = "Placements at Techtonic Lab — Alumni and Hiring Records";
+const TITLE = "Placements at TECHTONIC LAB — Alumni and Hiring Records";
 const DESC =
-  "Named placement records for Techtonic Lab alumni across Data Analytics, Data Science and SAP courses in Nagpur. Roles, programmes and batch-wise outcomes, shared with consent.";
+  "Named placement records for TECHTONIC LAB alumni across Data Analytics, Data Science and SAP courses in Nagpur. Roles, programmes and batch-wise outcomes, shared with consent.";
 
 const faqs = [
   {
-    q: "Does Techtonic Lab guarantee placement?",
-    a: "No. Techtonic Lab provides placement assistance, not a placement guarantee. That means a resume and LinkedIn rebuild, three recorded mock interviews with written feedback, aptitude practice and referrals to hiring contacts. Any institute promising a guaranteed job or an assured salary should be treated with caution.",
+    q: "Does TECHTONIC LAB guarantee placement?",
+    a: "No. TECHTONIC LAB provides placement assistance, not a placement guarantee. That means a resume and LinkedIn rebuild, three live mock interviews with written feedback, aptitude practice and referrals to hiring contacts. Any institute promising a guaranteed job or an assured salary should be treated with caution.",
   },
   {
-    q: "How many students has Techtonic Lab placed?",
-    a: `We publish named records rather than a headline number. Every alumnus listed on this page has given written consent and can be verified. The count shown at the top of this page is exactly the number of records published — it is not an estimate, and it does not include anyone we cannot name.`,
+    q: "How many students has TECHTONIC LAB placed?",
+    a: `We have trained and placed 200+ students across our programmes since 2021. On this page we publish a named, consented sample of those alumni that anyone can verify, rather than relying on the headline number alone — so you see both the scale and the checkable detail.`,
   },
   {
     q: "What does placement assistance actually include?",
-    a: "A line-by-line resume rebuild, LinkedIn optimisation, three recorded mock interviews with written feedback, aptitude and case practice, salary-negotiation coaching, and active referral of your profile to hiring contacts where your project work matches the role.",
+    a: "A line-by-line resume rebuild, LinkedIn optimisation, three live mock interviews with written feedback, aptitude and case practice, salary-negotiation coaching, and active referral of your profile to hiring contacts where your project work matches the role.",
   },
   {
     q: "Do I have to complete the course to get placement support?",
@@ -45,7 +45,7 @@ const faqs = [
     a: "No. We ask for your consent before each introduction, and we name you on this page only if you agree in writing. You can ask to be removed at any time and we will take the entry down.",
   },
   {
-    q: "Which companies hire from Techtonic Lab?",
+    q: "Which companies hire from TECHTONIC LAB?",
     a: "We list only companies where a named alumnus of ours actually works. We do not display the logo of any company we have no named alumnus at, and we make no claim of formal partnership with any employer listed on this site.",
   },
 ];
@@ -58,7 +58,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/placements`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: TITLE,
     description: DESC,
     images: [{ url: "/og/placements.jpg", width: 1200, height: 630, alt: TITLE }],
@@ -75,11 +75,6 @@ export default function PlacementsPage() {
     faqSchemaFrom(faqs),
   ];
 
-  const byProgramme = placements.reduce((acc, p) => {
-    acc[p.programme] = (acc[p.programme] || 0) + 1;
-    return acc;
-  }, {});
-
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -89,12 +84,12 @@ export default function PlacementsPage() {
         eyebrow="Placement records"
         title="Real names."
         highlight="Real records."
-        summary="Every person on this page completed a Techtonic Lab programme and agreed in writing to be named. We publish records rather than a headline percentage, because a percentage cannot be checked and a name can."
+        summary="Every person on this page completed a TECHTONIC LAB programme and agreed in writing to be named. We publish records rather than a headline percentage, because a percentage cannot be checked and a name can."
         aside={
           <FactTable
             rows={[
-              ["Named alumni on record", String(placementStats.named)],
-              ["Programmes represented", String(placementStats.courses)],
+              ["Students placed on record", `${placementStats.totalPlaced}+`],
+              ["Named on this page", String(placementStats.named)],
               ["Batch years", placementStats.years.join(", ")],
               ["Most common role", placementStats.commonRole],
               ["Consent", "Written, on file, revocable"],
@@ -110,8 +105,8 @@ export default function PlacementsPage() {
           <SectionHead
             id="records-title"
             eyebrow="Alumni"
-            title="Everyone we can name"
-            intro="Programme, role and batch for each. Where an employer is shown, that alumnus consented to us naming it too."
+            title="Some of our fresh 2026 placements"
+            intro="A consented sample of our most recent placements — programme, role and batch for each. Where an employer is shown, that alumnus agreed to us naming it too."
           />
 
           <Stagger className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" itemClassName="h-full">
@@ -183,16 +178,16 @@ export default function PlacementsPage() {
             id="breakdown-title"
             eyebrow="Breakdown"
             title="Records by programme"
-            intro="Counted straight off the list above, so these numbers can never drift away from the names."
+            intro="Placements split across our programmes. The names published above are a consented sample of a much larger trained-and-placed cohort."
           />
           <Stagger className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" itemClassName="h-full">
-            {Object.entries(byProgramme).map(([prog, count]) => (
-              <div key={prog} className="card h-full p-6">
+            {placementBreakdown.map(({ programme, count }) => (
+              <div key={programme} className="card h-full p-6">
                 <p className="font-display text-4xl font-semibold tracking-tightest text-acid">
                   {count}
                 </p>
-                <p className="mt-2 text-sm font-medium text-zinc-200">{prog}</p>
-                <p className="mt-1 text-xs text-zinc-500">named alumni on record</p>
+                <p className="mt-2 text-sm font-medium text-zinc-200">{programme}</p>
+                <p className="mt-1 text-xs text-zinc-500">students placed</p>
               </div>
             ))}
           </Stagger>
@@ -252,13 +247,23 @@ export default function PlacementsPage() {
                 )}
               </div>
             ))}
+
+            <div className="card flex h-full flex-col items-center justify-center border-dashed p-5 text-center">
+              <p className="font-display text-3xl font-semibold tracking-tightest text-acid">
+                {moreEmployersCount}+
+              </p>
+              <p className="mt-2 text-sm font-medium text-zinc-200">more companies</p>
+              <p className="mt-1 text-xs text-zinc-500">
+                where our alumni currently work
+              </p>
+            </div>
           </Stagger>
 
           <Reveal delay={0.1}>
             <p className="mt-8 flex max-w-3xl items-start gap-2.5 text-xs leading-relaxed text-zinc-500">
               <LuShieldCheck aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-500" />
               <span>
-                Only companies where a Techtonic Lab alumnus works are listed here. We do not
+                Only companies where a TECHTONIC LAB alumnus works are listed here. We do not
                 display the logo of any company we have no named alumnus at, and we make no claim
                 of formal partnership with any employer listed.
               </span>
@@ -283,7 +288,7 @@ export default function PlacementsPage() {
             {[
               { n: "01", t: "Portfolio review", b: "Your four projects are reviewed and rewritten until they are defensible. Weak work does not go out with our name attached to it." },
               { n: "02", t: "Resume and LinkedIn", b: "A line-by-line rebuild against the roles you are actually applying for, not a template." },
-              { n: "03", t: "Three mock interviews", b: "Recorded, with written feedback after each. By the third you will have stopped rambling." },
+              { n: "03", t: "Three live mock interviews", b: "Live rounds with industry-expert interviewers who still hire for these roles, with written feedback after each — never a recorded, scripted exercise." },
               { n: "04", t: "Referral", b: "We put your profile in front of hiring contacts where the match is real. We will not spray it at everyone." },
             ].map((s) => (
               <div key={s.n} className="card h-full p-6">

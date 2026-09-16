@@ -129,7 +129,7 @@ function PasswordOverlay({ onAuth }) {
         </button>
 
         <p className="mt-6 text-center text-2xs text-zinc-500">
-          Techtonic Lab · Leads Console
+          TECHTONIC LAB · Leads Console
         </p>
       </motion.form>
     </motion.div>
@@ -430,7 +430,7 @@ function Console({ pwd, onSignOut }) {
               </p>
             </div>
             <h1 className="mt-2 font-display text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl">
-              Techtonic Lab
+              TECHTONIC LAB
             </h1>
           </div>
 

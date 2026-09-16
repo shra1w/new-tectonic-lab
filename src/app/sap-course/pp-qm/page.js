@@ -21,7 +21,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: `${SITE_URL}/sap-course/${KEY}`,
-    siteName: "Techtonic Lab",
+    siteName: "TECHTONIC LAB",
     title: "SAP PP/QM Course in Nagpur — Production and Quality",
     description: "SAP PP/QM course in Nagpur: BOMs, routings, MRP, production orders and quality inspection on live S/4HANA. A standalone module at ₹49,999, all-inclusive.",
     images: [{ url: "/og/sap-course.jpg", width: 1200, height: 630, alt: "SAP PP/QM Course in Nagpur — Production and Quality" }],
