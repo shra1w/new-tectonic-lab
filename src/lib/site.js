@@ -127,13 +127,16 @@ export const courses = [
     installmentNote: "3 instalments over the first 3 months",
     courseCode: "TL-DA-001",
     level: "Beginner to intermediate",
-    tools: ["MySQL", "Power BI", "Tableau", "Python", "Advanced Excel", "AWS / Azure (Bonus)"],
+    // Ordered most in-demand first — the homepage card shows the top few, the
+    // rest expand behind a "+N more". The syllabus page lists them all.
+    tools: ["Power BI", "MySQL", "Python", "Advanced Excel", "Tableau", "Generative AI", "AWS / Azure (Bonus)"],
     teaches: [
       "SQL database design, queries, joins, window functions & CTEs",
       "Power BI & Tableau interactive dashboards and DAX modeling",
       "Python programming, NumPy, Pandas, Matplotlib & Seaborn",
       "Applied statistics, probability & hypothesis testing",
       "Advanced Excel (VLOOKUP, XLOOKUP, Pivot Tables, Macros & VBA)",
+      "Generative AI for analysts — ChatGPT & LLMs to write SQL, build DAX and summarise insights",
       "Introduction to Cloud Services (AWS / Azure) and End-to-End Capstone Project",
     ],
     includes: [
@@ -166,13 +169,18 @@ export const courses = [
     installmentNote: "3 instalments over the first 6 months",
     courseCode: "TL-DS-001",
     level: "Intermediate",
-    tools: ["Python", "Pandas", "Scikit-Learn", "TensorFlow / PyTorch", "OpenCV", "LangChain & LLMs", "Flask / FastAPI / Streamlit", "Git & GitHub"],
+    // Ordered most in-demand first — the homepage card shows the top few, the
+    // rest expand behind a "+N more". The syllabus page lists them all.
+    tools: ["Python", "Scikit-Learn", "TensorFlow / PyTorch", "LangChain & LLMs", "MySQL", "Pandas", "Power BI", "Tableau", "Advanced Excel", "OpenCV", "Flask / FastAPI / Streamlit", "Git & GitHub"],
     teaches: [
-      "Advanced Python, EDA, Data Wrangling & Feature Engineering",
+      "Advanced Python, NumPy, Pandas, EDA, Data Wrangling & Feature Engineering",
+      "SQL, Advanced Excel and data visualisation (Matplotlib, Seaborn & Plotly)",
+      "Advanced statistics, probability, hypothesis testing & the maths behind ML",
       "Supervised & Unsupervised Machine Learning with Scikit-Learn",
       "Deep Learning (ANN, CNN, RNN, LSTM) with TensorFlow/Keras",
       "Natural Language Processing (NLP) & Computer Vision (OpenCV)",
       "Generative AI, Prompt Engineering, LLMs, LangChain & RAG",
+      "Business Intelligence with Power BI & Tableau — DAX, dashboards & storytelling",
       "Model Deployment (Flask, FastAPI, Streamlit, Docker basics) & Cloud Fundamentals",
     ],
     includes: [
@@ -592,7 +600,7 @@ export const facultyYearsTotal = faculty.reduce((n, f) => n + f.yearsNum, 0);
 export const directors = [
   {
     initials: "RW",
-    name: "Rupali Wankhede",
+    name: "Rupali Tekade",
     title: "Director",
     linkedin: "https://www.linkedin.com/in/rupali-wankhede-170104253/",
     photo: "/faculty/rupali-d1.png",
@@ -666,7 +674,7 @@ export const teamGroups = [
         initials: "AD",
         name: "Abhinav Dusariwar",
         role: "Data Analytics & Data Science Trainer",
-        photo: "/team/abhinav-dusariwar.jpg",
+        photo: "/team/anuj-kulkarni.jpg",
         linkedin: "https://www.linkedin.com/in/abhinav-dusariwar/",
       },
     ],
@@ -677,13 +685,6 @@ export const teamGroups = [
     title: "The first people you speak to",
     intro: "They map your background to the right track — honestly, including when the answer is none of them.",
     members: [
-      {
-        initials: "MD",
-        name: "Mayuri Deshmukh",
-        role: "Career Counselor",
-        photo: "/team/mayuri-deshmukh.jpg",
-        linkedin: null,
-      },
       {
         initials: "VS",
         name: "Vaishnavi Sonule",
@@ -703,8 +704,15 @@ export const teamGroups = [
         initials: "AK",
         name: "Anuj Kulkarni",
         role: "Placement & HR Coordinator",
-        photo: "/team/anuj-kulkarni.jpg",
+        photo: "/team/abhinav-dusariwar.jpg",
         linkedin: "https://www.linkedin.com/in/anuj-kulkarni-98b7bb27b/",
+      },
+      {
+        initials: "MD",
+        name: "Mayuri Deshmukh",
+        role: "Placement & HR Coordinator",
+        photo: "/team/mayuri-deshmukh.png",
+        linkedin: "https://www.linkedin.com/in/mayuri-deshmukh-b10660437/",
       },
     ],
   },
@@ -726,8 +734,8 @@ export const operationsTeam = [
     name: "Saurabh Radke",
     role: "Technical Support & Systems",
     focus: "The servers, the site and the tools every batch depends on.",
-    photo: null,
-    linkedin: null,
+    photo: '/team/saurabh-radke.png',
+    linkedin: 'https://www.linkedin.com/in/saurabh-radke/',
   },
 ];
 

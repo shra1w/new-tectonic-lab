@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LuArrowUpRight, LuChartNoAxesColumn, LuBrainCircuit, LuBoxes, LuSparkles } from "react-icons/lu";
+import { LuArrowUpRight, LuChartNoAxesColumn, LuBrainCircuit, LuBoxes, LuSparkles, LuDownload } from "react-icons/lu";
 import SectionHead from "./ui/SectionHead";
 import Stagger from "./ui/Stagger";
 import CourseVisual from "./ui/CourseVisual";
@@ -134,7 +134,7 @@ function CourseCard({ course }) {
         ]}
       />
 
-      <CourseModules tools={course.tools} />
+      <CourseModules tools={course.tools} slug={course.slug} />
 
       <ExploreLink course={course} />
       <SubLinks course={course} />
@@ -169,9 +169,19 @@ function SapCourseCard({ course }) {
       />
 
       <div className="mt-5">
-        <p className="text-2xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
-          Choose your module
-        </p>
+        <div className="flex items-center justify-between gap-3">
+          <p className="text-2xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
+            Choose your module
+          </p>
+          <a
+            href={`/syllabi/${course.slug}.pdf`}
+            download
+            className="inline-flex items-center gap-1.5 text-2xs font-semibold text-acid transition-colors hover:text-acid-soft"
+          >
+            <LuDownload aria-hidden="true" className="h-3.5 w-3.5" />
+            Download syllabus
+          </a>
+        </div>
         <ul className="mt-2.5 grid grid-cols-2 gap-2">
           {modules.map((m) => (
             <li key={m.slug}>

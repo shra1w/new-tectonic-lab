@@ -121,16 +121,17 @@ export const courseDetail = {
       },
       {
         n: "07",
-        title: "Cloud bonus, capstone and corporate grooming",
+        title: "Cloud bonus, Generative AI, capstone and corporate grooming",
         hours: "Month 6",
         topics: [
           "Introduction to cloud services (AWS / Azure)",
+          "Generative AI for analysts — ChatGPT and LLMs to accelerate SQL, DAX and reporting",
           "End-to-end capstone project",
           "Resume and LinkedIn rebuild, GitHub portfolio",
           "Three live mock interviews and aptitude practice",
           "Salary negotiation",
         ],
-        tools: ["AWS / Azure", "GitHub", "LinkedIn"],
+        tools: ["AWS / Azure", "Generative AI", "GitHub", "LinkedIn"],
         project: "A defended end-to-end capstone with written feedback",
       },
     ],
@@ -254,17 +255,17 @@ export const courseDetail = {
       },
       {
         n: "02",
-        title: "SQL, Advanced Excel and visualisation",
+        title: "SQL, Excel, BI and visualisation",
         hours: "Month 3",
         topics: [
-          "SQL — joins, subqueries, CTEs, window functions, stored procedures",
+          "SQL — joins, subqueries, CTEs, window functions, stored procedures, views and triggers",
           "Data modelling and normalisation",
-          "Advanced Excel — Power Query, Power Pivot, VBA and macros",
-          "Matplotlib, Seaborn and Plotly",
-          "Statistical and interactive visualisations",
+          "Advanced Excel — lookups, PivotTables, dashboards, Power Query, Power Pivot, VBA and macros",
+          "Power BI & Tableau — data modelling, DAX, interactive dashboards and KPI storytelling",
+          "Matplotlib, Seaborn and Plotly — statistical and interactive visualisations",
         ],
-        tools: ["MySQL", "Excel", "Matplotlib", "Seaborn", "Plotly"],
-        project: "An interactive dashboard combining SQL-sourced data and Python plots",
+        tools: ["MySQL", "Excel", "Power BI", "Tableau", "Matplotlib", "Seaborn", "Plotly"],
+        project: "An interactive dashboard combining SQL-sourced data, a Power BI report and Python plots",
       },
       {
         n: "03",
@@ -286,9 +287,9 @@ export const courseDetail = {
         hours: "Months 4–5",
         topics: [
           "Data profiling, outlier detection and feature engineering",
-          "Supervised learning — regression, decision trees, random forest, SVM, XGBoost",
-          "Unsupervised learning — K-Means, hierarchical, DBSCAN, PCA",
-          "Model evaluation — precision, recall, F1, ROC-AUC",
+          "Supervised learning — linear & logistic regression, KNN, Naive Bayes, decision trees, random forest, SVM, XGBoost",
+          "Unsupervised learning — K-Means, hierarchical, DBSCAN, PCA and association rules",
+          "Model evaluation — accuracy, precision, recall, F1, ROC-AUC",
           "Cross-validation and hyperparameter tuning",
         ],
         tools: ["scikit-learn", "XGBoost", "Python"],
@@ -327,7 +328,7 @@ export const courseDetail = {
         title: "Generative AI and LLMs",
         hours: "Month 8",
         topics: [
-          "Introduction to AI, GenAI and prompt engineering",
+          "Introduction to AI, GenAI, ChatGPT and prompt engineering",
           "Large Language Models and the OpenAI APIs",
           "LangChain and Retrieval-Augmented Generation (RAG)",
           "AI agents and AI automation",
@@ -343,7 +344,7 @@ export const courseDetail = {
         topics: [
           "Model deployment — Flask, FastAPI, Streamlit and REST APIs",
           "Docker basics and an introduction to MLOps",
-          "Cloud fundamentals (AWS / Azure)",
+          "Cloud fundamentals (AWS / Azure) and ML services overview",
           "End-to-end industry capstone project",
           "Resume, LinkedIn, GitHub portfolio, mock interviews and grooming",
         ],
@@ -636,6 +637,10 @@ export const toolInfo = {
   "Advanced Excel": {
     blurb: "The tool every workplace already runs on — taken to an analyst level.",
     learn: ["Lookup family, PivotTables and slicers", "Power Query and Power Pivot", "Macros and VBA automation"],
+  },
+  "Generative AI": {
+    blurb: "The productivity layer every analyst now uses — ChatGPT and LLMs to write queries, draft DAX and summarise findings faster.",
+    learn: ["Prompting ChatGPT for SQL, DAX and Excel formulas", "Summarising and explaining datasets with LLMs", "Where to trust GenAI output — and where to verify it"],
   },
   "AWS / Azure (Bonus)": {
     blurb: "A bonus introduction to the cloud services analytics increasingly runs on.",

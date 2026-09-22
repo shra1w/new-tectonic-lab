@@ -34,10 +34,14 @@ export default function CourseSyllabusPage({ course, detail, breadcrumbs }) {
         }
       >
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link href="/connect-with-us" className="btn-primary w-full sm:w-auto">
+          <a
+            href={`/syllabi/${course.slug}.pdf`}
+            download
+            className="btn-primary w-full sm:w-auto"
+          >
             <LuDownload aria-hidden="true" className="h-4 w-4" />
-            Get the brochure by email
-          </Link>
+            Get syllabus
+          </a>
           <Link href={`/${course.slug}`} className="btn-ghost w-full sm:w-auto">
             Back to the {course.name} course
           </Link>

@@ -7,7 +7,7 @@ import { LuArrowRight, LuLinkedin } from "react-icons/lu";
 import SectionHead from "./ui/SectionHead";
 import Stagger from "./ui/Stagger";
 import Reveal from "./ui/Reveal";
-import { directors, mentors, teamGroups, facultyYearsTotal } from "@/lib/site";
+import { directors, mentors, teamGroups, operationsTeam, facultyYearsTotal } from "@/lib/site";
 
 /* One portrait treatment for every card in the section, so the whole team —
    directors, mentors and the wider team — sits on the same uniform background.
@@ -137,7 +137,26 @@ function TeamMemberCard({ person }) {
   );
 }
 
+/* Shared label header for a wider-team group (eyebrow + title + intro). */
+function TeamGroupHead({ group }) {
+  return (
+    <Reveal>
+      <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-acid">{group.eyebrow}</p>
+      <h3 className="mt-1 font-display text-xl font-semibold text-zinc-50">{group.title}</h3>
+      <p className="mt-1 max-w-2xl text-sm leading-relaxed text-zinc-500">{group.intro}</p>
+    </Reveal>
+  );
+}
+
 export default function Faculty() {
+  const trainers = teamGroups.find((g) => g.key === "trainers");
+  const counsellors = teamGroups.find((g) => g.key === "counsellors");
+  const placement = teamGroups.find((g) => g.key === "placement");
+  // Any other wider-team groups keep their original stacked, full-width layout.
+  const otherGroups = teamGroups.filter(
+    (g) => !["trainers", "counsellors", "placement"].includes(g.key)
+  );
+
   return (
     <section id="faculty" aria-labelledby="faculty-title" className="scroll-mt-24 py-20 sm:py-28">
       <div className="shell">
@@ -179,24 +198,62 @@ export default function Faculty() {
           </Stagger>
         </div>
 
-        {/* 3 — The wider team, in labelled pairs (left / right) */}
-        {teamGroups.map((group) => (
+        {/* 3 — Trainers, full width */}
+        {trainers ? (
+          <div className="mt-16">
+            <TeamGroupHead group={trainers} />
+            <Stagger className="mt-6 grid gap-5 sm:grid-cols-2" itemClassName="h-full">
+              {trainers.members.map((person, i) => (
+                <TeamMemberCard key={`trainers-${person.name}-${i}`} person={person} />
+              ))}
+            </Stagger>
+          </div>
+        ) : null}
+
+        {/* 4 — HR & Placement (left) and Counsellors (right): side by side on
+            desktop, stacked on mobile. Each column stacks its own members. */}
+        <div className="mt-16 grid gap-x-8 gap-y-12 lg:grid-cols-2">
+          {[placement, counsellors].filter(Boolean).map((group) => (
+            <div key={group.key}>
+              <TeamGroupHead group={group} />
+              <Stagger className="mt-6 grid gap-5" itemClassName="h-full">
+                {group.members.map((person, i) => (
+                  <TeamMemberCard key={`${group.key}-${person.name}-${i}`} person={person} />
+                ))}
+              </Stagger>
+            </div>
+          ))}
+        </div>
+
+        {/* Any additional wider-team groups keep the original full-width layout. */}
+        {otherGroups.map((group) => (
           <div key={group.key} className="mt-16">
-            <Reveal>
-              <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-acid">{group.eyebrow}</p>
-              <h3 className="mt-1 font-display text-xl font-semibold text-zinc-50">{group.title}</h3>
-              <p className="mt-1 max-w-2xl text-sm leading-relaxed text-zinc-500">{group.intro}</p>
-            </Reveal>
-            <Stagger
-              className="mt-6 grid gap-5 sm:grid-cols-2"
-              itemClassName="h-full"
-            >
+            <TeamGroupHead group={group} />
+            <Stagger className="mt-6 grid gap-5 sm:grid-cols-2" itemClassName="h-full">
               {group.members.map((person, i) => (
                 <TeamMemberCard key={`${group.key}-${person.name}-${i}`} person={person} />
               ))}
             </Stagger>
           </div>
         ))}
+
+        {/* Operations & tech support — same labelled-group treatment as the
+            wider team above, sitting just below HR & Placement (not a separate
+            section), the roles that keep the campuses and systems running. */}
+        <div className="mt-16">
+          <Reveal>
+            <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-acid">Behind the scenes</p>
+            <h3 className="mt-1 font-display text-xl font-semibold text-zinc-50">Operations &amp; tech support</h3>
+            <p className="mt-1 max-w-2xl text-sm leading-relaxed text-zinc-500">
+              The people who keep the campuses, the schedule and the systems running so the teaching team can focus on the batch.
+            </p>
+          </Reveal>
+          <Stagger className="mt-6 grid gap-5 sm:grid-cols-2" itemClassName="h-full">
+            {operationsTeam.map((person, i) => (
+              <TeamMemberCard key={`operations-${person.name}-${i}`} person={person} />
+            ))}
+          </Stagger>
+        </div>
       </div>
     </section>
   );
