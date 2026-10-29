@@ -26,9 +26,10 @@ function isoMonths(course) {
 export function organizationSchema() {
   return {
     "@context": "https://schema.org",
-    // "Organization" first so generic parsers (and AI agents) recognise the
-    // entity; EducationalOrganization keeps the more specific meaning.
-    "@type": ["Organization", "EducationalOrganization"],
+    // A plain "Organization" string so simple parsers (and AI-agent scanners)
+    // recognise the entity; additionalType keeps the educational meaning.
+    "@type": "Organization",
+    additionalType: "https://schema.org/EducationalOrganization",
     "@id": ORG_ID,
     name: brand.name,
     legalName: brand.legalName,

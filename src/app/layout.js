@@ -92,7 +92,7 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
-  const siteJsonLd = jsonLdGraph([organizationSchema(), websiteSchema()]);
+  const siteJsonLd = jsonLdGraph([websiteSchema()]);
 
   return (
     <html lang="en-IN" className={`${display.variable} ${body.variable}`}>
@@ -102,6 +102,12 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           // Sitewide entity graph — present on every page (audit Section 8.1).
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          // Organization as its own top-level block, not inside @graph, so
+          // scanners that skip graphs still find contactPoint and address.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}
         />
       </head>
       <body className="min-h-dvh">
