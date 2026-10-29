@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFab from "@/components/WhatsAppFab";
 import CookieBanner from "@/components/CookieBanner";
 import { SITE_URL, brand } from "@/lib/site";
-import { organizationSchema, websiteSchema } from "@/lib/schema";
+import { organizationSchema, websiteSchema, jsonLdGraph } from "@/lib/schema";
 import FloatingActions from "@/components/FloatingCta";
 
 // Section 12 — self-hosted by next/font, preloaded, font-display: swap.
@@ -92,7 +92,7 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
-  const siteJsonLd = [organizationSchema(), websiteSchema()];
+  const siteJsonLd = jsonLdGraph([organizationSchema(), websiteSchema()]);
 
   return (
     <html lang="en-IN" className={`${display.variable} ${body.variable}`}>

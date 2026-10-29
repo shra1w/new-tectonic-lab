@@ -19,6 +19,7 @@ import {
   courseSchemas,
   faqSchema,
   personSchemas,
+  jsonLdGraph,
 } from "@/lib/schema";
 
 const TITLE = "Data Analytics, Data Science & SAP Courses in Nagpur | Techtonic Lab";
@@ -62,12 +63,12 @@ export const metadata = {
 export const revalidate = 86400;
 
 export default function HomePage() {
-  const pageJsonLd = [
+  const pageJsonLd = jsonLdGraph([
     ...localBusinessSchemas(),
     ...courseSchemas(),
     faqSchema(),
     ...personSchemas(),
-  ];
+  ]);
 
   return (
     <>

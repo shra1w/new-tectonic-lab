@@ -1,6 +1,7 @@
 import { soonestBatchByCourse } from "./content";
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://techtoniccorporate.com";
+// Trailing slash stripped so `${SITE_URL}/path` never becomes "//path".
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://techtoniccorporate.com").replace(/\/+$/, "");
 
 /* Batch dates are never hand-typed on a course. `_soonest(slug)` reads the
    soonest upcoming batch from the pattern-driven schedule (see content.js),

@@ -26,9 +26,12 @@ function isoMonths(course) {
 export function organizationSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
+    // "Organization" first so generic parsers (and AI agents) recognise the
+    // entity; EducationalOrganization keeps the more specific meaning.
+    "@type": ["Organization", "EducationalOrganization"],
     "@id": ORG_ID,
     name: brand.name,
+    legalName: brand.legalName,
     alternateName: "TECHTONIC LAB Institute",
     url: `${SITE_URL}/`,
     logo: {
@@ -50,6 +53,32 @@ export function organizationSchema() {
       postalCode: offices[0].postalCode,
       addressCountry: "IN",
     },
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "admissions",
+        telephone: "+91-8766069947",
+        email: brand.email,
+        areaServed: "IN",
+        availableLanguage: ["English", "Hindi", "Marathi"],
+        hoursAvailable: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          opens: "09:00",
+          closes: "20:00",
+        },
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        telephone: "+91-8766069947",
+        email: brand.email,
+        areaServed: "IN",
+        availableLanguage: ["English", "Hindi", "Marathi"],
+      },
+    ],
+    foundingDate: "2021",
+    knowsAbout: ["Data Analytics", "Data Science", "SAP S/4HANA", "Power BI", "Python", "Machine Learning"],
     sameAs: brand.socials.map((s) => s.href),
     parentOrganization: { "@type": "Organization", name: brand.legalName },
     areaServed: {
@@ -210,6 +239,14 @@ export function websiteSchema() {
     name: brand.name,
     publisher: { "@id": ORG_ID },
     inLanguage: "en-IN",
+  };
+}
+
+/** Wrap nodes in one @graph so parsers read them as a single entity graph. */
+export function jsonLdGraph(nodes) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": nodes.map(({ "@context": _ctx, ...node }) => node),
   };
 }
 
